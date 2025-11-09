@@ -1,0 +1,1626 @@
+{
+    "D2A2A": {
+        "box_id": 1,
+        "led_id": 1,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "2DADC": {
+        "box_id": 1,
+        "led_id": 2,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "82DC2": {
+        "box_id": 1,
+        "led_id": 3,
+        "parameter": "100K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6ECC6": {
+        "box_id": 1,
+        "led_id": 4,
+        "parameter": "100K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "87EBC": {
+        "box_id": 1,
+        "led_id": 5,
+        "parameter": "22K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "60D41": {
+        "box_id": 1,
+        "led_id": 6,
+        "parameter": "5.1K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3DB99": {
+        "box_id": 1,
+        "led_id": 7,
+        "parameter": "5.1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A4484": {
+        "box_id": 1,
+        "led_id": 8,
+        "parameter": "0R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "74A3B": {
+        "box_id": 1,
+        "led_id": 9,
+        "parameter": "0R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "2FCA4": {
+        "box_id": 1,
+        "led_id": 10,
+        "parameter": "1M",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "9AE90": {
+        "box_id": 1,
+        "led_id": 11,
+        "parameter": "1M",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D4354": {
+        "box_id": 1,
+        "led_id": 12,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0603*4"
+    },
+    "CF02D": {
+        "box_id": 1,
+        "led_id": 13,
+        "parameter": "1.5K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "7260F": {
+        "box_id": 1,
+        "led_id": 14,
+        "parameter": "2K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "44236": {
+        "box_id": 1,
+        "led_id": 15,
+        "parameter": "400MR",
+        "voltage": "",
+        "footprint": "2010"
+    },
+    "1C155": {
+        "box_id": 1,
+        "led_id": 16,
+        "parameter": "10MR",
+        "voltage": "",
+        "footprint": "1206"
+    },
+    "93CC6": {
+        "box_id": 1,
+        "led_id": 17,
+        "parameter": "51K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3B08D": {
+        "box_id": 1,
+        "led_id": 18,
+        "parameter": "210K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DE371": {
+        "box_id": 1,
+        "led_id": 19,
+        "parameter": "80.6K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "9873C": {
+        "box_id": 1,
+        "led_id": 20,
+        "parameter": "130K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "35054": {
+        "box_id": 1,
+        "led_id": 21,
+        "parameter": "150K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "81DE1": {
+        "box_id": 1,
+        "led_id": 22,
+        "parameter": "2.4K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "2F204": {
+        "box_id": 1,
+        "led_id": 23,
+        "parameter": "24K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "466CC": {
+        "box_id": 1,
+        "led_id": 24,
+        "parameter": "3.9K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "59D87": {
+        "box_id": 1,
+        "led_id": 25,
+        "parameter": "62K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "1EC92": {
+        "box_id": 1,
+        "led_id": 26,
+        "parameter": "1.2K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "CD81B": {
+        "box_id": 1,
+        "led_id": 27,
+        "parameter": "56R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D9F87": {
+        "box_id": 1,
+        "led_id": 28,
+        "parameter": "5.1R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3DCC0": {
+        "box_id": 1,
+        "led_id": 29,
+        "parameter": "22R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "C1E0D": {
+        "box_id": 1,
+        "led_id": 30,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "7E127": {
+        "box_id": 1,
+        "led_id": 31,
+        "parameter": "768K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6FA4E": {
+        "box_id": 1,
+        "led_id": 32,
+        "parameter": "510R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "A5DF0": {
+        "box_id": 1,
+        "led_id": 33,
+        "parameter": "3.24K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "111E6": {
+        "box_id": 1,
+        "led_id": 34,
+        "parameter": "124K",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "FE876": {
+        "box_id": 1,
+        "led_id": 35,
+        "parameter": "1.21K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "5CF29": {
+        "box_id": 1,
+        "led_id": 36,
+        "parameter": "309K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "01F73": {
+        "box_id": 1,
+        "led_id": 37,
+        "parameter": "5.23K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "8253F": {
+        "box_id": 1,
+        "led_id": 38,
+        "parameter": "422K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "B09F5": {
+        "box_id": 1,
+        "led_id": 39,
+        "parameter": "22.1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "1104D": {
+        "box_id": 1,
+        "led_id": 40,
+        "parameter": "24.9K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "E4FEC": {
+        "box_id": 1,
+        "led_id": 41,
+        "parameter": "57.6K",
+        "voltage": "",
+        "footprint": "1206"
+    },
+    "E8AC4": {
+        "box_id": 1,
+        "led_id": 42,
+        "parameter": "162K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "F7859": {
+        "box_id": 1,
+        "led_id": 43,
+        "parameter": "210K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A03EC": {
+        "box_id": 1,
+        "led_id": 44,
+        "parameter": "10.7K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DF623": {
+        "box_id": 1,
+        "led_id": 45,
+        "parameter": "7.5K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6AFCA": {
+        "box_id": 1,
+        "led_id": 46,
+        "parameter": "10.7K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "1D3DC": {
+        "box_id": 1,
+        "led_id": 47,
+        "parameter": "787K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "017F2": {
+        "box_id": 1,
+        "led_id": 48,
+        "parameter": "130K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "F9FB9": {
+        "box_id": 1,
+        "led_id": 49,
+        "parameter": "133K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "780CE": {
+        "box_id": 1,
+        "led_id": 50,
+        "parameter": "27K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3FB8B": {
+        "box_id": 1,
+        "led_id": 51,
+        "parameter": "3K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "0B35E": {
+        "box_id": 1,
+        "led_id": 52,
+        "parameter": "200R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "62E84": {
+        "box_id": 1,
+        "led_id": 53,
+        "parameter": "120R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "CBF77": {
+        "box_id": 1,
+        "led_id": 54,
+        "parameter": "1.5K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "68EE7": {
+        "box_id": 1,
+        "led_id": 55,
+        "parameter": "332K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "7126C": {
+        "box_id": 1,
+        "led_id": 56,
+        "parameter": "143K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DCAA0": {
+        "box_id": 1,
+        "led_id": 57,
+        "parameter": "12K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "26698": {
+        "box_id": 1,
+        "led_id": 58,
+        "parameter": "12K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D8B09": {
+        "box_id": 1,
+        "led_id": 59,
+        "parameter": "100R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "FD783": {
+        "box_id": 1,
+        "led_id": 60,
+        "parameter": "100R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3D612": {
+        "box_id": 1,
+        "led_id": 61,
+        "parameter": "143K",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "9BE0C": {
+        "box_id": 1,
+        "led_id": 62,
+        "parameter": "20R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "7C3E6": {
+        "box_id": 1,
+        "led_id": 63,
+        "parameter": "7.68K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "9540C": {
+        "box_id": 1,
+        "led_id": 64,
+        "parameter": "36K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "F4D07": {
+        "box_id": 1,
+        "led_id": 65,
+        "parameter": "4.7K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "26BA7": {
+        "box_id": 1,
+        "led_id": 66,
+        "parameter": "470R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "86EA5": {
+        "box_id": 1,
+        "led_id": 67,
+        "parameter": "2K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "2520B": {
+        "box_id": 1,
+        "led_id": 68,
+        "parameter": "4.7R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "E8F14": {
+        "box_id": 1,
+        "led_id": 69,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D16C9": {
+        "box_id": 1,
+        "led_id": 70,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3140F": {
+        "box_id": 1,
+        "led_id": 71,
+        "parameter": "51K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "F2793": {
+        "box_id": 1,
+        "led_id": 72,
+        "parameter": "41.2K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "C997F": {
+        "box_id": 1,
+        "led_id": 73,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "34812": {
+        "box_id": 1,
+        "led_id": 74,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "D1DBC": {
+        "box_id": 1,
+        "led_id": 75,
+        "parameter": "215K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "FF4F0": {
+        "box_id": 1,
+        "led_id": 76,
+        "parameter": "53.6K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "B6355": {
+        "box_id": 1,
+        "led_id": 77,
+        "parameter": "68.1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A795D": {
+        "box_id": 1,
+        "led_id": 78,
+        "parameter": "29.4K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "ED620": {
+        "box_id": 1,
+        "led_id": 79,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "2512"
+    },
+    "658F5": {
+        "box_id": 1,
+        "led_id": 80,
+        "parameter": "6MR",
+        "voltage": "",
+        "footprint": "2512"
+    },
+    "45C6E": {
+        "box_id": 1,
+        "led_id": 81,
+        "parameter": "600R",
+        "voltage": "100MHz",
+        "footprint": "0805"
+    },
+    "3036E": {
+        "box_id": 2,
+        "led_id": 1,
+        "parameter": "10uF",
+        "voltage": "10V",
+        "footprint": "3216"
+    },
+    "84BE6": {
+        "box_id": 2,
+        "led_id": 2,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "1206"
+    },
+    "94397": {
+        "box_id": 2,
+        "led_id": 3,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "0603"
+    },
+    "357B0": {
+        "box_id": 2,
+        "led_id": 4,
+        "parameter": "10uF",
+        "voltage": "10V",
+        "footprint": "0603"
+    },
+    "A6643": {
+        "box_id": 2,
+        "led_id": 5,
+        "parameter": "10uF",
+        "voltage": "16V",
+        "footprint": "1206"
+    },
+    "BC61C": {
+        "box_id": 2,
+        "led_id": 6,
+        "parameter": "10uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "D0A2B": {
+        "box_id": 2,
+        "led_id": 7,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "7343"
+    },
+    "D7400": {
+        "box_id": 2,
+        "led_id": 8,
+        "parameter": "10uF",
+        "voltage": "50V",
+        "footprint": "7343"
+    },
+    "51A1B": {
+        "box_id": 2,
+        "led_id": 9,
+        "parameter": "10uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "D3A3E": {
+        "box_id": 2,
+        "led_id": 10,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "5F84A": {
+        "box_id": 2,
+        "led_id": 11,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "7F9A9": {
+        "box_id": 2,
+        "led_id": 12,
+        "parameter": "100nF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "CA638": {
+        "box_id": 2,
+        "led_id": 13,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "E441F": {
+        "box_id": 2,
+        "led_id": 14,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "9DF69": {
+        "box_id": 2,
+        "led_id": 15,
+        "parameter": "2.2uF",
+        "voltage": "100V",
+        "footprint": "1206"
+    },
+    "C1DA0": {
+        "box_id": 2,
+        "led_id": 16,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "807D5": {
+        "box_id": 2,
+        "led_id": 17,
+        "parameter": "2.2uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "1C13E": {
+        "box_id": 2,
+        "led_id": 18,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0402"
+    },
+    "5CF43": {
+        "box_id": 2,
+        "led_id": 19,
+        "parameter": "2.2uF",
+        "voltage": "10V",
+        "footprint": "0402"
+    },
+    "7D627": {
+        "box_id": 2,
+        "led_id": 20,
+        "parameter": "2.2uF",
+        "voltage": "250V",
+        "footprint": "2220"
+    },
+    "B3181": {
+        "box_id": 2,
+        "led_id": 21,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0603"
+    },
+    "B6D69": {
+        "box_id": 2,
+        "led_id": 22,
+        "parameter": "1uF",
+        "voltage": "10V",
+        "footprint": "0402"
+    },
+    "C9BF8": {
+        "box_id": 2,
+        "led_id": 23,
+        "parameter": "1uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "85FD3": {
+        "box_id": 2,
+        "led_id": 24,
+        "parameter": "1uF",
+        "voltage": "25V",
+        "footprint": "0402"
+    },
+    "D49B7": {
+        "box_id": 2,
+        "led_id": 25,
+        "parameter": "1uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "31EB6": {
+        "box_id": 2,
+        "led_id": 26,
+        "parameter": "2.2nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "D86B3": {
+        "box_id": 2,
+        "led_id": 27,
+        "parameter": "2.2nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "F2394": {
+        "box_id": 2,
+        "led_id": 28,
+        "parameter": "47uF",
+        "voltage": "16V",
+        "footprint": "1210"
+    },
+    "B8CA6": {
+        "box_id": 2,
+        "led_id": 29,
+        "parameter": "47uF",
+        "voltage": "6.3V",
+        "footprint": "0603"
+    },
+    "67F93": {
+        "box_id": 2,
+        "led_id": 30,
+        "parameter": "47uF",
+        "voltage": "16V",
+        "footprint": "1206"
+    },
+    "9CCD9": {
+        "box_id": 2,
+        "led_id": 31,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "E6422": {
+        "box_id": 2,
+        "led_id": 32,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C10B2": {
+        "box_id": 2,
+        "led_id": 33,
+        "parameter": "4.7uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "0E65D": {
+        "box_id": 2,
+        "led_id": 34,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "ED8AE": {
+        "box_id": 2,
+        "led_id": 35,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "2FC39": {
+        "box_id": 2,
+        "led_id": 36,
+        "parameter": "100nF",
+        "voltage": "250V",
+        "footprint": "1206"
+    },
+    "B4423": {
+        "box_id": 2,
+        "led_id": 37,
+        "parameter": "10pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A22AB": {
+        "box_id": 2,
+        "led_id": 38,
+        "parameter": "12pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "5B88C": {
+        "box_id": 2,
+        "led_id": 39,
+        "parameter": "20pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F03E4": {
+        "box_id": 2,
+        "led_id": 40,
+        "parameter": "39pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "7CEC0": {
+        "box_id": 2,
+        "led_id": 41,
+        "parameter": "82pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "1B882": {
+        "box_id": 2,
+        "led_id": 42,
+        "parameter": "150pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C0AA8": {
+        "box_id": 2,
+        "led_id": 43,
+        "parameter": "470pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F809F": {
+        "box_id": 2,
+        "led_id": 44,
+        "parameter": "560pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A2E9C": {
+        "box_id": 2,
+        "led_id": 45,
+        "parameter": "47pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "3387B": {
+        "box_id": 2,
+        "led_id": 46,
+        "parameter": "510pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "8F1C5": {
+        "box_id": 2,
+        "led_id": 47,
+        "parameter": "22pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "8E425": {
+        "box_id": 2,
+        "led_id": 48,
+        "parameter": "430pF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "17F93": {
+        "box_id": 2,
+        "led_id": 49,
+        "parameter": "27pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "EF36F": {
+        "box_id": 2,
+        "led_id": 50,
+        "parameter": "100pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "725BA": {
+        "box_id": 2,
+        "led_id": 51,
+        "parameter": "8.2nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "BA22B": {
+        "box_id": 2,
+        "led_id": 52,
+        "parameter": "68uF",
+        "voltage": "16V",
+        "footprint": "6032"
+    },
+    "F2D20": {
+        "box_id": 2,
+        "led_id": 53,
+        "parameter": "4.7nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A62C1": {
+        "box_id": 2,
+        "led_id": 54,
+        "parameter": "470nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "D6D4F": {
+        "box_id": 2,
+        "led_id": 55,
+        "parameter": "1nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "E2CB6": {
+        "box_id": 2,
+        "led_id": 56,
+        "parameter": "1nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A2C29": {
+        "box_id": 2,
+        "led_id": 57,
+        "parameter": "10nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "F7782": {
+        "box_id": 2,
+        "led_id": 58,
+        "parameter": "10nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F3CC9": {
+        "box_id": 2,
+        "led_id": 59,
+        "parameter": "10nF",
+        "voltage": "1000V",
+        "footprint": "1206"
+    },
+    "182A7": {
+        "box_id": 2,
+        "led_id": 60,
+        "parameter": "5.1nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "64743": {
+        "box_id": 2,
+        "led_id": 61,
+        "parameter": "6.8nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "E5010": {
+        "box_id": 2,
+        "led_id": 62,
+        "parameter": "100uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "AF84B": {
+        "box_id": 2,
+        "led_id": 63,
+        "parameter": "3.3nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "32753": {
+        "box_id": 2,
+        "led_id": 64,
+        "parameter": "22uF",
+        "voltage": "10V",
+        "footprint": "3216"
+    },
+    "CE3F5": {
+        "box_id": 2,
+        "led_id": 65,
+        "parameter": "22uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "0D649": {
+        "box_id": 2,
+        "led_id": 66,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0603"
+    },
+    "0FF69": {
+        "box_id": 2,
+        "led_id": 67,
+        "parameter": "22uF",
+        "voltage": "10V",
+        "footprint": "0603"
+    },
+    "B4EBE": {
+        "box_id": 2,
+        "led_id": 68,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "71A39": {
+        "box_id": 2,
+        "led_id": 69,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "3216"
+    },
+    "6EFF2": {
+        "box_id": 2,
+        "led_id": 70,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "1206"
+    },
+    "2522C": {
+        "box_id": 2,
+        "led_id": 71,
+        "parameter": "22uF",
+        "voltage": "50V",
+        "footprint": "3216"
+    },
+    "A3C02": {
+        "box_id": 2,
+        "led_id": 72,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0805"
+    },
+    "E2BC0": {
+        "box_id": 2,
+        "led_id": 73,
+        "parameter": "22nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "17476": {
+        "box_id": 2,
+        "led_id": 74,
+        "parameter": "3.9nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C29DF": {
+        "box_id": 3,
+        "led_id": 1,
+        "parameter": "SPX3819",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BE800": {
+        "box_id": 3,
+        "led_id": 2,
+        "parameter": "MIC5319",
+        "voltage": "",
+        "footprint": ""
+    },
+    "8B30A": {
+        "box_id": 3,
+        "led_id": 3,
+        "parameter": "SL2.1A",
+        "voltage": "",
+        "footprint": ""
+    },
+    "0D069": {
+        "box_id": 3,
+        "led_id": 4,
+        "parameter": "LMUM2112",
+        "voltage": "",
+        "footprint": ""
+    },
+    "1B2A2": {
+        "box_id": 3,
+        "led_id": 5,
+        "parameter": "AO3401",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EFD26": {
+        "box_id": 3,
+        "led_id": 6,
+        "parameter": "AO3400",
+        "voltage": "",
+        "footprint": ""
+    },
+    "B8671": {
+        "box_id": 3,
+        "led_id": 7,
+        "parameter": "EG2133",
+        "voltage": "",
+        "footprint": ""
+    },
+    "8337E": {
+        "box_id": 3,
+        "led_id": 8,
+        "parameter": "S8550",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FD606": {
+        "box_id": 3,
+        "led_id": 9,
+        "parameter": "S8050",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A3B40": {
+        "box_id": 3,
+        "led_id": 10,
+        "parameter": "MD7620A",
+        "voltage": "",
+        "footprint": ""
+    },
+    "AD676": {
+        "box_id": 3,
+        "led_id": 11,
+        "parameter": "TPS54339",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FA791": {
+        "box_id": 3,
+        "led_id": 12,
+        "parameter": "TPS5430",
+        "voltage": "",
+        "footprint": ""
+    },
+    "B4A40": {
+        "box_id": 3,
+        "led_id": 13,
+        "parameter": "TPS54302",
+        "voltage": "",
+        "footprint": ""
+    },
+    "310BC": {
+        "box_id": 3,
+        "led_id": 14,
+        "parameter": "TPS54331",
+        "voltage": "",
+        "footprint": ""
+    },
+    "25362": {
+        "box_id": 3,
+        "led_id": 15,
+        "parameter": "TPS3808",
+        "voltage": "",
+        "footprint": ""
+    },
+    "08E85": {
+        "box_id": 3,
+        "led_id": 16,
+        "parameter": "TPS82130",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EF83D": {
+        "box_id": 3,
+        "led_id": 17,
+        "parameter": "TP5306",
+        "voltage": "",
+        "footprint": ""
+    },
+    "0729C": {
+        "box_id": 3,
+        "led_id": 18,
+        "parameter": "TXS02612",
+        "voltage": "",
+        "footprint": ""
+    },
+    "755C5": {
+        "box_id": 3,
+        "led_id": 19,
+        "parameter": "TC4056",
+        "voltage": "",
+        "footprint": ""
+    },
+    "9E135": {
+        "box_id": 3,
+        "led_id": 20,
+        "parameter": "ESD5Z5",
+        "voltage": "",
+        "footprint": ""
+    },
+    "D3B50": {
+        "box_id": 3,
+        "led_id": 21,
+        "parameter": "TXB0102",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BB37C": {
+        "box_id": 3,
+        "led_id": 22,
+        "parameter": "TP4056",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BBE2F": {
+        "box_id": 3,
+        "led_id": 23,
+        "parameter": "OPA2277",
+        "voltage": "",
+        "footprint": ""
+    },
+    "56755": {
+        "box_id": 3,
+        "led_id": 24,
+        "parameter": "MT2492",
+        "voltage": "",
+        "footprint": ""
+    },
+    "C807E": {
+        "box_id": 3,
+        "led_id": 25,
+        "parameter": "HX3608",
+        "voltage": "",
+        "footprint": ""
+    },
+    "51912": {
+        "box_id": 3,
+        "led_id": 26,
+        "parameter": "SN74LVCIG86",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EB4C0": {
+        "box_id": 3,
+        "led_id": 27,
+        "parameter": "BZT52C",
+        "voltage": "",
+        "footprint": ""
+    },
+    "4EAB2": {
+        "box_id": 3,
+        "led_id": 28,
+        "parameter": "W25Q256",
+        "voltage": "",
+        "footprint": ""
+    },
+    "D01EB": {
+        "box_id": 3,
+        "led_id": 29,
+        "parameter": "W25Q128",
+        "voltage": "",
+        "footprint": ""
+    },
+    "5820C": {
+        "box_id": 3,
+        "led_id": 30,
+        "parameter": "OPA2140",
+        "voltage": "",
+        "footprint": ""
+    },
+    "2DFCE": {
+        "box_id": 3,
+        "led_id": 31,
+        "parameter": "SGM2028",
+        "voltage": "",
+        "footprint": ""
+    },
+    "8994C": {
+        "box_id": 3,
+        "led_id": 32,
+        "parameter": "SY7200",
+        "voltage": "",
+        "footprint": ""
+    },
+    "5F4BC": {
+        "box_id": 3,
+        "led_id": 33,
+        "parameter": "LMR33630",
+        "voltage": "",
+        "footprint": ""
+    },
+    "60916": {
+        "box_id": 3,
+        "led_id": 34,
+        "parameter": "LMR51420",
+        "voltage": "",
+        "footprint": ""
+    },
+    "CEC1F": {
+        "box_id": 3,
+        "led_id": 35,
+        "parameter": "GL823K",
+        "voltage": "",
+        "footprint": ""
+    },
+    "7ED55": {
+        "box_id": 3,
+        "led_id": 36,
+        "parameter": "AD9744",
+        "voltage": "",
+        "footprint": ""
+    },
+    "6395D": {
+        "box_id": 3,
+        "led_id": 37,
+        "parameter": "AD9707",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EF2DA": {
+        "box_id": 3,
+        "led_id": 38,
+        "parameter": "LTC1112",
+        "voltage": "",
+        "footprint": ""
+    },
+    "749C8": {
+        "box_id": 3,
+        "led_id": 39,
+        "parameter": "LTC2642",
+        "voltage": "",
+        "footprint": ""
+    },
+    "ABF3D": {
+        "box_id": 3,
+        "led_id": 40,
+        "parameter": "ADR02ARZ",
+        "voltage": "",
+        "footprint": ""
+    },
+    "184F0": {
+        "box_id": 3,
+        "led_id": 41,
+        "parameter": "CH224K",
+        "voltage": "",
+        "footprint": ""
+    },
+    "9BDE6": {
+        "box_id": 3,
+        "led_id": 42,
+        "parameter": "LT8582IDKD",
+        "voltage": "",
+        "footprint": ""
+    },
+    "7095F": {
+        "box_id": 3,
+        "led_id": 43,
+        "parameter": "LT1678",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E9B9A": {
+        "box_id": 3,
+        "led_id": 44,
+        "parameter": "CJ2310",
+        "voltage": "",
+        "footprint": ""
+    },
+    "61622": {
+        "box_id": 3,
+        "led_id": 45,
+        "parameter": "SK03",
+        "voltage": "",
+        "footprint": ""
+    },
+    "35735": {
+        "box_id": 3,
+        "led_id": 46,
+        "parameter": "LTC6090",
+        "voltage": "",
+        "footprint": ""
+    },
+    "21833": {
+        "box_id": 3,
+        "led_id": 47,
+        "parameter": "LT14681",
+        "voltage": "",
+        "footprint": ""
+    },
+    "016FC": {
+        "box_id": 3,
+        "led_id": 48,
+        "parameter": "R",
+        "voltage": "",
+        "footprint": ""
+    },
+    "48C1F": {
+        "box_id": 3,
+        "led_id": 49,
+        "parameter": "G",
+        "voltage": "",
+        "footprint": ""
+    },
+    "863C1": {
+        "box_id": 3,
+        "led_id": 50,
+        "parameter": "B",
+        "voltage": "",
+        "footprint": ""
+    },
+    "3A1A9": {
+        "box_id": 3,
+        "led_id": 51,
+        "parameter": "XC6210",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FB2EC": {
+        "box_id": 3,
+        "led_id": 52,
+        "parameter": "MP2482",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A7CC1": {
+        "box_id": 3,
+        "led_id": 53,
+        "parameter": "MP2359",
+        "voltage": "",
+        "footprint": ""
+    },
+    "25720": {
+        "box_id": 3,
+        "led_id": 54,
+        "parameter": "ME3116",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FEF79": {
+        "box_id": 3,
+        "led_id": 55,
+        "parameter": "PT2042",
+        "voltage": "",
+        "footprint": ""
+    },
+    "CDC5C": {
+        "box_id": 3,
+        "led_id": 56,
+        "parameter": "CH343P",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E33C5": {
+        "box_id": 3,
+        "led_id": 57,
+        "parameter": "CH340G",
+        "voltage": "",
+        "footprint": ""
+    },
+    "80629": {
+        "box_id": 3,
+        "led_id": 58,
+        "parameter": "CH340C",
+        "voltage": "",
+        "footprint": ""
+    },
+    "2356F": {
+        "box_id": 3,
+        "led_id": 59,
+        "parameter": "CH340N",
+        "voltage": "",
+        "footprint": ""
+    },
+    "82886": {
+        "box_id": 3,
+        "led_id": 60,
+        "parameter": "CH340E",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E96F1": {
+        "box_id": 3,
+        "led_id": 61,
+        "parameter": "1N5819",
+        "voltage": "",
+        "footprint": "123"
+    },
+    "BBA46": {
+        "box_id": 3,
+        "led_id": 62,
+        "parameter": "1N5819",
+        "voltage": "",
+        "footprint": "323"
+    },
+    "129C7": {
+        "box_id": 3,
+        "led_id": 63,
+        "parameter": "AO4407",
+        "voltage": "",
+        "footprint": ""
+    },
+    "080A2": {
+        "box_id": 3,
+        "led_id": 64,
+        "parameter": "AMS1117",
+        "voltage": "3.3V",
+        "footprint": "L"
+    },
+    "B72A3": {
+        "box_id": 3,
+        "led_id": 65,
+        "parameter": "AMS1117",
+        "voltage": "3.3V",
+        "footprint": "M"
+    },
+    "332D2": {
+        "box_id": 3,
+        "led_id": 66,
+        "parameter": "AMS1117",
+        "voltage": "3.3V",
+        "footprint": "S"
+    },
+    "1CF0D": {
+        "box_id": 3,
+        "led_id": 67,
+        "parameter": "AMS1117",
+        "voltage": "5V",
+        "footprint": "L"
+    },
+    "0B16B": {
+        "box_id": 3,
+        "led_id": 68,
+        "parameter": "AMS1117",
+        "voltage": "5V",
+        "footprint": "M"
+    },
+    "63072": {
+        "box_id": 3,
+        "led_id": 69,
+        "parameter": "AMS1117",
+        "voltage": "5V",
+        "footprint": "S"
+    },
+    "8653A": {
+        "box_id": 3,
+        "led_id": 70,
+        "parameter": "JW5026",
+        "voltage": "",
+        "footprint": ""
+    },
+    "96AE4": {
+        "box_id": 3,
+        "led_id": 71,
+        "parameter": "TP4059",
+        "voltage": "",
+        "footprint": ""
+    },
+    "6171D": {
+        "box_id": 3,
+        "led_id": 72,
+        "parameter": "NMOS",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BAADA": {
+        "box_id": 3,
+        "led_id": 73,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "123"
+    },
+    "70DBF": {
+        "box_id": 3,
+        "led_id": 74,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "323"
+    },
+    "D9835": {
+        "box_id": 3,
+        "led_id": 75,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "523"
+    },
+    "F0026": {
+        "box_id": 3,
+        "led_id": 76,
+        "parameter": "INA219",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A5D68": {
+        "box_id": 3,
+        "led_id": 77,
+        "parameter": "INA139",
+        "voltage": "",
+        "footprint": ""
+    }
+}

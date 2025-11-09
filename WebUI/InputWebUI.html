@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>元件管理器</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-section {
+            padding: 25px;
+            width: 400px;
+        }
+
+        .list-section {
+            padding: 25px;
+            width: 500px;
+            margin-left: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .label-with-buttons {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+            gap: 8px;
+        }
+
+        .label-with-buttons label {
+            margin-bottom: 0;
+        }
+
+        .button-set {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .param-btn,
+        .footprint-btn {
+            font-size: 0.8em;
+            padding: 3px 8px;
+            background: #e9e9ed;
+            color: #333;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .param-btn:hover,
+        .footprint-btn:hover {
+            background: #dcdce0;
+        }
+
+        .param-btn.selected {
+            background-color: #007aff;
+            color: white;
+            font-weight: 600;
+        }
+
+        #add-btn {
+            background-color: #007aff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        #add-btn:hover {
+            background-color: #0056b3;
+        }
+
+        #component-list {
+            list-style: none;
+            padding: 0;
+            max-height: 120vh;
+            overflow-y: auto;
+        }
+
+        #component-list li {
+            background: #fafafa;
+            border: 1px solid #eee;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #component-list li>span {
+            flex-grow: 1;
+            margin-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .list-line-1 {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .list-line-2 {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 2px;
+        }
+
+        .list-line-3 {
+            font-size: 0.8em;
+            color: #888;
+            margin-top: 2px;
+        }
+
+        .delete-btn {
+            background: #ff3b30;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+
+        .delete-btn:hover {
+            background: #c51a0d;
+        }
+
+        .sort-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .sort-controls label {
+            font-weight: 500;
+            font-size: 0.9em;
+            margin-right: 5px;
+        }
+
+        .sort-select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container form-section">
+        <h2>录入新元件</h2>
+        <form id="add-form">
+            <label for="comp_name">元件名称 (唯一Key)</label>
+            <input type="text" id="comp_name" placeholder="自动生成ID..." required>
+
+            <label for="box_id">料盒ID (box_id)</label>
+            <input type="number" id="box_id" placeholder="1" required>
+
+            <label for="led_id">LED ID (led_id)</label>
+            <input type="number" id="led_id" placeholder="1" required>
+
+            <label for="parameter">参数 (parameter)</label>
+            <div class="button-set">
+                <span class="param-btn" id="btn-param-r">R</span>
+                <span class="param-btn" id="btn-param-k">K</span>
+                <span class="param-btn" id="btn-param-pf">pF</span>
+                <span class="param-btn" id="btn-param-nf">nF</span>
+                <span class="param-btn" id="btn-param-uf">uF</span>
+                <span class="param-btn" id="btn-param-nh">nH</span>
+                <span class="param-btn" id="btn-param-uh">uH</span>
+            </div>
+            <input type="text" id="parameter" placeholder="例如: 10 (在此处输入数值)">
+
+            <div class="label-with-buttons">
+                <label for="footprint">封装 (footprint)</label>
+                <span class="footprint-btn" id="btn-footprint-0402">0402</span>
+                <span class="footprint-btn" id="btn-footprint-0603">0603</span>
+                <span class="footprint-btn" id="btn-footprint-0805">0805</span>
+                <span class="footprint-btn" id="btn-footprint-1206">1206</span>
+            </div>
+            <input type="text" id="footprint" placeholder="0603">
+
+            <label for="voltage">电压 (voltage)</label>
+            <div class="button-set">
+                <span class="param-btn" id="btn-volt-6v3">6.3V</span>
+                <span class="param-btn" id="btn-volt-10v">10V</span>
+                <span class="param-btn" id="btn-volt-16v">16V</span>
+                <span class="param-btn" id="btn-volt-25v">25V</span>
+                <span class="param-btn" id="btn-volt-50v">50V</span>
+                <span class="param-btn" id="btn-volt-100v">100V</span>
+            </div>
+            <input type="text" id="voltage" placeholder="16">
+
+            <button type="submit" id="add-btn">添加元件</button>
+        </form>
+    </div>
+
+    <div class="container list-section">
+
+        <div style="margin-bottom: 15px;">
+            <label style="font-weight: 600; margin-bottom: 5px; display: block;">搜索元件</label>
+            <div style="display: flex; gap: 10px; margin-bottom: 5px;">
+                <input type="text" id="search-parameter" placeholder="参数 (parameter)"
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
+                <input type="text" id="search-voltage" placeholder="电压 (voltage)"
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
+                <input type="text" id="search-footprint" placeholder="封装 (footprint)"
+                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
+            </div>
+        </div>
+
+        <div class="sort-controls">
+            <div>
+                <label for="sort-criteria">排序:</label>
+                <select id="sort-criteria" class="sort-select">
+                    <option value="parameter">按参数 (Parameter)</option>
+                    <option value="box">按料盒 (Box, LED)</option>
+                    <option value="led">按 LED ID</option>
+                    <option value="key">按名称 (Key)</option>
+                </select>
+            </div>
+            <div>
+                <select id="sort-direction" class="sort-select">
+                    <option value="asc">正序 (A-Z, 1-9)</option>
+                    <option value="desc">倒序 (Z-A, 9-1)</option>
+                </select>
+            </div>
+        </div>
+
+        <h2>已录入元件</h2>
+        <ul id="component-list">
+        </ul>
+    </div>
+
+    <script>
+        const list = document.getElementById('component-list');
+        const form = document.getElementById('add-form');
+        const compNameInput = document.getElementById('comp_name');
+        const paramInput = document.getElementById('parameter');
+        const boxIdInput = document.getElementById('box_id');
+        const ledIdInput = document.getElementById('led_id');
+        const voltageInput = document.getElementById('voltage');
+        const footprintInput = document.getElementById('footprint');
+        let allComponents = {};
+        let selectedParamUnit = '';
+        const paramButtons = document.querySelectorAll('.param-btn');
+        let currentSortCriteria = 'parameter';
+        let currentSortDirection = 'asc';
+        const sortCriteriaSelect = document.getElementById('sort-criteria');
+        const sortDirectionSelect = document.getElementById('sort-direction');
+        const searchParameterInput = document.getElementById('search-parameter');
+        const searchVoltageInput = document.getElementById('search-voltage');
+        const searchFootprintInput = document.getElementById('search-footprint');
+        let searchFilters = {
+            parameter: '',
+            voltage: '',
+            footprint: ''
+        };
+
+        function generateRandomID() {
+            const max = 0xFFFFF;
+            const randHex = Math.floor(Math.random() * (max + 1)).toString(16);
+            return randHex.toUpperCase().padStart(5, '0');
+        }
+
+        async function loadComponents() {
+            const response = await fetch('/api/components');
+            const components = await response.json();
+
+            allComponents = components;
+            list.innerHTML = '';
+
+            const componentArray = Object.keys(components).map(key => {
+                return { key: key, details: components[key] };
+            });
+
+            // 搜索过滤 - 每个字段独立过滤
+            let filteredArray = componentArray;
+
+            // 只有当至少有一个搜索框有内容时才进行过滤
+            const hasSearchCriteria = searchFilters.parameter.trim() !== '' ||
+                searchFilters.voltage.trim() !== '' ||
+                searchFilters.footprint.trim() !== '';
+
+            if (hasSearchCriteria) {
+                filteredArray = componentArray.filter(item => {
+                    let matchParameter = true;
+                    let matchVoltage = true;
+                    let matchFootprint = true;
+
+                    // 如果参数搜索框有内容，则必须匹配
+                    if (searchFilters.parameter.trim() !== '') {
+                        const parameter = item.details.parameter.toLowerCase();
+                        matchParameter = parameter.includes(searchFilters.parameter.toLowerCase());
+                    }
+
+                    // 如果电压搜索框有内容，则必须匹配
+                    if (searchFilters.voltage.trim() !== '') {
+                        const voltage = (item.details.voltage || '').toLowerCase();
+                        matchVoltage = voltage.includes(searchFilters.voltage.toLowerCase());
+                    }
+
+                    // 如果封装搜索框有内容，则必须匹配
+                    if (searchFilters.footprint.trim() !== '') {
+                        const footprint = item.details.footprint.toLowerCase();
+                        matchFootprint = footprint.includes(searchFilters.footprint.toLowerCase());
+                    }
+
+                    // 所有有内容的搜索框都必须匹配
+                    return matchParameter && matchVoltage && matchFootprint;
+                });
+            }
+
+            filteredArray.sort((a, b) => {
+                const compareOptions = { numeric: true, sensitivity: 'base' };
+                let compareResult = 0;
+
+                switch (currentSortCriteria) {
+                    case 'parameter':
+                        compareResult = a.details.parameter.localeCompare(b.details.parameter, undefined, compareOptions);
+                        if (compareResult === 0) {
+                            compareResult = a.details.footprint.localeCompare(b.details.footprint, undefined, compareOptions);
+                        }
+                        if (compareResult === 0) {
+                            compareResult = a.details.box_id - b.details.box_id;
+                        }
+                        break;
+
+                    case 'box':
+                        compareResult = a.details.box_id - b.details.box_id;
+                        if (compareResult === 0) {
+                            compareResult = a.details.led_id - b.details.led_id;
+                        }
+                        break;
+
+                    case 'led':
+                        compareResult = a.details.led_id - b.details.led_id;
+                        if (compareResult === 0) {
+                            compareResult = a.details.box_id - b.details.box_id;
+                        }
+                        break;
+
+                    case 'key':
+                        compareResult = a.key.localeCompare(b.key);
+                        break;
+                }
+
+                return currentSortDirection === 'asc' ? compareResult : -compareResult;
+            });
+
+
+            for (const item of filteredArray) {
+                const key = item.key;
+                const details = item.details;
+                let line1_details = `${details.parameter} | ${details.footprint}`;
+                if (details.voltage && details.voltage.trim() !== '') {
+                    line1_details += ` | ${details.voltage}`;
+                }
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>
+                        <div class="list-line-1">${line1_details}</div>
+                        <div class="list-line-2">(Box: ${details.box_id}, LED: ${details.led_id})</div>
+                        <div class="list-line-3">${key}</div>
+                    </span>
+                    <button class="delete-btn" data-key="${key}">删除</button>
+                `;
+                list.appendChild(li);
+            }
+        }
+
+        function findNextLedId() {
+            const targetBoxId = parseInt(boxIdInput.value);
+            if (isNaN(targetBoxId)) {
+                return;
+            }
+            let maxLedId = 0;
+            for (const details of Object.values(allComponents)) {
+                if (details.box_id === targetBoxId) {
+                    if (details.led_id > maxLedId) {
+                        maxLedId = details.led_id;
+                    }
+                }
+            }
+            ledIdInput.value = maxLedId + 1;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const component_name = compNameInput.value;
+
+            // 保持参数的原始大小写
+            const paramValue = paramInput.value;
+            const finalParameter = paramValue + selectedParamUnit;
+
+            const details = {
+                "box_id": parseInt(boxIdInput.value),
+                "led_id": parseInt(ledIdInput.value),
+                "parameter": finalParameter,
+                "voltage": voltageInput.value,
+                "footprint": footprintInput.value
+            };
+
+            // 检查是否已存在相同参数、电压、封装的元件
+            const existingComponents = Object.entries(allComponents).filter(([key, comp]) => {
+                const sameParameter = comp.parameter.toLowerCase() === details.parameter.toLowerCase();
+                const sameVoltage = (comp.voltage || '').toLowerCase() === (details.voltage || '').toLowerCase();
+                const sameFootprint = comp.footprint.toLowerCase() === details.footprint.toLowerCase();
+                return sameParameter && sameVoltage && sameFootprint;
+            });
+
+            if (existingComponents.length > 0) {
+                let alertMessage = '⚠️ 已存在相同元件:\n\n';
+                existingComponents.forEach(([key, comp]) => {
+                    alertMessage += `📦 ${comp.parameter} | ${comp.footprint}`;
+                    if (comp.voltage && comp.voltage.trim() !== '') {
+                        alertMessage += ` | ${comp.voltage}`;
+                    }
+                    alertMessage += `\n`;
+                    alertMessage += `   Box ID: ${comp.box_id}, LED ID: ${comp.led_id}\n`;
+                    alertMessage += `   元件名称: ${key}\n\n`;
+                });
+                alertMessage += '是否仍要继续添加？';
+
+                if (!confirm(alertMessage)) {
+                    return;
+                }
+            }
+
+            const response = await fetch('/api/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ component_name, details })
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                const submittedBoxId = details.box_id;
+                const submittedFootprint = details.footprint;
+
+                form.reset();
+
+                boxIdInput.value = submittedBoxId;
+                footprintInput.value = submittedFootprint;
+                compNameInput.value = generateRandomID();
+
+                await loadComponents();
+                findNextLedId();
+            } else {
+                alert('添加失败: ' + result.error);
+                if (result.error.includes("已存在")) {
+                    compNameInput.value = generateRandomID();
+                }
+            }
+        });
+
+        list.addEventListener('click', async (e) => {
+            if (e.target.classList.contains('delete-btn')) {
+                const key = e.target.dataset.key;
+                if (!confirm(`确定要删除元件 "${key}" 吗？`)) {
+                    return;
+                }
+                const response = await fetch('/api/delete', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ "component_name": key })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    await loadComponents();
+                    findNextLedId();
+                } else {
+                    alert('删除失败: ' + result.error);
+                }
+            }
+        });
+
+        voltageInput.addEventListener('blur', () => {
+            let val = voltageInput.value.trim();
+            val = val.replace(/V/gi, '').trim();
+            if (!isNaN(val) && val !== '') {
+                voltageInput.value = val + 'V';
+            } else {
+                voltageInput.value = '';
+            }
+        });
+
+        boxIdInput.addEventListener('blur', findNextLedId);
+
+        document.getElementById('btn-footprint-0402').addEventListener('click', () => {
+            footprintInput.value = '0402';
+        });
+        document.getElementById('btn-footprint-0603').addEventListener('click', () => {
+            footprintInput.value = '0603';
+        });
+        document.getElementById('btn-footprint-0805').addEventListener('click', () => {
+            footprintInput.value = '0805';
+        });
+        document.getElementById('btn-footprint-1206').addEventListener('click', () => {
+            footprintInput.value = '1206';
+        });
+
+        function handleParamClick(clickedButton, unit) {
+            if (clickedButton.classList.contains('selected')) {
+                clickedButton.classList.remove('selected');
+                selectedParamUnit = '';
+            } else {
+                paramButtons.forEach(btn => btn.classList.remove('selected'));
+                clickedButton.classList.add('selected');
+                selectedParamUnit = unit;
+            }
+            paramInput.focus();
+        }
+
+        document.getElementById('btn-param-r').addEventListener('click', (e) => handleParamClick(e.target, 'R'));
+        document.getElementById('btn-param-k').addEventListener('click', (e) => handleParamClick(e.target, 'K'));
+        document.getElementById('btn-param-pf').addEventListener('click', (e) => handleParamClick(e.target, 'pF'));
+        document.getElementById('btn-param-nf').addEventListener('click', (e) => handleParamClick(e.target, 'nF'));
+        document.getElementById('btn-param-uf').addEventListener('click', (e) => handleParamClick(e.target, 'uF'));
+        document.getElementById('btn-param-nh').addEventListener('click', (e) => handleParamClick(e.target, 'nH'));
+        document.getElementById('btn-param-uh').addEventListener('click', (e) => handleParamClick(e.target, 'uH'));
+
+        sortCriteriaSelect.addEventListener('change', (e) => {
+            currentSortCriteria = e.target.value;
+            loadComponents();
+        });
+        sortDirectionSelect.addEventListener('change', (e) => {
+            currentSortDirection = e.target.value;
+            loadComponents();
+        });
+
+        document.getElementById('btn-volt-6v3').addEventListener('click', () => {
+            voltageInput.value = '6.3V';
+        });
+        document.getElementById('btn-volt-10v').addEventListener('click', () => {
+            voltageInput.value = '10V';
+        });
+        document.getElementById('btn-volt-16v').addEventListener('click', () => {
+            voltageInput.value = '16V';
+        });
+        document.getElementById('btn-volt-25v').addEventListener('click', () => {
+            voltageInput.value = '25V';
+        });
+        document.getElementById('btn-volt-50v').addEventListener('click', () => {
+            voltageInput.value = '50V';
+        });
+        document.getElementById('btn-volt-100v').addEventListener('click', () => {
+            voltageInput.value = '100V';
+        });
+
+        // 搜索框事件 - 三个独立的搜索框
+        searchParameterInput.addEventListener('input', (e) => {
+            searchFilters.parameter = e.target.value;
+            loadComponents();
+        });
+
+        searchVoltageInput.addEventListener('input', (e) => {
+            searchFilters.voltage = e.target.value;
+            loadComponents();
+        });
+
+        searchFootprintInput.addEventListener('input', (e) => {
+            searchFilters.footprint = e.target.value;
+            loadComponents();
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            compNameInput.value = generateRandomID();
+            footprintInput.value = '0603';
+
+            sortCriteriaSelect.value = currentSortCriteria;
+            sortDirectionSelect.value = currentSortDirection;
+
+            await loadComponents();
+        });
+    </script>
+</body>
+
+</html>
