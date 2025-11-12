@@ -39,12 +39,19 @@
         }
 
         input[type="text"],
-        input[type="number"] {
+        input[type="number"],
+        textarea {
             width: calc(100% - 20px);
             padding: 10px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+            font-family: inherit;
         }
 
         label {
@@ -153,6 +160,16 @@
             margin-top: 2px;
         }
 
+        .list-line-note {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 4px;
+            padding: 4px 8px;
+            background: #f0f0f0;
+            border-radius: 3px;
+            font-style: italic;
+        }
+
         .delete-btn {
             background: #ff3b30;
             color: white;
@@ -235,6 +252,9 @@
             </div>
             <input type="text" id="voltage" placeholder="16">
 
+            <label for="note">备注 (note)</label>
+            <textarea id="note" placeholder="可选填写备注信息..."></textarea>
+
             <button type="submit" id="add-btn">添加元件</button>
         </form>
     </div>
@@ -285,6 +305,7 @@
         const ledIdInput = document.getElementById('led_id');
         const voltageInput = document.getElementById('voltage');
         const footprintInput = document.getElementById('footprint');
+        const noteInput = document.getElementById('note');
         let allComponents = {};
         let selectedParamUnit = '';
         const paramButtons = document.querySelectorAll('.param-btn');
@@ -332,19 +353,19 @@
                     let matchVoltage = true;
                     let matchFootprint = true;
 
-                    // 如果参数搜索框有内容，则必须匹配
+                    // 如果参数搜索框有内容,则必须匹配
                     if (searchFilters.parameter.trim() !== '') {
                         const parameter = item.details.parameter.toLowerCase();
                         matchParameter = parameter.includes(searchFilters.parameter.toLowerCase());
                     }
 
-                    // 如果电压搜索框有内容，则必须匹配
+                    // 如果电压搜索框有内容,则必须匹配
                     if (searchFilters.voltage.trim() !== '') {
                         const voltage = (item.details.voltage || '').toLowerCase();
                         matchVoltage = voltage.includes(searchFilters.voltage.toLowerCase());
                     }
 
-                    // 如果封装搜索框有内容，则必须匹配
+                    // 如果封装搜索框有内容,则必须匹配
                     if (searchFilters.footprint.trim() !== '') {
                         const footprint = item.details.footprint.toLowerCase();
                         matchFootprint = footprint.includes(searchFilters.footprint.toLowerCase());
@@ -400,12 +421,19 @@
                 if (details.voltage && details.voltage.trim() !== '') {
                     line1_details += ` | ${details.voltage}`;
                 }
+
+                let noteHtml = '';
+                if (details.note && details.note.trim() !== '') {
+                    noteHtml = `<div class="list-line-note">📝 ${details.note}</div>`;
+                }
+
                 const li = document.createElement('li');
                 li.innerHTML = `
                     <span>
                         <div class="list-line-1">${line1_details}</div>
                         <div class="list-line-2">(Box: ${details.box_id}, LED: ${details.led_id})</div>
                         <div class="list-line-3">${key}</div>
+                        ${noteHtml}
                     </span>
                     <button class="delete-btn" data-key="${key}">删除</button>
                 `;
@@ -442,7 +470,8 @@
                 "led_id": parseInt(ledIdInput.value),
                 "parameter": finalParameter,
                 "voltage": voltageInput.value,
-                "footprint": footprintInput.value
+                "footprint": footprintInput.value,
+                "note": noteInput.value.trim()
             };
 
             // 检查是否已存在相同参数、电压、封装的元件
@@ -462,7 +491,11 @@
                     }
                     alertMessage += `\n`;
                     alertMessage += `   Box ID: ${comp.box_id}, LED ID: ${comp.led_id}\n`;
-                    alertMessage += `   元件名称: ${key}\n\n`;
+                    alertMessage += `   元件名称: ${key}\n`;
+                    if (comp.note && comp.note.trim() !== '') {
+                        alertMessage += `   备注: ${comp.note}\n`;
+                    }
+                    alertMessage += `\n`;
                 });
                 alertMessage += '是否仍要继续添加？';
 

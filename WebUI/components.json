@@ -1392,13 +1392,6 @@
         "voltage": "",
         "footprint": ""
     },
-    "61622": {
-        "box_id": 3,
-        "led_id": 45,
-        "parameter": "SK03",
-        "voltage": "",
-        "footprint": ""
-    },
     "35735": {
         "box_id": 3,
         "led_id": 46,
@@ -1622,5 +1615,119 @@
         "parameter": "INA139",
         "voltage": "",
         "footprint": ""
+    },
+    "A7170": {
+        "box_id": 3,
+        "led_id": 78,
+        "parameter": "1N4007",
+        "voltage": "",
+        "footprint": "214"
+    },
+    "4D2E9": {
+        "box_id": 3,
+        "led_id": 79,
+        "parameter": "CH347T",
+        "voltage": "",
+        "footprint": ""
+    },
+    "B88C7": {
+        "box_id": 3,
+        "led_id": 80,
+        "parameter": "ME6217",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E8FA0": {
+        "box_id": 4,
+        "led_id": 2,
+        "parameter": "78L09",
+        "voltage": "",
+        "footprint": ""
+    },
+    "932E9": {
+        "box_id": 4,
+        "led_id": 3,
+        "parameter": "78L05",
+        "voltage": "",
+        "footprint": ""
+    },
+    "4FE9C": {
+        "box_id": 3,
+        "led_id": 81,
+        "parameter": "74LVCIT45G",
+        "voltage": "",
+        "footprint": ""
+    },
+    "96CA8": {
+        "box_id": 4,
+        "led_id": 4,
+        "parameter": "TLV70212",
+        "voltage": "",
+        "footprint": "",
+        "note": "IN5.5V,OUT1.2V"
+    },
+    "FEC8C": {
+        "box_id": 4,
+        "led_id": 1,
+        "parameter": "TLV70218",
+        "voltage": "",
+        "footprint": "",
+        "note": "IN5.5V,OUT1.8V"
+    },
+    "80B2C": {
+        "box_id": 3,
+        "led_id": 45,
+        "parameter": "MT6825",
+        "voltage": "",
+        "footprint": "",
+        "note": "零延迟磁角度位置传感器"
+    },
+    "CC84E": {
+        "box_id": 4,
+        "led_id": 5,
+        "parameter": "ADA4891",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "19535": {
+        "box_id": 4,
+        "led_id": 6,
+        "parameter": "MF52AT",
+        "voltage": "",
+        "footprint": "",
+        "note": "10K"
+    },
+    "77897": {
+        "box_id": 2,
+        "led_id": 75,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0402",
+        "note": ""
+    },
+    "2EC02": {
+        "box_id": 4,
+        "led_id": 7,
+        "parameter": "JK-SMD0603-200L",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "自恢复保险丝"
+    },
+    "4835F": {
+        "box_id": 4,
+        "led_id": 8,
+        "parameter": "SN74LVC1T45DBVR",
+        "voltage": "",
+        "footprint": "",
+        "note": "SN74LVC1T45 具有可配置电压转换和三态输出的单位双电源总线收发器"
+    },
+    "AC351": {
+        "box_id": 4,
+        "led_id": 9,
+        "parameter": "LIS2DH12TR",
+        "voltage": "",
+        "footprint": "",
+        "note": "3轴MEMS加速度计，超低功耗，±2g/±4g/±8g/±16g满量程，高速I2C/SPI数字输出，内置FIFO和高性能加速度传感器，VFLGA封装"
     }
 }
