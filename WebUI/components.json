@@ -1455,13 +1455,6 @@
         "voltage": "",
         "footprint": ""
     },
-    "FEF79": {
-        "box_id": 3,
-        "led_id": 55,
-        "parameter": "PT2042",
-        "voltage": "",
-        "footprint": ""
-    },
     "CDC5C": {
         "box_id": 3,
         "led_id": 56,
@@ -1729,5 +1722,61 @@
         "voltage": "",
         "footprint": "",
         "note": "3轴MEMS加速度计，超低功耗，±2g/±4g/±8g/±16g满量程，高速I2C/SPI数字输出，内置FIFO和高性能加速度传感器，VFLGA封装"
+    },
+    "56266": {
+        "box_id": 4,
+        "led_id": 10,
+        "parameter": "AD5764",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "D0C0F": {
+        "box_id": 4,
+        "led_id": 11,
+        "parameter": "RS2227",
+        "voltage": "",
+        "footprint": "",
+        "note": "RS2227 是一款高速、低功耗的双刀双掷（DPDT）模拟开关，具备单使能功能。它的工作电压范围为 1.8 V 至 5.5 V。RS2227 设有一个总线开关使能引脚 OE(overline)，可使信号路径处于高阻抗状态"
+    },
+    "B512D": {
+        "box_id": 3,
+        "led_id": 55,
+        "parameter": "CH342F",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "B8F93": {
+        "box_id": 4,
+        "led_id": 12,
+        "parameter": "PT2042",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "47C1B": {
+        "box_id": 4,
+        "led_id": 13,
+        "parameter": "IR2101",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "65FEB": {
+        "box_id": 4,
+        "led_id": 14,
+        "parameter": "SP3232",
+        "voltage": "",
+        "footprint": "",
+        "note": "RS232"
+    },
+    "489C0": {
+        "box_id": 4,
+        "led_id": 28,
+        "parameter": "HS8836",
+        "voltage": "",
+        "footprint": "",
+        "note": "USB 2.0转换器"
     }
 }
