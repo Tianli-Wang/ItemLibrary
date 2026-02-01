@@ -1,0 +1,4806 @@
+{
+    "D2A2A": {
+        "box_id": 1,
+        "led_id": 1,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "2DADC": {
+        "box_id": 1,
+        "led_id": 2,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "82DC2": {
+        "box_id": 1,
+        "led_id": 3,
+        "parameter": "100K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6ECC6": {
+        "box_id": 1,
+        "led_id": 4,
+        "parameter": "100K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "87EBC": {
+        "box_id": 1,
+        "led_id": 5,
+        "parameter": "22K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "60D41": {
+        "box_id": 1,
+        "led_id": 6,
+        "parameter": "5.1K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3DB99": {
+        "box_id": 1,
+        "led_id": 7,
+        "parameter": "5.1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A4484": {
+        "box_id": 1,
+        "led_id": 8,
+        "parameter": "000R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "74A3B": {
+        "box_id": 1,
+        "led_id": 9,
+        "parameter": "000R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "2FCA4": {
+        "box_id": 1,
+        "led_id": 10,
+        "parameter": "1M",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "9AE90": {
+        "box_id": 1,
+        "led_id": 11,
+        "parameter": "1M",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D4354": {
+        "box_id": 1,
+        "led_id": 12,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0603*4"
+    },
+    "CF02D": {
+        "box_id": 1,
+        "led_id": 13,
+        "parameter": "1.5K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "7260F": {
+        "box_id": 1,
+        "led_id": 14,
+        "parameter": "2K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "44236": {
+        "box_id": 1,
+        "led_id": 15,
+        "parameter": "400MR",
+        "voltage": "",
+        "footprint": "2010"
+    },
+    "1C155": {
+        "box_id": 1,
+        "led_id": 16,
+        "parameter": "10MR",
+        "voltage": "",
+        "footprint": "1206"
+    },
+    "93CC6": {
+        "box_id": 1,
+        "led_id": 17,
+        "parameter": "51K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3B08D": {
+        "box_id": 1,
+        "led_id": 18,
+        "parameter": "210K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DE371": {
+        "box_id": 1,
+        "led_id": 19,
+        "parameter": "80.6K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "9873C": {
+        "box_id": 1,
+        "led_id": 20,
+        "parameter": "130K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "35054": {
+        "box_id": 1,
+        "led_id": 21,
+        "parameter": "150K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "81DE1": {
+        "box_id": 1,
+        "led_id": 22,
+        "parameter": "2.4K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "2F204": {
+        "box_id": 1,
+        "led_id": 23,
+        "parameter": "24K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "466CC": {
+        "box_id": 1,
+        "led_id": 24,
+        "parameter": "3.9K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "59D87": {
+        "box_id": 1,
+        "led_id": 25,
+        "parameter": "62K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "1EC92": {
+        "box_id": 1,
+        "led_id": 26,
+        "parameter": "1.2K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "CD81B": {
+        "box_id": 1,
+        "led_id": 27,
+        "parameter": "56R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D9F87": {
+        "box_id": 1,
+        "led_id": 28,
+        "parameter": "5.1R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3DCC0": {
+        "box_id": 1,
+        "led_id": 29,
+        "parameter": "22R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "C1E0D": {
+        "box_id": 1,
+        "led_id": 30,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "7E127": {
+        "box_id": 1,
+        "led_id": 31,
+        "parameter": "768K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6FA4E": {
+        "box_id": 1,
+        "led_id": 32,
+        "parameter": "510R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "A5DF0": {
+        "box_id": 1,
+        "led_id": 33,
+        "parameter": "3.24K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "111E6": {
+        "box_id": 1,
+        "led_id": 34,
+        "parameter": "124K",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "FE876": {
+        "box_id": 1,
+        "led_id": 35,
+        "parameter": "1.21K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "5CF29": {
+        "box_id": 1,
+        "led_id": 36,
+        "parameter": "309K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "01F73": {
+        "box_id": 1,
+        "led_id": 37,
+        "parameter": "5.23K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "8253F": {
+        "box_id": 1,
+        "led_id": 38,
+        "parameter": "422K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "B09F5": {
+        "box_id": 1,
+        "led_id": 39,
+        "parameter": "22.1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "1104D": {
+        "box_id": 1,
+        "led_id": 40,
+        "parameter": "24.9K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "E4FEC": {
+        "box_id": 1,
+        "led_id": 41,
+        "parameter": "57.6K",
+        "voltage": "",
+        "footprint": "1206"
+    },
+    "E8AC4": {
+        "box_id": 1,
+        "led_id": 42,
+        "parameter": "162K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "F7859": {
+        "box_id": 1,
+        "led_id": 43,
+        "parameter": "210K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A03EC": {
+        "box_id": 1,
+        "led_id": 44,
+        "parameter": "10.7K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DF623": {
+        "box_id": 1,
+        "led_id": 45,
+        "parameter": "7.5K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "6AFCA": {
+        "box_id": 1,
+        "led_id": 46,
+        "parameter": "10.7K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "1D3DC": {
+        "box_id": 1,
+        "led_id": 47,
+        "parameter": "787K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "017F2": {
+        "box_id": 1,
+        "led_id": 48,
+        "parameter": "130K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "F9FB9": {
+        "box_id": 1,
+        "led_id": 49,
+        "parameter": "133K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "780CE": {
+        "box_id": 1,
+        "led_id": 50,
+        "parameter": "27K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3FB8B": {
+        "box_id": 1,
+        "led_id": 51,
+        "parameter": "3K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "0B35E": {
+        "box_id": 1,
+        "led_id": 52,
+        "parameter": "200R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "62E84": {
+        "box_id": 1,
+        "led_id": 53,
+        "parameter": "120R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "CBF77": {
+        "box_id": 1,
+        "led_id": 54,
+        "parameter": "1.5K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "68EE7": {
+        "box_id": 1,
+        "led_id": 55,
+        "parameter": "332K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "7126C": {
+        "box_id": 1,
+        "led_id": 56,
+        "parameter": "143K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "DCAA0": {
+        "box_id": 1,
+        "led_id": 57,
+        "parameter": "12K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "26698": {
+        "box_id": 1,
+        "led_id": 58,
+        "parameter": "12K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D8B09": {
+        "box_id": 1,
+        "led_id": 59,
+        "parameter": "100R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "FD783": {
+        "box_id": 1,
+        "led_id": 60,
+        "parameter": "100R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "3D612": {
+        "box_id": 1,
+        "led_id": 61,
+        "parameter": "143K",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "9BE0C": {
+        "box_id": 1,
+        "led_id": 62,
+        "parameter": "20R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "7C3E6": {
+        "box_id": 1,
+        "led_id": 63,
+        "parameter": "7.68K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "9540C": {
+        "box_id": 1,
+        "led_id": 64,
+        "parameter": "36K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "F4D07": {
+        "box_id": 1,
+        "led_id": 65,
+        "parameter": "4.7K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "26BA7": {
+        "box_id": 1,
+        "led_id": 66,
+        "parameter": "470R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "86EA5": {
+        "box_id": 1,
+        "led_id": 67,
+        "parameter": "2K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "2520B": {
+        "box_id": 1,
+        "led_id": 68,
+        "parameter": "4.7R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "E8F14": {
+        "box_id": 1,
+        "led_id": 69,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "D16C9": {
+        "box_id": 1,
+        "led_id": 70,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "3140F": {
+        "box_id": 1,
+        "led_id": 71,
+        "parameter": "51K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "F2793": {
+        "box_id": 1,
+        "led_id": 72,
+        "parameter": "41.2K",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "C997F": {
+        "box_id": 1,
+        "led_id": 73,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0402"
+    },
+    "34812": {
+        "box_id": 1,
+        "led_id": 74,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "0805"
+    },
+    "D1DBC": {
+        "box_id": 1,
+        "led_id": 75,
+        "parameter": "215K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "FF4F0": {
+        "box_id": 1,
+        "led_id": 76,
+        "parameter": "53.6K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "B6355": {
+        "box_id": 1,
+        "led_id": 77,
+        "parameter": "470R",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "A795D": {
+        "box_id": 1,
+        "led_id": 78,
+        "parameter": "29.4K",
+        "voltage": "",
+        "footprint": "0603"
+    },
+    "ED620": {
+        "box_id": 1,
+        "led_id": 79,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "2512"
+    },
+    "658F5": {
+        "box_id": 1,
+        "led_id": 80,
+        "parameter": "6MR",
+        "voltage": "",
+        "footprint": "2512"
+    },
+    "45C6E": {
+        "box_id": 1,
+        "led_id": 81,
+        "parameter": "600R",
+        "voltage": "100MHz",
+        "footprint": "0805"
+    },
+    "3036E": {
+        "box_id": 2,
+        "led_id": 1,
+        "parameter": "10uF",
+        "voltage": "10V",
+        "footprint": "3216"
+    },
+    "84BE6": {
+        "box_id": 2,
+        "led_id": 2,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "1206"
+    },
+    "94397": {
+        "box_id": 2,
+        "led_id": 3,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "0603"
+    },
+    "357B0": {
+        "box_id": 2,
+        "led_id": 4,
+        "parameter": "10uF",
+        "voltage": "10V",
+        "footprint": "0603"
+    },
+    "A6643": {
+        "box_id": 2,
+        "led_id": 5,
+        "parameter": "10uF",
+        "voltage": "16V",
+        "footprint": "1206"
+    },
+    "BC61C": {
+        "box_id": 2,
+        "led_id": 6,
+        "parameter": "10uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "D0A2B": {
+        "box_id": 2,
+        "led_id": 7,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "7343"
+    },
+    "D7400": {
+        "box_id": 2,
+        "led_id": 8,
+        "parameter": "10uF",
+        "voltage": "50V",
+        "footprint": "7343"
+    },
+    "51A1B": {
+        "box_id": 2,
+        "led_id": 9,
+        "parameter": "10uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "D3A3E": {
+        "box_id": 2,
+        "led_id": 10,
+        "parameter": "10uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "5F84A": {
+        "box_id": 2,
+        "led_id": 11,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "7F9A9": {
+        "box_id": 2,
+        "led_id": 12,
+        "parameter": "100nF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "CA638": {
+        "box_id": 2,
+        "led_id": 13,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "E441F": {
+        "box_id": 2,
+        "led_id": 14,
+        "parameter": "100nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "9DF69": {
+        "box_id": 2,
+        "led_id": 15,
+        "parameter": "2.2uF",
+        "voltage": "100V",
+        "footprint": "1206"
+    },
+    "C1DA0": {
+        "box_id": 2,
+        "led_id": 16,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "807D5": {
+        "box_id": 2,
+        "led_id": 17,
+        "parameter": "2.2uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "1C13E": {
+        "box_id": 2,
+        "led_id": 18,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0402"
+    },
+    "5CF43": {
+        "box_id": 2,
+        "led_id": 19,
+        "parameter": "2.2uF",
+        "voltage": "10V",
+        "footprint": "0402"
+    },
+    "7D627": {
+        "box_id": 2,
+        "led_id": 20,
+        "parameter": "2.2uF",
+        "voltage": "250V",
+        "footprint": "2220"
+    },
+    "B3181": {
+        "box_id": 2,
+        "led_id": 21,
+        "parameter": "2.2uF",
+        "voltage": "25V",
+        "footprint": "0603"
+    },
+    "B6D69": {
+        "box_id": 2,
+        "led_id": 22,
+        "parameter": "1uF",
+        "voltage": "10V",
+        "footprint": "0402"
+    },
+    "C9BF8": {
+        "box_id": 2,
+        "led_id": 23,
+        "parameter": "1uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "85FD3": {
+        "box_id": 2,
+        "led_id": 24,
+        "parameter": "1uF",
+        "voltage": "25V",
+        "footprint": "0402"
+    },
+    "D49B7": {
+        "box_id": 2,
+        "led_id": 25,
+        "parameter": "1uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "31EB6": {
+        "box_id": 2,
+        "led_id": 26,
+        "parameter": "2.2nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "D86B3": {
+        "box_id": 2,
+        "led_id": 27,
+        "parameter": "2.2nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "F2394": {
+        "box_id": 2,
+        "led_id": 28,
+        "parameter": "47uF",
+        "voltage": "16V",
+        "footprint": "1210"
+    },
+    "B8CA6": {
+        "box_id": 2,
+        "led_id": 29,
+        "parameter": "47uF",
+        "voltage": "6.3V",
+        "footprint": "0603"
+    },
+    "67F93": {
+        "box_id": 2,
+        "led_id": 30,
+        "parameter": "47uF",
+        "voltage": "16V",
+        "footprint": "1206"
+    },
+    "9CCD9": {
+        "box_id": 2,
+        "led_id": 31,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "E6422": {
+        "box_id": 2,
+        "led_id": 32,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C10B2": {
+        "box_id": 2,
+        "led_id": 33,
+        "parameter": "4.7uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "0E65D": {
+        "box_id": 2,
+        "led_id": 34,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "ED8AE": {
+        "box_id": 2,
+        "led_id": 35,
+        "parameter": "4.7uF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "2FC39": {
+        "box_id": 2,
+        "led_id": 36,
+        "parameter": "100nF",
+        "voltage": "250V",
+        "footprint": "1206"
+    },
+    "B4423": {
+        "box_id": 2,
+        "led_id": 37,
+        "parameter": "10pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A22AB": {
+        "box_id": 2,
+        "led_id": 38,
+        "parameter": "12pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "5B88C": {
+        "box_id": 2,
+        "led_id": 39,
+        "parameter": "20pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F03E4": {
+        "box_id": 2,
+        "led_id": 40,
+        "parameter": "39pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "7CEC0": {
+        "box_id": 2,
+        "led_id": 41,
+        "parameter": "82pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "1B882": {
+        "box_id": 2,
+        "led_id": 42,
+        "parameter": "150pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C0AA8": {
+        "box_id": 2,
+        "led_id": 43,
+        "parameter": "470pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F809F": {
+        "box_id": 2,
+        "led_id": 44,
+        "parameter": "560pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A2E9C": {
+        "box_id": 2,
+        "led_id": 45,
+        "parameter": "47pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "3387B": {
+        "box_id": 2,
+        "led_id": 46,
+        "parameter": "510pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "8F1C5": {
+        "box_id": 2,
+        "led_id": 47,
+        "parameter": "22pF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "8E425": {
+        "box_id": 2,
+        "led_id": 48,
+        "parameter": "430pF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "17F93": {
+        "box_id": 2,
+        "led_id": 49,
+        "parameter": "27pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "EF36F": {
+        "box_id": 2,
+        "led_id": 50,
+        "parameter": "100pF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "725BA": {
+        "box_id": 2,
+        "led_id": 51,
+        "parameter": "8.2nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "BA22B": {
+        "box_id": 2,
+        "led_id": 52,
+        "parameter": "68uF",
+        "voltage": "16V",
+        "footprint": "6032"
+    },
+    "F2D20": {
+        "box_id": 2,
+        "led_id": 53,
+        "parameter": "4.7nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A62C1": {
+        "box_id": 2,
+        "led_id": 54,
+        "parameter": "470nF",
+        "voltage": "50V",
+        "footprint": "0805"
+    },
+    "D6D4F": {
+        "box_id": 2,
+        "led_id": 55,
+        "parameter": "1nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "E2CB6": {
+        "box_id": 2,
+        "led_id": 56,
+        "parameter": "1nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "A2C29": {
+        "box_id": 2,
+        "led_id": 57,
+        "parameter": "10nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "F7782": {
+        "box_id": 2,
+        "led_id": 58,
+        "parameter": "10nF",
+        "voltage": "50V",
+        "footprint": "0402"
+    },
+    "F3CC9": {
+        "box_id": 2,
+        "led_id": 59,
+        "parameter": "10nF",
+        "voltage": "1000V",
+        "footprint": "1206"
+    },
+    "182A7": {
+        "box_id": 2,
+        "led_id": 60,
+        "parameter": "5.1nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "64743": {
+        "box_id": 2,
+        "led_id": 61,
+        "parameter": "6.8nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "E5010": {
+        "box_id": 2,
+        "led_id": 62,
+        "parameter": "100uF",
+        "voltage": "50V",
+        "footprint": "1206"
+    },
+    "AF84B": {
+        "box_id": 2,
+        "led_id": 63,
+        "parameter": "3.3nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "32753": {
+        "box_id": 2,
+        "led_id": 64,
+        "parameter": "22uF",
+        "voltage": "10V",
+        "footprint": "3216"
+    },
+    "CE3F5": {
+        "box_id": 2,
+        "led_id": 65,
+        "parameter": "22uF",
+        "voltage": "16V",
+        "footprint": "0603"
+    },
+    "0D649": {
+        "box_id": 2,
+        "led_id": 66,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0603"
+    },
+    "0FF69": {
+        "box_id": 2,
+        "led_id": 67,
+        "parameter": "22uF",
+        "voltage": "10V",
+        "footprint": "0603"
+    },
+    "B4EBE": {
+        "box_id": 2,
+        "led_id": 68,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "0805"
+    },
+    "71A39": {
+        "box_id": 2,
+        "led_id": 69,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "3216"
+    },
+    "6EFF2": {
+        "box_id": 2,
+        "led_id": 70,
+        "parameter": "22uF",
+        "voltage": "25V",
+        "footprint": "1206"
+    },
+    "2522C": {
+        "box_id": 2,
+        "led_id": 71,
+        "parameter": "22uF",
+        "voltage": "50V",
+        "footprint": "3216"
+    },
+    "A3C02": {
+        "box_id": 2,
+        "led_id": 72,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0805"
+    },
+    "E2BC0": {
+        "box_id": 2,
+        "led_id": 73,
+        "parameter": "22nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "17476": {
+        "box_id": 2,
+        "led_id": 74,
+        "parameter": "3.9nF",
+        "voltage": "50V",
+        "footprint": "0603"
+    },
+    "C29DF": {
+        "box_id": 3,
+        "led_id": 10,
+        "parameter": "SPX3819M5-L-3-3/TR",
+        "voltage": "16V",
+        "footprint": "",
+        "note": "【官方型号】: SPX3819M5-L-3-3/TR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 3.3V\n• 输出电流: 500mA\n\n【详细说明】:\n是一款具有低压降和低噪声输出的正电压调节器。此外，该器件在100mA输出时提供低至800μA的接地电流。初始容差小于1%最大值，并具有逻辑兼容的开/关开关输入。禁用时，功耗几乎降至零。其他关键特性包括反向电池保护、电流限制和热关断。包括一个参考旁路引脚，以实现最佳的低噪声输出性能。由于其极低的输出温度系数，还可作为出色的低功率电压参考。有多种固定输出电压选项或可调输出电压可供选择。",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "500mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "BE800": {
+        "box_id": 3,
+        "led_id": 17,
+        "parameter": "MIC5319",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EFD26": {
+        "box_id": 6,
+        "led_id": 9,
+        "parameter": "AO3400",
+        "voltage": "",
+        "footprint": ""
+    },
+    "8337E": {
+        "box_id": 6,
+        "led_id": 8,
+        "parameter": "S8550",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FD606": {
+        "box_id": 6,
+        "led_id": 7,
+        "parameter": "S8050",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A3B40": {
+        "box_id": 4,
+        "led_id": 62,
+        "parameter": "MD7620A",
+        "voltage": "",
+        "footprint": ""
+    },
+    "AD676": {
+        "box_id": 3,
+        "led_id": 6,
+        "parameter": "TPS54339DDAR",
+        "voltage": "4.5V~23V",
+        "footprint": "",
+        "note": "【官方型号】: TPS54339DDAR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~23V\n• 输出电压: 760mV~7V\n• 输出电流: 3A\n\n【详细说明】:\nTPS54339是一款自适应导通时间D-CAP2模式同步降压转换器,具有宽输入电压范围（4.5V至23V）和可调输出电压（0.76V至7V）。该器件采用高效集成的MOSFET,支持低ESR输出电容器,如陶瓷电容器。工作频率为600kHz,具有快速瞬态响应和低输出纹波。该器件适用于各种低电压系统,如数字电视电源、高清蓝光播放器、家庭网络终端和数字机顶盒。",
+        "type": "降压型",
+        "work_voltage": "4.5V~23V",
+        "out_voltage": "760mV~7V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "FA791": {
+        "box_id": 3,
+        "led_id": 2,
+        "parameter": "TPS5430QDDARQ1",
+        "voltage": "5.5V~36V",
+        "footprint": "",
+        "note": "【官方型号】: TPS5430QDDARQ1\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 5.5V~36V\n• 输出电压: 1.221V~32.04V\n• 输出电流: 3A\n\n【详细说明】:\nTPS5430-Q1 是一款高输出电流 PWM 降压转换器,集成低阻抗高侧 N 通道 MOSFET。其输入电压范围为 5.5 V 至 36 V,最大连续输出电流为 3 A,效率高达 95%。该芯片具有内部补偿功能,减少外部组件数量,适用于汽车应用。",
+        "type": "降压型",
+        "work_voltage": "5.5V~36V",
+        "out_voltage": "1.221V~32.04V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "B4A40": {
+        "box_id": 3,
+        "led_id": 3,
+        "parameter": "TPS54302DDCR",
+        "voltage": "4.5V~28V",
+        "footprint": "",
+        "note": "【官方型号】: TPS54302DDCR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~28V\n• 输出电压: -\n• 输出电流: 3A\n\n【详细说明】:\nTPS54302是一款4.5V至28V输入电压范围的3A同步降压转换器。该设备集成了两个MOSFET,内部环路补偿和5ms软启动时间,以减少组件数量。固定400kHz开关频率,具有低2μA关断电流和45μA静态电流。采用SOT-23封装,实现了高功率密度和小型化。",
+        "type": "降压型",
+        "work_voltage": "4.5V~28V",
+        "out_voltage": "-",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "310BC": {
+        "box_id": 3,
+        "led_id": 4,
+        "parameter": "TPS54331DR",
+        "voltage": "3.5V~28V",
+        "footprint": "",
+        "note": "【官方型号】: TPS54331DR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 3.5V~28V\n• 输出电压: 800mV~25V\n• 输出电流: 3A\n\n【详细说明】:\nTPS54331 是一款 28V、3A 非同步降压转换器,集成了低 Rds(on) 高侧 MOSFET。该器件具有 3.5V 至 28V 的宽输入电压范围,支持高达 3A 的连续输出电流。为了提高轻载效率,自动激活了脉冲跳跃 Eco-modeTM 功能。此外,1μA 的关断供电电流使该器件适用于电池供电的应用。电流模式控制和内部斜坡补偿简化了外部补偿计算,减少了组件数量,同时允许使用陶瓷输出电容器。",
+        "type": "降压型",
+        "work_voltage": "3.5V~28V",
+        "out_voltage": "800mV~25V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "25362": {
+        "box_id": 3,
+        "led_id": 5,
+        "parameter": "TPS3808G33DBVR",
+        "voltage": "1.7V~6.5V",
+        "footprint": "",
+        "note": "【官方型号】: TPS3808G33DBVR\n【类目/功能】: 监控和复位芯片 > N/A\n【技术描述】:\n• 工作电压: 1.7V~6.5V\n\n【详细说明】:\nTPS3808 具有可编程延迟和手动复位功能的低静态电流监控器",
+        "type": "N/A",
+        "work_voltage": "1.7V~6.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "监控和复位芯片"
+    },
+    "08E85": {
+        "box_id": 3,
+        "led_id": 1,
+        "parameter": "TPS82130SILR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: TPS82130SILR\n【类目/功能】: DC-DC电源模块 > 降压型\n\n【详细说明】:\nTPS82130 TPS82130 具有集成电感的 3A 17V 降压转换器",
+        "type": "降压型",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "DC-DC电源模块"
+    },
+    "EF83D": {
+        "box_id": 3,
+        "led_id": 33,
+        "parameter": "IP5306",
+        "voltage": "4.65V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: IP5306\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4.65V~5.5V\n\n【详细说明】:\n2.1A充电2.4A放电高集成度移动电源SOC",
+        "type": "N/A",
+        "work_voltage": "4.65V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "0729C": {
+        "box_id": 4,
+        "led_id": 64,
+        "parameter": "TXS02612",
+        "voltage": "",
+        "footprint": ""
+    },
+    "755C5": {
+        "box_id": 3,
+        "led_id": 28,
+        "parameter": "TC4056A",
+        "voltage": "4.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TC4056A\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4.5V~5.5V\n\n【详细说明】:\nTC4056A一款完整的单节锂离子电池充电管理芯片，带电池正负极性反接保护，可抵抗正负脉冲冲击，充电采用恒定电流/恒定电压线性控制。其ESOP8封装与较少的外部元件数量是TC4056A便携式应用的理想选择。TC4056A可以适合USB电源和适配器电源工作。",
+        "type": "N/A",
+        "work_voltage": "4.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "D3B50": {
+        "box_id": 4,
+        "led_id": 37,
+        "parameter": "TXB0102",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BB37C": {
+        "box_id": 3,
+        "led_id": 29,
+        "parameter": "TP4056-MS",
+        "voltage": "4.2V~9V",
+        "footprint": "",
+        "note": "【官方型号】: TP4056-MS\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4.2V~9V\n\n【详细说明】:\n电池管理@@输入电源电压（VCC）：-0.3V~9V;高达 1000mA 的可编程充电电流;恒定电流/恒定电压;锂电池正负极反接保护;待机模式下的供电电流为 70uA;2.9V涓流充电;软启动限制了浪涌电流;采用 8 引脚带散热片 ESOP 封装;精度达到±1%的预设充电电压;广泛用于锂电池充电设备，玩具，GPS便携式设备、各种充电器后面-MS代表品牌",
+        "type": "N/A",
+        "work_voltage": "4.2V~9V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "BBE2F": {
+        "box_id": 4,
+        "led_id": 65,
+        "parameter": "OPA2277",
+        "voltage": "",
+        "footprint": ""
+    },
+    "56755": {
+        "box_id": 3,
+        "led_id": 39,
+        "parameter": "MT2492",
+        "voltage": "4.5V~16V",
+        "footprint": "",
+        "note": "【官方型号】: MT2492\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~16V\n• 输出电压: -\n• 输出电流: 2A\n\n【详细说明】:\nMT2492是一个完全集成的高效2A同步整流降压转换器。该设备在宽负载范围内具有高效率,支持PWM和PFM模式切换控制,提供两种工作模式,具备过流保护和热关断功能。",
+        "type": "降压型",
+        "work_voltage": "4.5V~16V",
+        "out_voltage": "-",
+        "out_current": "2A",
+        "category": "DC-DC电源芯片"
+    },
+    "C807E": {
+        "box_id": 3,
+        "led_id": 37,
+        "parameter": "HX3608",
+        "voltage": "2V~24V",
+        "footprint": "",
+        "note": "【官方型号】: HX3608\n【类目/功能】: DC-DC电源芯片 > 升压型\n【技术描述】:\n• 工作电压: 2V~24V\n• 输出电压: 2.5V~28V\n• 输出电流: -\n\n【详细说明】:\nHX3608是一款微小型、高效率、升压型DC/DC调整器,效率高达92%,电路由电流模PWM控制环路、误差放大器、斜波补偿电路、比较器和功率开关等模块组成。该芯片可在较宽负载范围内高效稳定的工作,内置一个4A的功率开关和软启动保护电路。高达93%的转换效率能够高效的延长电池寿命。可以通过调整两个外加电阻来设定输出电压。功率通路支持短路保护。",
+        "type": "升压型",
+        "work_voltage": "2V~24V",
+        "out_voltage": "2.5V~28V",
+        "out_current": "-",
+        "category": "DC-DC电源芯片"
+    },
+    "EB4C0": {
+        "box_id": 6,
+        "led_id": 30,
+        "parameter": "BZT52C",
+        "voltage": "",
+        "footprint": ""
+    },
+    "4EAB2": {
+        "box_id": 4,
+        "led_id": 10,
+        "parameter": "W25Q256",
+        "voltage": "",
+        "footprint": ""
+    },
+    "D01EB": {
+        "box_id": 4,
+        "led_id": 11,
+        "parameter": "W25Q128",
+        "voltage": "",
+        "footprint": ""
+    },
+    "5820C": {
+        "box_id": 4,
+        "led_id": 12,
+        "parameter": "OPA2140",
+        "voltage": "",
+        "footprint": ""
+    },
+    "2DFCE": {
+        "box_id": 3,
+        "led_id": 18,
+        "parameter": "SGM2028",
+        "voltage": "",
+        "footprint": ""
+    },
+    "5F4BC": {
+        "box_id": 3,
+        "led_id": 43,
+        "parameter": "LMR33630ADDAR",
+        "voltage": "3.8V~36V",
+        "footprint": "",
+        "note": "【官方型号】: LMR33630ADDAR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 3.8V~36V\n• 输出电压: 1V~24V\n• 输出电流: 3A\n\n【详细说明】:\nLMR33630 具有超低 EMI 的 SIMPLE SWITCHER® 3.8V 至 36V、3A 同步降压转换器",
+        "type": "降压型",
+        "work_voltage": "3.8V~36V",
+        "out_voltage": "1V~24V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "60916": {
+        "box_id": 3,
+        "led_id": 44,
+        "parameter": "LMR51420",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "降压型",
+        "work_voltage": "4.5V~36V",
+        "out_voltage": "600mV~34.2V",
+        "out_current": "2A",
+        "category": "DC-DC电源芯片"
+    },
+    "CEC1F": {
+        "box_id": 4,
+        "led_id": 44,
+        "parameter": "GL823K",
+        "voltage": "",
+        "footprint": ""
+    },
+    "7ED55": {
+        "box_id": 4,
+        "led_id": 20,
+        "parameter": "AD9744",
+        "voltage": "",
+        "footprint": ""
+    },
+    "6395D": {
+        "box_id": 4,
+        "led_id": 21,
+        "parameter": "AD9707",
+        "voltage": "",
+        "footprint": ""
+    },
+    "EF2DA": {
+        "box_id": 4,
+        "led_id": 16,
+        "parameter": "LTC1112",
+        "voltage": "",
+        "footprint": ""
+    },
+    "749C8": {
+        "box_id": 4,
+        "led_id": 18,
+        "parameter": "LTC2642",
+        "voltage": "",
+        "footprint": ""
+    },
+    "ABF3D": {
+        "box_id": 4,
+        "led_id": 22,
+        "parameter": "ADR02ARZ",
+        "voltage": "",
+        "footprint": ""
+    },
+    "9BDE6": {
+        "box_id": 3,
+        "led_id": 38,
+        "parameter": "LT8582IDKD#TRPBF",
+        "voltage": "2.5V~22V",
+        "footprint": "",
+        "note": "【官方型号】: LT8582IDKD#TRPBF\n【类目/功能】: DC-DC电源芯片 > 升压型\n【技术描述】:\n• 工作电压: 2.5V~22V\n• 输出电压: 2.5V~42V\n• 输出电流: 3.3A\n\n【详细说明】:\nLT8582是一款双独立通道PWM DC/DC转换器，具备电源正常指示引脚和内置故障保护功能，可防止输入过压和过热情况。每个通道由一个42V主开关和一个42V从开关组成，两者可并联，总电流限制为3A。LT8582非常适合多种本地电源设计",
+        "type": "升压型",
+        "work_voltage": "2.5V~22V",
+        "out_voltage": "2.5V~42V",
+        "out_current": "3.3A",
+        "category": "DC-DC电源芯片"
+    },
+    "7095F": {
+        "box_id": 4,
+        "led_id": 27,
+        "parameter": "LT1678IS8#TRPBF",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: LT1678IS8#TRPBF\n【类目/功能】: 精密运放 > N/A\n【技术描述】:\n• 输出电流: 20mA\n\n【详细说明】:\nLT1678/LT1679 是双/四轨到轨运算放大器，兼具低噪声和高精度特性：宽带噪声为 3.9nV/√Hz，1/f 转折频率为 4Hz，0.1Hz 至 10Hz 峰峰值噪声为 90nV，同时具备出色的精度：最大失调电压为 100μV，共模抑制比和电源抑制比大于 100dB，增益带宽积为 20MHz。LT1678/LT1679 可为低至 3V 的单电源应用提供高精度和低噪声性能。输入范围超出电源电压 100mV 且无相移，输出可摆幅至距任一电源轨 170mV 以内",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "20mA",
+        "category": "精密运放"
+    },
+    "E9B9A": {
+        "box_id": 6,
+        "led_id": 49,
+        "parameter": "CJ2310",
+        "voltage": "",
+        "footprint": ""
+    },
+    "35735": {
+        "box_id": 4,
+        "led_id": 17,
+        "parameter": "LTC6090CS8E#TRPBF",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: LTC6090CS8E#TRPBF\n【类目/功能】: 精密运放 > N/A\n【技术描述】:\n• 输出电流: 50mA\n\n【详细说明】:\n140V CMOS 轨至轨输出、pA 输入电流运放",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "50mA",
+        "category": "精密运放"
+    },
+    "21833": {
+        "box_id": 4,
+        "led_id": 26,
+        "parameter": "LT1468CS8#TRPBF",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: LT1468CS8#TRPBF\n【类目/功能】: 运算放大器 > N/A\n【技术描述】:\n• 输出电流: 22mA\n\n【详细说明】:\n90MHz、22V/μs、16 位准确度的运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "22mA",
+        "category": "运算放大器"
+    },
+    "016FC": {
+        "box_id": 6,
+        "led_id": 37,
+        "parameter": "RED",
+        "voltage": "",
+        "footprint": ""
+    },
+    "48C1F": {
+        "box_id": 6,
+        "led_id": 38,
+        "parameter": "GREEN",
+        "voltage": "",
+        "footprint": ""
+    },
+    "863C1": {
+        "box_id": 6,
+        "led_id": 39,
+        "parameter": "BLUE",
+        "voltage": "",
+        "footprint": ""
+    },
+    "3A1A9": {
+        "box_id": 3,
+        "led_id": 12,
+        "parameter": "XC6210",
+        "voltage": "",
+        "footprint": ""
+    },
+    "FB2EC": {
+        "box_id": 3,
+        "led_id": 31,
+        "parameter": "MP2482PWQ.C",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: MP2482PWQ.C\n【类目/功能】: 静电和浪涌保护(TVS/ESD) > TVS",
+        "type": "降压型",
+        "work_voltage": "4.5V~24V",
+        "out_voltage": "810mV~15V",
+        "out_current": "1.2A",
+        "category": "DC-DC电源芯片"
+    },
+    "A7CC1": {
+        "box_id": 3,
+        "led_id": 32,
+        "parameter": "MP2359DT-LF-Z",
+        "voltage": "4.5V~24V",
+        "footprint": "",
+        "note": "【官方型号】: MP2359DT-LF-Z\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~24V\n• 输出电压: 810mV~15V\n• 输出电流: 1.2A\n\n【详细说明】:\nMP2359 是一款集成了功率 MOSFET 的单片降压型开关模式转换器。在较宽的输入电源范围内，它能实现 1.2A 的峰值输出电流，且具有出色的负载和线性调节能力。电流模式操作可提供快速的瞬态响应，并简化环路稳定设计",
+        "type": "降压型",
+        "work_voltage": "4.5V~24V",
+        "out_voltage": "810mV~15V",
+        "out_current": "1.2A",
+        "category": "DC-DC电源芯片"
+    },
+    "25720": {
+        "box_id": 3,
+        "led_id": 16,
+        "parameter": "ME3116AM6G",
+        "voltage": "4.75V~40V",
+        "footprint": "",
+        "note": "【官方型号】: ME3116AM6G\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.75V~40V\n• 输出电压: -\n• 输出电流: 1A\n\n【详细说明】:\nME3116是一款内部集成了MOSFET的异步整流降压型稳压器,能够在4.75V至40V的输入电压范围内提供高达1A的负载能力。采用PWM控制模式,具有良好的瞬态响应和逐周期限流功能。在轻载条件下自动切换到PFM模式,保证较高的轻载效率。内置软启动和环路补偿,具有过热关断、输入欠压保护、BS欠压保护和短路保护。",
+        "type": "降压型",
+        "work_voltage": "4.75V~40V",
+        "out_voltage": "-",
+        "out_current": "1A",
+        "category": "DC-DC电源芯片"
+    },
+    "CDC5C": {
+        "box_id": 4,
+        "led_id": 2,
+        "parameter": "CH343P",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E33C5": {
+        "box_id": 4,
+        "led_id": 3,
+        "parameter": "CH340G",
+        "voltage": "",
+        "footprint": ""
+    },
+    "80629": {
+        "box_id": 4,
+        "led_id": 4,
+        "parameter": "CH340C",
+        "voltage": "",
+        "footprint": ""
+    },
+    "2356F": {
+        "box_id": 4,
+        "led_id": 5,
+        "parameter": "CH340N",
+        "voltage": "",
+        "footprint": ""
+    },
+    "82886": {
+        "box_id": 4,
+        "led_id": 6,
+        "parameter": "CH340E",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E96F1": {
+        "box_id": 6,
+        "led_id": 4,
+        "parameter": "1N5819",
+        "voltage": "",
+        "footprint": "123"
+    },
+    "BBA46": {
+        "box_id": 6,
+        "led_id": 5,
+        "parameter": "1N5819",
+        "voltage": "",
+        "footprint": "323"
+    },
+    "129C7": {
+        "box_id": 6,
+        "led_id": 33,
+        "parameter": "AO4407",
+        "voltage": "",
+        "footprint": ""
+    },
+    "080A2": {
+        "box_id": 3,
+        "led_id": 19,
+        "parameter": "AMS1117-3.3",
+        "voltage": "16V",
+        "footprint": "L",
+        "note": "【官方型号】: AMS1117-3.3\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 3.3V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "B72A3": {
+        "box_id": 3,
+        "led_id": 20,
+        "parameter": "AMS1117-3.3",
+        "voltage": "16V",
+        "footprint": "M",
+        "note": "【官方型号】: AMS1117-3.3\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 3.3V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "332D2": {
+        "box_id": 3,
+        "led_id": 21,
+        "parameter": "AMS1117-3.3",
+        "voltage": "16V",
+        "footprint": "S",
+        "note": "【官方型号】: AMS1117-3.3\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 3.3V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "1CF0D": {
+        "box_id": 3,
+        "led_id": 22,
+        "parameter": "AMS1117-5",
+        "voltage": "16V",
+        "footprint": "L",
+        "note": "【官方型号】: AMS1117-5\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 5V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "0B16B": {
+        "box_id": 3,
+        "led_id": 23,
+        "parameter": "AMS1117-5",
+        "voltage": "16V",
+        "footprint": "M",
+        "note": "【官方型号】: AMS1117-5\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 5V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "63072": {
+        "box_id": 3,
+        "led_id": 24,
+        "parameter": "AMS1117-5",
+        "voltage": "16V",
+        "footprint": "S",
+        "note": "【官方型号】: AMS1117-5\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 5V\n• 输出电流: 1A\n\n【详细说明】:\nAMS1117系列可调及固定电压稳压器的设计目标是提供高达1A的输出电流，且能在输入 - 输出压差低至1V的条件下工作。该器件的压差保证最大为1.3V，在负载电流较低时会降低。片上调校功能可将参考电压调整至±1.5%",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "1A",
+        "category": "线性稳压器(LDO)"
+    },
+    "8653A": {
+        "box_id": 3,
+        "led_id": 15,
+        "parameter": "JW5026",
+        "voltage": "",
+        "footprint": ""
+    },
+    "96AE4": {
+        "box_id": 3,
+        "led_id": 30,
+        "parameter": "TP4059",
+        "voltage": "4V~9V",
+        "footprint": "",
+        "note": "【官方型号】: TP4059\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4V~9V\n\n【详细说明】:\n600mA 线性锂电池充电IC",
+        "type": "N/A",
+        "work_voltage": "4V~9V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "6171D": {
+        "box_id": 6,
+        "led_id": 72,
+        "parameter": "NMOS",
+        "voltage": "",
+        "footprint": ""
+    },
+    "BAADA": {
+        "box_id": 6,
+        "led_id": 1,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "123"
+    },
+    "70DBF": {
+        "box_id": 6,
+        "led_id": 2,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "323"
+    },
+    "D9835": {
+        "box_id": 6,
+        "led_id": 3,
+        "parameter": "1N4148",
+        "voltage": "",
+        "footprint": "523"
+    },
+    "F0026": {
+        "box_id": 4,
+        "led_id": 8,
+        "parameter": "INA219",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A5D68": {
+        "box_id": 4,
+        "led_id": 9,
+        "parameter": "INA139",
+        "voltage": "",
+        "footprint": ""
+    },
+    "A7170": {
+        "box_id": 6,
+        "led_id": 6,
+        "parameter": "1N4007",
+        "voltage": "",
+        "footprint": "214"
+    },
+    "B88C7": {
+        "box_id": 3,
+        "led_id": 14,
+        "parameter": "ME6217",
+        "voltage": "",
+        "footprint": ""
+    },
+    "E8FA0": {
+        "box_id": 3,
+        "led_id": 25,
+        "parameter": "78L09",
+        "voltage": "24V",
+        "footprint": "",
+        "note": "【官方型号】: 78L09\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 24V\n• 输出电压: 9V\n• 输出电流: 40mA\n\n【详细说明】:\n输出类型：固定 输出极性：正 最大输入电压：30V 输出电压：9V 输出电流：100mA 电源纹波抑制比(PSRR)：49dB@(120Hz) 三端稳压器",
+        "type": "N/A",
+        "work_voltage": "24V",
+        "out_voltage": "9V",
+        "out_current": "40mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "932E9": {
+        "box_id": 3,
+        "led_id": 27,
+        "parameter": "L78L05ABUTR",
+        "voltage": "30V",
+        "footprint": "",
+        "note": "【官方型号】: L78L05ABUTR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 30V\n• 输出电压: 5V\n• 输出电流: 100mA\n\n【详细说明】:\n三端正电压调节器采用内部限流和热关断功能，基本不会损坏。如果提供足够的散热片，它们可以提供高达 100 mA 的输出电流。它们用作固定电压调节器，适用于广泛的应用，包括本地或板载调节，以消除与单点调节相关的噪声和分配问题。此外，它们可以与功率传输元件一起使用，以制造大电流电压调节器。用作齐纳二极管/电阻组合的替代品，可改善性能，同时降低静态电流和噪声。",
+        "type": "N/A",
+        "work_voltage": "30V",
+        "out_voltage": "5V",
+        "out_current": "100mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "4FE9C": {
+        "box_id": 4,
+        "led_id": 46,
+        "parameter": "74LVCIT45G",
+        "voltage": "",
+        "footprint": ""
+    },
+    "96CA8": {
+        "box_id": 3,
+        "led_id": 34,
+        "parameter": "TLV70212DBVR",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TLV70212DBVR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.2V\n• 输出电流: 300mA\n\n【详细说明】:\nTLV702 具有使能功能的 300mA、高 PSRR、低 IQ、低压降稳压器",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.2V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "80B2C": {
+        "box_id": 4,
+        "led_id": 33,
+        "parameter": "MT6825",
+        "voltage": "",
+        "footprint": "",
+        "note": "零延迟磁角度位置传感器"
+    },
+    "77897": {
+        "box_id": 2,
+        "led_id": 75,
+        "parameter": "22uF",
+        "voltage": "6.3V",
+        "footprint": "0402",
+        "note": ""
+    },
+    "4835F": {
+        "box_id": 4,
+        "led_id": 48,
+        "parameter": "SN74LVC1T45DBVR",
+        "voltage": "",
+        "footprint": "",
+        "note": "SN74LVC1T45 具有可配置电压转换和三态输出的单位双电源总线收发器"
+    },
+    "AC351": {
+        "box_id": 4,
+        "led_id": 47,
+        "parameter": "LIS2DH12TR",
+        "voltage": "",
+        "footprint": "",
+        "note": "3轴MEMS加速度计，超低功耗，±2g/±4g/±8g/±16g满量程，高速I2C/SPI数字输出，内置FIFO和高性能加速度传感器，VFLGA封装"
+    },
+    "56266": {
+        "box_id": 4,
+        "led_id": 24,
+        "parameter": "AD5764",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "D0C0F": {
+        "box_id": 4,
+        "led_id": 53,
+        "parameter": "RS2227",
+        "voltage": "",
+        "footprint": "",
+        "note": "RS2227 是一款高速、低功耗的双刀双掷（DPDT）模拟开关，具备单使能功能。它的工作电压范围为 1.8 V 至 5.5 V。RS2227 设有一个总线开关使能引脚 OE(overline)，可使信号路径处于高阻抗状态"
+    },
+    "B512D": {
+        "box_id": 4,
+        "led_id": 1,
+        "parameter": "CH342F",
+        "voltage": "3.3V；5V",
+        "footprint": "",
+        "note": "【官方型号】: CH342F\n【类目/功能】: USB转换芯片 > N/A\n【技术描述】:\n• 工作电压: 3.3V；5V\n\n【详细说明】:\nCH342是一款USB总线转换芯片，可将USB转换为双UART。每个UART支持高速全双工和奇偶校验，提供标准调制解调器信号，用于为计算机扩展串口，或使普通串口设备或MCU直接升级到USB总线。",
+        "type": "N/A",
+        "work_voltage": "3.3V；5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "USB转换芯片"
+    },
+    "B8F93": {
+        "box_id": 4,
+        "led_id": 60,
+        "parameter": "PT2042",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "47C1B": {
+        "box_id": 4,
+        "led_id": 49,
+        "parameter": "IR2101",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "5B553": {
+        "box_id": 3,
+        "led_id": 26,
+        "parameter": "L78L06ABUTR",
+        "voltage": "30V",
+        "footprint": "",
+        "note": "【官方型号】: L78L06ABUTR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 30V\n• 输出电压: 6V\n• 输出电流: 100mA\n\n【详细说明】:\nL78L 系列三端正电压调节器采用内部限流和热关断功能，使其基本不会损坏。如果配备足够的散热片，它们可提供高达 100 mA 的输出电流。这些调节器适用于广泛的应用场景，可作为固定电压调节器，包括用于本地或板载稳压，以消除与单点稳压相关的噪声和配电问题",
+        "type": "N/A",
+        "work_voltage": "30V",
+        "out_voltage": "6V",
+        "out_current": "100mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "D3591": {
+        "box_id": 3,
+        "led_id": 35,
+        "parameter": "TLV70218DBVR",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TLV70218DBVR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.8V\n• 输出电流: 300mA\n\n【详细说明】:\nTLV702 具有使能功能的 300mA、高 PSRR、低 IQ、低压降稳压器",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.8V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "755A9": {
+        "box_id": 6,
+        "led_id": 12,
+        "parameter": "SK03P06",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "16B9E": {
+        "box_id": 3,
+        "led_id": 11,
+        "parameter": "SPX5205",
+        "voltage": "",
+        "footprint": "",
+        "note": "3.3V"
+    },
+    "8519B": {
+        "box_id": 6,
+        "led_id": 11,
+        "parameter": "AO3407",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "93BCF": {
+        "box_id": 6,
+        "led_id": 45,
+        "parameter": "SI2301CDS-T1-GE3",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SI2301CDS-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > P沟道\n\n【详细说明】:\n特性：无卤，符合IEC 61249-2-21定义。 TrenchFET功率MOSFET。 符合RoHS指令2002/95/EC。应用：负载开关",
+        "type": "P沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "150F5": {
+        "box_id": 6,
+        "led_id": 20,
+        "parameter": "SI2308",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "938DA": {
+        "box_id": 4,
+        "led_id": 52,
+        "parameter": "AN2051",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "813FC": {
+        "box_id": 3,
+        "led_id": 36,
+        "parameter": "XXL1509-5.0",
+        "voltage": "4.5V~40V",
+        "footprint": "",
+        "note": "【官方型号】: XXL1509-5.0\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~40V\n• 输出电压: 4.8V~5.2V\n• 输出电流: 3A\n\n【详细说明】:\nXXL1509是一款高效降压型DC-DC转换器固定输出5V最大输出3A电流",
+        "type": "降压型",
+        "work_voltage": "4.5V~40V",
+        "out_voltage": "4.8V~5.2V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "E8793": {
+        "box_id": 6,
+        "led_id": 21,
+        "parameter": "2N7002",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "42031": {
+        "box_id": 4,
+        "led_id": 32,
+        "parameter": "MAX3051EKA+T",
+        "voltage": "3.3V",
+        "footprint": "SOT-23-8  SOIC-8",
+        "note": "【官方型号】: MAX3051EKA+T\n【类目/功能】: CAN收发器 > CAN收发器\n【技术描述】:\n• 工作电压: 3.3V\n\n【详细说明】:\nMAX3051是一款+3.3V单电源供电，最高支持1Mbps数据速率的CAN收发器。它具有多种操作模式：高速模式、斜率控制模式、待机模式和关断模式。",
+        "type": "CAN收发器",
+        "work_voltage": "3.3V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "CAN收发器"
+    },
+    "B28A7": {
+        "box_id": 4,
+        "led_id": 25,
+        "parameter": "AD7682BCPZRL7",
+        "voltage": "2.3V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: AD7682BCPZRL7\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 2.3V~5.5V\n\n【详细说明】:\n4通道/8通道、16位电荷再分配逐次逼近寄存器（SAR）模数转换器（ADC），采用单电源VDD供电。包含多通道、低功耗数据采集系统所需的所有组件，包括无失码的16位SAR ADC、低串扰多路复用器、内部低漂移基准源和缓冲器、温度传感器、可选单极点滤波器和通道序列器。使用简单的串行端口接口（SPI）进行配置寄存器写入和转换结果接收，功耗随吞吐量而变化。采用20引脚引线框架芯片级封装（LFCSP）和20引脚晶圆级芯片级封装（WLcSP），工作温度范围为 -40℃至 +85℃，AD7689包括扩展温度范围型号，最高温度可达 +125℃。",
+        "type": "N/A",
+        "work_voltage": "2.3V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "193C8": {
+        "box_id": 4,
+        "led_id": 30,
+        "parameter": "GS8332",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "2A3F2": {
+        "box_id": 6,
+        "led_id": 23,
+        "parameter": "ZMM18",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "D0A8C": {
+        "box_id": 4,
+        "led_id": 56,
+        "parameter": "HS8836",
+        "voltage": "",
+        "footprint": "",
+        "note": "USB2.0"
+    },
+    "F1852": {
+        "box_id": 4,
+        "led_id": 23,
+        "parameter": "ADA4891",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "F2566": {
+        "box_id": 4,
+        "led_id": 57,
+        "parameter": "DW01",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "97AA4": {
+        "box_id": 4,
+        "led_id": 36,
+        "parameter": "DS1302",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "AB129": {
+        "box_id": 6,
+        "led_id": 32,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "磁珠"
+    },
+    "C66A6": {
+        "box_id": 6,
+        "led_id": 75,
+        "parameter": "8M",
+        "voltage": "",
+        "footprint": "5032",
+        "note": "无源晶振"
+    },
+    "4FFD5": {
+        "box_id": 6,
+        "led_id": 76,
+        "parameter": "8M",
+        "voltage": "",
+        "footprint": "3215",
+        "note": "无源晶振"
+    },
+    "8F71F": {
+        "box_id": 6,
+        "led_id": 77,
+        "parameter": "8M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "7BF2E": {
+        "box_id": 6,
+        "led_id": 78,
+        "parameter": "8M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "有源晶振"
+    },
+    "41CCD": {
+        "box_id": 6,
+        "led_id": 67,
+        "parameter": "50M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "有源晶振"
+    },
+    "8F152": {
+        "box_id": 6,
+        "led_id": 70,
+        "parameter": "12M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "DC349": {
+        "box_id": 6,
+        "led_id": 64,
+        "parameter": "32.768K",
+        "voltage": "",
+        "footprint": "3215",
+        "note": ""
+    },
+    "F3BE7": {
+        "box_id": 6,
+        "led_id": 66,
+        "parameter": "26M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "60FE8": {
+        "box_id": 6,
+        "led_id": 65,
+        "parameter": "26M",
+        "voltage": "",
+        "footprint": "3225 2520",
+        "note": "有源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "87999": {
+        "box_id": 6,
+        "led_id": 71,
+        "parameter": "24M",
+        "voltage": "",
+        "footprint": "3215",
+        "note": "无源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "F518C": {
+        "box_id": 6,
+        "led_id": 73,
+        "parameter": "27M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "35D52": {
+        "box_id": 6,
+        "led_id": 74,
+        "parameter": "27M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "有源晶振"
+    },
+    "BD572": {
+        "box_id": 6,
+        "led_id": 68,
+        "parameter": "25M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "21603": {
+        "box_id": 6,
+        "led_id": 69,
+        "parameter": "40M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振"
+    },
+    "80A62": {
+        "box_id": 4,
+        "led_id": 29,
+        "parameter": "SGM3157",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "04D52": {
+        "box_id": 4,
+        "led_id": 66,
+        "parameter": "SN74LVC1G86DCKR(UMW)",
+        "voltage": "1.65V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: SN74LVC1G86DCKR(UMW)\n【类目/功能】: 逻辑门 > N/A\n【技术描述】:\n• 工作电压: 1.65V~5.5V\n\n【详细说明】:\nSN74LVC1G86 是一款高性能单路 2 输入异或门，工作电源电压范围为 2.3V 至 5.5V。",
+        "type": "N/A",
+        "work_voltage": "1.65V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "逻辑门"
+    },
+    "B795A": {
+        "box_id": 4,
+        "led_id": 41,
+        "parameter": "SGM8632",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "CE00C": {
+        "box_id": 4,
+        "led_id": 45,
+        "parameter": "74HC126D",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "B32DE": {
+        "box_id": 4,
+        "led_id": 31,
+        "parameter": "SN74LX3408",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "6DA3F": {
+        "box_id": 4,
+        "led_id": 40,
+        "parameter": "SGM3732",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "0D1AA": {
+        "box_id": 6,
+        "led_id": 29,
+        "parameter": "DIODE",
+        "voltage": "",
+        "footprint": "",
+        "note": "1000V 1A"
+    },
+    "33D37": {
+        "box_id": 6,
+        "led_id": 36,
+        "parameter": "HSBA0903",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: HSBA0903\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\n特性：超低栅极电荷。100% EAS保证。有绿色环保器件。出色的CdV/dt效应抑制。先进的高单元密度沟槽技术。应用：电源管理。DC电机控制",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "FF2F7": {
+        "box_id": 3,
+        "led_id": 13,
+        "parameter": "XC6206",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "0F36B": {
+        "box_id": 6,
+        "led_id": 13,
+        "parameter": "SS14",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "48FC5": {
+        "box_id": 6,
+        "led_id": 14,
+        "parameter": "SS16",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "828A7": {
+        "box_id": 6,
+        "led_id": 15,
+        "parameter": "SS24",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "6B446": {
+        "box_id": 6,
+        "led_id": 16,
+        "parameter": "SS34",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "85B53": {
+        "box_id": 6,
+        "led_id": 18,
+        "parameter": "SS54",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "883E8": {
+        "box_id": 6,
+        "led_id": 28,
+        "parameter": "MSK340A",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "3E0AE": {
+        "box_id": 4,
+        "led_id": 39,
+        "parameter": "MC20901",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "C253B": {
+        "box_id": 4,
+        "led_id": 35,
+        "parameter": "DRV8833",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "43A82": {
+        "box_id": 6,
+        "led_id": 17,
+        "parameter": "SS34",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "73354": {
+        "box_id": 6,
+        "led_id": 25,
+        "parameter": "IRLR7843",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "126DF": {
+        "box_id": 4,
+        "led_id": 58,
+        "parameter": "74HC165D",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "7CE2E": {
+        "box_id": 4,
+        "led_id": 59,
+        "parameter": "PC817X2C",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "26A65": {
+        "box_id": 4,
+        "led_id": 28,
+        "parameter": "XW06A",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "F5B9E": {
+        "box_id": 4,
+        "led_id": 54,
+        "parameter": "KEROS",
+        "voltage": "",
+        "footprint": "",
+        "note": "加密"
+    },
+    "39F76": {
+        "box_id": 6,
+        "led_id": 26,
+        "parameter": "ES3BB",
+        "voltage": "",
+        "footprint": "",
+        "note": "100V 3A 自恢复保险丝"
+    },
+    "CA82E": {
+        "box_id": 6,
+        "led_id": 27,
+        "parameter": "7544GA",
+        "voltage": "",
+        "footprint": "",
+        "note": ""
+    },
+    "5139A": {
+        "box_id": 4,
+        "led_id": 61,
+        "parameter": "CH224K",
+        "voltage": "4V~30V",
+        "footprint": "",
+        "note": "【官方型号】: CH224K\n【类目/功能】: 快充协议芯片 > 受电控制器\n【技术描述】:\n• 工作电压: 4V~30V\n• 输出电压: 5V；20V；15V；12V；9V\n\n【详细说明】:\nCH224Q/CH224A 为支持USB PD3.2 的USB PD 快充协议受电芯片，最高支持PD3.2 EPR 140W 功率，并支持单电阻配置、I/O 电平配置及I2C 配置。通过I2C 接口可以读取协议握手状态和读取当前PD 档位额定电流。芯片内置高压LDO，静态功耗低，集成度高，外围精简。芯片集成输出电压检测及过压保护功能，可广泛应用于各类电子设备拓展高功率输入如无线充电器、小家电、锂电池电动工具等各类场合。",
+        "type": "受电控制器",
+        "work_voltage": "4V~30V",
+        "out_voltage": "5V；20V；15V；12V；9V",
+        "out_current": "N/A",
+        "category": "快充协议芯片"
+    },
+    "B5C68": {
+        "box_id": 5,
+        "led_id": 1,
+        "parameter": "62K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "8DB43": {
+        "box_id": 5,
+        "led_id": 2,
+        "parameter": "75K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "99F4F": {
+        "box_id": 5,
+        "led_id": 3,
+        "parameter": "71.5K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "DA2EA": {
+        "box_id": 5,
+        "led_id": 4,
+        "parameter": "27K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "3DA91": {
+        "box_id": 5,
+        "led_id": 5,
+        "parameter": "412K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "0BA68": {
+        "box_id": 5,
+        "led_id": 6,
+        "parameter": "49.9K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "4CCA7": {
+        "box_id": 5,
+        "led_id": 7,
+        "parameter": "182K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "8E100": {
+        "box_id": 5,
+        "led_id": 8,
+        "parameter": "9.76K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "57F67": {
+        "box_id": 5,
+        "led_id": 9,
+        "parameter": "6.8R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "E256B": {
+        "box_id": 5,
+        "led_id": 10,
+        "parameter": "16.2K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "61B16": {
+        "box_id": 5,
+        "led_id": 11,
+        "parameter": "56.2K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "45D3E": {
+        "box_id": 5,
+        "led_id": 12,
+        "parameter": "80.6R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "62A4E": {
+        "box_id": 5,
+        "led_id": 13,
+        "parameter": "1.96K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7E3A6": {
+        "box_id": 5,
+        "led_id": 14,
+        "parameter": "20K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "F7DF5": {
+        "box_id": 5,
+        "led_id": 15,
+        "parameter": "49.9R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "9FCA8": {
+        "box_id": 5,
+        "led_id": 17,
+        "parameter": "102K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "6F60B": {
+        "box_id": 5,
+        "led_id": 16,
+        "parameter": "464K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "539F5": {
+        "box_id": 5,
+        "led_id": 18,
+        "parameter": "2.7K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "C65ED": {
+        "box_id": 5,
+        "led_id": 19,
+        "parameter": "20K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "6FEE3": {
+        "box_id": 5,
+        "led_id": 20,
+        "parameter": "240K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "889E1": {
+        "box_id": 5,
+        "led_id": 21,
+        "parameter": "33R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7F84A": {
+        "box_id": 5,
+        "led_id": 22,
+        "parameter": "33R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7F844": {
+        "box_id": 5,
+        "led_id": 23,
+        "parameter": "120K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "72876": {
+        "box_id": 5,
+        "led_id": 24,
+        "parameter": "3.24K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "69287": {
+        "box_id": 5,
+        "led_id": 25,
+        "parameter": "487K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "073CC": {
+        "box_id": 5,
+        "led_id": 26,
+        "parameter": "422K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "03BFE": {
+        "box_id": 5,
+        "led_id": 27,
+        "parameter": "91K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "12184": {
+        "box_id": 5,
+        "led_id": 28,
+        "parameter": "887R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7245E": {
+        "box_id": 5,
+        "led_id": 29,
+        "parameter": "140K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "419BB": {
+        "box_id": 5,
+        "led_id": 30,
+        "parameter": "1.1K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "B5DB0": {
+        "box_id": 5,
+        "led_id": 31,
+        "parameter": "82K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "214F1": {
+        "box_id": 5,
+        "led_id": 32,
+        "parameter": "24K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "FE375": {
+        "box_id": 5,
+        "led_id": 33,
+        "parameter": "33K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "583F6": {
+        "box_id": 5,
+        "led_id": 34,
+        "parameter": "68.1K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "0D6D7": {
+        "box_id": 5,
+        "led_id": 35,
+        "parameter": "15K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "8F14F": {
+        "box_id": 5,
+        "led_id": 36,
+        "parameter": "820K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "2757B": {
+        "box_id": 5,
+        "led_id": 37,
+        "parameter": "510K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "BE676": {
+        "box_id": 5,
+        "led_id": 38,
+        "parameter": "60.4K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "2D8EC": {
+        "box_id": 5,
+        "led_id": 39,
+        "parameter": "150K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "2DA4F": {
+        "box_id": 5,
+        "led_id": 40,
+        "parameter": "3.16K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "AD227": {
+        "box_id": 3,
+        "led_id": 7,
+        "parameter": "TPS7A4901DGNR",
+        "voltage": "35V",
+        "footprint": "",
+        "note": "【官方型号】: TPS7A4901DGNR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 35V\n• 输出电压: 1.194V~33V\n• 输出电流: 150mA\n\n【详细说明】:\nTPS7A49 3V 至 36V 输入电压、150mA、超低噪声、高 PSRR、低压降线性稳压器",
+        "type": "N/A",
+        "work_voltage": "35V",
+        "out_voltage": "1.194V~33V",
+        "out_current": "150mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "40AEB": {
+        "box_id": 3,
+        "led_id": 8,
+        "parameter": "TPS61040DBVR",
+        "voltage": "1.8V~6V",
+        "footprint": "",
+        "note": "【官方型号】: TPS61040DBVR\n【类目/功能】: DC-DC电源芯片 > 升压型\n【技术描述】:\n• 工作电压: 1.8V~6V\n• 输出电压: 28V\n• 输出电流: 400mA\n\n【详细说明】:\nTPS61040是一款高频率升压转换器,适用于小型到中型LCD偏置电源和白色LED背光电源。该器件可以从双节NiMH/NiCd或单节Li-ion电池产生高达28V的输出电压。内部开关电流限制为400mA,开关频率最高可达1MHz,典型无负载静态电流为28μA,关机电流为1μA。该器件采用SOT-23和SON封装。",
+        "type": "升压型",
+        "work_voltage": "1.8V~6V",
+        "out_voltage": "28V",
+        "out_current": "400mA",
+        "category": "DC-DC电源芯片"
+    },
+    "39230": {
+        "box_id": 3,
+        "led_id": 9,
+        "parameter": "TPS54360DDAR",
+        "voltage": "4.5V~60V",
+        "footprint": "",
+        "note": "【官方型号】: TPS54360DDAR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~60V\n• 输出电压: 800mV~58.8V\n• 输出电流: 3.5A\n\n【详细说明】:\nTPS54360是一款60V输入、3.5A输出的降压DC-DC转换器,具有集成的高压侧MOSFET。它支持4.5V至60V的输入电压范围,具备负载突变保护、低静态电流和脉冲跳跃模式等功能,适用于工业、汽车和通信系统。",
+        "type": "降压型",
+        "work_voltage": "4.5V~60V",
+        "out_voltage": "800mV~58.8V",
+        "out_current": "3.5A",
+        "category": "DC-DC电源芯片"
+    },
+    "2FC87": {
+        "box_id": 3,
+        "led_id": 40,
+        "parameter": "XL6008E1",
+        "voltage": "3.6V~32V",
+        "footprint": "",
+        "note": "【官方型号】: XL6008E1\n【类目/功能】: DC-DC电源芯片 > 升降压型\n【技术描述】:\n• 工作电压: 3.6V~32V\n• 输出电压: -\n• 输出电流: 3A\n\n【详细说明】:\nDCDC升降压，电源输入30V以上，1A~3A(中电流)方案，XL6008 是一款宽输入电压范围的电流模式 DC/DC 转换器,能够生成正负输出电压。它支持升压、反激、SEPIC 和反相拓扑结构。内置 N 通道功率 MOSFET 和固定频率振荡器,确保在广泛的输入和输出电压范围内稳定运行。",
+        "type": "升降压型",
+        "work_voltage": "3.6V~32V",
+        "out_voltage": "-",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "6586A": {
+        "box_id": 3,
+        "led_id": 41,
+        "parameter": "TLV62569DBVR",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TLV62569DBVR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.5V~5.5V\n• 输出电压: 600mV~5.5V\n• 输出电流: 2A\n\n【详细说明】:\nTLV62569 采用 SOT23 或 SOT563 封装的 2.5V-5.5V 输入、2A 高效降压转换器",
+        "type": "降压型",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "600mV~5.5V",
+        "out_current": "2A",
+        "category": "DC-DC电源芯片"
+    },
+    "0901B": {
+        "box_id": 3,
+        "led_id": 42,
+        "parameter": "MP9943GQ(TOKMAS)",
+        "voltage": "3V~36V",
+        "footprint": "",
+        "note": "【官方型号】: MP9943GQ(TOKMAS)\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 3V~36V\n• 输出电流: 3A\n\n【详细说明】:\n功能类型\n降压型，工作电压\n3V~36V，输出电压\n300mV~42V，输出电流\n3A",
+        "type": "降压型",
+        "work_voltage": "3V~36V",
+        "out_voltage": "N/A",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "AB2D6": {
+        "box_id": 3,
+        "led_id": 45,
+        "parameter": "LMR36510ADDAR",
+        "voltage": "4.2V~65V",
+        "footprint": "",
+        "note": "【官方型号】: LMR36510ADDAR\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.2V~65V\n• 输出电压: 1V~61.75V\n• 输出电流: 1A\n\n【详细说明】:\nLMR36510 具有 26uA IQ 的 SIMPLE SWITCHER&reg; 4.2V 至 65V、1A 同步降压转换器",
+        "type": "降压型",
+        "work_voltage": "4.2V~65V",
+        "out_voltage": "1V~61.75V",
+        "out_current": "1A",
+        "category": "DC-DC电源芯片"
+    },
+    "B801D": {
+        "box_id": 3,
+        "led_id": 46,
+        "parameter": "DS8561-12D4",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: DS8561-12D4\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.2V\n• 输出电流: 300mA\n\n【详细说明】:\n高PSRR，低功耗",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.2V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "3CB7B": {
+        "box_id": 3,
+        "led_id": 47,
+        "parameter": "DS8561-18D4",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: DS8561-18D4\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.8V\n• 输出电流: 300mA\n\n【详细说明】:\n高PSRR，低功耗 DS8561 系列是一组低压差（LDO）转换器，具有1.2V 至5.5V 宽电压输入范围、低压差、低功耗和小型化封装的等特性。 DS8561 低至2uA 低静态电流特性，特别适合用于电池供电、长时间待机系统设备应用，能帮助降低系统设备的待机功耗，有效延长待机时间和电池使用寿命。 DS8561有带EN 使能引脚的版本可选，将EN 脚拉低可进入关断模式，此关断模式下静态电流可降至仅100nA（典型值）。",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.8V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "9D76B": {
+        "box_id": 3,
+        "led_id": 48,
+        "parameter": "DS8561-28D4",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: DS8561-28D4\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 2.8V\n• 输出电流: 300mA\n\n【详细说明】:\n高PSRR，低功耗 DS8561 系列是一组低压差（LDO）转换器，具有1.2V 至5.5V 宽电压输入范围、低压差、低功耗和小型化封装的等特性。 DS8561 低至2uA 低静态电流特性，特别适合用于电池供电、长时间待机系统设备应用，能帮助降低系统设备的待机功耗，有效延长待机时间和电池使用寿命。 DS8561有带EN 使能引脚的版本可选，将EN 脚拉低可进入关断模式，此关断模式下静态电流可降至仅100nA（典型值）。",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "2.8V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "49C08": {
+        "box_id": 3,
+        "led_id": 49,
+        "parameter": "RT9013-33GB-MS",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: RT9013-33GB-MS\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 3.3V\n• 输出电流: 500mA\n\n【详细说明】:\n输出类型：固定 输出极性：正 最大输入电压：5.5V 输出电压：3.3V 输出电流：500mA 电源纹波抑制比(PSRR)：75dB@(1kHz)后面-MS代表品牌",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "3.3V",
+        "out_current": "500mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "00C0F": {
+        "box_id": 3,
+        "led_id": 50,
+        "parameter": "TMI3408C",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TMI3408C\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.5V~5.5V\n• 输出电压: 600mV~5.5V\n• 输出电流: 1.5A\n\n【详细说明】:\nTMI3408C是一款高性能1.5MHz单片降压转换器,具有高达96%的效率。它集成了主开关和同步整流器,无需外部肖特基二极管。输入电压范围为2.5V至5.5V,输出电流可达1.5A,输出电压可低至0.6V。支持100%占空比,具有低静态电流和多种保护功能。",
+        "type": "降压型",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "600mV~5.5V",
+        "out_current": "1.5A",
+        "category": "DC-DC电源芯片"
+    },
+    "43584": {
+        "box_id": 3,
+        "led_id": 51,
+        "parameter": "TMI3408F",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TMI3408F\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.5V~5.5V\n• 输出电压: 600mV~5.5V\n• 输出电流: 1.2A\n\n【详细说明】:\nTMI3408F 是一款高效率、1.2A、1.5MHz 的同步降压转换器,采用强制 PWM 模式。该器件集成了主开关和同步整流器,无需外部肖特基二极管。输出电压可低至 0.6V,支持 100% 占空比运行,适用于便携式系统。具备短路保护、热故障保护和启动软启动功能。",
+        "type": "降压型",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "600mV~5.5V",
+        "out_current": "1.2A",
+        "category": "DC-DC电源芯片"
+    },
+    "6AA8E": {
+        "box_id": 3,
+        "led_id": 52,
+        "parameter": "TMI3113B",
+        "voltage": "2.7V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TMI3113B\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.7V~5.5V\n• 输出电压: -\n• 输出电流: 3A\n\n【详细说明】:\nTMI3113和TMI3113B是1.0MHz恒定频率、电流模式降压转换器。对于需要单节锂离子电池提供高达3A高输出电流的便携式设备而言，它是理想之选。它们还能以100%占空比运行，实现低压差操作，延长便携式系统的电池使用寿命；轻载运行时，可为对噪声敏感的应用提供极低的输出纹波",
+        "type": "降压型",
+        "work_voltage": "2.7V~5.5V",
+        "out_voltage": "-",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "4C634": {
+        "box_id": 3,
+        "led_id": 53,
+        "parameter": "TMI3411",
+        "voltage": "2.5V~6V",
+        "footprint": "",
+        "note": "【官方型号】: TMI3411\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.5V~6V\n• 输出电压: 600mV~6V\n• 输出电流: 2A\n\n【详细说明】:\nTMI3411是一款高效率、1.0MHz恒定频率电流模式降压转换器,适用于便携设备,最高效率可达95%。该器件支持2A输出电流,输入电压范围为2.5V至6.0V,输出电压可低至0.6V。具有轻载高效模式、短路保护、热故障保护等功能。",
+        "type": "降压型",
+        "work_voltage": "2.5V~6V",
+        "out_voltage": "600mV~6V",
+        "out_current": "2A",
+        "category": "DC-DC电源芯片"
+    },
+    "38365": {
+        "box_id": 3,
+        "led_id": 54,
+        "parameter": "TMI7003C",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TMI7003C\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 2.5V~5.5V\n• 输出电压: -\n• 输出电流: -\n\n【详细说明】:\nTMI7003C是一款高度集成的电源管理IC,设计用于最小化消费和多媒体应用中的功耗。它集成了3个高效同步降压转换器,支持2.5V到5.5V的输入电压范围,输出电压低至0.6V,峰值电流能力为1.5A。该器件具有100%占空比的dropout操作、高效率同步模式操作、内部软启动、欠压锁定、旁路和过流及过温保护功能。",
+        "type": "降压型",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "-",
+        "out_current": "-",
+        "category": "DC-DC电源芯片"
+    },
+    "5D8AA": {
+        "box_id": 3,
+        "led_id": 55,
+        "parameter": "RT9193-33GB-JSM",
+        "voltage": "7V",
+        "footprint": "",
+        "note": "【官方型号】: RT9193-33GB-JSM\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 7V\n• 输出电压: 3.3V\n• 输出电流: 300mA\n\n【详细说明】:\n一款以CMOS工艺制造的高精度，低噪音，快速响应低压差线性稳压器",
+        "type": "N/A",
+        "work_voltage": "7V",
+        "out_voltage": "3.3V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "C8829": {
+        "box_id": 3,
+        "led_id": 56,
+        "parameter": "RT9193-18GB",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: RT9193-18GB\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.8V\n• 输出电流: 300mA\n\n【详细说明】:\n适用于对性能和空间有要求的便携式射频和无线应用。针对电池供电系统进行了性能优化，可实现超低噪声和低静态电流。设有噪声旁路引脚，可进一步降低输出噪声。在压降状态下，稳压器接地电流仅略有增加，进一步延长了电池寿命。还可与低等效串联电阻（ESR）陶瓷电容配合使用，减少电源应用所需的电路板空间，这在手持无线设备中至关重要。在关断模式下，功耗小于 0.01μA，开启时间小于 50μs。其他特性包括超低压降、高输出精度、限流保护和高纹波抑制比。",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.8V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "1418A": {
+        "box_id": 3,
+        "led_id": 57,
+        "parameter": "TLV74312PDBVR",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TLV74312PDBVR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.2V\n• 输出电流: 300mA\n\n【详细说明】:\nTLV743P 具有使能功能的 300mA 低 IQ 低压降(LDO) 稳压器",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.2V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "899D9": {
+        "box_id": 3,
+        "led_id": 58,
+        "parameter": "XC6206-3.3V",
+        "voltage": "6V",
+        "footprint": "",
+        "note": "【官方型号】: XC6206-3.3V\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 6V\n• 输出电压: 3.3V\n• 输出电流: 250mA\n\n【详细说明】:\nXC6206 系列是一款高精度，低功耗，高电压，正电压调整器的芯片，并采用 CMOS 工艺和激光微调技术。在输出电流的情况下，输入输出压也差很小。XC6206 系列芯片包括一个电流限制电路，一个驱动器三极管，一个高精度参考电压源和一个误差校正电路。",
+        "type": "N/A",
+        "work_voltage": "6V",
+        "out_voltage": "3.3V",
+        "out_current": "250mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "9698D": {
+        "box_id": 3,
+        "led_id": 59,
+        "parameter": "LT3032EDE#PBF",
+        "voltage": "20V",
+        "footprint": "",
+        "note": "【官方型号】: LT3032EDE#PBF\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 20V\n• 输出电压: 1.22V~20V\n• 输出电流: 150mA；150mA\n\n【详细说明】:\n双通道、150mA、正 / 负、低噪声、低压差线性稳压器",
+        "type": "N/A",
+        "work_voltage": "20V",
+        "out_voltage": "1.22V~20V",
+        "out_current": "150mA；150mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "73089": {
+        "box_id": 3,
+        "led_id": 60,
+        "parameter": "MP2451DT-LF-Z",
+        "voltage": "3.3V~36V",
+        "footprint": "",
+        "note": "【官方型号】: MP2451DT-LF-Z\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 3.3V~36V\n• 输出电压: 800mV~28.8V\n• 输出电流: 600mA\n\n【详细说明】:\nMP2451是一款高频（2MHz）降压开关稳压器,具有内部集成的高侧高压功率MOSFET。它提供单路0.6A（或更低）的高效输出,采用电流模式控制以实现快速环路响应。宽3.3V至36V的工作输入范围适用于多种汽车输入环境。3uA关断模式静态电流使其适用于电池供电的应用。",
+        "type": "降压型",
+        "work_voltage": "3.3V~36V",
+        "out_voltage": "800mV~28.8V",
+        "out_current": "600mA",
+        "category": "DC-DC电源芯片"
+    },
+    "02DC0": {
+        "box_id": 3,
+        "led_id": 61,
+        "parameter": "MP9447GL-Z",
+        "voltage": "4.5V~36V",
+        "footprint": "",
+        "note": "【官方型号】: MP9447GL-Z\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~36V\n• 输出电压: -\n• 输出电流: 5A\n\n【详细说明】:\nDCDC降压，电源输入30V以上，3A以上(大电流)方案，",
+        "type": "降压型",
+        "work_voltage": "4.5V~36V",
+        "out_voltage": "-",
+        "out_current": "5A",
+        "category": "DC-DC电源芯片"
+    },
+    "B6DF0": {
+        "box_id": 3,
+        "led_id": 63,
+        "parameter": "TPS7A2033PDBVR",
+        "voltage": "6V",
+        "footprint": "",
+        "note": "【官方型号】: TPS7A2033PDBVR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 6V\n• 输出电压: 3.3V\n• 输出电流: 300mA\n\n【详细说明】:\nTPS7A20 是一款超小型低压降 (LDO) 线性稳压器，可提供 300 mA 的输出电流。TPS7A20 旨在提供符合射频和其他敏感模拟电路要求的低噪声、高 PSRR 和出色的负载和线路瞬态性能。TPS7A20 采用创新的设计技术，无需噪声旁路电容便可提供超低的噪声性能。",
+        "type": "N/A",
+        "work_voltage": "6V",
+        "out_voltage": "3.3V",
+        "out_current": "300mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "4F832": {
+        "box_id": 3,
+        "led_id": 62,
+        "parameter": "TLV70018DCKR",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TLV70018DCKR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 1.8V\n• 输出电流: 200mA\n\n【详细说明】:\nTLV700 用于便携式设备的 200mA、低 IQ、低压降稳压器",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.8V",
+        "out_current": "200mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "86EFB": {
+        "box_id": 4,
+        "led_id": 7,
+        "parameter": "INA199A1DCKR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: INA199A1DCKR\n【类目/功能】: 电流感应放大器 > N/A\n\n【详细说明】:\nINA199 26V、双向电流感应放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电流感应放大器"
+    },
+    "53E6B": {
+        "box_id": 4,
+        "led_id": 13,
+        "parameter": "MT6701CT-STD-R",
+        "voltage": "3.3V~5V",
+        "footprint": "",
+        "note": "【官方型号】: MT6701CT-STD-R\n【类目/功能】: 位置传感器 > 磁性旋转位置传感器\n【技术描述】:\n• 工作电压: 3.3V~5V\n\n【详细说明】:\n霍尔在线编程角度位置传感器 霍尔在线编程角度位置传感器",
+        "type": "磁性旋转位置传感器",
+        "work_voltage": "3.3V~5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "位置传感器"
+    },
+    "2EC02": {
+        "box_id": 4,
+        "led_id": 14,
+        "parameter": "TTP223-BA6-TD",
+        "voltage": "2V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TTP223-BA6-TD\n【类目/功能】: 触摸芯片 > N/A\n【技术描述】:\n• 工作电压: 2V~5.5V\n\n【详细说明】:\n内置LDO 抗干扰 单键触摸芯片",
+        "type": "N/A",
+        "work_voltage": "2V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "触摸芯片"
+    },
+    "F91E4": {
+        "box_id": 4,
+        "led_id": 15,
+        "parameter": "RZ7899",
+        "voltage": "3V~25V",
+        "footprint": "",
+        "note": "【官方型号】: RZ7899\n【类目/功能】: 有刷直流电机驱动芯片 > N/A\n【技术描述】:\n• 工作电压: 3V~25V\n• 输出电流: 5A\n\n【详细说明】:\n25V 4A 控制直流电机正反转",
+        "type": "N/A",
+        "work_voltage": "3V~25V",
+        "out_voltage": "N/A",
+        "out_current": "5A",
+        "category": "有刷直流电机驱动芯片"
+    },
+    "494D4": {
+        "box_id": 4,
+        "led_id": 34,
+        "parameter": "EG2133",
+        "voltage": "4.5V~20V",
+        "footprint": "",
+        "note": "【官方型号】: EG2133\n【类目/功能】: 栅极驱动芯片 > N/A\n【技术描述】:\n• 工作电压: 4.5V~20V\n\n【详细说明】:\nEG2133是一款高性价比的三相半桥驱动芯片，配合六颗Nmos可以组成三相直流无刷电机驱动器。 EG2133是一款高性价比的大功率MOS管、IGBT管栅极驱动专用芯片，内部集成了逻辑信号输入处理电路、死区时控制电路、闭锁电路、电平位移电路、脉冲滤波电路及输出驱动电路。 EG2133高端的工作电压可达300V，低端VCC的电源电压范围宽4.5V~20V。该芯片具有闭锁功能防止输出功率管同时导通，输入通道HIN和LIN内建了一个下拉和上拉电阻，在输入悬空时使上、下功率MOS管处于关闭状态，输出电流能力10 + 1.2A/-1.4A，采用TSSOP20封装。",
+        "type": "N/A",
+        "work_voltage": "4.5V~20V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "栅极驱动芯片"
+    },
+    "10894": {
+        "box_id": 4,
+        "led_id": 38,
+        "parameter": "M25P40-VMN6TP",
+        "voltage": "2.3V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: M25P40-VMN6TP\n【类目/功能】: NOR FLASH > N/A\n【技术描述】:\n• 工作电压: 2.3V~3.6V",
+        "type": "N/A",
+        "work_voltage": "2.3V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "NOR FLASH"
+    },
+    "0E77B": {
+        "box_id": 4,
+        "led_id": 42,
+        "parameter": "MCP73831T-2ACI/OT",
+        "voltage": "3.75V~6V",
+        "footprint": "",
+        "note": "【官方型号】: MCP73831T-2ACI/OT\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 3.75V~6V\n\n【详细说明】:\nMCP73831/2器件是高度先进的线性充电管理控制器，适用于空间受限、对成本敏感的应用。MCP73831/2提供8引脚、2 mm×3 mm DFN封装或5引脚SOT - 23封装。凭借其小巧的物理尺寸和较少的外部元件需求，MCP73831/2非常适合便携式应用。对于通过USB端口充电的应用，MCP73831/2符合所有USB电源总线规范。\n\nMCP73831/2采用具有可选预充电和充电终止功能的恒流/恒压充电算法。恒压调节固定有四种可选值：4.20V、4.35V、4.40V或4.50V，以满足新兴的电池充电需求。恒流值通过一个外部电阻设置。在高功率或高环境温度条件下，MCP73831/2器件会根据芯片温度限制充电电流。这种热调节在保证器件可靠性的同时，优化了充电周期时间。\n\n预充电阈值、预充电电流值、充电终止值和自动再充电阈值有多种可选设置。预充电值和充电终止值以编程恒流值的比例或百分比形式设置，预充电功能可以禁用。\n\nMCP73831/2器件在-40°C至+85°C的环境温度范围内完全符合规格要求。",
+        "type": "N/A",
+        "work_voltage": "3.75V~6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "92BF0": {
+        "box_id": 4,
+        "led_id": 19,
+        "parameter": "AD7386BCPZ-RL7",
+        "voltage": "3V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: AD7386BCPZ-RL7\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 3V~3.6V\n\n【详细说明】:\n16位、14位或12位双通道同时采样SARADC，具有单端模拟输入，4通道带2:1多路复用器，通道序列模式，高吞吐率高达4MSPS。",
+        "type": "N/A",
+        "work_voltage": "3V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "4F520": {
+        "box_id": 4,
+        "led_id": 50,
+        "parameter": "SL2.1A",
+        "voltage": "4V~5.25V",
+        "footprint": "",
+        "note": "【官方型号】: SL2.1A\n【类目/功能】: USB集线器 > 集线器\n【技术描述】:\n• 工作电压: 4V~5.25V\n\n【详细说明】:\nSL2.1A是一颗高集成度,高性能,低功耗的USB2.0集线器主控芯片，支持USB2.0高速(480MHz),全速(12MHz)和低速模式(1.5MHz)，内置12MHz晶体振荡器。",
+        "type": "集线器",
+        "work_voltage": "4V~5.25V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "USB集线器"
+    },
+    "36541": {
+        "box_id": 4,
+        "led_id": 51,
+        "parameter": "LM358DR2G",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: LM358DR2G\n【类目/功能】: 运算放大器 > N/A\n【技术描述】:\n• 输出电流: 40mA\n\n【详细说明】:\n双运算放大器 LM Series 0.6 V/us 32 V SMT Single Supply Quad Operational Amplifier - SOIC-8",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "40mA",
+        "category": "运算放大器"
+    },
+    "C1383": {
+        "box_id": 4,
+        "led_id": 55,
+        "parameter": "SP3232EEA-L/TR",
+        "voltage": "3V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: SP3232EEA-L/TR\n【类目/功能】: RS232芯片 > 收发器\n【技术描述】:\n• 工作电压: 3V~5.5V\n\n【详细说明】:\n符合EIA/TIA-232标准，支持从+3.0V到+5.5V电源供电，数据速率最高可达235Kbps。",
+        "type": "收发器",
+        "work_voltage": "3V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "RS232芯片"
+    },
+    "F3A32": {
+        "box_id": 4,
+        "led_id": 63,
+        "parameter": "AT24C02CM5/TR",
+        "voltage": "1.7V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: AT24C02CM5/TR\n【类目/功能】: EEPROM > N/A\n【技术描述】:\n• 工作电压: 1.7V~5.5V\n\n【详细说明】:\n串行电可擦写可编程只读存储器(EEPROM)",
+        "type": "N/A",
+        "work_voltage": "1.7V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "EEPROM"
+    },
+    "AC2E2": {
+        "box_id": 6,
+        "led_id": 35,
+        "parameter": "AZ1045-04F",
+        "voltage": "1.65V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: AZ1045-04F\n【类目/功能】: 静电和浪涌保护(TVS/ESD) > ESD\n\n【详细说明】:\nVRWM:5V, IPP:4A, CJ:0.8pF",
+        "type": "ESD",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "6176D": {
+        "box_id": 4,
+        "led_id": 67,
+        "parameter": "OP284FSZ",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: OP284FSZ\n【类目/功能】: 运算放大器 > N/A\n【技术描述】:\n• 输出电流: 10mA\n\n【详细说明】:\n精密RRIO双通道运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "10mA",
+        "category": "运算放大器"
+    },
+    "50F68": {
+        "box_id": 4,
+        "led_id": 68,
+        "parameter": "BMP280",
+        "voltage": "1.71V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: BMP280\n【类目/功能】: 压力传感器 > N/A\n【技术描述】:\n• 工作电压: 1.71V~3.6V\n\n【详细说明】:\nBosch气压传感器新品，可测量大气压力，带高精度温度测量，可校准精确计算海拔高度。I2C或SPI接口，宽量程（300-1100hpa），精度高",
+        "type": "N/A",
+        "work_voltage": "1.71V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "压力传感器"
+    },
+    "90528": {
+        "box_id": 4,
+        "led_id": 69,
+        "parameter": "ICM-42688P-HXY",
+        "voltage": "1.71V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: ICM-42688P-HXY\n【类目/功能】: 姿态传感器/陀螺仪 > N/A\n【技术描述】:\n• 工作电压: 1.71V~3.6V\n\n【详细说明】:\n本产品虽与竞品引脚兼容（Pin-to-Pin），内部信号处理算法、寄存器默认值及运动引擎行为存在差异，在切换器件前，请重新验证初始化配置、数据读取流程及应用层算法。\n此款姿态传感器集成了加速度计与陀螺仪，支持X、Y、Z三轴检测，能够精确感知设备在空间中的定位及运动状态。其工作电压范围宽达1.71V至3.6V，适应性强，可在-40℃到+85℃的温度范围内稳定工作，适用于各种环境条件下的电子设备中。该传感器为智能设备的姿态控制、运动跟踪以及方向识别提供了精准的数据支持，是提升用户体验和实现复杂互动功能的关键组件。",
+        "type": "N/A",
+        "work_voltage": "1.71V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "姿态传感器/陀螺仪"
+    },
+    "8B441": {
+        "box_id": 4,
+        "led_id": 70,
+        "parameter": "MPU6050",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "3AAEB": {
+        "box_id": 4,
+        "led_id": 71,
+        "parameter": "MPU6500",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "6D11D": {
+        "box_id": 4,
+        "led_id": 72,
+        "parameter": "DAC8830IDR",
+        "voltage": "2.7V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: DAC8830IDR\n【类目/功能】: 数模转换芯片DAC > N/A\n【技术描述】:\n• 工作电压: 2.7V~5.5V\n\n【详细说明】:\nDAC8830 16 位、单通道、超低功耗、电压输出 DAC",
+        "type": "N/A",
+        "work_voltage": "2.7V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "数模转换芯片DAC"
+    },
+    "CEC51": {
+        "box_id": 4,
+        "led_id": 73,
+        "parameter": "UCC27524DR",
+        "voltage": "4.5V~18V",
+        "footprint": "",
+        "note": "【官方型号】: UCC27524DR\n【类目/功能】: 栅极驱动芯片 > N/A\n【技术描述】:\n• 工作电压: 4.5V~18V\n\n【详细说明】:\nMOS驱动芯片，UCC27524 双路 5A 高速低侧电源 MOSFET 驱动器",
+        "type": "N/A",
+        "work_voltage": "4.5V~18V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "栅极驱动芯片"
+    },
+    "24643": {
+        "box_id": 4,
+        "led_id": 74,
+        "parameter": "SY7200AABC",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SY7200AABC\n【类目/功能】: LED驱动 > DC-DC\n【技术描述】:\n• 输出电流: 2A\n\n【详细说明】:\n30V 2A LED驱动 升压 效率高达96% 软启动 LED开路保护",
+        "type": "DC-DC",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "2A",
+        "category": "LED驱动"
+    },
+    "409E8": {
+        "box_id": 4,
+        "led_id": 75,
+        "parameter": "HX711",
+        "voltage": "2.6V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: HX711\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 2.6V~5.5V\n\n【详细说明】:\nHX711是一款高精度24位模数转换器，专为称重秤和工业控制应用设计，可以直接与桥式传感器接口。",
+        "type": "N/A",
+        "work_voltage": "2.6V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "8994C": {
+        "box_id": 4,
+        "led_id": 43,
+        "parameter": "SN74AHC1G86DBVR",
+        "voltage": "2V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: SN74AHC1G86DBVR\n【类目/功能】: 逻辑门 > N/A\n【技术描述】:\n• 工作电压: 2V~5.5V\n\n【详细说明】:\nSN74AHC1G86 单路 2 输入、2V 至 5.5V XOR（异或）门",
+        "type": "N/A",
+        "work_voltage": "2V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "逻辑门"
+    },
+    "EA5CC": {
+        "box_id": 6,
+        "led_id": 10,
+        "parameter": "AO3401A",
+        "voltage": "",
+        "footprint": "323",
+        "note": "【官方型号】: AO3401A\n【类目/功能】: 场效应管(MOSFET) > -\n\n【详细说明】:\nP沟道,-30V,-4A,50mΩ@-10V",
+        "type": "-",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "B2CAD": {
+        "box_id": 6,
+        "led_id": 19,
+        "parameter": "SS58",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "5759A": {
+        "box_id": 6,
+        "led_id": 22,
+        "parameter": "2N7002KW",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: 2N7002KW\n【类目/功能】: 场效应管(MOSFET) > N沟道\n\n【详细说明】:\n特性：低导通电阻。 低栅极阈值电压。 低输入电容。 快速开关速度。 低输入/输出泄漏。 超小型表面贴装封装。 这些器件无铅且符合RoHS标准。 按照JESD22 A114，静电放电人体模型（HBM）为1000V。 按照JESD22 C101，静电放电带电器件模型（CDM）为1500V",
+        "type": "N沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "1BF25": {
+        "box_id": 6,
+        "led_id": 24,
+        "parameter": "SMAJ5.0CA",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "D52E4": {
+        "box_id": 6,
+        "led_id": 31,
+        "parameter": "RB551V-40",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: RB551V-40\n【类目/功能】: 肖特基二极管 > N/A\n\n【详细说明】:\n特性：VR = 40V。IF(AV) = 0.5A。低开启电压。快速开关速度。符合MSL 1级，根据J-STD-020，LF最大峰值为260°C。应用：用于低压高频电路信号",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "肖特基二极管"
+    },
+    "88DC8": {
+        "box_id": 6,
+        "led_id": 34,
+        "parameter": "CJE3139K",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: CJE3139K\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\nP沟道,-20V,-0.66A,520mΩ@4.5V",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "FA9C0": {
+        "box_id": 6,
+        "led_id": 40,
+        "parameter": "SI2300DS-T1-GE3",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SI2300DS-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\nN沟道,30V,3.6A,68mΩ@4.5V",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "4969C": {
+        "box_id": 6,
+        "led_id": 41,
+        "parameter": "SMAJ36A",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SMAJ36A\n【类目/功能】: 静电和浪涌保护(TVS/ESD) > TVS\n\n【详细说明】:\n专门设计用于保护敏感电子设备免受雷击和其他瞬态电压事件引起的电压瞬变影响。",
+        "type": "TVS",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "739EF": {
+        "box_id": 6,
+        "led_id": 42,
+        "parameter": "FS8205A",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: FS8205A\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\n特性：沟槽功率技术。 低RDS(ON)。 低栅极电荷。 针对快速开关应用进行优化。应用：DC/DC和AC/DC转换器中的同步整流。 电信和工业领域的隔离式DC/DC转换器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "A07B4": {
+        "box_id": 6,
+        "led_id": 43,
+        "parameter": "BC817",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: BC817-25,215\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\n采用小型SOT23（TO - 236AB）表面贴装器件（SMD）塑料封装的NPN通用晶体管。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
+    },
+    "2D1B1": {
+        "box_id": 6,
+        "led_id": 44,
+        "parameter": "BC847",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: BC847B,215\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\nNPN通用晶体管，采用小型SOT23 (TO-236AB)表面贴装器件(SMD)塑料封装。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
+    },
+    "FBD78": {
+        "box_id": 6,
+        "led_id": 46,
+        "parameter": "MF52AT",
+        "voltage": "",
+        "footprint": "",
+        "note": "插接式热敏电阻",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "487C6": {
+        "box_id": 6,
+        "led_id": 47,
+        "parameter": "SMF8.0A",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SMF8.0A\n【类目/功能】: 单向静电和浪涌保护(TVS/ESD) > TVS",
+        "type": "TVS",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "9EBD0": {
+        "box_id": 6,
+        "led_id": 48,
+        "parameter": "MMBT4403LT1G",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: MMBT4403LT1G\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\n该 PNP 双极晶体管适用于线性和开关应用。此器件采用 SOT-23 封装，适用于低功率表面贴装应用。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
+    },
+    "C5E56": {
+        "box_id": 6,
+        "led_id": 50,
+        "parameter": "SMD0805P050TF",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SMD0805P050TF\n【类目/功能】: 自恢复保险丝 > N/A\n\n【详细说明】:\n0805系列提供微型表面贴装自恢复过流保护功能，保持电流范围为0.02A至3.0A。该系列适用于空间有限且设备电流较低的超便携式应用。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "自恢复保险丝"
+    },
+    "FED9C": {
+        "box_id": 6,
+        "led_id": 51,
+        "parameter": "ESD5Z5.0T1G-MS",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: ESD5Z5.0T1G-MS\n【类目/功能】: 静电和浪涌保护(TVS/ESD) > ESD\n\n【详细说明】:\n特性：小外形尺寸。 低本体高度。 截止电压：2.5V-12V。 峰值功率高达200瓦（8x20μs脉冲）。 低泄漏。 响应时间通常 < 1 ns。应用：手机。 便携式设备",
+        "type": "ESD",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "B2966": {
+        "box_id": 6,
+        "led_id": 52,
+        "parameter": "SP3222-02ETG",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SP3222-02ETG\n【类目/功能】: 静电和浪涌保护(TVS/ESD) > TVS\n\n【详细说明】:\n集成2通道低电容二极管，为可能遭受破坏性静电放电（ESD）的电子设备提供保护。这些坚固的二极管能够安全吸收高于IEC 61000-4-2国际标准规定的最大水平的重复性ESD冲击，而不会出现性能下降。低负载电容使其非常适合保护高速数据线，如DVI、USB2.0、USB3.0和eSATA。",
+        "type": "TVS",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "65FBB": {
+        "box_id": 6,
+        "led_id": 72,
+        "parameter": "24M",
+        "voltage": "",
+        "footprint": "2016",
+        "note": "无源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "D0F4D": {
+        "box_id": 4,
+        "led_id": 76,
+        "parameter": "TJA1051T/3/1J",
+        "voltage": "4.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: TJA1051T/3/1J\n【类目/功能】: CAN收发器 > CAN-FD收发器\n【技术描述】:\n• 工作电压: 4.5V~5.5V\n\n【详细说明】:\nTJA1051是一款高速CAN收发器，用于在控制器局域网（CAN）协议控制器与物理双线CAN总线之间提供接口。该收发器专为汽车行业的高速CAN应用而设计，可为带有CAN协议控制器的微控制器提供差分发送和接收功能",
+        "type": "CAN-FD收发器",
+        "work_voltage": "4.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "CAN收发器"
+    },
+    "E6C36": {
+        "box_id": 6,
+        "led_id": 53,
+        "parameter": "BSS138LT1G",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: BSS138LT1G\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\n特性：低阈值电压 (VGS(th): 0.5V-1.5V)，适合低压应用。微型SOT-23表面贴装封装，节省电路板空间。BVSS前缀适用于汽车和其他需要独特场地和控制变更要求的应用；符合AEC-Q101标准且具备PPAP能力。这些器件无铅且符合RoHS标准。应用：DC-DC转换器。便携式和电池供电产品的电源管理，如计算机、打印机、PCM/CIA卡、移动和无绳电话",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "C668A": {
+        "box_id": 4,
+        "led_id": 77,
+        "parameter": "GD32F130G6U6",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: GD32F130G6U6\n【类目/功能】: 单片机(MCU/MPU/SOC) > N/A",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "单片机(MCU/MPU/SOC)"
+    },
+    "30A2F": {
+        "box_id": 5,
+        "led_id": 41,
+        "parameter": "300R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "501D8": {
+        "box_id": 5,
+        "led_id": 42,
+        "parameter": "300R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "40143": {
+        "box_id": 5,
+        "led_id": 43,
+        "parameter": "0.25R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "06A43": {
+        "box_id": 5,
+        "led_id": 44,
+        "parameter": "0.01R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "EE14F": {
+        "box_id": 5,
+        "led_id": 45,
+        "parameter": "0.01R",
+        "voltage": "",
+        "footprint": "2512",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "235B9": {
+        "box_id": 5,
+        "led_id": 46,
+        "parameter": "0.0005R",
+        "voltage": "",
+        "footprint": "2725",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "5B5E4": {
+        "box_id": 5,
+        "led_id": 47,
+        "parameter": "0.001R",
+        "voltage": "",
+        "footprint": "2512",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "4CFAF": {
+        "box_id": 5,
+        "led_id": 48,
+        "parameter": "0.005R",
+        "voltage": "",
+        "footprint": "2512",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "82677": {
+        "box_id": 5,
+        "led_id": 49,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "排阻",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "8B775": {
+        "box_id": 5,
+        "led_id": 51,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "0805",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "E4B56": {
+        "box_id": 5,
+        "led_id": 53,
+        "parameter": "47K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "083FA": {
+        "box_id": 5,
+        "led_id": 54,
+        "parameter": "47K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "F256D": {
+        "box_id": 5,
+        "led_id": 55,
+        "parameter": "200K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "C9346": {
+        "box_id": 5,
+        "led_id": 56,
+        "parameter": "200K",
+        "voltage": "",
+        "footprint": "0805",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "08D7B": {
+        "box_id": 5,
+        "led_id": 57,
+        "parameter": "510K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "排阻",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "6AF0A": {
+        "box_id": 5,
+        "led_id": 58,
+        "parameter": "510K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "5938D": {
+        "box_id": 5,
+        "led_id": 59,
+        "parameter": "22R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "34D92": {
+        "box_id": 5,
+        "led_id": 60,
+        "parameter": "90.9K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "DE8B3": {
+        "box_id": 5,
+        "led_id": 61,
+        "parameter": "10R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "82C34": {
+        "box_id": 5,
+        "led_id": 62,
+        "parameter": "600R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "C8EE9": {
+        "box_id": 5,
+        "led_id": 63,
+        "parameter": "100R",
+        "voltage": "",
+        "footprint": "0805",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "73A89": {
+        "box_id": 5,
+        "led_id": 64,
+        "parameter": "0R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "14855": {
+        "box_id": 5,
+        "led_id": 50,
+        "parameter": "1K",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "E87EF": {
+        "box_id": 5,
+        "led_id": 52,
+        "parameter": "10K",
+        "voltage": "",
+        "footprint": "0805",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "3A348": {
+        "box_id": 5,
+        "led_id": 65,
+        "parameter": "60R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "F6E40": {
+        "box_id": 5,
+        "led_id": 65,
+        "parameter": "120R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "磁珠",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7EBEC": {
+        "box_id": 4,
+        "led_id": 78,
+        "parameter": "AD8642ARMZ-REEL",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "【官方型号】: AD8642ARMZ\n【类目/功能】: FET输入运放 > N/A",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "FET输入运放"
+    },
+    "054EC": {
+        "box_id": 4,
+        "led_id": 79,
+        "parameter": "AM26LV32IDR",
+        "voltage": "3.3V~3.6V",
+        "footprint": "0603",
+        "note": "【官方型号】: AM26LV32IDR\n【类目/功能】: RS-485/RS-422芯片 > 接收器\n【技术描述】:\n• 工作电压: 3.3V~3.6V\n\n【详细说明】:\n低电压、高速四通道差分线接收器，具有三态输出，适用于TIA/EIA-422-B和ITU推荐V.11标准。",
+        "type": "接收器",
+        "work_voltage": "3.3V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "RS-485/RS-422芯片"
+    },
+    "3AA6B": {
+        "box_id": 4,
+        "led_id": 80,
+        "parameter": "IP5305T",
+        "voltage": "4.65V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: IP5305T\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4.65V~5.5V\n\n【详细说明】:\nIP5305T是一款集成升压转换器、锂电池充电管理、电池电量指示的多功能电源管理SOC，为移动电源提供完整的电源解决方案。 IP5305T的高集成度与丰富功能，使其在应用时仅需极少的外围器件，并有效减小整体方案的尺寸，降低BOM成本。 IP5305T只需一个电感实现降压与升压功能，可以支持低成本电感和电容。",
+        "type": "N/A",
+        "work_voltage": "4.65V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "A3C4B": {
+        "box_id": 4,
+        "led_id": 81,
+        "parameter": "OPA2333AIDGKR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: OPA2333AIDGKR\n【类目/功能】: 精密运放 > N/A\n【技术描述】:\n• 输出电流: 5mA\n\n【详细说明】:\nOPA2333 1.8V、17μA、双通道、微功耗、零漂移 CMOS 运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "5mA",
+        "category": "精密运放"
+    },
+    "90DB3": {
+        "box_id": 3,
+        "led_id": 64,
+        "parameter": "LP5907MFX-3.3/NOPB",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: LP5907MFX-3.3/NOPB\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 3.3V\n• 输出电流: 250mA\n\n【详细说明】:\nLP5907 具有低 IQ 和使能功能的 250mA、低噪声、高 PSRR、超低压降稳压器",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "3.3V",
+        "out_current": "250mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "995F5": {
+        "box_id": 7,
+        "led_id": 1,
+        "parameter": "SGM3157YC6/TR",
+        "voltage": "1.8V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: SGM3157YC6/TR\n【类目/功能】: 模拟开关/多路复用器 > N/A\n【技术描述】:\n• 工作电压: 1.8V~5.5V\n\n【详细说明】:\nSGM3157 是一款单通道、双向、单刀双掷（SPDT）CMOS 模拟开关，设计用于在 +1.8V 至 +5.5V 单电源下工作。它具有高带宽（300MHz）和低导通电阻（典型值 4.5Ω）的特点，目标应用为音频切换。SGM3157 保证了开关之间的导通电阻匹配（最大值 0.3Ω），并保证了信号范围内的导通电阻平坦度（典型值 2.3Ω）",
+        "type": "N/A",
+        "work_voltage": "1.8V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模拟开关/多路复用器"
+    },
+    "90684": {
+        "box_id": 6,
+        "led_id": 54,
+        "parameter": "Si2302CDS-T1-GE3",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: Si2302CDS-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > N沟道\n\n【详细说明】:\nN沟道,20V,2.9A,57mΩ@4.5V",
+        "type": "N沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "80282": {
+        "box_id": 6,
+        "led_id": 55,
+        "parameter": "SMF18CA",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SMF18CA\n【类目/功能】: 双向静电和浪涌保护(TVS/ESD) > TVS\n\n【详细说明】:\nSMF系列专为保护敏感电子设备免受雷击和其他瞬态电压事件引起的电压瞬变影响而设计。与SMA封装相比，SMF封装的占位面积缩小了50%，并且是行业内低高度（1.1mm）封装之一。",
+        "type": "TVS",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "静电和浪涌保护(TVS/ESD)"
+    },
+    "C155F": {
+        "box_id": 6,
+        "led_id": 56,
+        "parameter": "MMBT3904LT1G",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: MMBT3904LT1G\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\n该 NPN 双极晶体管适用于线性和开关应用。此器件采用 SOT-23 封装，适用于低功率表面贴装应用。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
+    },
+    "B5CD1": {
+        "box_id": 6,
+        "led_id": 57,
+        "parameter": "BAT54C",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: BAT54C,215\n【类目/功能】: 肖特基二极管 > N/A",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "肖特基二极管"
+    },
+    "15579": {
+        "box_id": 7,
+        "led_id": 2,
+        "parameter": "AT24C02C-SSHM-T",
+        "voltage": "1.7V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: AT24C02C-SSHM-T\n【类目/功能】: EEPROM > N/A\n【技术描述】:\n• 工作电压: 1.7V~5.5V\n\n【详细说明】:\nAT24C01C/02C提供1024/2048位串行电可擦除可编程只读存储器（EEPROM），其组织形式为128/256个字，每个字8位。两款器件均具备级联功能，最多允许8个器件共享一条通用两线总线。这些器件针对众多工业和商业应用进行了优化，在这些应用中，低功耗和低电压运行至关重要",
+        "type": "N/A",
+        "work_voltage": "1.7V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "EEPROM"
+    },
+    "7BB5B": {
+        "box_id": 6,
+        "led_id": 58,
+        "parameter": "1N4007",
+        "voltage": "",
+        "footprint": "323",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "B756E": {
+        "box_id": 6,
+        "led_id": 80,
+        "parameter": "16M",
+        "voltage": "",
+        "footprint": "5032",
+        "note": "无源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "EFC7A": {
+        "box_id": 6,
+        "led_id": 79,
+        "parameter": "16M",
+        "voltage": "",
+        "footprint": "3225",
+        "note": "无源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "C59BC": {
+        "box_id": 6,
+        "led_id": 81,
+        "parameter": "16M",
+        "voltage": "",
+        "footprint": "3213",
+        "note": "无源晶振",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "D58FE": {
+        "box_id": 3,
+        "led_id": 65,
+        "parameter": "SC662K-3.3V",
+        "voltage": "6V",
+        "footprint": "",
+        "note": "【官方型号】: SC662K-3.3V\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 6V\n• 输出电压: 3.3V\n• 输出电流: 250mA\n\n【详细说明】:\nSC662K 是高纹波抑制率、低功耗、低压差，具有过流和短路保护的 CMOS 降压型电压稳压器。具有很低的静态偏置电流（25uA Typ.），它们能在输入、输出电压差极小的情况下有 250 mA 的输出电流，并且仍能保持良好的调整率。由于输入输出间的电压差很小和静态偏置电流很小，这些器件特别适用于希望延长有用电池寿命的电池供电类产品，如计算机、消费类产品和工业设备等。",
+        "type": "N/A",
+        "work_voltage": "6V",
+        "out_voltage": "3.3V",
+        "out_current": "250mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "99BC0": {
+        "box_id": 3,
+        "led_id": 66,
+        "parameter": "MT3608",
+        "voltage": "2V~24V",
+        "footprint": "",
+        "note": "【官方型号】: MT3608\n【类目/功能】: DC-DC电源芯片 > 升压型\n【技术描述】:\n• 工作电压: 2V~24V\n• 输出电压: -\n• 输出电流: 2A\n\n【详细说明】:\nMT3608是一款高效率的1.2MHz 2A升压转换器,适用于低功耗应用。它集成了80mΩ的功率MOSFET,支持2V到24V的输入电压范围,输出电压可调,最高可达28V。具有自动脉冲频率调制模式,轻载时可提高效率。内置软启动功能,减少启动时的冲击电流,延长电池寿命。提供6引脚SOT23封装。",
+        "type": "升压型",
+        "work_voltage": "2V~24V",
+        "out_voltage": "-",
+        "out_current": "2A",
+        "category": "DC-DC电源芯片"
+    },
+    "42108": {
+        "box_id": 7,
+        "led_id": 3,
+        "parameter": "HLW8032",
+        "voltage": "4.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: HLW8032\n【类目/功能】: 电能计量芯片 > N/A\n【技术描述】:\n• 工作电压: 4.5V~5.5V\n\n【详细说明】:\n高精度电能计量IC，采用CMOS工艺制造，主要用于单相应用。能够测量线路电压和电流，并计算有功功率、视在功率和功率因数。",
+        "type": "N/A",
+        "work_voltage": "4.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电能计量芯片"
+    },
+    "EDCA3": {
+        "box_id": 6,
+        "led_id": 59,
+        "parameter": "SIA517DJ-T1-GE3",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SIA517DJ-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\n特性：TrenchFET功率MOSFET。 热增强型PowerPAK@ SC-70封装。 小占地面积。 低导通电阻。应用：便携式设备的负载开关",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
+    },
+    "F90B9": {
+        "box_id": 6,
+        "led_id": 60,
+        "parameter": "LTV-356T-B",
+        "voltage": "3.3V",
+        "footprint": "",
+        "note": "【官方型号】: LTV-356T-B\n【类目/功能】: 晶体管输出光耦 > N/A\n【技术描述】:\n• 输出电流: 50mA\n\n【详细说明】:\n特性：电流传输比（CTR）：最小值为 50%（IF = 5mA，VCE = 5V）。 高输入输出隔离电压（Viso = 3750Vrms）。 高集电极发射极电压（VCEO = 80V）。应用：需要高密度安装的混合基板",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "50mA",
+        "category": "晶体管输出光耦"
+    },
+    "F40FB": {
+        "box_id": 6,
+        "led_id": 61,
+        "parameter": "ULN2003ADR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: ULN2003ADR\n【类目/功能】: 达林顿晶体管阵列 > N/A\n\n【详细说明】:\nULN2003A 高电压、大电流达林顿晶体管阵列",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "达林顿晶体管阵列"
+    },
+    "40D8F": {
+        "box_id": 7,
+        "led_id": 4,
+        "parameter": "IP2312U_VSET",
+        "voltage": "4.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: IP2312U_VSET\n【类目/功能】: 电池管理 > N/A\n【技术描述】:\n• 工作电压: 4.5V~5.5V\n\n【详细说明】:\nIP2312U是一款5V输入，支持单节锂电池同步开关降压充电管理的IC。集成功率MOS，采用同步开关架构，使其在应用时仅需极少的外围器件，并有效减小整体方案的尺寸，降低BOM成本。升压开关充电转换器工作频率750KHz，最大充电电流是3A，5V输入，3.7V/2A转换效率±94%；可通过外部电阻设置充电电流。",
+        "type": "N/A",
+        "work_voltage": "4.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "电池管理"
+    },
+    "2662C": {
+        "box_id": 7,
+        "led_id": 5,
+        "parameter": "STM32F030F4P6",
+        "voltage": "2.4V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: STM32F030F4P6\n【类目/功能】: 单片机(MCU/MPU/SOC) > N/A\n【技术描述】:\n• 工作电压: 2.4V~3.6V\n\n【详细说明】:\n特性：核心：ARM 32 位 Cortex-M0 CPU，频率高达 48 MHz。 内存：16 至 64 KB 的闪存，4 至 8 KB 带硬件奇偶校验的 SRAM。 CRC 计算单元。 复位和电源管理：电压范围 2.4V 至 3.6V，上电/掉电复位（POR/PDR），低功耗模式（睡眠、停止、待机）。 时钟管理：4 至 32 MHz 晶体振荡器，32 kHz 带校准的 RTC 振荡器，内部 8 MHz RC 可选 x6 PLL，内部 40 kHz RC 振荡器。 多达 55 个快速 I/O，均可映射到外部中断向量",
+        "type": "N/A",
+        "work_voltage": "2.4V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "单片机(MCU/MPU/SOC)"
+    },
+    "E0F71": {
+        "box_id": 7,
+        "led_id": 6,
+        "parameter": "LIS2DE12TR",
+        "voltage": "1.71V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: LIS2DE12TR\n【类目/功能】: 姿态传感器/陀螺仪 > N/A\n【技术描述】:\n• 工作电压: 1.71V~3.6V\n\n【详细说明】:\n3轴MEMS加速度计，超低功耗2 μA，±2g/±4g/±8g/±16g满量程，高速I2C/SPI数字输出，内置FIFO和高性能加速度传感器，VFLGA封装",
+        "type": "N/A",
+        "work_voltage": "1.71V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "姿态传感器/陀螺仪"
+    },
+    "215DC": {
+        "box_id": 7,
+        "led_id": 7,
+        "parameter": "AD9220ARSZ-REEL",
+        "voltage": "5V",
+        "footprint": "",
+        "note": "【官方型号】: AD9220ARSZ-REEL\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 5V\n\n【详细说明】:\n这是一代高性能、单电源12位模数转换器。每个器件都具有真正的12位线性度和温度漂移性能，以及11.5位或更好的交流性能。该系列产品共享相同的接口选项、封装和引脚排列，可根据性能、采样率和功耗进行向上或向下的组件选择。这些器件结合了低成本、高速CMOS工艺和新颖架构，以较低的功耗和成本实现了现有混合和单片实现的分辨率和速度。每个器件都是一个完整的单片ADC，带有片上高性能、低噪声采样保持放大器和可编程电压基准，也可选择外部基准以满足应用的直流精度和温度漂移要求。采用多级差分流水线架构和数字输出误差校正逻辑，在指定数据速率下提供12位精度，并保证在整个工作温度范围内无漏码",
+        "type": "N/A",
+        "work_voltage": "5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "C8821": {
+        "box_id": 7,
+        "led_id": 9,
+        "parameter": "STC15W104-35I-SOP8",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: STC15W104-35I-SOP8\n【类目/功能】: 单片机(MCU/MPU/SOC) > N/A\n【技术描述】:\n• 工作电压: 2.5V~5.5V",
+        "type": "N/A",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "单片机(MCU/MPU/SOC)"
+    },
+    "E1FFB": {
+        "box_id": 7,
+        "led_id": 8,
+        "parameter": "SN74HC4066PWR",
+        "voltage": "2V~6V",
+        "footprint": "",
+        "note": "【官方型号】: SN74HC4066PWR\n【类目/功能】: 模拟开关/多路复用器 > N/A\n【技术描述】:\n• 工作电压: 2V~6V\n\n【详细说明】:\n设计用于处理模拟和数字信号的硅栅CMOS四路模拟开关。每个开关允许在任意方向传输振幅高达6V（峰值）的信号。",
+        "type": "N/A",
+        "work_voltage": "2V~6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模拟开关/多路复用器"
+    },
+    "DEB94": {
+        "box_id": 6,
+        "led_id": 62,
+        "parameter": "SS310",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: SS310\n【类目/功能】: 肖特基二极管 > N/A\n\n【详细说明】:\n特性：可燃性等级94V-0。 内置应力消除，适合自动贴装。 高正向浪涌电流能力。 保证高温焊接：引脚250℃/10秒",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "肖特基二极管"
+    },
+    "CB51D": {
+        "box_id": 6,
+        "led_id": 63,
+        "parameter": "ZMM3V0",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: ZMM3V0\n【类目/功能】: 稳压二极管 > N/A\n\n【详细说明】:\n本款LL-34封装稳压二极管，专注于3V电压的精密稳压，具有4uA反向电流（IR），在确保稳定性的同时有效控制能耗。5mA瞬态IZT电流提供快速响应能力，适用于负载变化场景。最大功率耗散0.5W，广泛应用于各类低电压稳压及电路保护设计，以稳定性和实用性满足多元需求。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "稳压二极管"
+    },
+    "E05C9": {
+        "box_id": 3,
+        "led_id": 67,
+        "parameter": "AZ431AN-ATRE1",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: AZ431AN-ATRE1\n【类目/功能】: 电压基准芯片 > N/A\n【技术描述】:\n• 输出电压: 2.5V~36V\n• 输出电流: 100mA\n\n【详细说明】:\nAZ431 - A是一款三端可调并联稳压器，在整个工作范围内具有热稳定性。它具有陡峭的导通特性、低温度系数和低输出阻抗，使其成为开关电源、充电器及其他可调稳压器等应用中齐纳二极管的理想替代品。AZ431 - A的输出电压可设置为VREF（2.5V）至相应最大阴极电压（36V）之间的任意值",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "2.5V~36V",
+        "out_current": "100mA",
+        "category": "电压基准芯片"
+    },
+    "ECE47": {
+        "box_id": 7,
+        "led_id": 10,
+        "parameter": "ICM-20608-G",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: ICM-20608-G\n【类目/功能】: 姿态传感器/陀螺仪 > N/A\n\n【详细说明】:\nGYRO/ACCELEROMETER6AXIS16LGA",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "姿态传感器/陀螺仪"
+    },
+    "018D0": {
+        "box_id": 7,
+        "led_id": 11,
+        "parameter": "FM8002A",
+        "voltage": "2.5V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: FM8002A\n【类目/功能】: 音频功率放大器 > N/A\n【技术描述】:\n• 工作电压: 2.5V~5.5V\n\n【详细说明】:\n通用音频功放IC,带关断模式",
+        "type": "N/A",
+        "work_voltage": "2.5V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "音频功率放大器"
+    },
+    "B2A1E": {
+        "box_id": 7,
+        "led_id": 12,
+        "parameter": "DPS310XTSA1",
+        "voltage": "1.7V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: DPS310XTSA1\n【类目/功能】: 压力传感器 > N/A\n【技术描述】:\n• 工作电压: 1.7V~3.6V\n\n【详细说明】:\nDPS310是一款小型化数字气压传感器，具有高精度和低功耗的特点，能够同时测量压力和温度。压力传感器元件基于电容感应原理，可确保在温度变化时仍具备高精度。其小巧的封装使DPS310非常适合移动应用和可穿戴设备",
+        "type": "N/A",
+        "work_voltage": "1.7V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "压力传感器"
+    },
+    "7E223": {
+        "box_id": 5,
+        "led_id": 66,
+        "parameter": "7.87K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "4F7FF": {
+        "box_id": 5,
+        "led_id": 67,
+        "parameter": "23.7K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "EE0A4": {
+        "box_id": 5,
+        "led_id": 68,
+        "parameter": "510R",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "F780E": {
+        "box_id": 5,
+        "led_id": 69,
+        "parameter": "120K",
+        "voltage": "",
+        "footprint": "0805",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "2251C": {
+        "box_id": 5,
+        "led_id": 70,
+        "parameter": "18K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "BC621": {
+        "box_id": 5,
+        "led_id": 71,
+        "parameter": "0.5R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "00868": {
+        "box_id": 5,
+        "led_id": 72,
+        "parameter": "R",
+        "voltage": "",
+        "footprint": "1206",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "40789": {
+        "box_id": 7,
+        "led_id": 13,
+        "parameter": "TLP181GB-S(UMW)R",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: TLP181GB-S(UMW)\n【类目/功能】: 晶体管输出光耦 > N/A\n【技术描述】:\n• 输出电流: 50mA\n\n【详细说明】:\nUMW MINI FLAT COUPLER TLP181是一款小外形耦合器，适用于表面贴装。TLP181由一个光电晶体管和一个砷化镓红外发光二极管通过光耦合组成，采用四引脚塑料DIP封装。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "50mA",
+        "category": "晶体管输出光耦"
+    },
+    "A6B88": {
+        "box_id": 3,
+        "led_id": 68,
+        "parameter": "TL431R",
+        "voltage": "40V",
+        "footprint": "",
+        "note": "【官方型号】: TL431RM-0.5%-6AF\n【类目/功能】: 电压基准芯片 > N/A\n【技术描述】:\n• 工作电压: 40V\n• 输出电压: 2.495V~36V\n• 输出电流: 100mA\n\n【详细说明】:\nTL431RM-0.5%-6AF",
+        "type": "N/A",
+        "work_voltage": "40V",
+        "out_voltage": "2.495V~36V",
+        "out_current": "100mA",
+        "category": "电压基准芯片"
+    },
+    "A0885": {
+        "box_id": 7,
+        "led_id": 14,
+        "parameter": "SN74HC595PWR",
+        "voltage": "2V~6V",
+        "footprint": "",
+        "note": "【官方型号】: SN74HC595PWR\n【类目/功能】: 移位寄存器 > N/A\n【技术描述】:\n• 工作电压: 2V~6V\n• 输出电流: 7.8mA\n\n【详细说明】:\nSN74HC595 具有三态输出寄存器的 8 位移位寄存器",
+        "type": "N/A",
+        "work_voltage": "2V~6V",
+        "out_voltage": "N/A",
+        "out_current": "7.8mA",
+        "category": "移位寄存器"
+    },
+    "E856C": {
+        "box_id": 7,
+        "led_id": 15,
+        "parameter": "SN74LVC1GU04DBVR",
+        "voltage": "1.65V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: SN74LVC1GU04DBVR\n【类目/功能】: 反相器 > N/A\n【技术描述】:\n• 工作电压: 1.65V~5.5V\n\n【详细说明】:\nSN74LVC1GU04 单通道 1.65V 至 5.5V 反相器",
+        "type": "N/A",
+        "work_voltage": "1.65V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "反相器"
+    },
+    "28799": {
+        "box_id": 7,
+        "led_id": 16,
+        "parameter": "ST25DV64KC-IE8S3",
+        "voltage": "1.8V~5.5V",
+        "footprint": "",
+        "note": "【官方型号】: ST25DV64KC-IE8S3\n【类目/功能】: 射频卡芯片 > N/A\n【技术描述】:\n• 工作电压: 1.8V~5.5V\n\n【详细说明】:\n具有 64-Kbit EEPROM 和快速传输模式功能的动态 NFC/RFID 标签 IC",
+        "type": "N/A",
+        "work_voltage": "1.8V~5.5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "射频卡芯片"
+    },
+    "17DBB": {
+        "box_id": 7,
+        "led_id": 17,
+        "parameter": "SN74LV1T34DBVR-TP",
+        "voltage": "3V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: SN74LV1T34DBVR-TP\n【类目/功能】: 转换器/电平移位器 > N/A\n\n【详细说明】:\n该器件是一款低压CMOS门逻辑器件，可在较宽的电压范围内工作，适用于工业、便携式和电信应用。其输入采用较低阈值电路设计，以便在VCC = 3V时匹配1.8V输入逻辑。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "转换器/电平移位器"
+    },
+    "E5037": {
+        "box_id": 7,
+        "led_id": 18,
+        "parameter": "CP2102N-A02-GQFN24R",
+        "voltage": "3V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: CP2102N-A02-GQFN24R\n【类目/功能】: USB转换芯片 > N/A\n【技术描述】:\n• 工作电压: 3V~3.6V\n\n【详细说明】:\nCP2102N设备是USBXpress系列的一部分，提供USB到UART的数据传输。集成了USB 2.0全速功能控制器、USB收发器和异步收发器（UART）。支持多种应用领域，如POS终端、医疗设备、USB加密狗等。",
+        "type": "N/A",
+        "work_voltage": "3V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "USB转换芯片"
+    },
+    "57E86": {
+        "box_id": 3,
+        "led_id": 69,
+        "parameter": "MP1584EN-LF-Z",
+        "voltage": "4.5V~28V",
+        "footprint": "",
+        "note": "【官方型号】: MP1584EN-LF-Z\n【类目/功能】: DC-DC电源芯片 > 降压型\n【技术描述】:\n• 工作电压: 4.5V~28V\n• 输出电压: 800mV~25V\n• 输出电流: 3A\n\n【详细说明】:\nDCDC降压，电源输入7V~30V，1A~3A(中电流)方案，MP1584是一款高频率、非同步降压转换器,具有宽输入电压范围（4.5V至28V）,内置高压侧MOSFET,提供3A输出电流,支持可编程开关频率（100kHz至1.5MHz）。该芯片适用于汽车系统、工业电源系统和分布式电源系统等应用。",
+        "type": "降压型",
+        "work_voltage": "4.5V~28V",
+        "out_voltage": "800mV~25V",
+        "out_current": "3A",
+        "category": "DC-DC电源芯片"
+    },
+    "AC2D7": {
+        "box_id": 3,
+        "led_id": 70,
+        "parameter": "LP2992AIM5X-3.3/NOPB",
+        "voltage": "16V",
+        "footprint": "",
+        "note": "【官方型号】: LP2992AIM5X-3.3/NOPB\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 16V\n• 输出电压: 3.3V\n• 输出电流: 250mA\n\n【详细说明】:\nLP2992 具有使能功能的 250mA、16V、低压降稳压器",
+        "type": "N/A",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "250mA",
+        "category": "线性稳压器(LDO)"
+    },
+    "4FC8C": {
+        "box_id": 7,
+        "led_id": 19,
+        "parameter": "FM116C",
+        "voltage": "2V~9V",
+        "footprint": "",
+        "note": "【官方型号】: FM116C\n【类目/功能】: 有刷直流电机驱动芯片 > N/A\n【技术描述】:\n• 工作电压: 2V~9V\n• 输出电流: 600mA\n\n【详细说明】:\nFM116C 是专为驱动小电流直流马达而设计的集成电路，该电路采用SOT23-6 微型封装，为对空间敏感的系统设计提供理想选择。 电路采用H 桥结构，内置功率MOSFET 开关，可实现对负载直流电机正转、反转、刹车以及待机四个功能的控制，刹车功能能使负载电机快速停止转动，待机功能使电路静态功耗极低(小于1uA)。 电路内置低阻功率MOSFET 开关，在300mA 负载电流条件下，电路产生的压降500mV，功耗为150mW，在SOT23-6 封装允许的范围之内，电路可长时间持续工作。",
+        "type": "N/A",
+        "work_voltage": "2V~9V",
+        "out_voltage": "N/A",
+        "out_current": "600mA",
+        "category": "有刷直流电机驱动芯片"
+    },
+    "A224F": {
+        "box_id": 5,
+        "led_id": 73,
+        "parameter": "0.003R",
+        "voltage": "",
+        "footprint": "2512",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    }
+}

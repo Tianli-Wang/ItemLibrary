@@ -6,12 +6,149 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>元件管理器</title>
     <style>
+        :root {
+            --sidebar-width: 240px;
+            --primary-color: #007aff;
+            --primary-hover: #0056b3;
+            --bg-color: #f4f4f9;
+            --sidebar-bg: #1e1e2d;
+            --sidebar-text: #a2a3b7;
+            --sidebar-active-text: #ffffff;
+            --sidebar-active-bg: #2d2d44;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f4f9;
+            background-color: var(--bg-color);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar-bg);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 100;
+            position: relative;
+        }
+
+        /* Resizer styles */
+        .resizer {
+            background: transparent;
+            position: relative;
+            z-index: 200;
+            transition: background 0.2s;
+        }
+
+        .resizer:hover,
+        .resizer.resizing {
+            background: var(--primary-color);
+        }
+
+        .resizer.horizontal {
+            width: 4px;
+            cursor: col-resize;
+            margin: 0 -2px;
+        }
+
+        .resizer.vertical {
+            height: 4px;
+            cursor: row-resize;
+            margin: -2px 0;
+        }
+
+        /* Prevent selection during resize */
+        body.is-resizing {
+            cursor: col-resize;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .sidebar-header {
+            padding: 30px 25px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-menu {
+            padding-top: 20px;
+            flex-grow: 1;
+        }
+
+        .nav-item {
+            padding: 15px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--sidebar-text);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-item:hover {
+            background: var(--sidebar-active-bg);
+            color: var(--sidebar-active-text);
+        }
+
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .page-panel {
+            display: none;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            /* 核心：面板本身不滚动，交由子容器滚动 */
+            padding: 25px;
+            box-sizing: border-box;
+            /* gap: 20px;  移除 gap，改由 resizer 处理间距 */
+        }
+
+        .page-panel.active {
+            display: flex;
+        }
+
+        /* 为 form-section 和 list-section 之间增加间距的替代方案 */
+        .form-section {
+            padding: 25px;
+            width: 400px;
+            flex-shrink: 0;
+            overflow-y: auto;
+            /* 侧边表单如果过长则自己滚动 */
+        }
+
+        #form-resizer {
+            width: 12px;
+            /* 稍微宽一点以便点击，但背景透明 */
+            flex-shrink: 0;
+        }
+
+        #sidebar-resizer {
+            width: 6px;
+            flex-shrink: 0;
         }
 
         h1,
@@ -19,33 +156,53 @@
             color: #333;
             border-bottom: 2px solid #ddd;
             padding-bottom: 5px;
+            margin-top: 0;
         }
 
         .container {
             background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            height: 100%;
+            /* 让容器填满父级高度 */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
         }
 
         .form-section {
             padding: 25px;
             width: 400px;
+            flex-shrink: 0;
+            overflow-y: auto;
+            /* 侧边表单如果过长则自己滚动 */
         }
 
         .list-section {
             padding: 25px;
-            width: 500px;
-            margin-left: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            /* 防止外层滚动 */
+        }
+
+        #component-list-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-right: 10px;
+            /* 为滚动条留出空间 */
         }
 
         input[type="text"],
         input[type="number"],
         textarea {
-            width: calc(100% - 20px);
+            width: 100%;
             padding: 10px;
             margin-bottom: 12px;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 6px;
+            box-sizing: border-box;
         }
 
         textarea {
@@ -67,10 +224,6 @@
             gap: 8px;
         }
 
-        .label-with-buttons label {
-            margin-bottom: 0;
-        }
-
         .button-set {
             display: flex;
             flex-wrap: wrap;
@@ -90,37 +243,50 @@
             user-select: none;
         }
 
-        .param-btn:hover,
-        .footprint-btn:hover {
-            background: #dcdce0;
+        .param-btn.selected {
+            background-color: var(--primary-color);
+            color: white;
         }
 
-        .param-btn.selected {
-            background-color: #007aff;
-            color: white;
+        #add-btn,
+        #update-btn {
+            padding: 12px 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 15px;
             font-weight: 600;
+            flex: 1;
+            transition: background-color 0.2s;
         }
 
         #add-btn {
-            background-color: #007aff;
+            background-color: var(--primary-color);
             color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
         }
 
         #add-btn:hover {
-            background-color: #0056b3;
+            background-color: var(--primary-hover);
+        }
+
+        #update-btn {
+            background-color: #ff9500;
+            color: white;
+        }
+
+        #update-btn:hover {
+            background-color: #e68600;
+        }
+
+        .form-btn-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
         }
 
         #component-list {
             list-style: none;
             padding: 0;
-            max-height: 120vh;
-            overflow-y: auto;
         }
 
         #component-list li {
@@ -128,173 +294,437 @@
             border: 1px solid #eee;
             padding: 12px;
             margin-bottom: 8px;
-            border-radius: 4px;
+            border-radius: 6px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        #component-list li>span {
-            flex-grow: 1;
-            margin-right: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        #component-list li:hover {
+            background: #f0f7ff;
+            border-color: var(--primary-color);
+            transform: translateX(5px);
         }
 
         .list-line-1 {
-            font-size: 1.2em;
+            font-size: 1.1em;
             font-weight: 600;
-            color: #000;
         }
 
         .list-line-2 {
             font-size: 0.9em;
             color: #555;
-            margin-top: 2px;
         }
 
         .list-line-3 {
             font-size: 0.8em;
             color: #888;
-            margin-top: 2px;
         }
 
         .list-line-note {
             font-size: 0.85em;
-            color: #666;
+            color: #444;
+            margin-top: 6px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-left: 3px solid var(--primary-color);
+            border-radius: 4px;
+            white-space: pre-wrap;
+            line-height: 1.5;
+        }
+
+        .type-badge {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-right: 8px;
+            border: 1px solid #bbdefb;
+        }
+
+        .spec-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #f1f8e9;
+            color: #388e3c;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 6px;
             margin-top: 4px;
-            padding: 4px 8px;
-            background: #f0f0f0;
-            border-radius: 3px;
-            font-style: italic;
+            border: 1px solid #dcedc8;
+        }
+
+        .spec-badge.voltage {
+            background: #fff3e0;
+            color: #f57c00;
+            border-color: #ffe0b2;
+        }
+
+        .spec-badge.current {
+            background: #f3e5f5;
+            color: #7b1fa2;
+            border-color: #e1bee7;
+        }
+
+        .category-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #efebe9;
+            color: #5d4037;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            margin-right: 6px;
+            margin-top: 4px;
+            border: 1px solid #d7ccc8;
+        }
+
+        .list-line-note {
+            font-size: 0.85em;
+            color: #444;
+            margin-top: 8px;
+            padding: 10px;
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 4px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            position: relative;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .list-line-note.collapsed {
+            max-height: 3.2em;
+            /* 约显示两行 */
+        }
+
+        .list-line-note.collapsed::after {
+            content: "展开备注 ▼";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, #ffffff 80%);
+            color: var(--primary-color);
+            text-align: center;
+            font-size: 0.8em;
+            padding: 5px 0;
+            font-weight: bold;
+        }
+
+        .list-line-note:not(.collapsed)::after {
+            content: "收起备注 ▲";
+            display: block;
+            text-align: center;
+            color: #999;
+            font-size: 0.8em;
+            margin-top: 5px;
+            border-top: 1px dashed #eee;
+            padding-top: 5px;
+        }
+
+        .list-line-specs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+
+        /* 快速调整输入框 */
+        .quick-edit-input {
+            width: 50px !important;
+            padding: 4px 6px !important;
+            margin-bottom: 0 !important;
+            font-size: 0.85em !important;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: border-color 0.2s;
+        }
+
+        .quick-edit-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .quick-edit-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85em;
+            color: #666;
         }
 
         .delete-btn {
-            background: #ff3b30;
+            background-color: #ff3b30;
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            border-radius: 6px;
+            padding: 6px 12px;
             cursor: pointer;
-            flex-shrink: 0;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: background-color 0.2s;
         }
 
         .delete-btn:hover {
-            background: #c51a0d;
+            background-color: #d32f2f;
         }
 
-        .sort-controls {
+        /* 统一工具栏 */
+        .list-toolbar {
+            background: #fff;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .toolbar-row {
+            display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            gap: 10px;
         }
 
-        .sort-controls label {
-            font-weight: 500;
-            font-size: 0.9em;
-            margin-right: 5px;
+        .toolbar-label {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #666;
+            min-width: 60px;
         }
 
-        .sort-select {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 0.9em;
+        .search-group {
+            display: flex;
+            flex-grow: 1;
+            gap: 8px;
+        }
+
+        .search-group input {
+            flex: 1;
+            margin-bottom: 0 !important;
+            padding: 8px 12px !important;
+            font-size: 0.9em !important;
+        }
+
+        .sort-btn-group {
+            display: flex;
+            gap: 6px;
+        }
+
+        .sort-badge {
+            padding: 5px 12px;
+            background: #f0f0f4;
+            color: #555;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+            user-select: none;
+        }
+
+        .sort-badge:hover {
+            background: #e4e4eb;
+        }
+
+        .sort-badge.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .dir-toggle {
+            padding: 5px 12px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 0.8em;
+            cursor: pointer;
+            font-weight: 600;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dir-toggle:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        #bom-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        #bom-panel {
+            padding: 0;
+            height: 100vh;
+            width: 100%;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .nav-item.action-item:hover {
+            opacity: 1 !important;
+            background: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container form-section">
-        <h2>录入新元件</h2>
-        <form id="add-form">
-            <label for="comp_name">元件名称 (唯一Key)</label>
-            <input type="text" id="comp_name" placeholder="自动生成ID..." required>
-
-            <label for="box_id">料盒ID (box_id)</label>
-            <input type="number" id="box_id" placeholder="1" required>
-
-            <label for="led_id">LED ID (led_id)</label>
-            <input type="number" id="led_id" placeholder="1" required>
-
-            <label for="parameter">参数 (parameter)</label>
-            <div class="button-set">
-                <span class="param-btn" id="btn-param-r">R</span>
-                <span class="param-btn" id="btn-param-k">K</span>
-                <span class="param-btn" id="btn-param-pf">pF</span>
-                <span class="param-btn" id="btn-param-nf">nF</span>
-                <span class="param-btn" id="btn-param-uf">uF</span>
-                <span class="param-btn" id="btn-param-nh">nH</span>
-                <span class="param-btn" id="btn-param-uh">uH</span>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span>🛠️ 元件管家</span>
+        </div>
+        <nav class="nav-menu">
+            <div class="nav-item active" data-target="management-panel">
+                <span>📦 元件管理</span>
             </div>
-            <input type="text" id="parameter" placeholder="例如: 10 (在此处输入数值)">
-
-            <div class="label-with-buttons">
-                <label for="footprint">封装 (footprint)</label>
-                <span class="footprint-btn" id="btn-footprint-0402">0402</span>
-                <span class="footprint-btn" id="btn-footprint-0603">0603</span>
-                <span class="footprint-btn" id="btn-footprint-0805">0805</span>
-                <span class="footprint-btn" id="btn-footprint-1206">1206</span>
+            <div class="nav-item" data-target="bom-panel">
+                <span>🔍 BOM 浏览</span>
             </div>
-            <input type="text" id="footprint" placeholder="0603">
-
-            <label for="voltage">电压 (voltage)</label>
-            <div class="button-set">
-                <span class="param-btn" id="btn-volt-6v3">6.3V</span>
-                <span class="param-btn" id="btn-volt-10v">10V</span>
-                <span class="param-btn" id="btn-volt-16v">16V</span>
-                <span class="param-btn" id="btn-volt-25v">25V</span>
-                <span class="param-btn" id="btn-volt-50v">50V</span>
-                <span class="param-btn" id="btn-volt-100v">100V</span>
+            <div class="nav-item-separator" style="height: 1px; background: rgba(255,255,255,0.1); margin: 10px 0;">
             </div>
-            <input type="text" id="voltage" placeholder="16">
+            <div class="nav-item action-item" onclick="document.getElementById('bom-upload-input').click()"
+                style="cursor: pointer; opacity: 0.8; transition: opacity 0.3s;">
+                <span>📂 导入 BOM HTML</span>
+            </div>
+            <div id="bom-status-container" style="padding: 0 20px; margin-top: 5px;">
+                <input type="file" id="bom-upload-input" style="display: none;" accept=".html"
+                    onchange="handleBomUpload(event)">
+                <span id="bom-status-text"
+                    style="font-size: 0.75rem; color: #888; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">支持原始
+                    KiCad HTML</span>
+            </div>
+        </nav>
+    </aside>
 
-            <label for="note">备注 (note)</label>
-            <textarea id="note" placeholder="可选填写备注信息..."></textarea>
+    <div id="sidebar-resizer" class="resizer horizontal"></div>
 
-            <button type="submit" id="add-btn">添加元件</button>
-        </form>
-    </div>
+    <main class="main-content">
+        <div id="management-panel" class="page-panel active">
+            <div class="container form-section" id="form-section">
+                <h2>录入新元件</h2>
+                <form id="add-form">
+                    <label for="comp_name">元件名称 (唯一Key)</label>
+                    <input type="text" id="comp_name" placeholder="自动生成ID..." required>
 
-    <div class="container list-section">
+                    <label for="box_id">料盒ID (box_id)</label>
+                    <input type="number" id="box_id" placeholder="1" required>
 
-        <div style="margin-bottom: 15px;">
-            <label style="font-weight: 600; margin-bottom: 5px; display: block;">搜索元件</label>
-            <div style="display: flex; gap: 10px; margin-bottom: 5px;">
-                <input type="text" id="search-parameter" placeholder="参数 (parameter)"
-                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
-                <input type="text" id="search-voltage" placeholder="电压 (voltage)"
-                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
-                <input type="text" id="search-footprint" placeholder="封装 (footprint)"
-                    style="flex: 1; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 0.9em;">
+                    <label for="led_id">LED ID (led_id)</label>
+                    <input type="number" id="led_id" placeholder="1" required>
+
+                    <label for="parameter">参数 (parameter)</label>
+                    <div class="button-set">
+                        <span class="param-btn" id="btn-param-r">R</span>
+                        <span class="param-btn" id="btn-param-k">K</span>
+                        <span class="param-btn" id="btn-param-pf">pF</span>
+                        <span class="param-btn" id="btn-param-nf">nF</span>
+                        <span class="param-btn" id="btn-param-uf">uF</span>
+                        <span class="param-btn" id="btn-param-nh">nH</span>
+                        <span class="param-btn" id="btn-param-uh">uH</span>
+                    </div>
+                    <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+                        <input type="text" id="parameter" placeholder="例如: 10 (在此处输入数值)"
+                            style="flex: 1; margin-bottom: 0;">
+                        <button type="button" id="search-lcsc-btn"
+                            style="padding: 10px 15px; background: #34c759; color: white; border: none; border-radius: 6px; cursor: pointer; white-space: nowrap; font-weight: 600;">搜索立创</button>
+                    </div>
+
+                    <div class="label-with-buttons">
+                        <label for="footprint">封装 (footprint)</label>
+                        <span class="footprint-btn" id="btn-footprint-0402">0402</span>
+                        <span class="footprint-btn" id="btn-footprint-0603">0603</span>
+                        <span class="footprint-btn" id="btn-footprint-0805">0805</span>
+                        <span class="footprint-btn" id="btn-footprint-1206">1206</span>
+                    </div>
+                    <input type="text" id="footprint" placeholder="0603">
+
+                    <label for="voltage">电压 (voltage)</label>
+                    <div class="button-set">
+                        <span class="param-btn" id="btn-volt-6v3">6.3V</span>
+                        <span class="param-btn" id="btn-volt-10v">10V</span>
+                        <span class="param-btn" id="btn-volt-16v">16V</span>
+                        <span class="param-btn" id="btn-volt-25v">25V</span>
+                        <span class="param-btn" id="btn-volt-50v">50V</span>
+                        <span class="param-btn" id="btn-volt-100v">100V</span>
+                    </div>
+                    <input type="text" id="voltage" placeholder="16">
+
+                    <label for="note">备注 (note)</label>
+                    <textarea id="note" placeholder="可选填写备注信息..."></textarea>
+
+                    <div class="form-btn-container">
+                        <button type="submit" id="add-btn">添加为新元件</button>
+                        <button type="button" id="update-btn">更新现有信息</button>
+                    </div>
+                </form>
+            </div>
+
+            <div id="form-resizer" class="resizer horizontal"></div>
+
+            <div class="container list-section">
+                <div class="list-toolbar">
+                    <!-- 搜索行 -->
+                    <div class="toolbar-row">
+                        <span class="toolbar-label">智能搜索</span>
+                        <div class="search-group">
+                            <input type="text" id="search-parameter" placeholder="参数 (e.g. 10k, 104)">
+                            <input type="text" id="search-voltage" placeholder="电压 (e.g. 16V)">
+                            <input type="text" id="search-footprint" placeholder="封装 (e.g. 0603)">
+                            <input type="text" id="search-boxid" placeholder="料盒 (Box ID)">
+                        </div>
+                    </div>
+                    <!-- 排序行 -->
+                    <div class="toolbar-row">
+                        <span class="toolbar-label">列表排序</span>
+                        <div class="sort-btn-group" id="sort-selector">
+                            <div class="sort-badge active" data-criteria="parameter">数值参数</div>
+                            <div class="sort-badge" data-criteria="box">料盒/LED</div>
+                            <div class="sort-badge" data-criteria="led">LED ID</div>
+                            <div class="sort-badge" data-criteria="key">名称(Key)</div>
+                        </div>
+                        <div style="margin-left: auto;">
+                            <button class="dir-toggle" id="dir-toggle-btn">
+                                <span id="dir-icon">↑</span>
+                                <span id="dir-text">正序</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="component-list-container">
+                    <ul id="component-list">
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="sort-controls">
-            <div>
-                <label for="sort-criteria">排序:</label>
-                <select id="sort-criteria" class="sort-select">
-                    <option value="parameter">按参数 (Parameter)</option>
-                    <option value="box">按料盒 (Box, LED)</option>
-                    <option value="led">按 LED ID</option>
-                    <option value="key">按名称 (Key)</option>
-                </select>
-            </div>
-            <div>
-                <select id="sort-direction" class="sort-select">
-                    <option value="asc">正序 (A-Z, 1-9)</option>
-                    <option value="desc">倒序 (Z-A, 9-1)</option>
-                </select>
-            </div>
+        <div id="bom-panel" class="page-panel">
+            <iframe id="bom-frame" src="about:blank"></iframe>
         </div>
+    </main>
 
-        <h2>已录入元件</h2>
-        <ul id="component-list">
-        </ul>
-    </div>
 
     <script>
         const list = document.getElementById('component-list');
@@ -311,21 +741,166 @@
         const paramButtons = document.querySelectorAll('.param-btn');
         let currentSortCriteria = 'parameter';
         let currentSortDirection = 'asc';
-        const sortCriteriaSelect = document.getElementById('sort-criteria');
-        const sortDirectionSelect = document.getElementById('sort-direction');
         const searchParameterInput = document.getElementById('search-parameter');
         const searchVoltageInput = document.getElementById('search-voltage');
         const searchFootprintInput = document.getElementById('search-footprint');
         let searchFilters = {
             parameter: '',
             voltage: '',
-            footprint: ''
+            footprint: '',
+            boxid: ''
         };
+
+        // --- 分页相关 (已移除) ---
+
+        // --- 视图切换 ---
+        const navItems = document.querySelectorAll('.nav-item');
+        const pagePanels = document.querySelectorAll('.page-panel');
+        const bomFrame = document.getElementById('bom-frame');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+                navItems.forEach(ni => ni.classList.remove('active'));
+                item.classList.add('active');
+                pagePanels.forEach(panel => {
+                    panel.classList.remove('active');
+                    if (panel.id === target) panel.classList.add('active');
+                });
+                if (target === 'bom-panel' && (bomFrame.src === 'about:blank' || bomFrame.src === '')) {
+                    bomFrame.src = '/bom_view';
+                }
+            });
+        });
+
+        // --- 拖动调节大小逻辑 ---
+        function initResizer(resizerId, targetElementId, property = 'width', isSidebar = false) {
+            const resizer = document.getElementById(resizerId);
+            const target = document.getElementById(targetElementId);
+            let startX, startWidth;
+
+            resizer.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                startWidth = target.offsetWidth;
+                document.body.classList.add('is-resizing');
+                resizer.classList.add('resizing');
+
+                document.addEventListener('mousemove', handleMouseMove);
+                document.addEventListener('mouseup', stopResizing);
+            });
+
+            function handleMouseMove(e) {
+                const deltaX = e.clientX - startX;
+                let newWidth = startWidth + deltaX;
+
+                // 限制最小和最大宽度
+                if (isSidebar) {
+                    newWidth = Math.max(150, Math.min(600, newWidth));
+                    document.documentElement.style.setProperty('--sidebar-width', newWidth + 'px');
+                } else {
+                    newWidth = Math.max(300, Math.min(800, newWidth));
+                    target.style.width = newWidth + 'px';
+                }
+            }
+
+            function stopResizing() {
+                document.body.classList.remove('is-resizing');
+                resizer.classList.remove('resizing');
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', stopResizing);
+
+                // 保存到本地存储
+                const finalWidth = isSidebar ?
+                    getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width') :
+                    target.style.width;
+                localStorage.setItem(`resizer-${resizerId}`, finalWidth);
+            }
+        }
+
+        // 初始化
+        initResizer('sidebar-resizer', 'sidebar', 'width', true);
+        initResizer('form-resizer', 'form-section', 'width', false);
+
+        // 加载保存的宽度
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedSidebarWidth = localStorage.getItem('resizer-sidebar-resizer');
+            if (savedSidebarWidth) {
+                document.documentElement.style.setProperty('--sidebar-width', savedSidebarWidth);
+            }
+            const savedFormWidth = localStorage.getItem('resizer-form-resizer');
+            if (savedFormWidth) {
+                document.getElementById('form-section').style.width = savedFormWidth;
+            }
+        });
+
 
         function generateRandomID() {
             const max = 0xFFFFF;
             const randHex = Math.floor(Math.random() * (max + 1)).toString(16);
             return randHex.toUpperCase().padStart(5, '0');
+        }
+
+        /**
+         * 电子元件数值归一化 (e.g., 10k -> 10000, 0.1u -> 100n)
+         */
+        function parseElectronicValue(str) {
+            if (!str) return null;
+            let s = str.toString().toLowerCase().trim();
+
+            // 1. 处理特殊格式 4K7 -> 4.7k, 10R -> 10
+            s = s.replace(/^(\d+)([rkmunpfv])(\d*)$/i, (match, p1, p2, p3) => {
+                if (p2 === 'r' || p2 === 'v') return p1 + "." + (p3 || "0");
+                return p1 + "." + (p3 || "0") + p2;
+            });
+
+            // 2. 清理常见后缀
+            s = s.replace(/ω|ohm|farad|f|v/g, '');
+
+            const units = {
+                'p': 1e-12, 'n': 1e-9, 'u': 1e-6, 'm': 1e-3,
+                'k': 1e3, 'M': 1e6, 'g': 1e9, 'r': 1
+            };
+
+            const regex = /^([\d\.]+)\s*([a-zμ]*)$/i;
+            const match = s.match(regex);
+
+            if (match) {
+                let val = parseFloat(match[1]);
+                let unitStr = match[2];
+                if (unitStr.includes('μ')) unitStr = 'u';
+                let unitChar = unitStr.charAt(0);
+                if (units[unitChar]) return val * units[unitChar];
+                return val;
+            }
+            return null;
+        }
+
+        /**
+         * 智能匹配判断
+         */
+        function isElectronicMatch(dataVal, searchVal) {
+            if (!searchVal || searchVal.trim() === '') return true;
+            if (!dataVal) return false;
+
+            const dv = dataVal.toLowerCase();
+            const sv = searchVal.toLowerCase();
+
+            // A. 基础字符串包含 (处理 0603 匹配 C0603 等)
+            if (dv.includes(sv)) return true;
+
+            // B. 数值逻辑匹配 (10k == 10000)
+            const numData = parseElectronicValue(dataVal);
+            const numSearch = parseElectronicValue(searchVal);
+
+            if (numData !== null && numSearch !== null) {
+                // 允许 0.1% 的浮点误差
+                const diff = Math.abs(numData - numSearch);
+                const max = Math.max(numData, numSearch);
+                if (max === 0) return diff === 0;
+                return (diff / max) < 0.001;
+            }
+
+            return false;
         }
 
         async function loadComponents() {
@@ -339,40 +914,24 @@
                 return { key: key, details: components[key] };
             });
 
-            // 搜索过滤 - 每个字段独立过滤
             let filteredArray = componentArray;
 
-            // 只有当至少有一个搜索框有内容时才进行过滤
             const hasSearchCriteria = searchFilters.parameter.trim() !== '' ||
                 searchFilters.voltage.trim() !== '' ||
-                searchFilters.footprint.trim() !== '';
+                searchFilters.footprint.trim() !== '' ||
+                searchFilters.boxid.trim() !== '';
 
             if (hasSearchCriteria) {
                 filteredArray = componentArray.filter(item => {
-                    let matchParameter = true;
-                    let matchVoltage = true;
-                    let matchFootprint = true;
+                    const matchParameter = isElectronicMatch(item.details.parameter, searchFilters.parameter);
+                    const matchVoltage = isElectronicMatch(item.details.voltage, searchFilters.voltage);
+                    const matchFootprint = isElectronicMatch(item.details.footprint, searchFilters.footprint);
 
-                    // 如果参数搜索框有内容,则必须匹配
-                    if (searchFilters.parameter.trim() !== '') {
-                        const parameter = item.details.parameter.toLowerCase();
-                        matchParameter = parameter.includes(searchFilters.parameter.toLowerCase());
-                    }
+                    // Box ID 匹配：全等或包含
+                    const searchBox = searchFilters.boxid.trim();
+                    const matchBox = !searchBox || (item.details.box_id && item.details.box_id.toString().includes(searchBox));
 
-                    // 如果电压搜索框有内容,则必须匹配
-                    if (searchFilters.voltage.trim() !== '') {
-                        const voltage = (item.details.voltage || '').toLowerCase();
-                        matchVoltage = voltage.includes(searchFilters.voltage.toLowerCase());
-                    }
-
-                    // 如果封装搜索框有内容,则必须匹配
-                    if (searchFilters.footprint.trim() !== '') {
-                        const footprint = item.details.footprint.toLowerCase();
-                        matchFootprint = footprint.includes(searchFilters.footprint.toLowerCase());
-                    }
-
-                    // 所有有内容的搜索框都必须匹配
-                    return matchParameter && matchVoltage && matchFootprint;
+                    return matchParameter && matchVoltage && matchFootprint && matchBox;
                 });
             }
 
@@ -382,12 +941,12 @@
 
                 switch (currentSortCriteria) {
                     case 'parameter':
-                        compareResult = a.details.parameter.localeCompare(b.details.parameter, undefined, compareOptions);
+                        // 智能数值排序
+                        const valA = parseElectronicValue(a.details.parameter) || 0;
+                        const valB = parseElectronicValue(b.details.parameter) || 0;
+                        compareResult = valA - valB;
                         if (compareResult === 0) {
                             compareResult = a.details.footprint.localeCompare(b.details.footprint, undefined, compareOptions);
-                        }
-                        if (compareResult === 0) {
-                            compareResult = a.details.box_id - b.details.box_id;
                         }
                         break;
 
@@ -413,39 +972,133 @@
                 return currentSortDirection === 'asc' ? compareResult : -compareResult;
             });
 
-
             for (const item of filteredArray) {
                 const key = item.key;
                 const details = item.details;
-                let line1_details = `${details.parameter} | ${details.footprint}`;
+
+                let typeHtml = '';
+                if (details.type && details.type !== 'N/A') {
+                    typeHtml = `<span class="type-badge">🏷️ ${details.type}</span>`;
+                }
+
+                let specsHtml = '';
+                // 只要电压值不为空，就显示耐压值标签
                 if (details.voltage && details.voltage.trim() !== '') {
-                    line1_details += ` | ${details.voltage}`;
+                    specsHtml += `<span class="spec-badge voltage">⚡ 工作电压: ${details.voltage}</span>`;
+                }
+                // if (details.work_voltage && details.work_voltage !== 'N/A') {
+                //     specsHtml += `<span class="spec-badge voltage">⚡ 工作电压: ${details.work_voltage}</span>`;
+                // }
+                if (details.out_voltage && details.out_voltage !== 'N/A') {
+                    specsHtml += `<span class="spec-badge voltage">🔌 输出电压: ${details.out_voltage}</span>`;
+                }
+                if (details.out_current && details.out_current !== 'N/A') {
+                    specsHtml += `<span class="spec-badge current">🔋 输出电流: ${details.out_current}</span>`;
+                }
+                if (details.category && details.category !== 'N/A') {
+                    specsHtml += `<span class="category-badge">📂 ${details.category}</span>`;
                 }
 
                 let noteHtml = '';
                 if (details.note && details.note.trim() !== '') {
-                    noteHtml = `<div class="list-line-note">📝 ${details.note}</div>`;
+                    noteHtml = `<div class="list-line-note collapsed">${details.note}</div>`;
                 }
 
                 const li = document.createElement('li');
+                li.style.flexDirection = 'column';
+                li.style.alignItems = 'stretch';
+
+                // 处理电压显示逻辑：只要电压值不为空，就在主标题显示
+                let displayParameter = details.parameter;
+                // if (details.voltage && details.voltage.trim() !== '') {
+                //     displayParameter += ` (${details.voltage})`;
+                // }
+
                 li.innerHTML = `
-                    <span>
-                        <div class="list-line-1">${line1_details}</div>
-                        <div class="list-line-2">(Box: ${details.box_id}, LED: ${details.led_id})</div>
-                        <div class="list-line-3">${key}</div>
-                        ${noteHtml}
-                    </span>
-                    <button class="delete-btn" data-key="${key}">删除</button>
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                        <span style="flex: 1;">
+                            <div class="list-line-1">${typeHtml}${displayParameter} | ${details.footprint}</div>
+                            <div class="list-line-2" style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
+                                <span>ID: <code style="background: #eee; padding: 2px 4px; border-radius: 3px;">${key}</code></span>
+                                <div class="quick-edit-group">
+                                    <span>Box</span>
+                                    <input type="number" class="quick-edit-input quick-box-id" data-key="${key}" value="${details.box_id}">
+                                </div>
+                                <div class="quick-edit-group">
+                                    <span>LED</span>
+                                    <input type="number" class="quick-edit-input quick-led-id" data-key="${key}" value="${details.led_id}">
+                                </div>
+                            </div>
+                            <div class="list-line-specs">${specsHtml}</div>
+                        </span>
+                        <button class="delete-btn" data-key="${key}" style="margin-left: 10px;">删除</button>
+                    </div>
+                    ${noteHtml}
                 `;
                 list.appendChild(li);
             }
         }
 
-        function findNextLedId() {
+        // --- 快速编辑监听 (使用事件委托) ---
+        list.addEventListener('change', async (e) => {
+            if (e.target.classList.contains('quick-edit-input')) {
+                const key = e.target.dataset.key;
+                const isBox = e.target.classList.contains('quick-box-id');
+                const newValue = parseInt(e.target.value);
+
+                if (isNaN(newValue)) return;
+
+                const updateDetails = {};
+                if (isBox) {
+                    updateDetails.box_id = newValue;
+                } else {
+                    updateDetails.led_id = newValue;
+                }
+
+                try {
+                    const response = await fetch('/api/update', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ component_name: key, details: updateDetails })
+                    });
+                    const result = await response.json();
+                    if (!result.success) {
+                        alert('更新失败: ' + result.error);
+                        await loadComponents(); // 恢复原状
+                    } else {
+                        // 更新本地数据
+                        allComponents[key] = { ...allComponents[key], ...updateDetails };
+                        console.log(`Updated ${key}:`, updateDetails);
+                        // 立即刷新排序和列表
+                        await loadComponents();
+                    }
+                } catch (err) {
+                    alert('网络错误: ' + err.message);
+                    await loadComponents();
+                }
+            }
+        });
+
+        // --- 竖动条翻页监听 (已移除) ---
+
+        // --- 鼠标滚轮翻页监听 (取消自动换页) ---
+        const listContainer = document.getElementById('component-list-container');
+        // 已按照用户要求移除自动换页逻辑，保留容器正常滚动
+
+        let lastAutoBoxId = null;
+
+        function findNextLedId(force = false) {
             const targetBoxId = parseInt(boxIdInput.value);
             if (isNaN(targetBoxId)) {
                 return;
             }
+
+            // 如果不是强制更新，且当前已经有手动输入的值，则不再自动覆盖
+            // 除非 Box ID 发生了实质性的变化
+            if (!force && targetBoxId === lastAutoBoxId && ledIdInput.value !== "") {
+                return;
+            }
+
             let maxLedId = 0;
             for (const details of Object.values(allComponents)) {
                 if (details.box_id === targetBoxId) {
@@ -455,6 +1108,7 @@
                 }
             }
             ledIdInput.value = maxLedId + 1;
+            lastAutoBoxId = targetBoxId;
         }
 
         form.addEventListener('submit', async (e) => {
@@ -471,7 +1125,12 @@
                 "parameter": finalParameter,
                 "voltage": voltageInput.value,
                 "footprint": footprintInput.value,
-                "note": noteInput.value.trim()
+                "note": noteInput.value.trim(),
+                "type": window._lastFetchedData?.功能类型 || "N/A",
+                "work_voltage": window._lastFetchedData?.工作电压 || "N/A",
+                "out_voltage": window._lastFetchedData?.输出电压 || "N/A",
+                "out_current": window._lastFetchedData?.输出电流 || "N/A",
+                "category": window._lastFetchedData?.类目 || "N/A"
             };
 
             // 检查是否已存在相同参数、电压、封装的元件
@@ -521,8 +1180,12 @@
                 footprintInput.value = submittedFootprint;
                 compNameInput.value = generateRandomID();
 
+                // 重置暂存数据
+                window._lastFetchedData = null;
+                lastAutoBoxId = submittedBoxId; // 标记当前 Box 已处理
+
                 await loadComponents();
-                findNextLedId();
+                findNextLedId(true); // 添加成功后强制更新到下一个
             } else {
                 alert('添加失败: ' + result.error);
                 if (result.error.includes("已存在")) {
@@ -532,6 +1195,7 @@
         });
 
         list.addEventListener('click', async (e) => {
+            // 排除掉点击删除按钮和快速编辑输入框的情况
             if (e.target.classList.contains('delete-btn')) {
                 const key = e.target.dataset.key;
                 if (!confirm(`确定要删除元件 "${key}" 吗？`)) {
@@ -545,9 +1209,46 @@
                 const result = await response.json();
                 if (result.success) {
                     await loadComponents();
-                    findNextLedId();
+                    findNextLedId(false);
                 } else {
                     alert('删除失败: ' + result.error);
+                }
+                return;
+            }
+
+            if (e.target.classList.contains('quick-edit-input')) {
+                return; // 不在点击输入框时填表
+            }
+
+            // 备注折叠/展开逻辑
+            if (e.target.classList.contains('list-line-note')) {
+                e.target.classList.toggle('collapsed');
+                // 注意：这里不 return，因为点击备注通常也伴随着想把该元件信息填入表单的操作
+            }
+
+            // 填表逻辑：点击 LI 或其子元素（非控件）时触发
+            const li = e.target.closest('li');
+            if (li) {
+                const key = li.querySelector('.delete-btn').dataset.key;
+                const details = allComponents[key];
+                if (details) {
+                    compNameInput.value = key;
+                    boxIdInput.value = details.box_id;
+                    ledIdInput.value = details.led_id;
+
+                    // 特殊处理参数：取消按钮状态，直接填入完整字符串
+                    paramButtons.forEach(btn => btn.classList.remove('selected'));
+                    selectedParamUnit = '';
+                    paramInput.value = details.parameter;
+
+                    voltageInput.value = details.voltage || '';
+                    footprintInput.value = details.footprint || '';
+                    noteInput.value = details.note || '';
+
+                    // 滚动并高亮左侧表单（视觉反馈）
+                    document.querySelector('.form-section').scrollTop = 0;
+                    compNameInput.style.backgroundColor = '#fff9c4';
+                    setTimeout(() => compNameInput.style.backgroundColor = '', 500);
                 }
             }
         });
@@ -562,7 +1263,60 @@
             }
         });
 
-        boxIdInput.addEventListener('blur', findNextLedId);
+        boxIdInput.addEventListener('input', () => findNextLedId(false));
+
+        // --- 更新现有元件逻辑 ---
+        document.getElementById('update-btn').addEventListener('click', async () => {
+            const component_name = compNameInput.value.trim();
+            if (!component_name) {
+                alert('请先选择或输入要更新的元件名称 (唯一Key)');
+                return;
+            }
+
+            if (!allComponents[component_name]) {
+                alert(`元件库中不存在 ID 为 "${component_name}" 的元件，请先“添加”或点击右侧列表选择。`);
+                return;
+            }
+
+            if (!confirm(`确定要用当前表单内容更新元件 "${component_name}" 的所有信息吗？`)) {
+                return;
+            }
+
+            const paramValue = paramInput.value;
+            const finalParameter = paramValue + selectedParamUnit;
+
+            const details = {
+                "box_id": parseInt(boxIdInput.value),
+                "led_id": parseInt(ledIdInput.value),
+                "parameter": finalParameter,
+                "voltage": voltageInput.value,
+                "footprint": footprintInput.value,
+                "note": noteInput.value.trim(),
+                "type": window._lastFetchedData?.功能类型 || allComponents[component_name].type || "N/A",
+                "work_voltage": window._lastFetchedData?.工作电压 || allComponents[component_name].work_voltage || "N/A",
+                "out_voltage": window._lastFetchedData?.输出电压 || allComponents[component_name].out_voltage || "N/A",
+                "out_current": window._lastFetchedData?.输出电流 || allComponents[component_name].out_current || "N/A",
+                "category": window._lastFetchedData?.类目 || allComponents[component_name].category || "N/A"
+            };
+
+            try {
+                const response = await fetch('/api/update', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ component_name, details })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    // 先刷新列表，再提示（或者直接不提示，视觉反馈已足够）
+                    await loadComponents();
+                    console.log('更新成功！');
+                } else {
+                    alert('更新失败: ' + result.error);
+                }
+            } catch (err) {
+                alert('网络错误: ' + err.message);
+            }
+        });
 
         document.getElementById('btn-footprint-0402').addEventListener('click', () => {
             footprintInput.value = '0402';
@@ -597,13 +1351,98 @@
         document.getElementById('btn-param-nh').addEventListener('click', (e) => handleParamClick(e.target, 'nH'));
         document.getElementById('btn-param-uh').addEventListener('click', (e) => handleParamClick(e.target, 'uH'));
 
-        sortCriteriaSelect.addEventListener('change', (e) => {
-            currentSortCriteria = e.target.value;
+        // --- 排序交互监听 ---
+        document.getElementById('sort-selector').addEventListener('click', (e) => {
+            const badge = e.target.closest('.sort-badge');
+            if (badge) {
+                document.querySelectorAll('.sort-badge').forEach(b => b.classList.remove('active'));
+                badge.classList.add('active');
+                currentSortCriteria = badge.dataset.criteria;
+                currentPage = 1;
+                loadComponents();
+            }
+        });
+
+        const dirToggleBtn = document.getElementById('dir-toggle-btn');
+        const dirIcon = document.getElementById('dir-icon');
+        const dirText = document.getElementById('dir-text');
+
+        dirToggleBtn.addEventListener('click', () => {
+            if (currentSortDirection === 'asc') {
+                currentSortDirection = 'desc';
+                dirIcon.textContent = '↓';
+                dirText.textContent = '倒序';
+            } else {
+                currentSortDirection = 'asc';
+                dirIcon.textContent = '↑';
+                dirText.textContent = '正序';
+            }
+            currentPage = 1;
             loadComponents();
         });
-        sortDirectionSelect.addEventListener('change', (e) => {
-            currentSortDirection = e.target.value;
-            loadComponents();
+
+        // --- 搜索立创逻辑 ---
+        const searchLcscBtn = document.getElementById('search-lcsc-btn');
+        searchLcscBtn.addEventListener('click', async () => {
+            const keyword = (paramInput.value.trim() + selectedParamUnit).trim();
+            if (!keyword) {
+                alert('请先在参数 (parameter) 处输入搜索关键字 (如: CH224K)');
+                return;
+            }
+
+            searchLcscBtn.disabled = true;
+            searchLcscBtn.textContent = '搜索中...';
+            searchLcscBtn.style.background = '#ccc';
+
+            try {
+                const response = await fetch(`/api/crawl_lcsc?keyword=${encodeURIComponent(keyword)}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    // 不覆盖唯一Key ID，但可以把官方型号存入备注或参数
+                    // 若 parameter 为空，填入型号，否则存入备注
+                    if (!paramInput.value.trim() || paramInput.value.trim() === keyword) {
+                        paramInput.value = result.product_name;
+                    }
+
+                    // 解析并填充参数
+                    if (result.工作电压 && result.工作电压 !== 'N/A') {
+                        voltageInput.value = result.工作电压;
+                    }
+
+                    // 暂存所有爬取到的数据用于保存
+                    window._lastFetchedData = result;
+
+                    // 填充备注字段 (格式化显示)
+                    let formattedNote = `【官方型号】: ${result.product_name}\n`;
+                    formattedNote += `【类目/功能】: ${result.类目} > ${result.功能类型}\n`;
+
+                    let specsLines = [];
+                    if (result.工作电压 && result.工作电压 !== 'N/A') specsLines.push(`• 工作电压: ${result.工作电压}`);
+                    if (result.输出电压 && result.输出电压 !== 'N/A') specsLines.push(`• 输出电压: ${result.输出电压}`);
+                    if (result.输出电流 && result.输出电流 !== 'N/A') specsLines.push(`• 输出电流: ${result.输出电流}`);
+
+                    if (specsLines.length > 0) {
+                        formattedNote += `【技术描述】:\n${specsLines.join('\n')}\n`;
+                    }
+
+                    if (result.描述 && result.描述 !== 'N/A') {
+                        formattedNote += `\n【详细说明】:\n${result.描述}`;
+                    }
+
+                    noteInput.value = formattedNote;
+
+                    alert(`已从立创商城获取 "${result.product_name}" 的数据！`);
+                } else {
+                    alert('搜索失败: ' + result.error);
+                }
+            } catch (err) {
+                alert('网络错误: ' + err.message);
+            } finally {
+                searchLcscBtn.disabled = false;
+                searchLcscBtn.textContent = '搜索立创';
+                searchLcscBtn.style.background = '#34c759';
+            }
         });
 
         document.getElementById('btn-volt-6v3').addEventListener('click', () => {
@@ -641,15 +1480,53 @@
             loadComponents();
         });
 
+        document.getElementById('search-boxid').addEventListener('input', (e) => {
+            searchFilters.boxid = e.target.value;
+            loadComponents();
+        });
+
         document.addEventListener('DOMContentLoaded', async () => {
             compNameInput.value = generateRandomID();
-            footprintInput.value = '0603';
-
-            sortCriteriaSelect.value = currentSortCriteria;
-            sortDirectionSelect.value = currentSortDirection;
+            //footprintInput.value = '0603';
 
             await loadComponents();
         });
+        async function handleBomUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const statusText = document.getElementById('bom-status-text');
+            statusText.textContent = '正在上传...';
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const response = await fetch('/api/upload_bom', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    statusText.textContent = '✅ 上传成功！正在刷新...';
+                    statusText.style.color = 'green';
+                    // 重新加载 iframe
+                    const bomFrame = document.getElementById('bom-frame');
+                    bomFrame.src = '/bom_view?' + new Date().getTime(); // 加上时间戳防止缓存
+                    setTimeout(() => {
+                        statusText.textContent = 'BOM 已更新';
+                        statusText.style.color = '#666';
+                    }, 3000);
+                } else {
+                    statusText.textContent = '❌ 上传失败: ' + result.error;
+                    statusText.style.color = 'red';
+                }
+            } catch (err) {
+                statusText.textContent = '❌ 网络错误';
+                statusText.style.color = 'red';
+            }
+        }
     </script>
 </body>
 

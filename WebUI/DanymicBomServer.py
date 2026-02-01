@@ -3,21 +3,30 @@ from flask import Flask, request, jsonify, Response
 from bs4 import BeautifulSoup
 import re
 
+import os
 # --- 配置 ---
-COMPONENTS_FILE = 'components.json'
-BOM_FILE_NAME = 'InteractiveBOM.html'
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+COMPONENTS_FILE = os.path.join(BASE_DIR, 'components.json')
+BOM_FILE_NAME = os.path.join(BASE_DIR, 'InteractiveBOM_v7.html')
 # --- ---
 
 app = Flask(__name__)
 components_db = {}
 
-# --- 数据库加载 ---
-try:
-    with open(COMPONENTS_FILE, 'r', encoding='utf-8') as f:
-        components_db = json.load(f)
-    print(f"成功加载 {len(components_db)} 条元件数据。")
-except Exception as e:
-    print(f"警告: 加载 {COMPONENTS_FILE} 失败: {e}")
+def load_database():
+    """从JSON文件加载最新数据"""
+    global components_db
+    try:
+        if os.path.exists(COMPONENTS_FILE):
+            with open(COMPONENTS_FILE, 'r', encoding='utf-8') as f:
+                components_db = json.load(f)
+            return True
+    except Exception as e:
+        print(f"警告: 刷新数据库失败: {e}")
+    return False
+
+# 初始加载
+load_database()
 
 
 #
@@ -26,173 +35,128 @@ except Exception as e:
 # --- vvv 这里是更新后的函数 vvv ---
 #
 #
+def parse_electronic_value(val_str):
+    """
+    将电子元件数值归一化为浮点数 (e.g., '10k' -> 10000.0, '100n' -> 1e-07)
+    """
+    if not val_str: return None
+    s = str(val_str).lower().strip()
+    
+    # 清理常用后缀和特殊字符
+    s = s.replace('ω', '').replace('ohm', '').replace('farad', '').replace('f', '').replace('h', '').replace('v', '')
+    
+    # 处理 4k7 这种格式 -> 4.7k
+    match_mid = re.match(r'^(\d+)([rkmunpf])(\d*)$', s)
+    if match_mid:
+        p1, p2, p3 = match_mid.groups()
+        if p2 == 'r':
+            s = f"{p1}.{p3 or '0'}"
+        else:
+            s = f"{p1}.{p3 or '0'}{p2}"
+
+    # 单位倍率
+    units = {
+        'p': 1e-12, 'n': 1e-9, 'u': 1e-6, 'μ': 1e-6, 'm': 1e-3,
+        'k': 1e3, 'M': 1e6, 'g': 1e9, 'r': 1
+    }
+    
+    # 提取数值和单位
+    match = re.match(r'^([\d\.]+)\s*([a-zμ]*)$', s)
+    if match:
+        val_val = float(match.group(1))
+        unit_str = match.group(2)
+        if unit_str and unit_str[0] in units:
+            return val_val * units[unit_str[0]]
+        return val_val
+    return None
+
 def search_component(part_number, parameter=None, footprint=None):
     """
-    智能搜索元件
-    1. 优先精确匹配 part_number (数据库的key, e.g., 'C29DF')
-    2. 如果没找到，进行模糊搜索，包括：
-        a. 传入的 'parameter' vs 数据库的 'parameter'
-        b. 传入的 'footprint' vs 数据库的 'footprint'
-        c. [新] 传入的 'part_number' vs 数据库的 'parameter' (用于匹配 'SPX3819M5-3.3' 和 'SPX3819')
+    优化后的智能搜索逻辑
     """
-    # 1. 首先尝试精确匹配 part_number (匹配 "C29DF" 这样的ID)
+    load_database()
+    
+    # 1. 绝对精确匹配 (Key 匹配)
     if part_number in components_db:
         return part_number, components_db[part_number]
 
-    # 2. 【修改点】
-    #    因为我们现在要用 part_number 进行模糊搜索，所以只要提供了任意一个信息，都应该启动模糊搜索
-    if part_number or parameter or footprint:
-        print(f"  未找到精确匹配，开始模糊搜索...")
-        print(f"  搜索条件 - 型号: {part_number}, 参数: {parameter}, 封装: {footprint}")
-        
-        # --- 
-        # --- 1. 封装 (Footprint) 归一化 (R0402 -> 0402) ---
-        # --- 
-        normalized_input_footprint = None
-        if footprint:
-            fp_upper = footprint.upper()
-            if (len(fp_upper) == 5 and 
-                fp_upper[0] in ('R', 'C') and 
-                fp_upper[1:].isdigit()):
-                normalized_input_footprint = fp_upper[1:]
-                print(f"  (封装归一化: {footprint} -> {normalized_input_footprint})")
-            else:
-                # 保留 SOT-23-5... 这样的长封装名称
-                normalized_input_footprint = fp_upper
-        
-        # --- 
-        # --- 2. 参数 (Parameter) 归一化 (kΩ -> K, Ω -> R) ---
-        # --- 
-        normalized_input_parameter_str = None
-        if parameter:
-            # 拷贝一份，准备开始替换
-            normalized_param = parameter
-            
-            # --- 
-            # 规则1: 替换 Kilo-Ohms (kΩ/KΩ/kΩ/KΩ) 为 K
-            # ---
-            normalized_param = normalized_param.replace('kΩ', 'K')
-            normalized_param = normalized_param.replace('KΩ', 'K')
-            normalized_param = normalized_param.replace('kΩ', 'K') 
-            normalized_param = normalized_param.replace('KΩ', 'K') 
-            
-            # --- 
-            # 规则2: 替换 Ohms (Ω/Ω) 为 R
-            # ---
-            normalized_param = normalized_param.replace('Ω', 'R')
-            normalized_param = normalized_param.replace('Ω', 'R')
-            
-            # (可选) 规则3: 替换 Mega-Ohms (MΩ/MΩ) 为 M
-            normalized_param = normalized_param.replace('MΩ', 'M')
-            normalized_param = normalized_param.replace('mΩ', 'M') # 兼容小写 m
-            normalized_param = normalized_param.replace('MΩ', 'M')
-            normalized_param = normalized_param.replace('mΩ', 'M')
+    if not (part_number or parameter or footprint):
+        return None, None
 
-            normalized_input_parameter_str = normalized_param
-            
-            if normalized_input_parameter_str != parameter:
-                print(f"  (参数归一化: {parameter} -> {normalized_input_parameter_str})")
-        # --- 
-        # --- 归一化结束 ---
-        # --- 
+    print(f"  开始增强型匹配 - 型号:{part_number}, 参数:{parameter}, 封装:{footprint}")
 
-        matches = []
-        for pn, data in components_db.items():
-            score = 0
-            reasons = []
+    # 预处理搜索参数
+    search_val = parse_electronic_value(parameter)
+    search_fp = (footprint or "").upper()
+    
+    # 尝试从参数中提取电压 (例如 "10uF 25V" 提取出 25)
+    search_volt = None
+    if parameter:
+        volt_match = re.search(r'(\d+)V', str(parameter), re.I)
+        if volt_match:
+            search_volt = volt_match.group(1)
 
-            # --- 
-            # --- 3a. 参数匹配 (传入的 'parameter' vs 数据库的 'parameter') ---
-            # --- 
-            if normalized_input_parameter_str and 'parameter' in data and data['parameter']:
-                db_parameter_upper = data['parameter'].upper() 
-                
-                input_parameter_upper = normalized_input_parameter_str.upper()
-                
-                if input_parameter_upper == db_parameter_upper:
-                    score += 10
-                    reasons.append(f"参数完全匹配({data['parameter']})")
-                elif input_parameter_upper in db_parameter_upper or db_parameter_upper in input_parameter_upper:
-                    score += 5
-                    reasons.append(f"参数部分匹配({data['parameter']})")
+    matches = []
+    for pn, data in components_db.items():
+        score = 0
+        reasons = []
 
-            # --- 
-            # --- 3b. 【新功能】型号-参数 交叉匹配 ---
-            #     (比较 传入的 'part_number' 和 数据库的 'parameter')
-            # --- 
-            if part_number and 'parameter' in data and data['parameter']:
-                db_param_short_upper = data['parameter'].upper()
-                incoming_pn_long_upper = part_number.upper()
-                
-                if db_param_short_upper == incoming_pn_long_upper:
-                    # 例如: 传入 'SPX3819', 数据库 'SPX3819'
-                    score += 20 # 这是一个高分匹配
-                    reasons.append(f"型号-参数完全匹配({data['parameter']})")
-                elif db_param_short_upper in incoming_pn_long_upper:
-                    # 例如: 传入 'SPX3819M5-3.3', 数据库 'SPX3819'
-                    # "SPX3819" in "SPX3819M5-3.3" -> True
-                    score += 20 # 这也是一个高分匹配 (您的情况)
-                    reasons.append(f"型号-参数包含匹配({data['parameter']})")
-                elif incoming_pn_long_upper in db_param_short_upper:
-                    # 例如: 传入 'SPX3819', 数据库 'SPX3819-L' (不太可能)
-                    score += 5 # 这是一个低分匹配
-                    reasons.append(f"参数-型号包含匹配({data['parameter']})")
+        db_param_str = data.get('parameter', '')
+        db_fp_str = data.get('footprint', '')
+        db_volt_str = str(data.get('voltage', '')).replace('V', '').replace('v', '')
 
+        # A. 型号完全匹配检查 (BOM型号 vs 数据库Key/参数)
+        if part_number:
+            target_pn = part_number.upper()
+            if target_pn == pn.upper():
+                score += 100
+                reasons.append("ID完美匹配")
+            elif target_pn in db_param_str.upper() or db_param_str.upper() in target_pn:
+                score += 40
+                reasons.append(f"型号/参数文本包含({db_param_str})")
 
-            # --- 
-            # --- 4. 封装匹配 (使用归一化后的 'normalized_input_footprint') ---
-            # --- 
-            if normalized_input_footprint and 'footprint' in data and data['footprint']:
-                db_footprint_upper = data['footprint'].upper() 
-                
-                if normalized_input_footprint == db_footprint_upper:
-                    score += 10
-                    reasons.append(f"封装完全匹配({data['footprint']})")
-                elif (normalized_input_footprint in db_footprint_upper or 
-                      db_footprint_upper in normalized_input_footprint): # 【修正点】修正了原代码中的一个拼写错误
-                    score += 5
-                    reasons.append(f"封装部分匹配({data['footprint']})")
-            # --- 
-            # --- 匹配结束 ---
-            # --- 
+        # B. 数值逻辑匹配 (10k == 10000)
+        db_val = parse_electronic_value(db_param_str)
+        if search_val is not None and db_val is not None:
+            diff = abs(search_val - db_val)
+            rel_diff = diff / max(search_val, db_val) if max(search_val, db_val) > 0 else 0
+            if rel_diff < 0.001:
+                score += 50
+                reasons.append("数值逻辑一致")
+        elif parameter and db_param_str and parameter.upper() == db_param_str.upper():
+            score += 30
+            reasons.append("参数文本一致")
 
-            # 【修改点】
-            # 您的案例 (SPX3819) 中, 封装库是 ""，封装参数是 "SOT-23-5..."
-            # 匹配 3a (参数) 不会运行 (传入参数为空)
-            # 匹配 3b (型号-参数) 会运行，得到 20 分
-            # 匹配 4 (封装) 会运行，但 db_footprint_upper 是 "", 
-            #   ( 'SOT...' in '' or '' in 'SOT...' ) -> 第二个为True，得到 5 分
-            # 总分 25 分。
-            
-            # 如果我们将阈值保持在 19，25 分 > 19 分，匹配成功。
-            # 如果是 0402 匹配 0402 (10分) + 10K 匹配 10K (10分)，总分 20 分。
-            # 如果是 'RES-10K' vs '10K' (20分) + '0402' vs '0402' (10分) = 30分。
-            # 阈值 19 看起来是合理的。
-            
-            if score > 19:
-                matches.append({
-                    'part_number': pn,
-                    'data': data,
-                    'score': score,
-                    'reasons': reasons
-                })
+        # C. 封装匹配
+        if search_fp and db_fp_str:
+            db_fp_upper = db_fp_str.upper()
+            if search_fp == db_fp_upper:
+                score += 25
+                reasons.append("封装完美匹配")
+            elif search_fp in db_fp_upper or db_fp_upper in search_fp:
+                score += 10
+                reasons.append("封装模糊匹配")
 
-        # 按匹配分数排序
-        matches.sort(key=lambda x: x['score'], reverse=True)
+        # D. 耐压值匹配
+        if search_volt and db_volt_str:
+            if search_volt == db_volt_str:
+                score += 20
+                reasons.append("耐压值匹配")
 
-        if matches:
-            best_match = matches[0]
-            print(f"  找到 {len(matches)} 个匹配项，最佳匹配:")
-            print(f"    型号: {best_match['part_number']}")
-            print(f"    匹配度: {best_match['score']} 分")
-            print(f"    原因: {', '.join(best_match['reasons'])}")
+        if score >= 40:
+            matches.append({
+                'part_number': pn,
+                'data': data,
+                'score': score,
+                'reasons': reasons
+            })
 
-            if len(matches) > 1:
-                print(f"  其他可能匹配:")
-                for match in matches[1:4]:  # 最多显示3个
-                    print(f"    - {match['part_number']} (分数:{match['score']}) - {', '.join(match['reasons'])}")
+    matches.sort(key=lambda x: x['score'], reverse=True)
 
-            return best_match['part_number'], best_match['data']
+    if matches:
+        best = matches[0]
+        print(f"  ✅ 最佳匹配: {best['part_number']} (得分:{best['score']}) 原因: {', '.join(best['reasons'])}")
+        return best['part_number'], best['data']
 
     return None, None
 #
@@ -227,7 +191,7 @@ def light_up():
     matched_pn, item_data = search_component(part_number, parameter, footprint)
 
     if not item_data:
-        print(f"  (搜索结果: 未找到匹配的元件)")
+        print(f"  ❌未找到匹配的元件")
         return jsonify({
             "status": "not_found",
             "message": "未找到匹配的元件",
@@ -240,7 +204,7 @@ def light_up():
     else:
         box_id = item_data.get('box_id')
         led_id = item_data.get('led_id')
-        print(f"  ✓ 找到元件: {matched_pn}")
+        print(f"  ✅ 找到元件: {matched_pn}")
         print(f"  ✓ 位置 -> 盒子: {box_id}, LED: {led_id}")
 
         return jsonify({
@@ -287,7 +251,7 @@ def serve_bom():
     # --- 自动修改结束 ---
 
 
-    # --- 注入包含 Web Serial API 的新脚本 ---
+    # --- 注入包含 Web Serial API 和 悬浮通知 的新脚本 ---
     injected_script = """
     <style>
         #serial-control {
@@ -324,6 +288,29 @@ def serve_bom():
             font-weight: bold;
             font-size: 0.9rem;
         }
+        /* 悬浮通知样式 */
+        #match-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 122, 255, 0.9);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 10000;
+            display: none;
+            font-family: Arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            animation: slideDown 0.3s ease-out;
+        }
+        @keyframes slideDown {
+            from { top: -100px; opacity: 0; }
+            to { top: 20px; opacity: 1; }
+        }
     </style>
 
     <div id="serial-control">
@@ -332,9 +319,23 @@ def serve_bom():
         <p id="serial-status">状态：未连接</p>
     </div>
 
+    <div id="match-notification"></div>
+
     
     <script>
         console.log('🚀 BOM智能搜索 & 串口脚本已加载！');
+
+        const notification = document.getElementById('match-notification');
+        let notificationTimeout;
+
+        function showNotification(message, duration = 3000) {
+            notification.textContent = message;
+            notification.style.display = 'block';
+            clearTimeout(notificationTimeout);
+            notificationTimeout = setTimeout(() => {
+                notification.style.display = 'none';
+            }, duration);
+        }
 
         // --- 串口全局变量 ---
         let serial_port = null;
@@ -350,7 +351,7 @@ def serve_bom():
             if ('serial' in navigator) {
                 try {
                     const port = await navigator.serial.requestPort();
-                    // 波特率 9600，您可以根据硬件修改
+                    // 波特率 115200，您可以根据硬件修改
                     await port.open({ baudRate: 115200 }); 
                     
                     statusDisplay.textContent = '状态：串口已打开';
@@ -363,19 +364,6 @@ def serve_bom():
 
                     originalConsoleLog('串口已打开:', port);
 
-                    // (可选) 监听串口断开
-                    port.addEventListener('disconnect', () => {
-                        originalConsoleLog('⚠️ 串口已断开');
-                        statusDisplay.textContent = '状态：串口已断开';
-                        connectButton.textContent = '连接串口';
-                        connectButton.disabled = false;
-                        if (serial_writer) {
-                            serial_writer.releaseLock();
-                        }
-                        serial_writer = null;
-                        serial_port = null;
-                    });
-
                 } catch (err) {
                     if (err.name === 'NotFoundError') {
                         statusDisplay.textContent = '状态：用户未选择串口。';
@@ -384,7 +372,6 @@ def serve_bom():
                     } else {
                         statusDisplay.textContent = `状态：发生错误: ${err.message}`;
                     }
-                    originalConsoleLog('打开串口时出错:', err);
                 }
             } else {
                 statusDisplay.textContent = '状态：浏览器不支持 Web Serial。';
@@ -396,30 +383,17 @@ def serve_bom():
         async function sendSerialData(boxId, ledId) {
             if (!serial_writer) {
                 originalConsoleLog('⚠️ 串口未连接，无法发送点灯命令。');
-                statusDisplay.textContent = '状态：请先连接串口！';
                 return;
             }
-            
-            // --- 
-            // 假设的通信协议： "B<boxId>,L<ledId>\\n"
-            // 例如: "B5,L10\\n" (B代表Box, L代表LED, \\n是换行符)
-            // 
-            // ！！！您需要根据您的 ESP32/Arduino 代码修改这个格式！！！
-            // ---
             const dataString = `box_id:${boxId},led_id:${ledId}\\n`; 
-            
             try {
-                const dataUint8 = textEncoder.encode(dataString); // 编码为 Uint8Array
+                const dataUint8 = textEncoder.encode(dataString); 
                 await serial_writer.write(dataUint8);
                 originalConsoleLog(`✅ 串口发送: ${dataString.trim()}`);
-                statusDisplay.textContent = `状态：已发送 (B:${boxId}, L:${ledId})`;
             } catch (err) {
                 originalConsoleLog(`⚠️ 串口发送错误: ${err.message}`);
-                statusDisplay.textContent = `状态：发送错误: ${err.message}`;
-                // 尝试处理写入器错误
                 serial_writer.releaseLock();
                 serial_writer = null;
-                // 你可能需要在这里触发重新连接
             }
         }
 
@@ -439,13 +413,10 @@ def serve_bom():
 
                 // 检查是否包含器件信息
                 if (message.includes('器件型号') || message.includes('器件编号')) {
-                    originalConsoleLog('🔍 原始消息:', message);
-                   
-                    // 提取器件型号
+                    // 提取逻辑...
                     let match = message.match(/器件型号[::\\s]*([^,]+)/i);
                     if (match) extracted.part_number = match[1].trim();
 
-                    // 提取值/参数
                     match = message.match(/值[::\\s]*([^\s,，;；\\)]+)/i);
                     if (match) {
                         extracted.parameter = match[1].trim();
@@ -454,29 +425,22 @@ def serve_bom():
                         if (match) extracted.parameter = match[1].trim();
                     }
 
-                    // 提取封装 (保留了您原来的所有正则)
                     const footprintPatterns = [
                         /封装[::\\s]*([^,]+)/i,
                         /器件封装[::\\s]*([RCL]?\d{4})/i,
-                        /器件编号:[^,]*,[^,]*,\s*([RCL]?\d{4})/i,
                         /footprint[::\\s]*([RCL]?\d{4})/i,
                         /package[::\\s]*([RCL]?\d{4})/i,
-                        /,\s*([RCL]?\d{4})\s*[,，]/i,
                     ];
                    
                     for (let pattern of footprintPatterns) {
                         match = message.match(pattern);
                         if (match && match[1]) {
                             extracted.footprint = match[1].trim();
-                            originalConsoleLog('📐 提取到封装:', extracted.footprint);
                             break;
                         }
                     }
 
-                    // 如果至少提取到一个信息，就发送请求
                     if (extracted.part_number || extracted.parameter || extracted.footprint) {
-                        originalConsoleLog('📦 捕获到元件信息:', extracted);
-                       
                         const params = new URLSearchParams();
                         if (extracted.part_number) params.append('part_number', extracted.part_number);
                         if (extracted.parameter) params.append('parameter', extracted.parameter);
@@ -486,25 +450,16 @@ def serve_bom():
                             .then(response => response.json())
                             .then(data => {
                                 if (data.status === 'success') {
-                                    originalConsoleLog('✅ 找到元件:', data.matched_part_number,
-                                                        '位置:', data.location);
+                                    // 显示全屏悬浮通知
+                                    showNotification(`📍 找到元件：Box ${data.location.box_id} | LED ${data.location.led_id}`);
                                     
-                                    // 
-                                    // *************************************
-                                    //           --- 修改点 ---
-                                    //  不再只是打印，而是调用串口发送函数
-                                    // *************************************
-                                    //
                                     sendSerialData(data.location.box_id, data.location.led_id);
-                                    
                                 } else {
-                                    originalConsoleLog('❌ 未找到匹配:', data.message);
-                                    statusDisplay.textContent = `状态：未在库中找到 (${extracted.part_number})`;
+                                    showNotification(`❌ 未找到匹配: ${extracted.part_number || extracted.parameter}`, 2000);
                                 }
                             })
                             .catch(err => {
                                 originalConsoleLog('⚠️ 请求错误:', err);
-                                statusDisplay.textContent = `状态：后端请求失败`;
                             });
                     }
                 }

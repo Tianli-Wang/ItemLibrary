@@ -114,7 +114,7 @@ void loop()
 
 // 格式: { 0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF }
 // 示例：我有2个元件库
-uint8_t mac_box_1[] = {0x44, 0x17, 0x93, 0x3B, 0x69, 0x6F}; // 盒子1: 电阻库
+uint8_t mac_box_1[] = {0x60, 0x01, 0x94, 0x22, 0x0A, 0x60}; // 盒子1: 电阻库
 // uint8_t mac_box_2[] = {0xAA, 0xBB, 0xCC, 0x11, 0x22, 0x02}; // 盒子2: 电容库
 // uint8_t mac_box_3[] = { ... }; // 你可以继续添加
 
@@ -194,26 +194,24 @@ void loop()
     Serial.printf("收到串口命令: %s\n", cmd.c_str());
 
     // 4. 解析新格式的串口命令
-    // 格式: "box_id:1,led_id:66"
     int box_id = -1;
-    int led_id = -1;
+    int led_id = -2; // 初始化为一个无效值, 区别于-1
 
-    // 查找 "box_id:" 和 "led_id:"
     int box_id_pos = cmd.indexOf("box_id:");
     int led_id_pos = cmd.indexOf("led_id:");
 
     if (box_id_pos != -1 && led_id_pos != -1)
     {
-      // 提取 box_id 的值
-      int box_id_start = box_id_pos + 7; // "box_id:" 长度为7
+      // ... [解析 box_id 的代码保持不变] ...
+      int box_id_start = box_id_pos + 7;
       int box_id_end = cmd.indexOf(',', box_id_start);
       if (box_id_end == -1)
         box_id_end = cmd.length();
       String box_id_str = cmd.substring(box_id_start, box_id_end);
       box_id = box_id_str.toInt();
 
-      // 提取 led_id 的值
-      int led_id_start = led_id_pos + 7; // "led_id:" 长度为7
+      // ... [解析 led_id 的代码保持不变] ...
+      int led_id_start = led_id_pos + 7;
       int led_id_end = cmd.indexOf(',', led_id_start);
       if (led_id_end == -1)
         led_id_end = cmd.length();
@@ -221,20 +219,31 @@ void loop()
       led_id = led_id_str.toInt();
     }
 
-    if (box_id > 0 && led_id >= 0)
+    // ⭐⭐⭐ 这是修改的地方 ⭐⭐⭐
+    // 允许 box_id > 0 并且 led_id >= -1 (因为 -1, 0, 1... 都是有效值)
+    if (box_id > 0 && led_id >= -1)
     {
       // 5. 查找路由表
-      // 注意：我们的 box_id 是 1-based (从1开始), 数组索引是 0-based
       int box_index = box_id - 1;
 
       if (box_index >= 0 && box_index < num_boxes)
       {
-        // 准备消息 - 使用默认RGB值或从其他来源获取
-        // 这里可以根据需要修改RGB值
+        // 准备消息
         commandMessage.led_id = led_id;
-        commandMessage.r = 255; // 默认红色,可根据需要修改
-        commandMessage.g = 255; // 默认绿色,可根据需要修改
-        commandMessage.b = 255; // 默认蓝色,可根据需要修改
+
+        // <-- 新增逻辑: 如果是 -1 (熄灭), RGB设为0
+        if (led_id == -1)
+        {
+          commandMessage.r = 0;
+          commandMessage.g = 0;
+          commandMessage.b = 0;
+        }
+        else // 否则使用默认的白色
+        {
+          commandMessage.r = 255;
+          commandMessage.g = 255;
+          commandMessage.b = 255;
+        }
 
         // 6. 发送 ESP-NOW 消息
         uint8_t *targetMac = mac_address_table[box_index];
@@ -258,7 +267,8 @@ void loop()
     }
     else
     {
-      Serial.println("  错误: 命令格式不正确。应为: box_id:1,led_id:66");
+      // 现在只有在解析失败时才会触发这个错误
+      Serial.println("  错误: 命令格式不正确。应为: box_id:1,led_id:66 (或 led_id:-1)");
     }
   }
 }
@@ -278,14 +288,17 @@ void loop()
 // ===================================================================
 
 // --- LED 配置 ---
-#define DATA_PIN 2 // ESP8266 推荐使用 GPIO2 (D4)
+#define DATA_PIN 4 // ESP8266 推荐使用 GPIO2 (D4)
+#define BOX_PIN 5
 #define LED_TYPE WS2812B
 #define COLOR_ORDER GRB
 #define NUM_LEDS 81   // 81个元件
+#define NUM_BOX_LEDS 12   
 #define BRIGHTNESS 96 // 注意供电!ESP8266 供电能力有限
 // --- ---
 
 CRGB leds[NUM_LEDS];
+CRGB box_leds[NUM_BOX_LEDS];
 struct_message incomingMessage;
 
 // 核心:ESP-NOW 接收回调
@@ -302,14 +315,22 @@ void OnDataRecv(uint8_t *mac_addr, uint8_t *incomingData, uint8_t len)
   if (incomingMessage.led_id == -1)
   {
     FastLED.clear();
+    Serial.printf("执行规则: 熄灭所有灯\n");
   }
   // 规则 1-81: 点亮指定灯 (修正索引范围)
   else if (incomingMessage.led_id >= 1 && incomingMessage.led_id <= NUM_LEDS)
   {
     FastLED.clear(); // 先熄灭所有
+    for (int i = 0; i < NUM_BOX_LEDS; i++)
+    {
+      box_leds[i] = CRGB(incomingMessage.r,
+                        incomingMessage.g,
+                        incomingMessage.b);
+    }
     leds[incomingMessage.led_id - 1] = CRGB(incomingMessage.r,
                                             incomingMessage.g,
                                             incomingMessage.b);
+    Serial.printf("执行规则: 点亮 LED %d\n", incomingMessage.led_id);
   }
   else
   {
@@ -335,22 +356,15 @@ void setup()
 
   // 1. 初始化 FastLED
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
+  FastLED.addLeds<LED_TYPE, BOX_PIN, COLOR_ORDER>(box_leds, NUM_BOX_LEDS);
   FastLED.setBrightness(BRIGHTNESS);
 
   // ⭐ 关键修复 2: 多次清空并强制刷新
-  for (int i = 0; i < NUM_LEDS; i++)
-  {
-    leds[i] = CRGB::Black;
-  }
   FastLED.clear();
   FastLED.show();
   delay(100); // 给LED一点稳定时间
 
-  // 再次确保清空
-  FastLED.clear();
-  FastLED.show();
-
-  Serial.println("FastLED (81灯) 初始化完毕。");
+  Serial.println("初始化完毕。");
 
   // 2. 设置 WiFi 为 Station 模式
   WiFi.mode(WIFI_STA);
@@ -384,14 +398,21 @@ void setup()
   FastLED.clear();
   FastLED.show();
 
+  
+
   Serial.println("系统就绪,等待主控命令...\n");
 }
 
 void loop()
 {
-  // 无事可做,全靠回调
-  delay(10000);
-  // Serial.println("I'm still alive.");
-}
+  // // 1. 设置灯亮
+  // leds[1] = CRGB(0, 255, 255);
+  // FastLED.show(); // 显示“亮”
+  // delay(1000);
 
+  // // 2. 设置灯灭
+  // FastLED.clear();
+  // FastLED.show(); // !! 关键 !! 必须调用show()来显示“灭”
+  delay(10000);
+}
 #endif
