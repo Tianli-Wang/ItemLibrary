@@ -114,6 +114,30 @@ def update_component():
     
     return jsonify({"success": True, "component_name": component_name})
 
+@app.route('/api/swap_components', methods=['POST'])
+def swap_components():
+    """交换两个元件的位置 (box_id 和 led_id)"""
+    req_data = request.json
+    name1 = req_data.get('name1')
+    name2 = req_data.get('name2')
+    
+    if not name1 or not name2:
+        return jsonify({"success": False, "error": "请提供两个元件名称"}), 400
+        
+    data = load_data()
+    if name1 not in data or name2 not in data:
+        return jsonify({"success": False, "error": "元件未找到"}), 404
+        
+    # 交换位置
+    b1, l1 = data[name1].get('box_id'), data[name1].get('led_id')
+    b2, l2 = data[name2].get('box_id'), data[name2].get('led_id')
+    
+    data[name1]['box_id'], data[name1]['led_id'] = b2, l2
+    data[name2]['box_id'], data[name2]['led_id'] = b1, l1
+    
+    save_data(data)
+    return jsonify({"success": True})
+
 @app.route('/api/crawl_lcsc', methods=['GET'])
 def crawl_lcsc():
     """从立创商城爬取元件信息"""

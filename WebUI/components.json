@@ -1323,9 +1323,15 @@
     "5820C": {
         "box_id": 4,
         "led_id": 12,
-        "parameter": "OPA2140",
+        "parameter": "OPA2140AIDGKR",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: OPA2140AIDGKR\n【类目/功能】: FET输入运放 > N/A\n【技术描述】:\n• 输出电流: 36mA\n\n【详细说明】:\nOPA2140 具有轨到轨输出的双通道、11MHz、低噪声 36V JFET 精密运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "36mA",
+        "category": "FET输入运放"
     },
     "2DFCE": {
         "box_id": 3,
@@ -1396,8 +1402,8 @@
         "footprint": ""
     },
     "ABF3D": {
-        "box_id": 4,
-        "led_id": 22,
+        "box_id": 7,
+        "led_id": 37,
         "parameter": "ADR02ARZ",
         "voltage": "",
         "footprint": ""
@@ -2022,8 +2028,8 @@
         "note": "USB2.0"
     },
     "F1852": {
-        "box_id": 4,
-        "led_id": 23,
+        "box_id": 7,
+        "led_id": 36,
         "parameter": "ADA4891",
         "voltage": "",
         "footprint": "",
@@ -2354,8 +2360,8 @@
         "note": ""
     },
     "26A65": {
-        "box_id": 4,
-        "led_id": 28,
+        "box_id": 7,
+        "led_id": 40,
         "parameter": "XW06A",
         "voltage": "",
         "footprint": "",
@@ -4935,7 +4941,7 @@
     },
     "1741B": {
         "box_id": 7,
-        "led_id": 26,
+        "led_id": 29,
         "parameter": "Purple",
         "voltage": "",
         "footprint": "",
@@ -4948,7 +4954,7 @@
     },
     "6B08E": {
         "box_id": 7,
-        "led_id": 29,
+        "led_id": 30,
         "parameter": "Orange",
         "voltage": "",
         "footprint": "",
@@ -4961,7 +4967,7 @@
     },
     "12C4D": {
         "box_id": 7,
-        "led_id": 30,
+        "led_id": 31,
         "parameter": "RGBV",
         "voltage": "",
         "footprint": "0807",
@@ -5169,7 +5175,7 @@
     },
     "ED9DF": {
         "box_id": 7,
-        "led_id": 31,
+        "led_id": 32,
         "parameter": "自恢复保险丝",
         "voltage": "",
         "footprint": "1812",
@@ -5179,5 +5185,122 @@
         "out_voltage": "N/A",
         "out_current": "N/A",
         "category": "N/A"
+    },
+    "E8705": {
+        "box_id": 7,
+        "led_id": 33,
+        "parameter": "OPA2140AIDR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: OPA2140AIDR\n【类目/功能】: FET输入运放 > N/A\n【技术描述】:\n• 输出电流: 36mA\n\n【详细说明】:\nOPA2140 具有轨到轨输出的双通道、11MHz、低噪声 36V JFET 精密运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "36mA",
+        "category": "FET输入运放"
+    },
+    "DC93F": {
+        "box_id": 7,
+        "led_id": 34,
+        "parameter": "THP210DGKR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: THP210DGKR\n【类目/功能】: 差分运放 > N/A\n【技术描述】:\n• 输出电流: 31mA\n\n【详细说明】:\n高精密（40μV、0.1μV/C）、高压 (36V)、低噪声 (3.7nV/√Hz) 全差分放大器 8-VSSOP -40 to 125",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "31mA",
+        "category": "差分运放"
+    },
+    "5ED36": {
+        "box_id": 7,
+        "led_id": 35,
+        "parameter": "ADR421ARMZ-REEL7",
+        "voltage": "4.5V~18V",
+        "footprint": "",
+        "note": "【官方型号】: ADR421ARMZ-REEL7\n【类目/功能】: 电压基准芯片 > N/A\n【技术描述】:\n• 工作电压: 4.5V~18V\n• 输出电压: 2.5V\n• 输出电流: 10mA\n\n【详细说明】:\nADR42x系列为高精度、第二代外加离子注入场效应管(XFET)基准电压源，具有低噪声、高精度和出色的长期稳定特性，采用SOIC和MSOP封装。 利用温度漂移曲线校正专利技术和XFET技术，可以使电压随温度变化的非线性度降至最小。XFET架构能够为带隙基准电压源提供出色的精度和热滞性能。",
+        "type": "N/A",
+        "work_voltage": "4.5V~18V",
+        "out_voltage": "2.5V",
+        "out_current": "10mA",
+        "category": "电压基准芯片"
+    },
+    "4C402": {
+        "box_id": 4,
+        "led_id": 23,
+        "parameter": "AD9717BCPZ",
+        "voltage": "1.8V~3.3V",
+        "footprint": "",
+        "note": "【官方型号】: AD9717BCPZ\n【类目/功能】: 数模转换芯片DAC > N/A\n【技术描述】:\n• 工作电压: 1.8V~3.3V\n\n【详细说明】:\n双通道，14位，低功耗数模转换器",
+        "type": "N/A",
+        "work_voltage": "1.8V~3.3V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "数模转换芯片DAC"
+    },
+    "2D0D2": {
+        "box_id": 4,
+        "led_id": 22,
+        "parameter": "AD9251BCPZ-80",
+        "voltage": "1.8V",
+        "footprint": "",
+        "note": "【官方型号】: AD9251BCPZ-80\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 1.8V\n\n【详细说明】:\n14位、20 MSPS/40 MSPS/65 MSPS/80 MSPS、1.8 V、双通道模数转换器",
+        "type": "N/A",
+        "work_voltage": "1.8V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "7C678": {
+        "box_id": 7,
+        "led_id": 38,
+        "parameter": "MT41K256M16TW-107 IT:P",
+        "voltage": "1.283V~1.45V",
+        "footprint": "",
+        "note": "【官方型号】: MT41K256M16TW-107 IT:P\n【类目/功能】: DDR SDRAM > N/A\n【技术描述】:\n• 工作电压: 1.283V~1.45V\n\n【详细说明】:\nDDR3L SDRAM（1.35V）是DDR3（1.5V）SDRAM的低电压版本。在1.5V兼容模式下运行时，请参考DDR3（1.5V）SDRAM（芯片版本：E）数据手册规格。",
+        "type": "N/A",
+        "work_voltage": "1.283V~1.45V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "DDR SDRAM"
+    },
+    "C2FBE": {
+        "box_id": 7,
+        "led_id": 39,
+        "parameter": "XCF32PFSG48C",
+        "voltage": "1.8V",
+        "footprint": "",
+        "note": "【官方型号】: XCF32PFSG48C\n【类目/功能】: FPGA配置用存储器 > N/A\n【技术描述】:\n• 工作电压: 1.8V\n\n【详细说明】:\nXCF32PFSG48C 是一款用于FPGA配置的32Mb存储器，支持1.8V供电电压，提供多种配置模式，包括串行和并行模式，支持设计修订功能。",
+        "type": "N/A",
+        "work_voltage": "1.8V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "FPGA配置用存储器"
+    },
+    "97F0B": {
+        "box_id": 4,
+        "led_id": 28,
+        "parameter": "AD4003BCPZ-RL7",
+        "voltage": "1.8V",
+        "footprint": "",
+        "note": "【官方型号】: AD4003BCPZ-RL7\n【类目/功能】: 模数转换芯片ADC > N/A\n【技术描述】:\n• 工作电压: 1.8V\n\n【详细说明】:\n18位、2 MSPS精密SAR差分ADC",
+        "type": "N/A",
+        "work_voltage": "1.8V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "模数转换芯片ADC"
+    },
+    "7E2D8": {
+        "box_id": 7,
+        "led_id": 41,
+        "parameter": "OPA2388IDGKR",
+        "voltage": "",
+        "footprint": "",
+        "note": "【官方型号】: OPA2388IDGKR\n【类目/功能】: 精密运放 > N/A\n【技术描述】:\n• 输出电流: 60mA\n\n【详细说明】:\nOPA2388 双通道、10MHz、CMOS、零漂移、零交叉、真 RRIO 精密运算放大器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "60mA",
+        "category": "精密运放"
     }
 }

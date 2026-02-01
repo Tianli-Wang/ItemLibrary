@@ -480,6 +480,43 @@
             background-color: #d32f2f;
         }
 
+        .swap-pos-btn {
+            background-color: #5856d6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: background-color 0.2s;
+            margin-left: 5px;
+        }
+
+        .swap-pos-btn:hover {
+            background-color: #4342ab;
+        }
+
+        .swap-pos-btn.pending {
+            background-color: #ffcc00;
+            color: #333;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
         /* 统一工具栏 */
         .list-toolbar {
             background: #fff;
@@ -750,6 +787,7 @@
             footprint: '',
             boxid: ''
         };
+        let swapPendingKey = null; // 用于存储待交换位置的第一个元件 Key
 
         // --- 分页相关 (已移除) ---
 
@@ -1020,7 +1058,7 @@
                             <div class="list-line-1">${typeHtml}${displayParameter} | ${details.footprint}</div>
                             <div class="list-line-2" style="display: flex; align-items: center; gap: 15px; margin-top: 5px;">
                                 <span>ID: <code style="background: #eee; padding: 2px 4px; border-radius: 3px;">${key}</code></span>
-                                <div class="quick-edit-group">
+                                 <div class="quick-edit-group">
                                     <span>Box</span>
                                     <input type="number" class="quick-edit-input quick-box-id" data-key="${key}" value="${details.box_id}">
                                 </div>
@@ -1031,7 +1069,10 @@
                             </div>
                             <div class="list-line-specs">${specsHtml}</div>
                         </span>
-                        <button class="delete-btn" data-key="${key}" style="margin-left: 10px;">删除</button>
+                        <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-end;">
+                            <button class="delete-btn" data-key="${key}">删除</button>
+                            <button class="swap-pos-btn" data-key="${key}" title="与其他元件交换位置">位置交换</button>
+                        </div>
                     </div>
                     ${noteHtml}
                 `;
@@ -1212,6 +1253,49 @@
                     findNextLedId(false);
                 } else {
                     alert('删除失败: ' + result.error);
+                }
+                return;
+            }
+
+            // --- 位置交换 (Component A <-> Component B) ---
+            if (e.target.classList.contains('swap-pos-btn')) {
+                const key = e.target.dataset.key;
+                if (!swapPendingKey) {
+                    // 第一个待交换元件
+                    swapPendingKey = key;
+                    e.target.classList.add('pending');
+                    e.target.textContent = '选择另一个...';
+                } else if (swapPendingKey === key) {
+                    // 取消选择
+                    swapPendingKey = null;
+                    e.target.classList.remove('pending');
+                    e.target.textContent = '位置交换';
+                } else {
+                    // 第二个元件，执行交换
+                    const name1 = swapPendingKey;
+                    const name2 = key;
+                    if (confirm(`确定要交换 "${name1}" 和 "${name2}" 的位置吗？`)) {
+                        try {
+                            const response = await fetch('/api/swap_components', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ name1, name2 })
+                            });
+                            const result = await response.json();
+                            if (result.success) {
+                                swapPendingKey = null;
+                                await loadComponents();
+                            } else {
+                                alert('交换失败: ' + result.error);
+                            }
+                        } catch (err) {
+                            alert('网络错误: ' + err.message);
+                        }
+                    } else {
+                        // 取消交换，重置状态
+                        swapPendingKey = null;
+                        await loadComponents();
+                    }
                 }
                 return;
             }
