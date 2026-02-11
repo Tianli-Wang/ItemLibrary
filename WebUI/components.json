@@ -1110,23 +1110,41 @@
     "EFD26": {
         "box_id": 6,
         "led_id": 9,
-        "parameter": "AO3400",
+        "parameter": "AO3400A",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: AO3400A\n【类目/功能】: 场效应管(MOSFET) > N沟道\n\n【详细说明】:\nN沟道,30V,5.7A,26.5mΩ@10V",
+        "type": "N沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "8337E": {
         "box_id": 6,
         "led_id": 8,
         "parameter": "S8550",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: S8550\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\nhFE:200-350，丝印:2TY",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
     },
     "FD606": {
         "box_id": 6,
         "led_id": 7,
-        "parameter": "S8050",
+        "parameter": "MMS8050-H-TP",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: MMS8050-H-TP\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\n特性：湿度敏感度等级 1。 环氧树脂符合 UL 94 V-0 阻燃等级。 无铅镀层/符合 RoHS 标准（“P” 后缀表示符合 RoHS 标准）",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "三极管(BJT)"
     },
     "A3B40": {
         "box_id": 4,
@@ -1439,7 +1457,13 @@
         "led_id": 49,
         "parameter": "CJ2310",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: CJ2310\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\nN沟道,60V,3A,105mΩ@10V",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "35735": {
         "box_id": 4,
@@ -1586,9 +1610,15 @@
     "129C7": {
         "box_id": 6,
         "led_id": 33,
-        "parameter": "AO4407",
+        "parameter": "AO4407A",
         "voltage": "",
-        "footprint": ""
+        "footprint": "",
+        "note": "【官方型号】: AO4407A\n【类目/功能】: 场效应管(MOSFET) > P沟道\n\n【详细说明】:\nP沟道,-30V,-12A,13mΩ@-10V",
+        "type": "P沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "080A2": {
         "box_id": 3,
@@ -1909,7 +1939,12 @@
         "parameter": "SK03P06",
         "voltage": "",
         "footprint": "",
-        "note": ""
+        "note": "【官方型号】: SK03P06\n【类目/功能】: 场效应管(MOSFET) > P沟道\n\n【详细说明】:\n特性：-60V / 3A，RDS(ON) ≤ 92mΩ @ VGS = -10V。 RDS(ON) ≤ 125mΩ @ VGS = -4.5V。 先进的沟槽单元设计。 高速开关。 SOT-89 / SOT-23 表面贴装封装。应用：便携式电器。 电池管理",
+        "type": "P沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "16B9E": {
         "box_id": 3,
@@ -1922,10 +1957,15 @@
     "8519B": {
         "box_id": 6,
         "led_id": 11,
-        "parameter": "AO3407",
+        "parameter": "AO3407A",
         "voltage": "",
         "footprint": "",
-        "note": ""
+        "note": "【官方型号】: AO3407A\n【类目/功能】: 场效应管(MOSFET) > -\n\n【详细说明】:\nP沟道,-30V,-4.3A,48mΩ@-10V",
+        "type": "-",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "93BCF": {
         "box_id": 6,
@@ -1943,10 +1983,15 @@
     "150F5": {
         "box_id": 6,
         "led_id": 20,
-        "parameter": "SI2308",
+        "parameter": "SI2308CDS-T1-GE3",
         "voltage": "",
         "footprint": "",
-        "note": ""
+        "note": "【官方型号】: SI2308CDS-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\n特性：TrenchFET Gen IV功率MOSFET。 100% Rg测试。应用：电池开关。 DC/DC转换器",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "938DA": {
         "box_id": 4,
@@ -1972,10 +2017,15 @@
     "E8793": {
         "box_id": 6,
         "led_id": 21,
-        "parameter": "2N7002",
+        "parameter": "2N7002K-T1-GE3",
         "voltage": "",
         "footprint": "",
-        "note": ""
+        "note": "【官方型号】: 2N7002K-T1-GE3\n【类目/功能】: 场效应管(MOSFET) > N/A\n\n【详细说明】:\nN沟道,60V,0.3A,2Ω@10V",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "42031": {
         "box_id": 4,
@@ -2054,10 +2104,15 @@
     "AB129": {
         "box_id": 6,
         "led_id": 32,
-        "parameter": "10R",
+        "parameter": "BAV199LT1G",
         "voltage": "",
         "footprint": "1206",
-        "note": "磁珠"
+        "note": "【官方型号】: BAV199LT1G\n【类目/功能】: 通用二极管 > N/A\n\n【详细说明】:\n此开关二极管适用于高速开关应用。 此双二极管器件包含串联封装的两个二极管，采用 SOT-23 表面贴装封装。",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "通用二极管"
     },
     "C66A6": {
         "box_id": 6,
@@ -2338,10 +2393,15 @@
     "73354": {
         "box_id": 6,
         "led_id": 25,
-        "parameter": "IRLR7843",
+        "parameter": "IRLR7843TR(UMW)",
         "voltage": "",
         "footprint": "",
-        "note": ""
+        "note": "【官方型号】: IRLR7843TR(UMW)\n【类目/功能】: 场效应管(MOSFET) > N沟道\n\n【详细说明】:\n特性：VDS(V)=30V 。 Qg=34nC 。 RDS(ON)<3.3mΩ(VGS=10V)。 4.5V VGS时极低的RDS(ON)。 超低栅极阻抗。 完全表征雪崩电压和电流。应用：计算机处理器电源的高频同步降压转换器",
+        "type": "N沟道",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "场效应管(MOSFET)"
     },
     "126DF": {
         "box_id": 4,
@@ -4148,7 +4208,7 @@
     },
     "F6E40": {
         "box_id": 5,
-        "led_id": 65,
+        "led_id": 66,
         "parameter": "120R",
         "voltage": "",
         "footprint": "0603",
@@ -4603,7 +4663,7 @@
     },
     "4F7FF": {
         "box_id": 5,
-        "led_id": 67,
+        "led_id": 68,
         "parameter": "23.7K",
         "voltage": "",
         "footprint": "0603",
@@ -4616,7 +4676,7 @@
     },
     "EE0A4": {
         "box_id": 5,
-        "led_id": 68,
+        "led_id": 69,
         "parameter": "510R",
         "voltage": "",
         "footprint": "0603",
@@ -4629,7 +4689,7 @@
     },
     "F780E": {
         "box_id": 5,
-        "led_id": 69,
+        "led_id": 70,
         "parameter": "120K",
         "voltage": "",
         "footprint": "0805",
@@ -4642,7 +4702,7 @@
     },
     "2251C": {
         "box_id": 5,
-        "led_id": 70,
+        "led_id": 71,
         "parameter": "18K",
         "voltage": "",
         "footprint": "0603",
@@ -4653,23 +4713,10 @@
         "out_current": "N/A",
         "category": "N/A"
     },
-    "BC621": {
-        "box_id": 5,
-        "led_id": 71,
-        "parameter": "0.5R",
-        "voltage": "",
-        "footprint": "1206",
-        "note": "",
-        "type": "N/A",
-        "work_voltage": "N/A",
-        "out_voltage": "N/A",
-        "out_current": "N/A",
-        "category": "N/A"
-    },
     "00868": {
         "box_id": 5,
         "led_id": 72,
-        "parameter": "R",
+        "parameter": "0.5R",
         "voltage": "",
         "footprint": "1206",
         "note": "",
@@ -5302,5 +5349,148 @@
         "out_voltage": "N/A",
         "out_current": "60mA",
         "category": "精密运放"
+    },
+    "48B95": {
+        "box_id": 7,
+        "led_id": 42,
+        "parameter": "Hi3516CRNCV610",
+        "voltage": "",
+        "footprint": "",
+        "note": "海思芯片",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "80017": {
+        "box_id": 7,
+        "led_id": 43,
+        "parameter": "C8051F330-GMR",
+        "voltage": "2.7V~3.6V",
+        "footprint": "",
+        "note": "【官方型号】: C8051F330-GMR\n【类目/功能】: 单片机(MCU/MPU/SOC) > N/A\n【技术描述】:\n• 工作电压: 2.7V~3.6V\n\n【详细说明】:\n芯片 微控制器 8K闪存 768B RAM \n核心尺寸: 8bit \n输入/输出数: 17 \n电源电压最小值: 2.7V \n电源电压最大值: 3.6V \n数字芯片封装形式: MLP \n针脚数: 20 \n程序存储器大小: 8KB \n处理器速度: 25MHz \n周边器件: ADC, DAC, RTC \nPWM通道数: 3 \nRAM存储容量: 768Byte \n工作温度范围: -40°C 至 +85°C \n微处理器/控制器特点: UART, SMBus, SPI \n振荡器类型: 外部、内部 \n接口: I2C, SPI, UART \n时钟频率: 25MHz \n模数转换器输入数: 16 \n电源电压范围: 2.7V 至 3.6V \n程序存储器容量: 8KB \n表面安装器件: SMD \n计时器数: 4 \n输入/输出线数: 17",
+        "type": "N/A",
+        "work_voltage": "2.7V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "单片机(MCU/MPU/SOC)"
+    },
+    "C8E78": {
+        "box_id": 3,
+        "led_id": 71,
+        "parameter": "GS9251",
+        "voltage": "",
+        "footprint": "",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "B999B": {
+        "box_id": 5,
+        "led_id": 74,
+        "parameter": "4.7K",
+        "voltage": "",
+        "footprint": "0603",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "40877": {
+        "box_id": 5,
+        "led_id": 75,
+        "parameter": "220K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "EA784": {
+        "box_id": 5,
+        "led_id": 76,
+        "parameter": "910K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "7B190": {
+        "box_id": 5,
+        "led_id": 77,
+        "parameter": "8.2K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "07D1F": {
+        "box_id": 5,
+        "led_id": 78,
+        "parameter": "59K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "4218C": {
+        "box_id": 5,
+        "led_id": 79,
+        "parameter": "11K",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "50V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "贴片电阻"
+    },
+    "73BDB": {
+        "box_id": 5,
+        "led_id": 80,
+        "parameter": "220R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
+    },
+    "18484": {
+        "box_id": 5,
+        "led_id": 81,
+        "parameter": "27R",
+        "voltage": "",
+        "footprint": "0402",
+        "note": "",
+        "type": "N/A",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "N/A"
     }
 }

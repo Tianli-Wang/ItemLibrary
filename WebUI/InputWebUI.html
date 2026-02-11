@@ -730,6 +730,7 @@
                             <input type="text" id="search-voltage" placeholder="电压 (e.g. 16V)">
                             <input type="text" id="search-footprint" placeholder="封装 (e.g. 0603)">
                             <input type="text" id="search-boxid" placeholder="料盒 (Box ID)">
+                            <input type="text" id="search-note" placeholder="备注 (Note)">
                         </div>
                     </div>
                     <!-- 排序行 -->
@@ -785,7 +786,8 @@
             parameter: '',
             voltage: '',
             footprint: '',
-            boxid: ''
+            boxid: '',
+            note: ''
         };
         let swapPendingKey = null; // 用于存储待交换位置的第一个元件 Key
 
@@ -957,7 +959,8 @@
             const hasSearchCriteria = searchFilters.parameter.trim() !== '' ||
                 searchFilters.voltage.trim() !== '' ||
                 searchFilters.footprint.trim() !== '' ||
-                searchFilters.boxid.trim() !== '';
+                searchFilters.boxid.trim() !== '' ||
+                searchFilters.note.trim() !== '';
 
             if (hasSearchCriteria) {
                 filteredArray = componentArray.filter(item => {
@@ -969,7 +972,11 @@
                     const searchBox = searchFilters.boxid.trim();
                     const matchBox = !searchBox || (item.details.box_id && item.details.box_id.toString().includes(searchBox));
 
-                    return matchParameter && matchVoltage && matchFootprint && matchBox;
+                    // 备注匹配：包含
+                    const searchNote = searchFilters.note.trim().toLowerCase();
+                    const matchNote = !searchNote || (item.details.note && item.details.note.toLowerCase().includes(searchNote));
+
+                    return matchParameter && matchVoltage && matchFootprint && matchBox && matchNote;
                 });
             }
 
@@ -1566,6 +1573,11 @@
 
         document.getElementById('search-boxid').addEventListener('input', (e) => {
             searchFilters.boxid = e.target.value;
+            loadComponents();
+        });
+
+        document.getElementById('search-note').addEventListener('input', (e) => {
+            searchFilters.note = e.target.value;
             loadComponents();
         });
 

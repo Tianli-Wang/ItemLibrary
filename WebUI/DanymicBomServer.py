@@ -143,6 +143,15 @@ def search_component(part_number, parameter=None, footprint=None):
                 score += 20
                 reasons.append("耐压值匹配")
 
+        # E. 备注匹配 (增强搜素)
+        db_note_str = data.get('note', '').upper()
+        if part_number and part_number.upper() in db_note_str:
+            score += 30
+            reasons.append("备注包含型号")
+        if parameter and parameter.upper() in db_note_str:
+            score += 20
+            reasons.append("备注包含参数")
+
         if score >= 40:
             matches.append({
                 'part_number': pn,
