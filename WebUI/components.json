@@ -293,13 +293,6 @@
         "voltage": "",
         "footprint": "0603"
     },
-    "F7859": {
-        "box_id": 1,
-        "led_id": 43,
-        "parameter": "210K",
-        "voltage": "",
-        "footprint": "0603"
-    },
     "A03EC": {
         "box_id": 1,
         "led_id": 44,

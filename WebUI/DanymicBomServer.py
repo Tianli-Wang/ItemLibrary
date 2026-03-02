@@ -88,6 +88,10 @@ def search_component(part_number, parameter=None, footprint=None):
     # 预处理搜索参数
     search_val = parse_electronic_value(parameter)
     search_fp = (footprint or "").upper()
+    search_fp_clean = re.sub(r'[^A-Z0-9]', '', search_fp)
+    # 提取 4-5 位数字代码 (针对 0402, 0603, 0805, 1206, 01005 等)
+    search_fp_code_match = re.search(r'(\d{4,5})', search_fp)
+    search_fp_code = search_fp_code_match.group(1) if search_fp_code_match else None
     
     # 尝试从参数中提取电压 (例如 "10uF 25V" 提取出 25)
     search_volt = None
@@ -100,23 +104,56 @@ def search_component(part_number, parameter=None, footprint=None):
     for pn, data in components_db.items():
         score = 0
         reasons = []
+        strong_pn_match = False  # 标记是否发生了芯片类型号强匹配
+
 
         db_param_str = data.get('parameter', '')
         db_fp_str = data.get('footprint', '')
         db_volt_str = str(data.get('voltage', '')).replace('V', '').replace('v', '')
+        
+        # 预先计算库内条目的数值，用于判断是否为 RC 类元件
+        db_val = parse_electronic_value(db_param_str)
 
         # A. 型号完全匹配检查 (BOM型号 vs 数据库Key/参数)
         if part_number:
             target_pn = part_number.upper()
-            if target_pn == pn.upper():
+            db_param_upper = db_param_str.upper()
+            pn_upper = pn.upper()
+            
+            # 1. 完美匹配
+            if target_pn == pn_upper or target_pn == db_param_upper:
                 score += 100
-                reasons.append("ID完美匹配")
-            elif target_pn in db_param_str.upper() or db_param_str.upper() in target_pn:
-                score += 40
-                reasons.append(f"型号/参数文本包含({db_param_str})")
+                reasons.append("ID/型号完美匹配")
+            else:
+                # 判断是否为电阻/电容类搜索 (带有数值单位，如 50k, 1uF)
+                is_rc_search = search_val is not None
+                is_rc_db = db_val is not None
+                
+                # 特殊处理：如果是电容电阻，需要严格匹配防止 50k 匹配 150k
+                if is_rc_search or is_rc_db:
+                    # 使用单词边界正则匹配
+                    pn_pattern = r'\b' + re.escape(target_pn) + r'\b'
+                    if re.search(pn_pattern, db_param_upper) or (db_param_upper and re.search(r'\b' + re.escape(db_param_upper) + r'\b', target_pn)):
+                        score += 40
+                        reasons.append(f"RC规格文本匹配({db_param_str})")
+                else:
+                    # 对于芯片等其他元件，允许型号/参数互相包含 (如 AO3401A_P 匹配 AO3401)
+                    # 提高分值到80，确保即使有封装惩罚也能稳定过线
+                    if target_pn in db_param_upper or (db_param_upper and db_param_upper in target_pn):
+                        score += 80
+                        reasons.append(f"芯片型号匹配({db_param_str})")
+                        strong_pn_match = True
+                    elif target_pn in pn_upper or pn_upper in target_pn:
+                        score += 80
+                        reasons.append(f"芯片ID匹配({pn})")
+                        strong_pn_match = True
+
+
+
+
 
         # B. 数值逻辑匹配 (10k == 10000)
-        db_val = parse_electronic_value(db_param_str)
+
         if search_val is not None and db_val is not None:
             diff = abs(search_val - db_val)
             rel_diff = diff / max(search_val, db_val) if max(search_val, db_val) > 0 else 0
@@ -127,15 +164,46 @@ def search_component(part_number, parameter=None, footprint=None):
             score += 30
             reasons.append("参数文本一致")
 
-        # C. 封装匹配
+        # C. 封装匹配 (包含对标准规格如 0402, 0603 的智能匹配)
+        fp_matched = False
         if search_fp and db_fp_str:
             db_fp_upper = db_fp_str.upper()
+            db_fp_clean = re.sub(r'[^A-Z0-9]', '', db_fp_upper)
+            
             if search_fp == db_fp_upper:
                 score += 25
                 reasons.append("封装完美匹配")
-            elif search_fp in db_fp_upper or db_fp_upper in search_fp:
-                score += 10
-                reasons.append("封装模糊匹配")
+                fp_matched = True
+            elif search_fp_clean == db_fp_clean:
+                score += 20
+                reasons.append("封装去干扰匹配")
+                fp_matched = True
+            elif (db_fp_clean and db_fp_clean in search_fp) or (search_fp in db_fp_upper):
+                score += 15
+                reasons.append("封装包含匹配")
+                fp_matched = True
+            else:
+                db_fp_code_match = re.search(r'(\d{4,5})', db_fp_upper)
+                db_fp_code = db_fp_code_match.group(1) if db_fp_code_match else None
+                if search_fp_code and db_fp_code and search_fp_code == db_fp_code:
+                    score += 20
+                    reasons.append(f"封装标准规格匹配({search_fp_code})")
+                    fp_matched = True
+                elif search_fp in db_fp_upper or db_fp_upper in search_fp:
+                    score += 10
+                    reasons.append("封装模糊匹配")
+                    fp_matched = True
+        
+        # 封装不匹配惩罚：如果搜索提供了封装但数据库条目有不同封装，大幅减分
+        if search_fp and db_fp_str and not fp_matched:
+            # 如果是芯片类强匹配，或者是 EDA 导出的复合同号，不应惩罚
+            if strong_pn_match or (part_number and (part_number.upper() in search_fp)):
+                pass 
+            else:
+                score -= 30
+                reasons.append("封装不匹配(惩罚)")
+
+
 
         # D. 耐压值匹配
         if search_volt and db_volt_str:
@@ -143,14 +211,24 @@ def search_component(part_number, parameter=None, footprint=None):
                 score += 20
                 reasons.append("耐压值匹配")
 
-        # E. 备注匹配 (增强搜素)
+        # E. 备注匹配 (增强搜素) - 使用词边界防止误匹配 (如 600K 匹配 600kHz)
         db_note_str = data.get('note', '').upper()
-        if part_number and part_number.upper() in db_note_str:
-            score += 30
-            reasons.append("备注包含型号")
-        if parameter and parameter.upper() in db_note_str:
-            score += 20
-            reasons.append("备注包含参数")
+        if part_number:
+            # 使用正则单词边界匹配
+            pn_pattern = r'\b' + re.escape(part_number.upper()) + r'\b'
+            if re.search(pn_pattern, db_note_str):
+                score += 15 # 降低权重
+                reasons.append("备注包含型号(单词匹配)")
+            elif part_number.upper() in db_note_str:
+                score += 5 # 极低权重
+                reasons.append("备注模糊包含型号")
+                
+        if parameter and parameter.upper() != (part_number or "").upper():
+            param_pattern = r'\b' + re.escape(parameter.upper()) + r'\b'
+            if re.search(param_pattern, db_note_str):
+                score += 10 # 降低权重
+                reasons.append("备注包含参数(单词匹配)")
+
 
         if score >= 40:
             matches.append({
@@ -228,6 +306,54 @@ def light_up():
         })
 
 
+# 1.5 【核心】范围搜索 API (根据数值范围列出元件)
+@app.route('/search_range')
+def search_range():
+    min_val_str = request.args.get('min', '0')
+    max_val_str = request.args.get('max', 'inf')
+    
+    try:
+        min_val = parse_electronic_value(min_val_str) or 0.0
+    except:
+        min_val = 0.0
+        
+    try:
+        if max_val_str.lower() == 'inf':
+            max_val = float('inf')
+        else:
+            max_val = parse_electronic_value(max_val_str) or float('inf')
+    except:
+        max_val = float('inf')
+
+    load_database()
+    results = []
+    
+    for pn, data in components_db.items():
+        db_param_str = data.get('parameter', '')
+        db_val = parse_electronic_value(db_param_str)
+        
+        if db_val is not None:
+            if min_val <= db_val <= max_val:
+                results.append({
+                    'part_number': pn,
+                    'data': data,
+                    'value': db_val
+                })
+    
+    # 按数值排序
+    results.sort(key=lambda x: x['value'])
+    
+    return jsonify({
+        "status": "success",
+        "count": len(results),
+        "results": results,
+        "query": {
+            "min": min_val,
+            "max": max_val
+        }
+    })
+
+
 # 2. 【核心】主页路由 (注入增强版脚本)
 @app.route('/')
 def serve_bom():
@@ -238,23 +364,26 @@ def serve_bom():
         return f"错误: 找不到 {BOM_FILE_NAME}。请确保它和 app.py 在同一文件夹中。", 404
 
     # --- 自动修改BOM的 console.log ---
-    find_string_block = r"Se=H.dataId[1],X=H.dataEle[1],ze=H.value;console.log(`\u5668\u4EF6\u7F16\u53F7:${Se}, \u5668\u4EF6\u578B\u53F7:${X}, \u503C:${ze}`)"
-    replace_string_block = r"Se=H.dataId[1],X=H.dataEle[1],ze=H.value,Oe=H.package[1];console.log(`\u5668\u4EF6\u7F16\u53F7:${Se}, \u5668\u4EF6\u578B\u53F7:${X}, \u503C:${ze}, \u5C01\u88C5:${Oe}`)"
-
-    if find_string_block in html_content:
-        html_content = html_content.replace(find_string_block, replace_string_block)
+    # --- 自动修改BOM的 console.log (使用正则以支持不同版本的变量名) ---
+    # 匹配模式：寻找 console.log 并捕获变量名
+    # 例如：_e=Y.dataId[1],Z=Y.dataEle[1],Pe=Y.value;console.log(`\u5668\u4EF6\u7F16\u53F7:${_e}, \u5668\u4EF6\u578B\u53F7:${Z}, \u503C:${Pe}`)
+    pattern = r"([a-zA-Z_0-9]+)=([a-zA-Z_0-9]+)\.dataId\[1\],([a-zA-Z_0-9]+)=\2\.dataEle\[1\],([a-zA-Z_0-9]+)=\2\.value;console\.log\(`\\u5668\\u4EF6\\u7F16\\u53F7:\${\1}, \\u5668\\u4EF6\\u578B\\u53F7:\${\3}, \\u503C:\${\4}\`\)"
+    replacement = r"\1=\2.dataId[1],\3=\2.dataEle[1],\4=\2.value,Oe=\2.package[1];console.log(`\\u5668\\u4EF6\\u7F16\\u53F7:${\1}, \\u5668\\u4EF6\\u578B\\u53F7:${\3}, \\u503C:${\4}, \\u5C01\\u88C5:${Oe}`)"
+    
+    new_html, count = re.subn(pattern, replacement, html_content)
+    
+    if count > 0:
+        html_content = new_html
         if not hasattr(serve_bom, 'patch_applied'):
             print("=========================================")
-            print("  ✓ 自动BOM脚本修改成功！")
+            print(f"  ✓ 自动BOM脚本修改成功！(匹配到 {count} 处)")
             print("  ✓ 已添加 '封装' (Oe) 并更新 console.log。")
             print("=========================================")
             serve_bom.patch_applied = True
     else:
         if not hasattr(serve_bom, 'patch_failed'):
-            print("=========================================")
-            print("  ⚠️ 警告: 未能自动修改BOM脚本。")
-            print("    (未找到的完整代码块):")
-            print(f"    {find_string_block}")
+            print("  ⚠️ 警告: 未能自动通过正则修改BOM脚本。")
+            print("    尝试匹配的代码片段可能已变化。")
             print("=========================================")
             serve_bom.patch_failed = True
     # --- 自动修改结束 ---
