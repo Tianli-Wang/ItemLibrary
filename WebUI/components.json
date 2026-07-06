@@ -1096,9 +1096,15 @@
     "BE800": {
         "box_id": 3,
         "led_id": 17,
-        "parameter": "MIC5319",
-        "voltage": "",
-        "footprint": ""
+        "parameter": "MIC5319-3.3YD5-TR",
+        "voltage": "5.5V",
+        "footprint": "",
+        "note": "【官方型号】: MIC5319-3.3YD5-TR\n【类目/功能】: 线性稳压器(LDO) > N/A\n【技术描述】:\n• 工作电压: 5.5V\n• 输出电压: 3.3V\n• 输出电流: 500mA\n\n【详细说明】:\nMIC5319是一款高性能的500mA低压差（LDO）稳压器，在消耗低接地电流的同时，可提供极高的电源抑制比（PSRR）和极低的噪声。MIC5319非常适合电池供电应用，具有1%的精度、极低的压差（在500mA负载下为200mV）以及轻载时的低接地电流（典型值为90μA）。MIC5319配备了一个逻辑兼容的使能引脚，可使其进入零关断模式电流状态，禁用时不消耗电流",
+        "type": "N/A",
+        "work_voltage": "5.5V",
+        "out_voltage": "3.3V",
+        "out_current": "500mA",
+        "category": "线性稳压器(LDO)"
     },
     "EFD26": {
         "box_id": 6,
