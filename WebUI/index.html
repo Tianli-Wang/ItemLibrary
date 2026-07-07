@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人元件库 · Item Library</title>
+    <style>
+        :root {
+            --sidebar-width: 232px;
+            --bg: #f5f6f8;
+            --surface: #ffffff;
+            --surface-2: #f7f8fa;
+            --border: #e9eaee;
+            --border-strong: #dcdfe4;
+            --text: #1b1d21;
+            --text-muted: #656b76;
+            --text-faint: #9aa0aa;
+            --accent: #2563eb;
+            --accent-hover: #1d4ed8;
+            --accent-soft: #eef3ff;
+            --accent-soft-border: #dbe6ff;
+            --green: #16a34a;
+            --green-soft: #eafaf0;
+            --orange: #ea580c;
+            --red: #e11d48;
+            --purple: #6d5ce6;
+            --r: 12px;
+            --r-sm: 8px;
+            --r-pill: 999px;
+            --sh-sm: 0 1px 2px rgba(16, 24, 40, .04), 0 1px 3px rgba(16, 24, 40, .07);
+            --sh: 0 2px 6px rgba(16, 24, 40, .05), 0 6px 16px rgba(16, 24, 40, .06);
+            --sh-lg: 0 12px 34px rgba(16, 24, 40, .14);
+            --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            overflow: hidden;
+            font-size: 14px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ---------------- Sidebar ---------------- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 22px 20px 16px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: .2px;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .logo-badge {
+            width: 28px; height: 28px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), #4f7cff);
+            display: grid; place-items: center;
+            color: #fff; font-size: 15px;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, .35);
+        }
+
+        .nav-section-label {
+            padding: 6px 22px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: .6px;
+            color: var(--text-faint);
+            text-transform: uppercase;
+        }
+
+        .nav-menu { padding: 8px 12px; flex-grow: 1; }
+
+        .nav-item {
+            padding: 9px 12px;
+            margin-bottom: 3px;
+            border-radius: var(--r-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: background .15s, color .15s;
+            user-select: none;
+        }
+        .nav-item .nav-ic { font-size: 16px; width: 20px; text-align: center; }
+        .nav-item:hover { background: var(--surface-2); color: var(--text); }
+        .nav-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+
+        .sidebar-footer {
+            padding: 12px;
+            border-top: 1px solid var(--border);
+        }
+        .stat-pill {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 10px 12px; border-radius: var(--r-sm);
+            background: var(--surface-2); font-size: 12px; color: var(--text-muted);
+        }
+        .stat-pill b { color: var(--text); font-size: 15px; }
+
+        /* ---------------- Resizers ---------------- */
+        .resizer { background: transparent; position: relative; z-index: 200; transition: background .2s; flex-shrink: 0; }
+        .resizer.horizontal { width: 6px; cursor: col-resize; }
+        .resizer.horizontal::after {
+            content: ""; position: absolute; left: 2px; top: 0; bottom: 0; width: 1px; background: var(--border);
+        }
+        .resizer:hover, .resizer.resizing { background: var(--accent-soft); }
+        body.is-resizing { cursor: col-resize; user-select: none; }
+
+        /* ---------------- Main ---------------- */
+        .main-content { flex-grow: 1; height: 100vh; overflow: hidden; position: relative; }
+        .page-panel { display: none; height: 100vh; width: 100%; overflow: hidden; padding: 20px; }
+        .page-panel.active { display: flex; }
+        #bom-panel.active, #bom-panel { padding: 0; }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--r);
+            box-shadow: var(--sh-sm);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .card-head {
+            padding: 18px 20px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .card-head h2 { margin: 0; font-size: 15px; font-weight: 650; }
+        .card-head p { margin: 3px 0 0; font-size: 12.5px; color: var(--text-muted); }
+
+        .form-section { width: 380px; flex-shrink: 0; }
+        .form-body { padding: 18px 20px; overflow-y: auto; }
+        .list-section { flex-grow: 1; }
+
+        label { font-weight: 600; display: block; margin-bottom: 6px; font-size: 12.5px; color: var(--text-muted); }
+
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 9px 11px;
+            border: 1px solid var(--border-strong);
+            border-radius: var(--r-sm);
+            font-size: 13.5px;
+            font-family: inherit;
+            background: var(--surface);
+            color: var(--text);
+            transition: border-color .15s, box-shadow .15s;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+        }
+        textarea { resize: vertical; min-height: 62px; line-height: 1.5; }
+        .field { margin-bottom: 14px; }
+        .field:last-child { margin-bottom: 0; }
+
+        .two-col { display: flex; gap: 12px; }
+        .two-col > .field { flex: 1; margin-bottom: 0; }
+
+        .label-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+        .label-row label { margin-bottom: 0; }
+
+        .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-left: auto; }
+        .chip-btn {
+            font-size: 11.5px; padding: 3px 9px; background: var(--surface-2);
+            color: var(--text-muted); border: 1px solid var(--border);
+            border-radius: var(--r-pill); cursor: pointer; font-weight: 600;
+            user-select: none; transition: all .15s;
+        }
+        .chip-btn:hover { border-color: var(--accent); color: var(--accent); }
+        .chip-btn.selected { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+        .btn {
+            padding: 10px 14px; border: none; border-radius: var(--r-sm);
+            cursor: pointer; font-size: 13.5px; font-weight: 600;
+            font-family: inherit; transition: background .15s, transform .05s;
+        }
+        .btn:active { transform: translateY(1px); }
+        .btn-primary { background: var(--accent); color: #fff; }
+        .btn-primary:hover { background: var(--accent-hover); }
+        .btn-amber { background: #f59e0b; color: #fff; }
+        .btn-amber:hover { background: #d97706; }
+        .btn-green { background: var(--green); color: #fff; white-space: nowrap; }
+        .btn-green:hover { background: #12813c; }
+        .btn-ghost { background: var(--surface); border: 1px solid var(--border-strong); color: var(--text-muted); }
+        .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+        .btn-row { display: flex; gap: 10px; margin-top: 4px; }
+        .btn-row .btn { flex: 1; }
+
+        .input-with-btn { display: flex; gap: 8px; }
+        .input-with-btn input { flex: 1; }
+
+        /* LCSC result */
+        #lcsc-result { margin-top: 12px; display: none; }
+        .lcsc-card {
+            border: 1px solid var(--accent-soft-border);
+            background: var(--accent-soft);
+            border-radius: var(--r-sm);
+            padding: 12px;
+        }
+        .lcsc-top { display: flex; gap: 12px; }
+        .lcsc-top img { width: 54px; height: 54px; object-fit: contain; background: #fff; border-radius: 6px; border: 1px solid var(--border); }
+        .lcsc-title { font-weight: 700; font-size: 13.5px; }
+        .lcsc-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .lcsc-params { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; }
+        .lcsc-param { font-size: 11px; background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 3px 7px; }
+        .lcsc-param b { color: var(--text); }
+        .lcsc-links { margin-top: 8px; font-size: 12px; }
+        .lcsc-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
+
+        /* ---------------- Toolbar ---------------- */
+        .toolbar { padding: 14px 18px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+        .toolbar-row { display: flex; align-items: center; gap: 10px; }
+        .toolbar-label { font-size: 11.5px; font-weight: 700; color: var(--text-faint); min-width: 52px; letter-spacing: .3px; }
+        .search-group { display: flex; flex-grow: 1; gap: 8px; }
+        .search-group input { padding: 7px 10px; font-size: 12.5px; }
+        .sort-group { display: flex; gap: 6px; }
+        .sort-badge {
+            padding: 5px 12px; background: var(--surface-2); color: var(--text-muted);
+            border-radius: var(--r-pill); font-size: 12px; cursor: pointer; font-weight: 600;
+            border: 1px solid transparent; user-select: none; transition: all .15s;
+        }
+        .sort-badge:hover { background: #eef0f3; }
+        .sort-badge.active { background: var(--accent); color: #fff; }
+        .dir-toggle {
+            padding: 5px 12px; background: var(--surface); border: 1px solid var(--border-strong);
+            border-radius: var(--r-pill); font-size: 12px; cursor: pointer; font-weight: 600;
+            color: var(--text); display: flex; align-items: center; gap: 5px;
+        }
+        .dir-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+        /* ---------------- Component list ---------------- */
+        #list-container { flex-grow: 1; overflow-y: auto; padding: 12px 18px 18px; }
+        #component-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+        .comp-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-sm);
+            padding: 13px 14px; transition: border-color .15s, box-shadow .15s, transform .1s;
+            display: flex; flex-direction: column; gap: 9px; cursor: pointer;
+        }
+        .comp-card:hover { border-color: var(--accent-soft-border); box-shadow: var(--sh); }
+        .comp-card.flash { animation: flash 1.2s ease; }
+        @keyframes flash { 0%, 100% { background: var(--surface); } 30% { background: var(--accent-soft); } }
+
+        .comp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .comp-title { font-size: 15px; font-weight: 700; line-height: 1.25; }
+        .comp-title .fp { color: var(--text-muted); font-weight: 500; font-size: 13px; }
+        .comp-id { font-size: 11px; color: var(--text-faint); font-family: ui-monospace, Menlo, Consolas, monospace; margin-top: 2px; }
+
+        .comp-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .icon-btn {
+            width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--border);
+            background: var(--surface); cursor: pointer; display: grid; place-items: center;
+            font-size: 13px; color: var(--text-muted); transition: all .15s;
+        }
+        .icon-btn:hover { background: var(--surface-2); }
+        .icon-btn.del:hover { background: #fef2f2; color: var(--red); border-color: #fecdd6; }
+        .icon-btn.swap:hover { background: #f3f1fe; color: var(--purple); border-color: #ddd8fb; }
+        .icon-btn.swap.pending { background: var(--purple); color: #fff; border-color: var(--purple); animation: pulse 1.4s infinite; }
+        @keyframes pulse { 50% { opacity: .55; } }
+
+        .comp-loc { display: flex; gap: 8px; }
+        .loc-box {
+            display: flex; align-items: center; gap: 6px; background: var(--surface-2);
+            border: 1px solid var(--border); border-radius: var(--r-sm); padding: 5px 9px;
+        }
+        .loc-box .lbl { font-size: 10.5px; color: var(--text-faint); font-weight: 700; letter-spacing: .4px; }
+        .loc-box input {
+            width: 44px; padding: 3px 4px; text-align: center; font-size: 13px; font-weight: 700;
+            border: 1px solid transparent; background: transparent; border-radius: 5px; color: var(--text);
+        }
+        .loc-box input:focus { background: #fff; border-color: var(--accent); box-shadow: none; }
+
+        .badges { display: flex; flex-wrap: wrap; gap: 5px; }
+        .badge {
+            display: inline-flex; align-items: center; gap: 3px; padding: 2px 8px; border-radius: 6px;
+            font-size: 11px; font-weight: 600; border: 1px solid transparent;
+        }
+        .badge.volt { background: #fff5e9; color: var(--orange); border-color: #ffe2c2; }
+        .badge.cat { background: #f1eee9; color: #6b533d; border-color: #e2d9cd; }
+        .badge.type { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft-border); }
+        .badge.cur { background: #f5f0fe; color: var(--purple); border-color: #e5defb; }
+
+        .comp-note {
+            font-size: 12px; color: var(--text-muted); background: var(--surface-2);
+            border: 1px solid var(--border); border-left: 3px solid var(--accent);
+            border-radius: 6px; padding: 8px 10px; white-space: pre-wrap; line-height: 1.55;
+            max-height: 3.4em; overflow: hidden; position: relative; transition: max-height .25s;
+        }
+        .comp-note.expanded { max-height: 400px; }
+        .comp-note.collapsed::after {
+            content: "展开 ▾"; position: absolute; right: 8px; bottom: 4px; font-size: 10px;
+            color: var(--accent); background: linear-gradient(90deg, transparent, var(--surface-2) 40%); padding-left: 20px;
+        }
+
+        .empty { text-align: center; color: var(--text-faint); padding: 60px 20px; font-size: 13px; }
+
+        /* ---------------- BOM iframe ---------------- */
+        #bom-frame { width: 100%; height: 100%; border: none; background: #fff; }
+
+        /* ---------------- Import row ---------------- */
+        .import-row { padding: 6px 12px 10px; }
+        .import-btn {
+            width: 100%; padding: 9px; border-radius: var(--r-sm); border: 1px dashed var(--border-strong);
+            background: var(--surface-2); color: var(--text-muted); cursor: pointer; font-size: 12.5px; font-weight: 600;
+            display: flex; align-items: center; justify-content: center; gap: 8px; transition: all .15s;
+        }
+        .import-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+        #bom-status-text { font-size: 11px; color: var(--text-faint); margin-top: 6px; text-align: center; }
+
+        /* ---------------- Global toast ---------------- */
+        #g-toast {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%) translateY(-150%);
+            z-index: 9999; min-width: 300px; max-width: 90vw; padding: 14px 20px; border-radius: 16px;
+            color: #fff; box-shadow: var(--sh-lg); display: flex; align-items: center; gap: 16px;
+            opacity: 0; transition: transform .34s cubic-bezier(.2,.9,.3,1.2), opacity .34s; cursor: pointer;
+        }
+        #g-toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        #g-toast.ok { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        #g-toast.warn { background: linear-gradient(135deg, #dc2626, #be123c); }
+        #g-toast .gt-ic { font-size: 26px; }
+        #g-toast .gt-main { flex: 1; min-width: 0; }
+        #g-toast .gt-title { font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        #g-toast .gt-sub { font-size: 12px; opacity: .78; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        #g-toast .gt-loc { display: flex; gap: 10px; }
+        #g-toast .gt-chip { display: flex; flex-direction: column; align-items: center; padding: 6px 15px; border-radius: 12px; background: rgba(255,255,255,.16); }
+        #g-toast .gt-chip b { font-size: 21px; font-weight: 800; line-height: 1; }
+        #g-toast .gt-chip span { font-size: 10px; opacity: .75; margin-top: 3px; letter-spacing: .5px; }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-badge">◆</span>
+            <span>个人元件库</span>
+        </div>
+        <div class="nav-section-label">工作区</div>
+        <nav class="nav-menu">
+            <div class="nav-item active" data-target="management-panel">
+                <span class="nav-ic">📦</span><span>元件库</span>
+            </div>
+            <div class="nav-item" data-target="bom-panel">
+                <span class="nav-ic">🧩</span><span>BOM 交互</span>
+            </div>
+        </nav>
+        <div class="import-row">
+            <div class="nav-section-label" style="padding-left:10px;">交互式 BOM</div>
+            <button class="import-btn" onclick="document.getElementById('bom-upload-input').click()">
+                <span>📥</span><span>导入 立创EDA BOM</span>
+            </button>
+            <input type="file" id="bom-upload-input" style="display:none" accept=".html" onchange="handleBomUpload(event)">
+            <div id="bom-status-text">支持立创EDA离线交互式BOM</div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="stat-pill"><span>元件总数</span><b id="stat-count">0</b></div>
+        </div>
+    </aside>
+
+    <div id="sidebar-resizer" class="resizer horizontal"></div>
+
+    <main class="main-content">
+        <!-- ===================== 元件库 ===================== -->
+        <div id="management-panel" class="page-panel active">
+            <div class="card form-section" id="form-section">
+                <div class="card-head">
+                    <h2>录入 / 编辑元件</h2>
+                    <p>每个元件对应一个 料盒(box_id) 与 位置(pos_id)</p>
+                </div>
+                <div class="form-body">
+                    <form id="add-form">
+                        <div class="field">
+                            <label for="comp_name">元件名称（唯一 ID）</label>
+                            <input type="text" id="comp_name" placeholder="自动生成…" required>
+                        </div>
+
+                        <div class="two-col" style="margin-bottom:14px;">
+                            <div class="field">
+                                <label for="box_id">料盒 box_id</label>
+                                <input type="number" id="box_id" placeholder="1" required>
+                            </div>
+                            <div class="field">
+                                <label for="led_id">位置 pos_id</label>
+                                <input type="number" id="led_id" placeholder="1" required>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <div class="label-row">
+                                <label for="parameter">参数 parameter</label>
+                                <div class="chips">
+                                    <span class="chip-btn" data-unit="R">R</span>
+                                    <span class="chip-btn" data-unit="K">K</span>
+                                    <span class="chip-btn" data-unit="pF">pF</span>
+                                    <span class="chip-btn" data-unit="nF">nF</span>
+                                    <span class="chip-btn" data-unit="uF">uF</span>
+                                    <span class="chip-btn" data-unit="nH">nH</span>
+                                    <span class="chip-btn" data-unit="uH">uH</span>
+                                </div>
+                            </div>
+                            <div class="input-with-btn">
+                                <input type="text" id="parameter" placeholder="数值 / 型号 / 立创编号(Cxxxx)">
+                                <button type="button" class="btn btn-green" id="search-lcsc-btn">搜索立创</button>
+                            </div>
+                            <div id="lcsc-result"></div>
+                        </div>
+
+                        <div class="field">
+                            <div class="label-row">
+                                <label for="footprint">封装 footprint</label>
+                                <div class="chips">
+                                    <span class="chip-btn" data-fp="0402">0402</span>
+                                    <span class="chip-btn" data-fp="0603">0603</span>
+                                    <span class="chip-btn" data-fp="0805">0805</span>
+                                    <span class="chip-btn" data-fp="1206">1206</span>
+                                </div>
+                            </div>
+                            <input type="text" id="footprint" placeholder="0603">
+                        </div>
+
+                        <div class="field">
+                            <div class="label-row">
+                                <label for="voltage">电压 voltage</label>
+                                <div class="chips">
+                                    <span class="chip-btn" data-volt="6.3V">6.3V</span>
+                                    <span class="chip-btn" data-volt="10V">10V</span>
+                                    <span class="chip-btn" data-volt="16V">16V</span>
+                                    <span class="chip-btn" data-volt="25V">25V</span>
+                                    <span class="chip-btn" data-volt="50V">50V</span>
+                                    <span class="chip-btn" data-volt="100V">100V</span>
+                                </div>
+                            </div>
+                            <input type="text" id="voltage" placeholder="16V">
+                        </div>
+
+                        <div class="field">
+                            <label for="note">备注 note</label>
+                            <textarea id="note" placeholder="可选：用途、来源、替代料…"></textarea>
+                        </div>
+
+                        <div class="btn-row">
+                            <button type="submit" class="btn btn-primary" id="add-btn">＋ 添加为新元件</button>
+                            <button type="button" class="btn btn-amber" id="update-btn">更新</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="form-resizer" class="resizer horizontal"></div>
+
+            <div class="card list-section">
+                <div class="toolbar">
+                    <div class="toolbar-row">
+                        <span class="toolbar-label">智能搜索</span>
+                        <div class="search-group">
+                            <input type="text" id="search-parameter" placeholder="参数 (10k, 104)">
+                            <input type="text" id="search-voltage" placeholder="电压 (16V)">
+                            <input type="text" id="search-footprint" placeholder="封装 (0603)">
+                            <input type="text" id="search-boxid" placeholder="料盒">
+                            <input type="text" id="search-note" placeholder="备注">
+                        </div>
+                    </div>
+                    <div class="toolbar-row">
+                        <span class="toolbar-label">范围搜索</span>
+                        <div class="search-group" style="align-items:center;">
+                            <input type="text" id="search-min" placeholder="最小值 (1k, 100n)">
+                            <span style="color:var(--text-faint);font-size:12px;">至</span>
+                            <input type="text" id="search-max" placeholder="最大值 (10k, 1u)">
+                            <button type="button" class="btn btn-ghost" id="clear-range-btn" style="padding:6px 12px;font-size:12px;">清除</button>
+                        </div>
+                    </div>
+                    <div class="toolbar-row">
+                        <span class="toolbar-label">排序</span>
+                        <div class="sort-group" id="sort-selector">
+                            <div class="sort-badge active" data-criteria="parameter">数值参数</div>
+                            <div class="sort-badge" data-criteria="box">料盒/位置</div>
+                            <div class="sort-badge" data-criteria="led">位置</div>
+                            <div class="sort-badge" data-criteria="key">名称</div>
+                        </div>
+                        <div style="margin-left:auto;">
+                            <button class="dir-toggle" id="dir-toggle-btn"><span id="dir-icon">↑</span><span id="dir-text">正序</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div id="list-container">
+                    <ul id="component-list"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== BOM ===================== -->
+        <div id="bom-panel" class="page-panel">
+            <iframe id="bom-frame" src="about:blank"></iframe>
+        </div>
+    </main>
+
+    <div id="g-toast"></div>
+
+    <script>
+        /* ==================== 全局状态 ==================== */
+        const list = document.getElementById('component-list');
+        const form = document.getElementById('add-form');
+        const compNameInput = document.getElementById('comp_name');
+        const paramInput = document.getElementById('parameter');
+        const boxIdInput = document.getElementById('box_id');
+        const ledIdInput = document.getElementById('led_id');
+        const voltageInput = document.getElementById('voltage');
+        const footprintInput = document.getElementById('footprint');
+        const noteInput = document.getElementById('note');
+        let allComponents = {};
+        let selectedParamUnit = '';
+        let currentSortCriteria = 'parameter';
+        let currentSortDirection = 'asc';
+        let swapPendingKey = null;
+        const searchFilters = { parameter: '', voltage: '', footprint: '', boxid: '', note: '', min: '', max: '' };
+
+        /* ==================== 视图切换 ==================== */
+        const navItems = document.querySelectorAll('.nav-item');
+        const pagePanels = document.querySelectorAll('.page-panel');
+        const bomFrame = document.getElementById('bom-frame');
+        navItems.forEach(item => item.addEventListener('click', () => {
+            const target = item.getAttribute('data-target');
+            navItems.forEach(ni => ni.classList.remove('active'));
+            item.classList.add('active');
+            pagePanels.forEach(p => p.classList.toggle('active', p.id === target));
+            if (target === 'bom-panel' && (bomFrame.src === 'about:blank' || bomFrame.src === '')) {
+                bomFrame.src = '/bom_view';
+            }
+        }));
+
+        /* ==================== 拖动调节 ==================== */
+        function initResizer(resizerId, targetId, isSidebar) {
+            const resizer = document.getElementById(resizerId);
+            const target = document.getElementById(targetId);
+            let startX, startWidth;
+            resizer.addEventListener('mousedown', e => {
+                startX = e.clientX; startWidth = target.offsetWidth;
+                document.body.classList.add('is-resizing'); resizer.classList.add('resizing');
+                document.addEventListener('mousemove', onMove);
+                document.addEventListener('mouseup', onUp);
+            });
+            function onMove(e) {
+                let w = startWidth + (e.clientX - startX);
+                if (isSidebar) { w = Math.max(180, Math.min(360, w)); document.documentElement.style.setProperty('--sidebar-width', w + 'px'); }
+                else { w = Math.max(320, Math.min(620, w)); target.style.width = w + 'px'; }
+            }
+            function onUp() {
+                document.body.classList.remove('is-resizing'); resizer.classList.remove('resizing');
+                document.removeEventListener('mousemove', onMove); document.removeEventListener('mouseup', onUp);
+                localStorage.setItem('rz-' + resizerId, isSidebar
+                    ? getComputedStyle(document.documentElement).getPropertyValue('--sidebar-width') : target.style.width);
+            }
+        }
+        initResizer('sidebar-resizer', 'sidebar', true);
+        initResizer('form-resizer', 'form-section', false);
+        window.addEventListener('DOMContentLoaded', () => {
+            const sw = localStorage.getItem('rz-sidebar-resizer');
+            if (sw) document.documentElement.style.setProperty('--sidebar-width', sw);
+            const fw = localStorage.getItem('rz-form-resizer');
+            if (fw) document.getElementById('form-section').style.width = fw;
+        });
+
+        /* ==================== 工具函数 ==================== */
+        function generateRandomID() {
+            return Math.floor(Math.random() * 0x100000).toString(16).toUpperCase().padStart(5, '0');
+        }
+        function parseElectronicValue(str) {
+            if (!str) return null;
+            let s = str.toString().toLowerCase().trim();
+            s = s.replace(/^(\d+)([rkmunpfv])(\d*)$/i, (m, p1, p2, p3) =>
+                (p2 === 'r' || p2 === 'v') ? p1 + '.' + (p3 || '0') : p1 + '.' + (p3 || '0') + p2);
+            s = s.replace(/ω|ohm|farad|f|v/g, '');
+            const units = { p: 1e-12, n: 1e-9, u: 1e-6, m: 1e-3, k: 1e3, M: 1e6, g: 1e9, r: 1 };
+            const m = s.match(/^([\d\.]+)\s*([a-zμ]*)$/i);
+            if (m) {
+                let val = parseFloat(m[1]), u = m[2];
+                if (u.includes('μ')) u = 'u';
+                const c = u.charAt(0);
+                return units[c] ? val * units[c] : val;
+            }
+            return null;
+        }
+        function isElectronicMatch(dataVal, searchVal) {
+            if (!searchVal || !searchVal.trim()) return true;
+            if (!dataVal) return false;
+            if (dataVal.toLowerCase().includes(searchVal.toLowerCase())) return true;
+            const a = parseElectronicValue(dataVal), b = parseElectronicValue(searchVal);
+            if (a !== null && b !== null) {
+                const mx = Math.max(a, b);
+                return mx === 0 ? a === b : Math.abs(a - b) / mx < 0.001;
+            }
+            return false;
+        }
+
+        /* ==================== 加载 & 渲染列表 ==================== */
+        async function loadComponents() {
+            const res = await fetch('/api/components');
+            allComponents = await res.json();
+            document.getElementById('stat-count').textContent = Object.keys(allComponents).length;
+
+            let arr = Object.keys(allComponents).map(k => ({ key: k, d: allComponents[k] }));
+            const f = searchFilters;
+            const has = Object.values(f).some(v => v.trim() !== '');
+            const minVal = parseElectronicValue(f.min), maxVal = parseElectronicValue(f.max);
+
+            if (has) {
+                arr = arr.filter(({ d }) => {
+                    if (!isElectronicMatch(d.parameter, f.parameter)) return false;
+                    if (!isElectronicMatch(d.voltage, f.voltage)) return false;
+                    if (!isElectronicMatch(d.footprint, f.footprint)) return false;
+                    if (f.boxid.trim() && !(d.box_id != null && d.box_id.toString().includes(f.boxid.trim()))) return false;
+                    if (f.note.trim() && !(d.note && d.note.toLowerCase().includes(f.note.trim().toLowerCase()))) return false;
+                    if (minVal !== null || maxVal !== null) {
+                        const v = parseElectronicValue(d.parameter);
+                        if (v === null) return false;
+                        if (minVal !== null && v < minVal) return false;
+                        if (maxVal !== null && v > maxVal) return false;
+                    }
+                    return true;
+                });
+            }
+
+            arr.sort((a, b) => {
+                let r = 0;
+                switch (currentSortCriteria) {
+                    case 'parameter':
+                        r = (parseElectronicValue(a.d.parameter) || 0) - (parseElectronicValue(b.d.parameter) || 0);
+                        if (r === 0) r = (a.d.footprint || '').localeCompare(b.d.footprint || '', undefined, { numeric: true });
+                        break;
+                    case 'box': r = (a.d.box_id - b.d.box_id) || (a.d.led_id - b.d.led_id); break;
+                    case 'led': r = (a.d.led_id - b.d.led_id) || (a.d.box_id - b.d.box_id); break;
+                    case 'key': r = a.key.localeCompare(b.key); break;
+                }
+                return currentSortDirection === 'asc' ? r : -r;
+            });
+
+            list.innerHTML = '';
+            if (!arr.length) {
+                list.innerHTML = '<div class="empty">没有匹配的元件</div>';
+                return;
+            }
+            for (const { key, d } of arr) list.appendChild(renderCard(key, d));
+        }
+
+        function renderCard(key, d) {
+            const li = document.createElement('li');
+            li.className = 'comp-card';
+            li.dataset.key = key;
+
+            let badges = '';
+            if (d.type && d.type !== 'N/A') badges += `<span class="badge type">🏷️ ${d.type}</span>`;
+            if (d.voltage && d.voltage.trim()) badges += `<span class="badge volt">⚡ ${d.voltage}</span>`;
+            if (d.out_voltage && d.out_voltage !== 'N/A') badges += `<span class="badge volt">🔌 ${d.out_voltage}</span>`;
+            if (d.out_current && d.out_current !== 'N/A') badges += `<span class="badge cur">🔋 ${d.out_current}</span>`;
+            if (d.category && d.category !== 'N/A') badges += `<span class="badge cat">📂 ${d.category}</span>`;
+
+            const note = (d.note && d.note.trim())
+                ? `<div class="comp-note collapsed" data-note>${escapeHtml(d.note)}</div>` : '';
+
+            li.innerHTML = `
+                <div class="comp-top">
+                    <div>
+                        <div class="comp-title">${escapeHtml(d.parameter || '—')} <span class="fp">· ${escapeHtml(d.footprint || '')}</span></div>
+                        <div class="comp-id">${key}</div>
+                    </div>
+                    <div class="comp-actions">
+                        <button class="icon-btn swap" data-swap title="与其他元件交换位置">⇄</button>
+                        <button class="icon-btn del" data-del title="删除">✕</button>
+                    </div>
+                </div>
+                <div class="comp-loc">
+                    <div class="loc-box"><span class="lbl">BOX</span><input type="number" data-edit="box" value="${d.box_id}"></div>
+                    <div class="loc-box"><span class="lbl">POS</span><input type="number" data-edit="led" value="${d.led_id}"></div>
+                </div>
+                ${badges ? `<div class="badges">${badges}</div>` : ''}
+                ${note}
+            `;
+            return li;
+        }
+        function escapeHtml(s) {
+            return String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        }
+
+        /* ==================== 快速编辑 Box/Pos ==================== */
+        list.addEventListener('change', async e => {
+            const inp = e.target.closest('[data-edit]');
+            if (!inp) return;
+            const key = inp.closest('.comp-card').dataset.key;
+            const val = parseInt(inp.value);
+            if (isNaN(val)) return;
+            const details = inp.dataset.edit === 'box' ? { box_id: val } : { led_id: val };
+            const r = await fetch('/api/update', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ component_name: key, details })
+            }).then(r => r.json());
+            if (r.success) { allComponents[key] = { ...allComponents[key], ...details }; loadComponents(); }
+            else { alert('更新失败: ' + r.error); loadComponents(); }
+        });
+
+        /* ==================== 卡片点击（填表 / 删除 / 交换 / 备注） ==================== */
+        list.addEventListener('click', async e => {
+            const card = e.target.closest('.comp-card');
+            if (!card) return;
+            const key = card.dataset.key;
+
+            if (e.target.closest('[data-del]')) {
+                if (!confirm(`确定删除元件 "${key}" 吗？`)) return;
+                const r = await fetch('/api/delete', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: key }) }).then(r => r.json());
+                if (r.success) { await loadComponents(); findNextLedId(false); } else alert('删除失败: ' + r.error);
+                return;
+            }
+            if (e.target.closest('[data-swap]')) {
+                const btn = e.target.closest('[data-swap]');
+                if (!swapPendingKey) { swapPendingKey = key; btn.classList.add('pending'); btn.textContent = '…'; }
+                else if (swapPendingKey === key) { swapPendingKey = null; btn.classList.remove('pending'); btn.textContent = '⇄'; }
+                else {
+                    const n1 = swapPendingKey, n2 = key;
+                    if (confirm(`交换 "${n1}" 与 "${n2}" 的位置？`)) {
+                        const r = await fetch('/api/swap_components', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name1: n1, name2: n2 }) }).then(r => r.json());
+                        if (!r.success) alert('交换失败: ' + r.error);
+                    }
+                    swapPendingKey = null; await loadComponents();
+                }
+                return;
+            }
+            if (e.target.closest('[data-edit]')) return;
+            if (e.target.closest('[data-note]')) { e.target.closest('[data-note]').classList.toggle('collapsed'); e.target.closest('[data-note]').classList.toggle('expanded'); return; }
+
+            // 填表
+            const d = allComponents[key];
+            if (!d) return;
+            compNameInput.value = key;
+            boxIdInput.value = d.box_id; ledIdInput.value = d.led_id;
+            document.querySelectorAll('.chip-btn[data-unit]').forEach(b => b.classList.remove('selected'));
+            selectedParamUnit = '';
+            paramInput.value = d.parameter || '';
+            voltageInput.value = d.voltage || '';
+            footprintInput.value = d.footprint || '';
+            noteInput.value = d.note || '';
+            document.getElementById('lcsc-result').style.display = 'none';
+            card.classList.add('flash'); setTimeout(() => card.classList.remove('flash'), 1200);
+        });
+
+        /* ==================== 自动下一个 pos ==================== */
+        let lastAutoBoxId = null;
+        function findNextLedId(force) {
+            const box = parseInt(boxIdInput.value);
+            if (isNaN(box)) return;
+            if (!force && box === lastAutoBoxId && ledIdInput.value !== '') return;
+            let max = 0;
+            for (const d of Object.values(allComponents)) if (d.box_id === box && d.led_id > max) max = d.led_id;
+            ledIdInput.value = max + 1; lastAutoBoxId = box;
+        }
+        boxIdInput.addEventListener('input', () => findNextLedId(false));
+
+        /* ==================== 添加 ==================== */
+        function collectDetails(existing) {
+            const fetched = window._lastFetchedData || {};
+            return {
+                box_id: parseInt(boxIdInput.value),
+                led_id: parseInt(ledIdInput.value),
+                parameter: paramInput.value + selectedParamUnit,
+                voltage: voltageInput.value,
+                footprint: footprintInput.value,
+                note: noteInput.value.trim(),
+                type: fetched.功能类型 || (existing && existing.type) || 'N/A',
+                work_voltage: fetched.工作电压 || (existing && existing.work_voltage) || 'N/A',
+                out_voltage: fetched.输出电压 || (existing && existing.out_voltage) || 'N/A',
+                out_current: fetched.输出电流 || (existing && existing.out_current) || 'N/A',
+                category: fetched.类目 || (existing && existing.category) || 'N/A'
+            };
+        }
+        form.addEventListener('submit', async e => {
+            e.preventDefault();
+            const name = compNameInput.value;
+            const details = collectDetails();
+            const dup = Object.entries(allComponents).filter(([, c]) =>
+                (c.parameter || '').toLowerCase() === details.parameter.toLowerCase() &&
+                (c.voltage || '').toLowerCase() === (details.voltage || '').toLowerCase() &&
+                (c.footprint || '').toLowerCase() === details.footprint.toLowerCase());
+            if (dup.length) {
+                let msg = '⚠️ 已存在相同元件:\n\n';
+                dup.forEach(([k, c]) => { msg += `📦 ${c.parameter} | ${c.footprint}${c.voltage ? ' | ' + c.voltage : ''}\n   Box ${c.box_id}, Pos ${c.led_id} · ${k}\n\n`; });
+                if (!confirm(msg + '仍要继续添加？')) return;
+            }
+            const r = await fetch('/api/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
+            if (r.success) {
+                const box = details.box_id, fp = details.footprint;
+                form.reset();
+                boxIdInput.value = box; footprintInput.value = fp;
+                compNameInput.value = generateRandomID();
+                document.querySelectorAll('.chip-btn.selected').forEach(b => b.classList.remove('selected'));
+                selectedParamUnit = ''; window._lastFetchedData = null; lastAutoBoxId = box;
+                document.getElementById('lcsc-result').style.display = 'none';
+                await loadComponents(); findNextLedId(true);
+            } else {
+                alert('添加失败: ' + r.error);
+                if (r.error.includes('已存在')) compNameInput.value = generateRandomID();
+            }
+        });
+
+        /* ==================== 更新 ==================== */
+        document.getElementById('update-btn').addEventListener('click', async () => {
+            const name = compNameInput.value.trim();
+            if (!name) return alert('请先选择或输入要更新的元件名称');
+            if (!allComponents[name]) return alert(`元件库中不存在 "${name}"，请先添加或从右侧选择。`);
+            if (!confirm(`用当前表单内容更新 "${name}" 吗？`)) return;
+            const details = collectDetails(allComponents[name]);
+            const r = await fetch('/api/update', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
+            if (r.success) await loadComponents(); else alert('更新失败: ' + r.error);
+        });
+
+        /* ==================== 快捷按钮 ==================== */
+        document.querySelectorAll('.chip-btn[data-unit]').forEach(btn => btn.addEventListener('click', () => {
+            const on = btn.classList.contains('selected');
+            document.querySelectorAll('.chip-btn[data-unit]').forEach(b => b.classList.remove('selected'));
+            if (!on) { btn.classList.add('selected'); selectedParamUnit = btn.dataset.unit; } else selectedParamUnit = '';
+            paramInput.focus();
+        }));
+        document.querySelectorAll('.chip-btn[data-fp]').forEach(btn => btn.addEventListener('click', () => footprintInput.value = btn.dataset.fp));
+        document.querySelectorAll('.chip-btn[data-volt]').forEach(btn => btn.addEventListener('click', () => voltageInput.value = btn.dataset.volt));
+        voltageInput.addEventListener('blur', () => {
+            let v = voltageInput.value.trim().replace(/V/gi, '').trim();
+            voltageInput.value = (!isNaN(v) && v !== '') ? v + 'V' : '';
+        });
+
+        /* ==================== 排序 & 搜索 ==================== */
+        document.getElementById('sort-selector').addEventListener('click', e => {
+            const b = e.target.closest('.sort-badge');
+            if (!b) return;
+            document.querySelectorAll('.sort-badge').forEach(x => x.classList.remove('active'));
+            b.classList.add('active'); currentSortCriteria = b.dataset.criteria; loadComponents();
+        });
+        document.getElementById('dir-toggle-btn').addEventListener('click', () => {
+            currentSortDirection = currentSortDirection === 'asc' ? 'desc' : 'asc';
+            document.getElementById('dir-icon').textContent = currentSortDirection === 'asc' ? '↑' : '↓';
+            document.getElementById('dir-text').textContent = currentSortDirection === 'asc' ? '正序' : '倒序';
+            loadComponents();
+        });
+        const bind = (id, field) => document.getElementById(id).addEventListener('input', e => { searchFilters[field] = e.target.value; loadComponents(); });
+        bind('search-parameter', 'parameter'); bind('search-voltage', 'voltage'); bind('search-footprint', 'footprint');
+        bind('search-boxid', 'boxid'); bind('search-note', 'note'); bind('search-min', 'min'); bind('search-max', 'max');
+        document.getElementById('clear-range-btn').addEventListener('click', () => {
+            document.getElementById('search-min').value = ''; document.getElementById('search-max').value = '';
+            searchFilters.min = ''; searchFilters.max = ''; loadComponents();
+        });
+
+        /* ==================== 立创搜索 ==================== */
+        const lcscBtn = document.getElementById('search-lcsc-btn');
+        lcscBtn.addEventListener('click', async () => {
+            const kw = (paramInput.value.trim() + selectedParamUnit).trim();
+            if (!kw) return alert('请先在参数框输入 立创编号(Cxxxx) / 型号 / 商品链接');
+            lcscBtn.disabled = true; lcscBtn.textContent = '搜索中…';
+            try {
+                const r = await fetch('/api/crawl_lcsc?keyword=' + encodeURIComponent(kw)).then(r => r.json());
+                if (r.success) {
+                    window._lastFetchedData = r;
+                    if (r.footprint && !footprintInput.value.trim()) footprintInput.value = r.footprint;
+                    if (r.工作电压 && r.工作电压 !== 'N/A') voltageInput.value = r.工作电压;
+                    renderLcsc(r);
+                    noteInput.value = buildNote(r);
+                } else {
+                    renderLcscError(r.error || '未找到');
+                }
+            } catch (err) { renderLcscError('网络错误: ' + err.message); }
+            finally { lcscBtn.disabled = false; lcscBtn.textContent = '搜索立创'; }
+        });
+        function buildNote(r) {
+            let n = `【${r.lcsc_code || ''} ${r.product_name || ''}】${r.brand ? ' · ' + r.brand : ''}\n`;
+            n += `【类目】${r.类目 || r.catalog}\n`;
+            const ps = Object.entries(r.params || {}).slice(0, 12).map(([k, v]) => `• ${k}: ${v}`);
+            if (ps.length) n += `【参数】\n${ps.join('\n')}\n`;
+            if (r.description && r.description !== 'N/A') n += `【描述】${r.description}`;
+            return n;
+        }
+        function renderLcsc(r) {
+            const box = document.getElementById('lcsc-result');
+            const params = Object.entries(r.params || {}).map(([k, v]) => `<span class="lcsc-param"><b>${escapeHtml(k)}</b>: ${escapeHtml(v)}</span>`).join('');
+            box.innerHTML = `<div class="lcsc-card">
+                <div class="lcsc-top">
+                    ${r.image ? `<img src="${escapeHtml(r.image)}" onerror="this.style.display='none'">` : ''}
+                    <div>
+                        <div class="lcsc-title">${escapeHtml(r.product_name || '')}</div>
+                        <div class="lcsc-meta">${escapeHtml(r.lcsc_code || '')} · ${escapeHtml(r.brand || '')} · ${escapeHtml(r.catalog || '')}</div>
+                    </div>
+                </div>
+                ${params ? `<div class="lcsc-params">${params}</div>` : ''}
+                <div class="lcsc-links">
+                    ${r.product_url ? `<a href="${escapeHtml(r.product_url)}" target="_blank">商品页 ↗</a>` : ''}
+                    ${r.datasheet ? ` &nbsp; <a href="${escapeHtml(r.datasheet)}" target="_blank">数据手册 ↗</a>` : ''}
+                    ${r.stock != null ? ` &nbsp; <span style="color:var(--text-muted)">库存 ${r.stock}</span>` : ''}
+                </div>
+            </div>`;
+            box.style.display = 'block';
+        }
+        function renderLcscError(msg) {
+            const box = document.getElementById('lcsc-result');
+            box.innerHTML = `<div class="lcsc-card" style="background:#fff7f7;border-color:#f6d5d5;">
+                <div style="font-weight:700;color:var(--red);font-size:12.5px;">立创抓取未成功</div>
+                <div style="font-size:12px;color:var(--text-muted);margin-top:4px;white-space:pre-wrap;">${escapeHtml(msg)}</div></div>`;
+            box.style.display = 'block';
+        }
+
+        /* ==================== BOM 上传 ==================== */
+        async function handleBomUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const st = document.getElementById('bom-status-text');
+            st.textContent = '正在上传…';
+            const fd = new FormData(); fd.append('file', file);
+            try {
+                const r = await fetch('/api/upload_bom', { method: 'POST', body: fd }).then(r => r.json());
+                if (r.success) {
+                    st.textContent = '✅ 已更新，刷新预览';
+                    bomFrame.src = '/bom_view?' + Date.now();
+                    setTimeout(() => st.textContent = 'BOM 已就绪', 2500);
+                } else st.textContent = '❌ ' + r.error;
+            } catch (err) { st.textContent = '❌ 网络错误'; }
+        }
+
+        /* ==================== 接收 BOM 选中 → 全局提示框 ==================== */
+        const gToast = document.getElementById('g-toast');
+        let gTimer;
+        gToast.addEventListener('click', () => gToast.classList.remove('show'));
+        function showGlobalToast(found, name, sub, box, pos) {
+            gToast.className = found ? 'ok' : 'warn';
+            gToast.innerHTML = `<div class="gt-ic">${found ? '📍' : '❓'}</div>
+                <div class="gt-main"><div class="gt-title">${escapeHtml(name)}</div>${sub ? `<div class="gt-sub">${escapeHtml(sub)}</div>` : ''}</div>
+                ${found ? `<div class="gt-loc"><div class="gt-chip"><b>${box}</b><span>料盒 BOX</span></div><div class="gt-chip"><b>${pos}</b><span>位置 POS</span></div></div>` : ''}`;
+            void gToast.offsetWidth; gToast.classList.add('show');
+            clearTimeout(gTimer); gTimer = setTimeout(() => gToast.classList.remove('show'), found ? 5000 : 3200);
+        }
+        window.addEventListener('message', e => {
+            const m = e.data;
+            if (!m || m.source !== 'il-bom-bridge' || m.type !== 'selection') return;
+            const sub = [m.designators, m.param, m.footprint].filter(Boolean).join(' · ');
+            if (m.found) showGlobalToast(true, m.name, sub, m.box_id, m.pos_id);
+            else showGlobalToast(false, '未找到货位: ' + m.name, sub);
+        });
+
+        /* ==================== 初始化 ==================== */
+        document.addEventListener('DOMContentLoaded', async () => {
+            compNameInput.value = generateRandomID();
+            await loadComponents();
+        });
+    </script>
+</body>
+
+</html>

@@ -1209,9 +1209,9 @@
         "led_id": 5,
         "parameter": "TPS3808G33DBVR",
         "voltage": "1.7V~6.5V",
-        "footprint": "",
-        "note": "【官方型号】: TPS3808G33DBVR\n【类目/功能】: 监控和复位芯片 > N/A\n【技术描述】:\n• 工作电压: 1.7V~6.5V\n\n【详细说明】:\nTPS3808 具有可编程延迟和手动复位功能的低静态电流监控器",
-        "type": "N/A",
+        "footprint": "SOT-23-6",
+        "note": "【C43698 TPS3808G33DBVR】 · TI(德州仪器)\n【类目】监控和复位芯片\n【参数】\n• 功能特性: 手动复位输入\n• 受监控电压数: 1\n• 复位有效电平: 低电平有效\n• 复位超时: 20ms\n• 工作温度: -40℃~+125℃\n• 工作电压: 1.7V~6.5V\n• 芯片类型: 电压监控器\n• 输出类型: 开漏\n• 阈值电压: 3.07V\n• 静态电流(Iq): 2.4uA\n【描述】TPS3808 具有可编程延迟和手动复位功能的低静态电流监控器",
+        "type": "手动复位输入",
         "work_voltage": "1.7V~6.5V",
         "out_voltage": "N/A",
         "out_current": "N/A",
@@ -1582,8 +1582,14 @@
         "box_id": 4,
         "led_id": 5,
         "parameter": "CH340N",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "3.3V；5V",
+        "footprint": "SOP-8",
+        "note": "【C2977777 CH340N】 · WCH(南京沁恒)\n【类目】USB转换芯片\n【参数】\n• USB协议版本: USB 2.0\n• 功能特性: 可编程波特率；内置时钟发生器；上电复位\n• 工作温度: -20℃~+70℃\n• 工作电压: 3.3V；5V\n• 应用功能: USB转串口\n• 数据速率: 2Mbps\n• 通道数: 1\n【描述】USB2.0芯片，CH340是一个USB总线的转接芯片，实现USB转串口或者USB转打印口。在串口方式下，CH340提供常用的MODEM联络信号，用于为计算机扩展异步串口，或者将普通的串口设备直接升级到USB总线。",
+        "type": "可编程波特率；内置时钟发生器；上电复位",
+        "work_voltage": "3.3V；5V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "USB转换芯片"
     },
     "82886": {
         "box_id": 4,
@@ -1757,7 +1763,13 @@
         "led_id": 9,
         "parameter": "INA139",
         "voltage": "",
-        "footprint": ""
+        "footprint": "SOT-23-5",
+        "note": "【C129947 INA139NA/3K】 · TI(德州仪器)\n【类目】电流感应放大器\n【参数】\n• 共模抑制比(CMRR): 115dB\n• 共模电压: 2.7V~40V\n• 功能特性: 模拟输出接口；高边检测\n• 单电源电压: 2.7V~40V\n• 压摆率(SR): -\n• 双电源电压(Vee~Vcc): -\n• 噪声密度(eN): -\n• 增益: -\n• 工作温度: -40℃~+85℃\n• 差分电压: -40V~2V\n• 带宽: 440kHz\n• 放大器数: 1\n【描述】INA139 2.7V 至 36V、440kHz 可变增益电流感应放大器",
+        "type": "模拟输出接口；高边检测",
+        "work_voltage": "N/A",
+        "out_voltage": "N/A",
+        "out_current": "-",
+        "category": "电流感应放大器"
     },
     "A7170": {
         "box_id": 6,

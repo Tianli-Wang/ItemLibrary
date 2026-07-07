@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls -la *.py *.html *.json *.bat)",
+      "Bash(wc -l *.py *.html)"
+    ]
+  }
+}

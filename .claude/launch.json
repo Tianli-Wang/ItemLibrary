@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "itemlibrary",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["WebUI/app.py"],
+      "port": 5000
+    }
+  ]
+}

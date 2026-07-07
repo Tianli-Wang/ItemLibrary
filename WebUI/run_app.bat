@@ -1,11 +1,12 @@
 @echo off
-echo Starting ItemLibrary Server...
+chcp 65001 >nul
+echo Starting Item Library server...
 cd /d "%~dp0"
 
-:: Start the default browser in 2 seconds to give the server a moment to initialize
+:: open the default browser shortly after launch
 start "" "http://127.0.0.1:5000"
 
-:: Run the Flask server
-python DataUI.py
+:: run the unified Flask server (index.html + BOM + API)
+python app.py
 
 pause
