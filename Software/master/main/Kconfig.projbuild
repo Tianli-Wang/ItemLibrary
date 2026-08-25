@@ -1,0 +1,10 @@
+menu "ItemLibrary master configuration"
+
+config ITEMLIB_ESPNOW_CHANNEL
+    int "ESP-NOW Wi-Fi channel"
+    range 1 13
+    default 1
+    help
+        Master and all slaves must use the same channel.
+
+endmenu

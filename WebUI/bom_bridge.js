@@ -253,7 +253,8 @@
   function scheduleScan() {
     if (scanScheduled) return;
     scanScheduled = true;
-    setTimeout(function () { scanScheduled = false; scanHighlight(); }, 60);
+    // 一帧后扫描即可，缩短从 PCB 画布选中到发送点灯命令的等待。
+    setTimeout(function () { scanScheduled = false; scanHighlight(); }, 16);
   }
 
   // C) console.log 钩子（立创BOM 行点击原生打印：器件编号/器件型号/值）

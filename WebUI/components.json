@@ -1135,7 +1135,7 @@
     "FD606": {
         "box_id": 6,
         "led_id": 7,
-        "parameter": "MMS8050-H-TP",
+        "parameter": "S8050",
         "voltage": "",
         "footprint": "",
         "note": "【官方型号】: MMS8050-H-TP\n【类目/功能】: 三极管(BJT) > N/A\n\n【详细说明】:\n特性：湿度敏感度等级 1。 环氧树脂符合 UL 94 V-0 阻燃等级。 无铅镀层/符合 RoHS 标准（“P” 后缀表示符合 RoHS 标准）",
@@ -1220,14 +1220,14 @@
     "08E85": {
         "box_id": 3,
         "led_id": 1,
-        "parameter": "TPS82130SILR",
-        "voltage": "",
-        "footprint": "",
-        "note": "【官方型号】: TPS82130SILR\n【类目/功能】: DC-DC电源模块 > 降压型\n\n【详细说明】:\nTPS82130 TPS82130 具有集成电感的 3A 17V 降压转换器",
+        "parameter": "TPS82130SILT",
+        "voltage": "3V~17V",
+        "footprint": "USIP-8",
+        "note": "【C163210 TPS82130SILT】 · TI(德州仪器)\n【类目】DC-DC电源模块\n【参数】\n• 功能特性: 可编程软启动；上电时序控制；欠压保护；过流保护；轻载高效模式；可编程输出电压；过热保护\n• 功能类型: 降压型\n• 宽度: 2.8mm\n• 工作温度: -40℃~+125℃\n• 工作电压: 3V~17V\n• 工作电压(Vin): 3V~17V\n• 开关频率: 2MHz\n• 最大容性负载: -\n• 类型: -\n• 纹波噪声: 20mVp-p\n• 转换效率: -\n• 输出电压(Vout): 900mV~6V\n【描述】TPS82130 TPS82130 具有集成电感的 3A 17V 降压转换器",
         "type": "降压型",
-        "work_voltage": "N/A",
+        "work_voltage": "3V~17V",
         "out_voltage": "N/A",
-        "out_current": "N/A",
+        "out_current": "3A",
         "category": "DC-DC电源模块"
     },
     "EF83D": {
@@ -1354,8 +1354,14 @@
         "box_id": 3,
         "led_id": 18,
         "parameter": "SGM2028",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "5.5V",
+        "footprint": "SOT-23-5",
+        "note": "【C80894 SGM2028-ADJYN5G/TR】 · SGMICRO(圣邦微)\n【类目】线性稳压器(LDO)\n【参数】\n• 功能特性: 使能控制；噪声旁路端子；过流保护；短路保护；热关断\n• 压差: 270mV@(500mA)\n• 噪声: 30uVrms\n• 工作温度: -40℃~+85℃\n• 工作电压: 5.5V\n• 电源纹波抑制比(PSRR): 73dB@(1kHz)\n• 输出极性: 正极\n• 输出电压: 1.2V~5V\n• 输出电流: 500mA\n• 输出类型: 可调\n• 输出通道数: 1\n• 静态电流(Iq): 115uA\n【描述】SGM2028是一款低功耗、低噪声、低压差CMOS线性稳压器，其输入电压范围为2.5V至5.5V。",
+        "type": "使能控制；噪声旁路端子；过流保护；短路保护；热关断",
+        "work_voltage": "5.5V",
+        "out_voltage": "1.2V~5V",
+        "out_current": "500mA",
+        "category": "线性稳压器(LDO)"
     },
     "5F4BC": {
         "box_id": 3,
@@ -1401,8 +1407,14 @@
         "box_id": 4,
         "led_id": 21,
         "parameter": "AD9707",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "1.7V~3.6V",
+        "footprint": "LFCSP-32(5x5)",
+        "note": "【C578864 AD9707BCPZ】 · ADI\n【类目】Digital to Analog Converters (DAC)\n【参数】\n• 分辨率(位): 14;175MHz\n• 功能特性: -\n• 工作温度: -40℃~+85℃\n• 工作电压: 1.7V~3.6V\n• 建立时间: 11ns\n• 接口类型: SPI\n• 积分非线性: 0.9LSB\n• 通道数: 1\n• 静态电流: 700nA",
+        "type": "N/A",
+        "work_voltage": "1.7V~3.6V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "Digital to Analog Converters (DAC)"
     },
     "EF2DA": {
         "box_id": 4,
@@ -1515,8 +1527,14 @@
         "box_id": 3,
         "led_id": 12,
         "parameter": "XC6210",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "5.5V",
+        "footprint": "SOT-23-5",
+        "note": "【C3021084 XC6210B332MR】 · TECH PUBLIC(台舟)\n【类目】线性稳压器(LDO)\n【参数】\n• 功能特性: 使能控制；过流保护；短路保护；热关断\n• 压差: 450mV@(800mA)\n• 噪声: -\n• 工作温度: -40℃~+85℃@(Ta)\n• 工作电压: 5.5V\n• 电源纹波抑制比(PSRR): 70dB@(1kHz)\n• 输出极性: 正极\n• 输出电压: 3.3V\n• 输出电流: 800mA\n• 输出类型: 固定\n• 输出通道数: 1\n• 静态电流(Iq): 25uA\n【描述】采用CMOS技术制造的电压调节器，具有高纹波抑制、超快瞬态和低压差电压，即使输入输出电压差较小时也能提供大输出电流。包含高精度电压基准、误差校正电路和限流输出驱动器，适合电池供电设备、无线通信应用、工业设备等。",
+        "type": "使能控制；过流保护；短路保护；热关断",
+        "work_voltage": "5.5V",
+        "out_voltage": "3.3V",
+        "out_current": "800mA",
+        "category": "线性稳压器(LDO)"
     },
     "FB2EC": {
         "box_id": 3,
@@ -1707,8 +1725,14 @@
         "box_id": 3,
         "led_id": 15,
         "parameter": "JW5026",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "4.7V~40V",
+        "footprint": "SOT-23-6",
+        "note": "【C185109 JW5026】 · Joulwatt(杰华特)\n【类目】DC-DC电源芯片\n【参数】\n• 功能特性: 逐波限流；过流保护\n• 功能类型: 降压型\n• 同步整流: 是\n• 工作温度: -40℃~+125℃@(TJ)\n• 工作电压: 4.7V~40V\n• 开关管(内置/外置): 内置\n• 开关频率: 750kHz~1.25MHz\n• 拓扑结构: 降压式\n• 输出电压: 800mV~37V\n• 输出电流: 1A\n• 输出类型: 可调\n• 输出通道数: 1\n【描述】JW5026是一款40V/1A,1.1MHz同步降压转换器,采用电流模式控制,具有4.7V至40V的输入电压范围,1A的连续输出电流,内部集成两个N-Channel MOSFET,提供高效率,无需外部肖特基二极管。轻载时,调节器以连续导通模式运行,保持低输出纹波。提供多种保护功能,包括短路保护、热保护、电流失控保护和输入欠压锁定保护。",
+        "type": "降压型",
+        "work_voltage": "4.7V~40V",
+        "out_voltage": "800mV~37V",
+        "out_current": "1A",
+        "category": "DC-DC电源芯片"
     },
     "96AE4": {
         "box_id": 3,
@@ -1782,8 +1806,14 @@
         "box_id": 3,
         "led_id": 14,
         "parameter": "ME6217",
-        "voltage": "",
-        "footprint": ""
+        "voltage": "6.5V",
+        "footprint": "SOT-23-5",
+        "note": "【C427602 ME6217C33M5G】 · MICRONE(南京微盟)\n【类目】线性稳压器(LDO)\n【参数】\n• 功能特性: 过流保护；使能控制；热关断\n• 压差: 180mV@(300mA)\n• 噪声: -\n• 工作温度: -40℃~+85℃\n• 工作电压: 6.5V\n• 电源纹波抑制比(PSRR): 65dB@(1kHz)\n• 输出极性: 正极\n• 输出电压: 3.3V\n• 输出电流: 800mA\n• 输出类型: 固定\n• 输出通道数: 1\n• 静态电流(Iq): 100uA\n【描述】ME6217系列是一款基于CMOS技术开发的正电压稳压器，具有低压差、高输出电压精度和低电流消耗的特点。内置的低导通电阻晶体管可实现低压差和大输出电流，内置的过流保护器可防止负载电流超过输出晶体管的电流容量。开/关电路可确保电池长寿命",
+        "type": "过流保护；使能控制；热关断",
+        "work_voltage": "6.5V",
+        "out_voltage": "3.3V",
+        "out_current": "800mA",
+        "category": "线性稳压器(LDO)"
     },
     "E8FA0": {
         "box_id": 3,
@@ -1914,9 +1944,14 @@
         "box_id": 4,
         "led_id": 49,
         "parameter": "IR2101",
-        "voltage": "",
-        "footprint": "",
-        "note": ""
+        "voltage": "10V~20V",
+        "footprint": "SOIC-8",
+        "note": "【C2956 IR2101STRPBF】 · Infineon(英飞凌)\n【类目】栅极驱动芯片\n【参数】\n• 上升时间(tr): 100ns\n• 下降时间(tf): 50ns\n• 传播延迟 tpHL: 150ns\n• 传播延迟 tpLH: 160ns\n• 功能特性: 交错导通保护\n• 工作温度: -40℃~+150℃\n• 工作电压: 10V~20V\n• 拉电流(IOH): 130mA\n• 灌电流(IOL): 270mA\n• 特性: 欠压保护(UVP)\n• 负载类型: IGBT；MOSFET\n• 输入低电平(VIL): -\n【描述】600V，高低侧驱动IC，门驱动供应电压范围：10V to 20V",
+        "type": "交错导通保护",
+        "work_voltage": "10V~20V",
+        "out_voltage": "N/A",
+        "out_current": "N/A",
+        "category": "栅极驱动芯片"
     },
     "5B553": {
         "box_id": 3,
@@ -1961,9 +1996,14 @@
         "box_id": 3,
         "led_id": 11,
         "parameter": "SPX5205",
-        "voltage": "",
-        "footprint": "",
-        "note": "3.3V"
+        "voltage": "16V",
+        "footprint": "SOT-23-5",
+        "note": "【C6864 SPX5205M5-L-3-3/TR】 · MaxLinear(迈凌)\n【类目】线性稳压器(LDO)\n【参数】\n• 功能特性: 反极性电压保护；使能控制；热关断；过流保护；噪声旁路端子\n• 压差: 350mV@(150mA)\n• 噪声: 40uVrms\n• 工作温度: -40℃~+85℃\n• 工作电压: 16V\n• 电源纹波抑制比(PSRR): 70dB\n• 输出极性: 正极\n• 输出电压: 3.3V\n• 输出电流: 150mA\n• 输出类型: 固定\n• 输出通道数: 1\n• 静态电流(Iq): -\n【描述】SPX5205 是一款正电压稳压器，具有极低的压差、输出噪声和接地电流（100mA 时为 750μA）。输出电压 (VOUT) 的公差小于 1%，并具有温度补偿功能。该器件提供 1.2V、1.8V、2.5V、2.8V、3.0V、3.3V 和 5.0V 的固定输出电压以及可调输出电压版本，采用小型 5 引脚 SOT-23 封装。其他主要特性包括零关断电流、电池反接保护、热关断和电流限制。",
+        "type": "反极性电压保护；使能控制；热关断；过流保护；噪声旁路端子",
+        "work_voltage": "16V",
+        "out_voltage": "3.3V",
+        "out_current": "150mA",
+        "category": "线性稳压器(LDO)"
     },
     "8519B": {
         "box_id": 6,
@@ -2325,9 +2365,14 @@
         "box_id": 3,
         "led_id": 13,
         "parameter": "XC6206",
-        "voltage": "",
-        "footprint": "",
-        "note": ""
+        "voltage": "6V",
+        "footprint": "SOT-23-3L",
+        "note": "【C5446 XC6206P332MR-G】 · TOREX(特瑞仕)\n【类目】线性稳压器(LDO)\n【参数】\n• 功能特性: 短路保护；过流保护\n• 压差: -\n• 噪声: -\n• 工作温度: -40℃~+85℃@(Ta)\n• 工作电压: 6V\n• 电源纹波抑制比(PSRR): -\n• 输出极性: 正极\n• 输出电压: 3.3V\n• 输出电流: 200mA\n• 输出类型: 固定\n• 输出通道数: 1\n• 静态电流(Iq): 1uA\n【描述】是高精度、低功耗的三端正电压调节器，采用CMOS和激光微调技术制造。该系列可提供大电流，且压差电压显著较小。由限流器电路、驱动晶体管、精密参考电压和误差校正电路组成。与低ESR陶瓷电容器兼容。限流器的折返电路可作为短路保护以及输出引脚的输出电流限制器。输出电压通过激光微调技术在内部设置，可在1.2V至5.0V范围内以0.1V为增量进行选择。提供SOT-23、SOT-89、TO-92和USP-6B封装。",
+        "type": "短路保护；过流保护",
+        "work_voltage": "6V",
+        "out_voltage": "3.3V",
+        "out_current": "200mA",
+        "category": "线性稳压器(LDO)"
     },
     "0F36B": {
         "box_id": 6,
@@ -5392,13 +5437,13 @@
         "led_id": 71,
         "parameter": "GS9251",
         "voltage": "",
-        "footprint": "",
-        "note": "",
+        "footprint": "插件,P=2.54mm",
+        "note": "【C6043189 ZW-02-19-G-S-925-150】 · SAMTEC\n【类目】排针\n【参数】\n• 安装方式: 直插\n• 总PIN位数: 2P\n• 排数: 单排\n• 触头镀层: 金\n• 间距: 2.54mm\n• 颜色: 黑色",
         "type": "N/A",
         "work_voltage": "N/A",
         "out_voltage": "N/A",
         "out_current": "N/A",
-        "category": "N/A"
+        "category": "排针"
     },
     "B999B": {
         "box_id": 5,

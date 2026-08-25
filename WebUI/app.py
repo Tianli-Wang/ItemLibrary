@@ -26,6 +26,8 @@ import json
 import sys
 import threading
 
+import serial
+
 from flask import (Flask, request, jsonify, send_from_directory, Response)
 from flask_cors import CORS
 
@@ -49,6 +51,34 @@ app = Flask(__name__)
 CORS(app)
 
 _save_lock = threading.Lock()
+
+# 点灯主控由 Flask 独占 COM3，避免 Web Serial 权限窗口和 CH343 控制线兼容问题。
+MASTER_SERIAL_PORT = os.environ.get("ITEMLIB_MASTER_PORT", "COM3")
+MASTER_SERIAL_BAUD = 115200
+_master_serial = None
+_master_serial_lock = threading.Lock()
+
+
+def _open_master_serial_locked():
+    """调用方持有串口锁时，打开或复用点灯主控串口。"""
+    global _master_serial
+    if _master_serial is not None and _master_serial.is_open:
+        return _master_serial
+
+    port = serial.Serial()
+    port.port = MASTER_SERIAL_PORT
+    port.baudrate = MASTER_SERIAL_BAUD
+    port.bytesize = serial.EIGHTBITS
+    port.parity = serial.PARITY_NONE
+    port.stopbits = serial.STOPBITS_ONE
+    port.timeout = 0
+    port.write_timeout = 1
+    port.xonxoff = False
+    port.rtscts = False
+    port.dsrdtr = False
+    port.open()
+    _master_serial = port
+    return port
 
 
 # ================================================================== 数据层
@@ -75,26 +105,72 @@ def parse_electronic_value(val_str):
     """把电子元件数值归一化为浮点数 (e.g. '10k' -> 10000.0, '100n' -> 1e-7)。"""
     if not val_str:
         return None
-    s = str(val_str).lower().strip()
-    s = (s.replace("ω", "").replace("ohm", "").replace("farad", "")
-          .replace("f", "").replace("h", "").replace("v", ""))
+    s = str(val_str).strip().replace("µ", "u").replace("μ", "u")
+    s = re.sub(r'\s+', '', s)
+    s = re.sub(r'ohms?', 'Ω', s, flags=re.I)
+    s = re.sub(r'farads?', 'F', s, flags=re.I)
 
-    # 处理 4k7 -> 4.7k
-    m = re.match(r'^(\d+)([rkmunpf])(\d*)$', s)
+    # 参数后面可能附带精度/电压，只取开头带明确单位的主数值。
+    prefix = re.match(
+        r'^([+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:[rRkKmMgGuUnNpP]\d*)?(?:[ΩFfHhVv])?)'
+        r'(?=$|[±+\-@/,;，；（(])',
+        s,
+    )
+    if prefix:
+        s = prefix.group(1)
+
+    # 处理 4k7 / 4R7 / 2u2 等单位位于小数点处的标法。
+    m = re.fullmatch(r'([+-]?\d+)([rRkKmMgGuUnNpP])(\d+)(?:[ΩFfHhVv])?', s)
     if m:
         p1, p2, p3 = m.groups()
-        s = f"{p1}.{p3 or '0'}" if p2 == "r" else f"{p1}.{p3 or '0'}{p2}"
+        multiplier = _unit_multiplier(p2)
+        return float(f"{p1}.{p3}") * multiplier if multiplier is not None else None
 
-    units = {'p': 1e-12, 'n': 1e-9, 'u': 1e-6, 'μ': 1e-6, 'm': 1e-3,
-             'k': 1e3, 'M': 1e6, 'g': 1e9, 'r': 1}
-    m = re.match(r'^([\d\.]+)\s*([a-zμ]*)$', s)
+    m = re.fullmatch(r'([+-]?(?:\d+(?:\.\d*)?|\.\d+))([pPnNuUmMkKgGrR]?)(?:[ΩFfHhVv])?', s)
     if m:
         val = float(m.group(1))
         unit = m.group(2)
-        if unit and unit[0] in units:
-            return val * units[unit[0]]
-        return val
+        multiplier = _unit_multiplier(unit)
+        return val * multiplier if multiplier is not None else None
     return None
+
+
+def _unit_multiplier(unit):
+    """电子单位倍率；大小写 M/m 必须保留，分别表示兆和毫。"""
+    units = {
+        '': 1, 'r': 1, 'R': 1, 'p': 1e-12, 'P': 1e-12,
+        'n': 1e-9, 'N': 1e-9, 'u': 1e-6, 'U': 1e-6,
+        'm': 1e-3, 'k': 1e3, 'K': 1e3, 'M': 1e6, 'g': 1e9, 'G': 1e9,
+    }
+    return units.get(unit)
+
+
+def normalize_part_number(value):
+    """去掉型号中的空格和连接符，保留用于比对的字母数字。"""
+    return re.sub(r'[^A-Z0-9]', '', str(value or '').upper())
+
+
+def equivalent_part_number(left, right):
+    """按稳定型号前缀判断同系列订购型号，允许末尾多位包装码不同。"""
+    a = normalize_part_number(left)
+    b = normalize_part_number(right)
+    if not a or not b:
+        return False
+    if a == b:
+        return True
+
+    prefix_length = 0
+    shorter_length = min(len(a), len(b))
+    while prefix_length < shorter_length and a[prefix_length] == b[prefix_length]:
+        prefix_length += 1
+
+    # 首个差异若同为数字，通常表示主型号本身发生变化，不应当成包装码忽略。
+    if (prefix_length < shorter_length and a[prefix_length].isdigit()
+            and b[prefix_length].isdigit()):
+        return False
+
+    # 前缀既要有最低信息量，也要覆盖较短型号的大部分，避免宽泛误匹配。
+    return prefix_length >= 6 and prefix_length / shorter_length >= 2 / 3
 
 
 # ================================================================== 智能搜索
@@ -135,9 +211,9 @@ def search_component(part_number, parameter=None, footprint=None):
             target_pn = part_number.upper()
             db_param_upper = db_param_str.upper()
             pn_upper = pn.upper()
-            if target_pn == pn_upper or target_pn == db_param_upper:
+            if equivalent_part_number(target_pn, pn_upper) or equivalent_part_number(target_pn, db_param_upper):
                 score += 100
-                reasons.append("ID/型号完美匹配")
+                reasons.append("ID/型号等价匹配")
             else:
                 is_rc = (search_val is not None) or (db_val is not None)
                 if is_rc:
@@ -410,6 +486,69 @@ def upload_bom():
     return jsonify({"success": True, "message": f"成功更新 BOM: {file.filename}"})
 
 
+# ================================================================== 路由：点灯主控串口
+@app.route("/api/master_serial/status")
+def master_serial_status():
+    with _master_serial_lock:
+        connected = _master_serial is not None and _master_serial.is_open
+    return jsonify({
+        "success": True,
+        "connected": connected,
+        "port": MASTER_SERIAL_PORT,
+        "baud_rate": MASTER_SERIAL_BAUD,
+    })
+
+
+@app.route("/api/master_serial/connect", methods=["POST"])
+def master_serial_connect():
+    try:
+        with _master_serial_lock:
+            _open_master_serial_locked()
+        print(f"  点灯主控已连接: {MASTER_SERIAL_PORT} @ {MASTER_SERIAL_BAUD}")
+        return jsonify({"success": True, "port": MASTER_SERIAL_PORT})
+    except (serial.SerialException, OSError) as error:
+        return jsonify({
+            "success": False,
+            "error": f"无法打开 {MASTER_SERIAL_PORT}: {error}",
+        }), 503
+
+
+@app.route("/api/master_serial/disconnect", methods=["POST"])
+def master_serial_disconnect():
+    global _master_serial
+    with _master_serial_lock:
+        if _master_serial is not None:
+            try:
+                _master_serial.close()
+            finally:
+                _master_serial = None
+    return jsonify({"success": True})
+
+
+@app.route("/api/master_serial/send", methods=["POST"])
+def master_serial_send():
+    payload = request.get_json(silent=True) or {}
+    try:
+        box_id = int(payload.get("box_id"))
+        led_id = int(payload.get("led_id"))
+    except (TypeError, ValueError):
+        return jsonify({"success": False, "error": "box_id 和 led_id 必须是整数"}), 400
+
+    if not (0 <= box_id <= 65535 and 0 <= led_id <= 65535):
+        return jsonify({"success": False, "error": "box_id 或 led_id 超出范围"}), 400
+
+    command = f"box_id:{box_id},led_id:{led_id}\n".encode("ascii")
+    try:
+        with _master_serial_lock:
+            port = _open_master_serial_locked()
+            port.write(command)
+            port.flush()
+        print(f"  UART TX -> {MASTER_SERIAL_PORT}: {command.decode('ascii').strip()}")
+        return jsonify({"success": True, "command": command.decode("ascii").strip()})
+    except (serial.SerialException, serial.SerialTimeoutException, OSError) as error:
+        return jsonify({"success": False, "error": f"串口发送失败: {error}"}), 503
+
+
 # ================================================================== 启动
 if __name__ == "__main__":
     print("=" * 52)
@@ -420,4 +559,5 @@ if __name__ == "__main__":
     print(" 🌍 管理界面 : http://127.0.0.1:5000/")
     print(" 🔍 BOM 交互 : http://127.0.0.1:5000/bom_view")
     print("=" * 52)
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    # 串口需要由单一进程持续持有，禁止调试重载器重复创建进程和释放 COM3。
+    app.run(debug=False, host="0.0.0.0", port=5000)

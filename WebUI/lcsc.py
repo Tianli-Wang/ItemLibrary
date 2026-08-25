@@ -324,10 +324,12 @@ def get_lcsc_product_data(query):
                 "searched": query,
             }
         param_hint = hit.get("param_hint") or {}
-        if hit.get("product_id"):
-            kind, value = "id", str(hit["product_id"])
-        else:
+        # 中文详情页目前可能先返回阿里云 WAF 挑战页，直接按 product_id 抓取会拿不到
+        # __NEXT_DATA__。国际站的立创编号详情页仍可稳定返回结构化数据，因此优先走编号。
+        if hit.get("lcsc_code"):
             kind, value = "code", hit["lcsc_code"]
+        else:
+            kind, value = "id", str(hit["product_id"])
 
     try:
         if kind == "id":

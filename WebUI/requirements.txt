@@ -1,2 +1,8 @@
+# Web 服务与跨域支持（当前主程序 app.py 使用）
 Flask>=3.0
 flask-cors>=4.0
+pyserial>=3.5
+
+# 旧版立创抓取与 BOM 服务脚本兼容依赖
+requests>=2.31
+beautifulsoup4>=4.12
