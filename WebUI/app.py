@@ -2,7 +2,7 @@
 """
 app.py — 个人元件库 · 统一后端 (Flask)
 ==================================================================
-合并了旧的 DataUI.py / DanymicBomServer.py / InputDataset.py 三个服务，
+合并了历史版本中的 DataUI / DanymicBomServer / InputDataset 三个旧服务，
 并去除了 bs4 / requests 依赖 —— 现在仅需 Flask + flask-cors，可直接在
 Python 3.14 上运行。
 
@@ -24,7 +24,10 @@ import os
 import re
 import json
 import sys
+import shutil
+import random
 import threading
+from datetime import datetime, timezone
 
 import serial
 
@@ -42,7 +45,12 @@ except Exception:
 
 # ------------------------------------------------------------------ 配置
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-COMPONENTS_FILE = os.path.join(BASE_DIR, "components.json")
+COMPONENTS_FILE = os.path.join(BASE_DIR, "components.json")  # 旧路径,迁移后仅作备份
+DATA_DIR = os.path.join(BASE_DIR, "data")
+REPOS_DIR = os.path.join(DATA_DIR, "repos")
+INDEX_FILE = os.path.join(REPOS_DIR, "_index.json")
+DEFAULT_REPO_ID = "electronics"
+DEFAULT_REPO_NAME = "电子元件"
 BOM_FILE = os.path.join(BASE_DIR, "InteractiveBOM_v7.html")   # 当前交互式 BOM
 UI_FILE = "index.html"
 BRIDGE_FILE = "bom_bridge.js"
@@ -51,6 +59,8 @@ app = Flask(__name__)
 CORS(app)
 
 _save_lock = threading.Lock()
+_index_lock = threading.Lock()
+_REPO_ID_RE = re.compile(r"[a-z0-9][a-z0-9-]{0,62}[a-z0-9]")
 
 # 点灯主控由 Flask 独占 COM3，避免 Web Serial 权限窗口和 CH343 控制线兼容问题。
 MASTER_SERIAL_PORT = os.environ.get("ITEMLIB_MASTER_PORT", "COM3")
@@ -82,22 +92,213 @@ def _open_master_serial_locked():
 
 
 # ================================================================== 数据层
-def load_data():
-    """从 components.json 读取全部元件。"""
-    if not os.path.exists(COMPONENTS_FILE):
+def repo_dir(repo_id):
+    """返回仓库目录 (data/repos/<repo_id>),不保证目录已存在。"""
+    return os.path.join(REPOS_DIR, repo_id)
+
+
+def repo_components_path(repo_id):
+    """返回仓库元件库 JSON 路径。"""
+    return os.path.join(repo_dir(repo_id), "components.json")
+
+
+def _is_safe_repo_id(repo_id):
+    """仓库 id 仅允许小写字母数字与连字符,防止路径穿越。"""
+    return bool(repo_id) and bool(_REPO_ID_RE.fullmatch(repo_id))
+
+
+def _slugify_repo_id(name, suffix=None):
+    """把仓库名转成合法的 id:小写字母数字 + 连字符 + 5 位随机后缀。"""
+    base = re.sub(r"[^a-z0-9]+", "-", str(name or "").lower()).strip("-")
+    base = base[:50] or "repo"
+    suffix = suffix or "".join(
+        random.choice("0123456789abcdefghijklmnopqrstuvwxyz") for _ in range(5)
+    )
+    return f"{base}-{suffix}"
+
+
+def _load_index():
+    """读取仓库索引;文件缺失或损坏时返回空列表(由调用方负责修复)。"""
+    if not os.path.exists(INDEX_FILE):
+        return []
+    try:
+        with open(INDEX_FILE, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, list) else []
+    except (json.JSONDecodeError, OSError):
+        return []
+
+
+def _save_index(repos):
+    """原子写仓库索引:写临时文件再 rename,防止崩溃产生半截文件。"""
+    tmp_path = INDEX_FILE + ".tmp"
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(repos, f, indent=2, ensure_ascii=False)
+    os.replace(tmp_path, INDEX_FILE)
+
+
+def list_repos():
+    """对外暴露:返回 _index.json 的副本。"""
+    return list(_load_index())
+
+
+def _find_repo(repo_id):
+    """返回索引中匹配 id 的条目 (dict),找不到返回 None。"""
+    for item in _load_index():
+        if isinstance(item, dict) and item.get("id") == repo_id:
+            return item
+    return None
+
+
+def load_repo_data(repo_id):
+    """读取指定仓库的元件库。文件缺失或损坏返回空 dict。"""
+    if not _is_safe_repo_id(repo_id):
+        return {}
+    path = repo_components_path(repo_id)
+    if not os.path.exists(path):
         return {}
     try:
-        with open(COMPONENTS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
     except (json.JSONDecodeError, OSError):
         return {}
 
 
-def save_data(data):
-    """写回 components.json（加锁，避免并发写坏文件）。"""
+def save_repo_data(repo_id, data):
+    """写回指定仓库的元件库 (原子写 + 锁)。"""
+    if not _is_safe_repo_id(repo_id):
+        raise ValueError(f"非法的仓库 id: {repo_id!r}")
+    os.makedirs(repo_dir(repo_id), exist_ok=True)
+    path = repo_components_path(repo_id)
+    tmp_path = path + ".tmp"
     with _save_lock:
-        with open(COMPONENTS_FILE, "w", encoding="utf-8") as f:
+        with open(tmp_path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
+        os.replace(tmp_path, path)
+
+
+# 兼容旧调用方的薄壳,默认指向电子元件仓库。
+def load_data():
+    """[已废弃] 读取默认仓库,保留仅为避免遗漏的内部调用。"""
+    return load_repo_data(DEFAULT_REPO_ID)
+
+
+def save_data(data):
+    """[已废弃] 写回默认仓库,保留仅为避免遗漏的内部调用。"""
+    save_repo_data(DEFAULT_REPO_ID, data)
+
+
+def ensure_repo_structure():
+    """首次启动时把根目录 components.json 迁移为默认 electronics 仓库。
+
+    后续启动检测到 REPOS_DIR 已存在就直接返回,确保迁移只执行一次。
+    """
+    if os.path.exists(REPOS_DIR):
+        return
+    os.makedirs(repo_dir(DEFAULT_REPO_ID), exist_ok=True)
+    if os.path.exists(COMPONENTS_FILE):
+        shutil.copy2(COMPONENTS_FILE, repo_components_path(DEFAULT_REPO_ID))
+        print(f"  ✓ 已将 {os.path.basename(COMPONENTS_FILE)} 迁移到默认仓库 "
+              f"{os.path.relpath(repo_components_path(DEFAULT_REPO_ID), BASE_DIR)}")
+    else:
+        # 没有旧数据文件时也写入一个空 dict,便于后续 save_repo_data 直接更新 mtime。
+        with open(repo_components_path(DEFAULT_REPO_ID), "w", encoding="utf-8") as f:
+            json.dump({}, f)
+    _save_index([{
+        "id": DEFAULT_REPO_ID,
+        "name": DEFAULT_REPO_NAME,
+        "note": "默认仓库,首次启动自动迁移。",
+        "created_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+    }])
+
+
+def _set_substitutes(data, name, substitutes):
+    """保存对称的一对多替换料关系，并过滤不存在或重复的元件。"""
+    selected = []
+    for candidate in substitutes or []:
+        candidate = str(candidate).strip()
+        if candidate != name and candidate in data and candidate not in selected:
+            selected.append(candidate)
+
+    # 先移除旧的反向关系，随后按本次选择重建，确保两侧始终一致。
+    for component_name, component in data.items():
+        existing = component.get("substitutes", [])
+        if not isinstance(existing, list):
+            existing = []
+        cleaned = [
+            item for item in existing
+            if item != name and item in data and item != component_name
+        ]
+        if cleaned:
+            component["substitutes"] = cleaned
+        else:
+            component.pop("substitutes", None)
+
+    data[name]["substitutes"] = selected
+    for candidate in selected:
+        reverse = data[candidate].setdefault("substitutes", [])
+        if name not in reverse:
+            reverse.append(name)
+
+
+def _lcsc_product_details(product):
+    """把立创搜索结果转换为可安全批量写入元件库的字段。"""
+    params = product.get("params") if isinstance(product.get("params"), dict) else {}
+    note_lines = [
+        f"【{product.get('lcsc_code', '')} {product.get('product_name', '')}】"
+        f"{' · ' + product.get('brand', '') if product.get('brand') else ''}",
+        f"【类目】{product.get('类目') or product.get('catalog') or ''}",
+    ]
+    if params:
+        note_lines.append("【参数】")
+        note_lines.extend(f"• {key}: {value}" for key, value in list(params.items())[:12])
+    description = product.get("description")
+    if description and description != "N/A":
+        note_lines.append(f"【描述】{description}")
+
+    details = {
+        "image": product.get("image") or "",
+        "lcsc_code": product.get("lcsc_code") or "",
+        "product_url": product.get("product_url") or "",
+        "datasheet": product.get("datasheet") or "",
+        "brand": product.get("brand") or "",
+        "category": product.get("类目") or product.get("catalog") or "N/A",
+        "type": product.get("功能类型") or "N/A",
+        "work_voltage": product.get("工作电压") or "N/A",
+        "out_voltage": product.get("输出电压") or "N/A",
+        "out_current": product.get("输出电流") or "N/A",
+        "note": "\n".join(note_lines).strip(),
+    }
+    if product.get("footprint"):
+        details["footprint"] = product["footprint"]
+    if product.get("工作电压") and product["工作电压"] != "N/A":
+        details["voltage"] = product["工作电压"]
+    return details
+
+
+def _normalize_lcsc_parameter(details):
+    """立创搜索结果保存时，确保 parameter 使用原厂型号而不是立创编号。"""
+    normalized = dict(details)
+    product_name = str(normalized.get("product_name") or "").strip()
+    lcsc_code = str(normalized.get("lcsc_code") or "").strip()
+
+    if not product_name and lcsc_code:
+        # 兼容已经打开的旧页面：旧请求未单独提交 product_name，但备注首行含
+        # “【C357836 AON6382】”，后端仍可据此恢复原厂型号。
+        note = str(normalized.get("note") or "")
+        match = re.search(
+            rf"【\s*{re.escape(lcsc_code)}\s+([^】]+?)\s*】",
+            note,
+            re.IGNORECASE,
+        )
+        if match:
+            product_name = match.group(1).strip()
+
+    if product_name:
+        normalized["product_name"] = product_name
+        normalized["parameter"] = product_name
+    return normalized
 
 
 # ================================================================== 数值归一化
@@ -174,9 +375,9 @@ def equivalent_part_number(left, right):
 
 
 # ================================================================== 智能搜索
-def search_component(part_number, parameter=None, footprint=None):
+def search_component(part_number, parameter=None, footprint=None, repo_id=None):
     """智能匹配：型号/参数/封装 → 最佳元件。返回 (key, data) 或 (None, None)。"""
-    db = load_data()
+    db = load_repo_data(repo_id or DEFAULT_REPO_ID)
 
     # 1. 绝对精确匹配 (Key)
     if part_number and part_number in db:
@@ -345,9 +546,17 @@ def serve_bom_view():
 
 
 # ================================================================== 路由：CRUD
+def _resolve_repo_id():
+    """从 query 参数取出仓库 id,非法或缺失时回退到默认仓库。"""
+    repo_id = request.args.get("repo", DEFAULT_REPO_ID)
+    if not _is_safe_repo_id(repo_id) or _find_repo(repo_id) is None:
+        return DEFAULT_REPO_ID
+    return repo_id
+
+
 @app.route("/api/components", methods=["GET"])
 def get_components():
-    return jsonify(load_data())
+    return jsonify(load_repo_data(_resolve_repo_id()))
 
 
 @app.route("/api/add", methods=["POST"])
@@ -357,12 +566,14 @@ def add_component():
     details = body.get("details")
     if not name or not details:
         return jsonify({"success": False, "error": "数据不完整"}), 400
-    data = load_data()
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
     if name in data:
         return jsonify({"success": False, "error": "该元件名称已存在"}), 400
-    data[name] = details
-    save_data(data)
-    return jsonify({"success": True, "component_name": name})
+    data[name] = _normalize_lcsc_parameter(details)
+    _set_substitutes(data, name, data[name].get("substitutes", []))
+    save_repo_data(repo_id, data)
+    return jsonify({"success": True, "component_name": name, "repo": repo_id})
 
 
 @app.route("/api/update", methods=["POST"])
@@ -372,12 +583,19 @@ def update_component():
     details = body.get("details")
     if not name or not details:
         return jsonify({"success": False, "error": "数据不完整"}), 400
-    data = load_data()
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
     if name not in data:
         return jsonify({"success": False, "error": "元件不存在"}), 404
+    details = _normalize_lcsc_parameter(details)
+    substitutes_provided = "substitutes" in details
+    substitutes = details.pop("substitutes", [])
     data[name].update(details)
-    save_data(data)
-    return jsonify({"success": True, "component_name": name})
+    # 快速修改货位时不会携带 substitutes，此时保留原有关联。
+    if substitutes_provided:
+        _set_substitutes(data, name, substitutes)
+    save_repo_data(repo_id, data)
+    return jsonify({"success": True, "component_name": name, "repo": repo_id})
 
 
 @app.route("/api/delete", methods=["POST"])
@@ -386,12 +604,18 @@ def delete_component():
     name = body.get("component_name")
     if not name:
         return jsonify({"success": False, "error": "未提供元件名称"}), 400
-    data = load_data()
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
     if name not in data:
         return jsonify({"success": False, "error": "元件未找到"}), 404
     del data[name]
-    save_data(data)
-    return jsonify({"success": True, "component_name": name})
+    # 删除元件时同步清理其他元件中的失效替换料引用。
+    for component in data.values():
+        existing = component.get("substitutes", [])
+        if isinstance(existing, list):
+            component["substitutes"] = [item for item in existing if item != name]
+    save_repo_data(repo_id, data)
+    return jsonify({"success": True, "component_name": name, "repo": repo_id})
 
 
 @app.route("/api/swap_components", methods=["POST"])
@@ -400,27 +624,30 @@ def swap_components():
     name1, name2 = body.get("name1"), body.get("name2")
     if not name1 or not name2:
         return jsonify({"success": False, "error": "请提供两个元件名称"}), 400
-    data = load_data()
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
     if name1 not in data or name2 not in data:
         return jsonify({"success": False, "error": "元件未找到"}), 404
     b1, l1 = data[name1].get("box_id"), data[name1].get("led_id")
     b2, l2 = data[name2].get("box_id"), data[name2].get("led_id")
     data[name1]["box_id"], data[name1]["led_id"] = b2, l2
     data[name2]["box_id"], data[name2]["led_id"] = b1, l1
-    save_data(data)
-    return jsonify({"success": True})
+    save_repo_data(repo_id, data)
+    return jsonify({"success": True, "repo": repo_id})
 
 
 # ================================================================== 路由：搜索
 @app.route("/lightup")
 def light_up():
+    """点灯/查找货位 — 始终查询电子元件仓库 (BOM 桥接唯一命中点)。"""
     part_number = request.args.get("part_number", "")
     parameter = request.args.get("parameter", "")
     footprint = request.args.get("footprint", "")
     if not (part_number or parameter or footprint):
         return jsonify({"status": "error", "message": "需要提供至少一个搜索条件"}), 400
 
-    matched_pn, item = search_component(part_number, parameter, footprint)
+    matched_pn, item = search_component(part_number, parameter, footprint,
+                                       repo_id=DEFAULT_REPO_ID)
     if not item:
         return jsonify({
             "status": "not_found",
@@ -450,14 +677,16 @@ def search_range():
     else:
         max_val = parse_electronic_value(max_str) or float("inf")
 
+    repo_id = _resolve_repo_id()
     results = []
-    for pn, data in load_data().items():
+    for pn, data in load_repo_data(repo_id).items():
         v = parse_electronic_value(data.get("parameter", ""))
         if v is not None and min_val <= v <= max_val:
             results.append({"part_number": pn, "data": data, "value": v})
     results.sort(key=lambda x: x["value"])
     return jsonify({"status": "success", "count": len(results),
                     "results": results,
+                    "repo": repo_id,
                     "query": {"min": min_val, "max": max_val}})
 
 
@@ -468,6 +697,198 @@ def crawl_lcsc():
     if not keyword:
         return jsonify({"success": False, "error": "未提供搜索关键字"}), 400
     return jsonify(lcsc.get_lcsc_product_data(keyword))
+
+
+@app.route("/api/batch_crawl_lcsc", methods=["POST"])
+def batch_crawl_lcsc():
+    """按所选元件自身的立创编号或参数分别搜索商品。"""
+    body = request.get_json(silent=True) or {}
+    names = body.get("component_names")
+    if not isinstance(names, list) or not names:
+        return jsonify({"success": False, "error": "请至少选择一个元件"}), 400
+
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
+    unique_names = list(dict.fromkeys(str(name).strip() for name in names))
+    if len(unique_names) > 30:
+        return jsonify({"success": False, "error": "单次最多搜索 30 个元件"}), 400
+    missing = [name for name in unique_names if name not in data]
+    if missing:
+        return jsonify({"success": False, "error": f"以下元件不存在: {', '.join(missing[:5])}"}), 404
+
+    results = []
+    for name in unique_names:
+        # 与录入区单项搜索保持一致：优先按 parameter 搜索，编号仅作为空参数兜底。
+        query = str(data[name].get("parameter") or data[name].get("lcsc_code") or "").strip()
+        if query:
+            product = lcsc.get_lcsc_product_data(query)
+        else:
+            product = {"success": False, "error": "元件没有可搜索的参数"}
+        results.append({"component_name": name, "query": query, "product": product})
+    success_count = sum(bool(item["product"].get("success")) for item in results)
+    return jsonify({
+        "success": True,
+        "count": len(results),
+        "success_count": success_count,
+        "failed_count": len(results) - success_count,
+        "results": results,
+        "repo": repo_id,
+    })
+
+
+@app.route("/api/batch_update_lcsc", methods=["POST"])
+def batch_update_lcsc():
+    """把每个元件各自的立创搜索结果写入库中，并保留货位和替换料。"""
+    body = request.get_json(silent=True) or {}
+    updates = body.get("updates")
+    if not isinstance(updates, list) or not updates:
+        return jsonify({"success": False, "error": "没有可更新的立创搜索结果"}), 400
+
+    repo_id = _resolve_repo_id()
+    data = load_repo_data(repo_id)
+    valid_updates = []
+    seen = set()
+    for update in updates:
+        if not isinstance(update, dict):
+            continue
+        name = str(update.get("component_name") or "").strip()
+        product = update.get("product")
+        if name and name not in seen and isinstance(product, dict) and product.get("success"):
+            valid_updates.append((name, product))
+            seen.add(name)
+    if not valid_updates:
+        return jsonify({"success": False, "error": "没有搜索成功的元件"}), 400
+
+    unique_names = [name for name, _ in valid_updates]
+    missing = [name for name in unique_names if name not in data]
+    if missing:
+        return jsonify({
+            "success": False,
+            "error": f"以下元件不存在: {', '.join(missing[:5])}",
+        }), 404
+
+    for name, product in valid_updates:
+        data[name].update(_lcsc_product_details(product))
+    save_repo_data(repo_id, data)
+    return jsonify({
+        "success": True,
+        "updated_count": len(unique_names),
+        "component_names": unique_names,
+        "repo": repo_id,
+    })
+
+
+# ================================================================== 路由：仓库管理
+@app.route("/api/repos", methods=["GET"])
+def api_repos_list():
+    """返回所有仓库的元数据列表。"""
+    return jsonify(list_repos())
+
+
+@app.route("/api/repos", methods=["POST"])
+def api_repos_create():
+    """新建一个空白仓库。name 必填,note 可选;id 自动生成。"""
+    body = request.get_json(silent=True) or {}
+    name = str(body.get("name") or "").strip()
+    note = str(body.get("note") or "").strip()
+    if not name:
+        return jsonify({"success": False, "error": "仓库名称不能为空"}), 400
+
+    with _index_lock:
+        repos = _load_index()
+        # 名字去重 (忽略大小写与首尾空白),名字已存在则直接复用同名仓库。
+        existing = next(
+            (item for item in repos
+             if isinstance(item, dict)
+             and str(item.get("name", "")).strip().lower() == name.lower()),
+            None,
+        )
+        if existing is not None:
+            return jsonify({"success": True, "repo": existing, "existed": True})
+
+        # 多次重试以避免与现有 id 极小概率冲突。
+        repo_id = None
+        for _ in range(8):
+            candidate = _slugify_repo_id(name)
+            if not any(item.get("id") == candidate for item in repos
+                       if isinstance(item, dict)):
+                repo_id = candidate
+                break
+        if repo_id is None:
+            return jsonify({"success": False, "error": "无法生成仓库 id"}), 500
+
+        new_repo = {
+            "id": repo_id,
+            "name": name,
+            "note": note,
+            "created_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        }
+        # 先写空文件再写索引,避免索引声称有仓库但磁盘上读不到。
+        save_repo_data(repo_id, {})
+        repos.append(new_repo)
+        _save_index(repos)
+        print(f"  ✓ 新建仓库: {name} ({repo_id})")
+        return jsonify({"success": True, "repo": new_repo, "existed": False})
+
+
+@app.route("/api/repos/<repo_id>", methods=["PATCH"])
+def api_repos_update(repo_id):
+    """修改仓库的 name / note;不允许通过此接口改 id。"""
+    if not _is_safe_repo_id(repo_id):
+        return jsonify({"success": False, "error": "非法仓库 id"}), 400
+
+    body = request.get_json(silent=True) or {}
+    with _index_lock:
+        repos = _load_index()
+        target = next(
+            (item for item in repos
+             if isinstance(item, dict) and item.get("id") == repo_id),
+            None,
+        )
+        if target is None:
+            return jsonify({"success": False, "error": "仓库不存在"}), 404
+
+        if "name" in body:
+            new_name = str(body.get("name") or "").strip()
+            if not new_name:
+                return jsonify({"success": False, "error": "仓库名称不能为空"}), 400
+            target["name"] = new_name
+        if "note" in body:
+            target["note"] = str(body.get("note") or "").strip()
+        _save_index(repos)
+        return jsonify({"success": True, "repo": target})
+
+
+@app.route("/api/repos/<repo_id>", methods=["DELETE"])
+def api_repos_delete(repo_id):
+    """删除仓库目录。默认仓库 electronics 不可删除,只剩一个仓库时也不允许。"""
+    if not _is_safe_repo_id(repo_id):
+        return jsonify({"success": False, "error": "非法仓库 id"}), 400
+    if repo_id == DEFAULT_REPO_ID:
+        return jsonify({"success": False,
+                        "error": f"默认仓库 {DEFAULT_REPO_NAME} 不能删除"}), 400
+
+    with _index_lock:
+        repos = _load_index()
+        if len(repos) <= 1:
+            return jsonify({"success": False, "error": "至少保留一个仓库"}), 400
+        target = next(
+            (item for item in repos
+             if isinstance(item, dict) and item.get("id") == repo_id),
+            None,
+        )
+        if target is None:
+            return jsonify({"success": False, "error": "仓库不存在"}), 404
+
+        # 先从索引里移除,即使后续删目录失败,前端也不应再访问该仓库。
+        repos = [item for item in repos if item.get("id") != repo_id]
+        _save_index(repos)
+
+    dir_path = repo_dir(repo_id)
+    if os.path.isdir(dir_path):
+        shutil.rmtree(dir_path, ignore_errors=True)
+    print(f"  ✓ 已删除仓库: {target.get('name')} ({repo_id})")
+    return jsonify({"success": True, "deleted": repo_id})
 
 
 # ================================================================== 路由：BOM 上传
@@ -551,10 +972,11 @@ def master_serial_send():
 
 # ================================================================== 启动
 if __name__ == "__main__":
+    ensure_repo_structure()
     print("=" * 52)
     print(" 🚀 个人元件库 · 统一服务已启动")
-    print(f" 📂 数据文件 : {os.path.basename(COMPONENTS_FILE)} "
-          f"({len(load_data())} 个元件)")
+    print(f" 📂 数据目录 : {os.path.relpath(REPOS_DIR, BASE_DIR)} "
+          f"({len(list_repos())} 个仓库)")
     print(f" 📄 BOM 文件 : {os.path.basename(BOM_FILE)}")
     print(" 🌍 管理界面 : http://127.0.0.1:5000/")
     print(" 🔍 BOM 交互 : http://127.0.0.1:5000/bom_view")

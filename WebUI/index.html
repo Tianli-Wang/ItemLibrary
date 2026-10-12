@@ -124,6 +124,55 @@
         .nav-item:hover { background: var(--surface-2); color: var(--text); }
         .nav-item.active { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
 
+        /* 仓库 tab:每个仓库是一个 nav-item;长按 / 右键可改名或删除。 */
+        .nav-item[data-repo-id] .nav-meta { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+        .nav-item[data-repo-id] .nav-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .nav-item[data-repo-id] .nav-note {
+            font-size: 10.5px; color: var(--text-faint); margin-top: 1px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        .nav-item.active .nav-note { color: var(--accent); opacity: .65; }
+        .nav-item[data-repo-id][data-editable="true"] .repo-edit-btn {
+            flex: 0 0 auto; width: 22px; height: 22px;
+            display: none; align-items: center; justify-content: center;
+            border: 0; background: transparent; color: inherit;
+            border-radius: 5px; cursor: pointer; font-size: 13px;
+        }
+        .nav-item[data-repo-id][data-editable="true"]:hover .repo-edit-btn { display: inline-flex; }
+        .nav-item[data-repo-id][data-editable="true"] .repo-edit-btn:hover { background: rgba(0,0,0,.06); }
+
+        .repo-actions {
+            padding: 4px 10px 10px;
+        }
+        .repo-add-btn {
+            width: 100%; padding: 8px 10px; border-radius: var(--r-sm);
+            border: 1px dashed var(--border-strong); background: var(--surface-2);
+            color: var(--text-muted); cursor: pointer; font: inherit;
+            font-size: 12.5px; font-weight: 600;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            transition: all .15s;
+        }
+        .repo-add-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+
+        /* 仓库创建 / 改名 / 删除 对话框 */
+        #repo-dialog { padding: 0; border: 0; border-radius: var(--r); }
+        #repo-dialog::backdrop { background: rgba(15,23,42,.42); }
+        .repo-dialog-box {
+            width: 360px; padding: 22px 24px 18px;
+            background: var(--surface); color: var(--text);
+            border-radius: var(--r); box-shadow: var(--sh-lg);
+        }
+        .repo-dialog-box h3 { margin: 0 0 6px; font-size: 15px; font-weight: 700; }
+        .repo-dialog-box p { margin: 0 0 14px; font-size: 12px; color: var(--text-muted); }
+        .repo-dialog-box label { font-size: 12px; }
+        .repo-dialog-box .btn-row { margin-top: 14px; }
+        .repo-dialog-error {
+            margin-top: 10px; padding: 8px 10px; border-radius: 6px;
+            background: #fff4f5; color: var(--red); font-size: 12px; display: none;
+        }
+        .repo-dialog-error.show { display: block; }
+
         .sidebar-footer {
             padding: 12px;
             border-top: 1px solid var(--border);
@@ -139,6 +188,9 @@
         body.sidebar-collapsed .brand-copy,
         body.sidebar-collapsed .nav-section-label,
         body.sidebar-collapsed .nav-item > span:not(.nav-ic),
+        body.sidebar-collapsed .nav-item .nav-meta,
+        body.sidebar-collapsed .nav-item .repo-edit-btn,
+        body.sidebar-collapsed .repo-add-btn > span:last-child,
         body.sidebar-collapsed .import-row,
         body.sidebar-collapsed .stat-pill > span { display: none; }
         body.sidebar-collapsed .sidebar-toggle { position: absolute; top: 51px; width: 22px; height: 22px; border-radius: 50%; font-size: 10px; }
@@ -275,6 +327,38 @@
         .lcsc-links { margin-top: 8px; font-size: 12px; }
         .lcsc-links a { color: var(--accent); text-decoration: none; font-weight: 600; }
 
+        /* 元件图片与替换料选择器 */
+        .image-field-row { display: flex; align-items: center; gap: 9px; }
+        .image-field-row img {
+            width: 48px; height: 48px; flex: 0 0 auto; object-fit: contain;
+            border: 1px solid var(--border); border-radius: 7px; background: #fff;
+        }
+        .image-field-row input { min-width: 0; color: var(--text-muted); background: var(--surface-2); }
+        .image-field-row .icon-btn { flex: 0 0 auto; }
+        .substitute-picker { position: relative; }
+        .substitute-selected { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 7px; }
+        .substitute-selected:empty { display: none; }
+        .substitute-chip, .comp-substitute {
+            display: inline-flex; align-items: center; gap: 5px; border-radius: var(--r-pill);
+            border: 1px solid #d9d3fa; background: #f5f2ff; color: var(--purple);
+            padding: 3px 8px; font-size: 11px; font-weight: 650;
+        }
+        .substitute-chip button { border: 0; background: none; color: inherit; padding: 0; cursor: pointer; font-size: 13px; }
+        .substitute-options {
+            display: none; max-height: 190px; overflow-y: auto; margin-top: 5px;
+            border: 1px solid var(--border-strong); border-radius: var(--r-sm);
+            background: var(--surface); box-shadow: var(--sh); padding: 5px;
+        }
+        .substitute-options.open { display: block; }
+        .substitute-option {
+            display: flex; align-items: center; gap: 8px; padding: 7px 8px;
+            border-radius: 6px; cursor: pointer; font-size: 12px;
+        }
+        .substitute-option:hover { background: var(--surface-2); }
+        .substitute-option input { width: auto; margin: 0; }
+        .substitute-option span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .substitute-empty { padding: 10px; color: var(--text-faint); font-size: 12px; text-align: center; }
+
         /* ---------------- Toolbar ---------------- */
         .toolbar { padding: 12px 16px; border-bottom: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
         .search-primary-row, .toolbar-footer { display: flex; align-items: center; gap: 8px; }
@@ -326,7 +410,7 @@
             background: var(--surface-2); border: 1px solid var(--border);
         }
         .advanced-search[hidden] { display: none; }
-        .filter-grid { display: grid; grid-template-columns: repeat(5, minmax(90px, 1fr)); gap: 8px; }
+        .filter-grid { display: grid; grid-template-columns: repeat(6, minmax(80px, 1fr)); gap: 8px; }
         .filter-field label { margin: 0 0 4px; font-size: 10.5px; color: var(--text-faint); }
         .filter-field input { padding: 7px 9px; font-size: 12px; background: var(--surface); }
         .range-row { display: flex; align-items: flex-end; gap: 8px; margin-top: 9px; }
@@ -335,6 +419,25 @@
         .range-hint { margin-left: auto; padding-bottom: 7px; min-width: 120px; text-align: right; color: var(--text-faint); font-size: 10.5px; }
         .range-hint.error { color: var(--red); font-weight: 600; }
         .toolbar-footer { min-height: 29px; }
+        .batch-toolbar {
+            display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+            padding-top: 10px; border-top: 1px solid var(--border);
+        }
+        .batch-count { color: var(--text-muted); font-size: 12px; font-weight: 650; min-width: 66px; }
+        .batch-toolbar .btn { padding: 7px 10px; font-size: 12px; }
+        .batch-preview {
+            display: none; flex-basis: 100%; gap: 6px; flex-wrap: wrap;
+            color: var(--text-muted); font-size: 11.5px;
+        }
+        .batch-preview.show { display: flex; }
+        .batch-result {
+            display: flex; align-items: center; gap: 7px; min-width: 220px; max-width: 360px;
+            padding: 6px 8px; border: 1px solid var(--border); border-radius: 7px; background: var(--surface-2);
+        }
+        .batch-result.ok { border-color: #bfe8cb; background: var(--green-soft); }
+        .batch-result.fail { border-color: #f5cbd3; background: #fff4f5; color: var(--red); }
+        .batch-result img { width: 34px; height: 34px; flex: 0 0 auto; object-fit: contain; border: 1px solid var(--border); border-radius: 5px; background: #fff; }
+        .batch-result span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         .result-summary { margin-right: auto; color: var(--text-muted); font-size: 11.5px; white-space: nowrap; }
         .result-summary b { color: var(--text); }
         .active-filters { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -410,15 +513,25 @@
             contain: layout paint;
         }
         .comp-card:hover { border-color: var(--accent-soft-border); box-shadow: var(--sh); }
+        .comp-card.batch-selected { border-color: var(--accent); background: var(--accent-soft); }
         .comp-card.flash { animation: flash 1.2s ease; }
         @keyframes flash { 0%, 100% { background: var(--surface); } 30% { background: var(--accent-soft); } }
 
         .comp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+        .comp-main { display: flex; align-items: flex-start; gap: 10px; min-width: 0; }
+        .comp-image {
+            width: 54px; height: 54px; flex: 0 0 auto; object-fit: contain;
+            border: 1px solid var(--border); border-radius: 7px; background: #fff;
+        }
         .comp-title { font-size: 15px; font-weight: 700; line-height: 1.25; }
         .comp-title .fp { color: var(--text-muted); font-weight: 500; font-size: 13px; }
         .comp-id { font-size: 11px; color: var(--text-faint); font-family: ui-monospace, Menlo, Consolas, monospace; margin-top: 2px; }
 
         .comp-actions { display: flex; gap: 6px; flex-shrink: 0; }
+        .batch-checkbox {
+            width: 17px; height: 17px; margin: 5px 2px 0 0; accent-color: var(--accent);
+            cursor: pointer;
+        }
         .icon-btn {
             width: 28px; height: 28px; border-radius: 7px; border: 1px solid var(--border);
             background: var(--surface); cursor: pointer; display: grid; place-items: center;
@@ -451,6 +564,7 @@
         .badge.cat { background: #f1eee9; color: #6b533d; border-color: #e2d9cd; }
         .badge.type { background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft-border); }
         .badge.cur { background: #f5f0fe; color: var(--purple); border-color: #e5defb; }
+        .comp-substitutes { display: flex; align-items: center; flex-wrap: wrap; gap: 5px; font-size: 11px; color: var(--text-faint); }
 
         .comp-note {
             font-size: 12px; color: var(--text-muted); background: var(--surface-2);
@@ -478,6 +592,25 @@
         }
         .import-btn:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
         #bom-status-text { font-size: 11px; color: var(--text-faint); margin-top: 6px; text-align: center; }
+
+        /* BOM 入口:与导入按钮共处一栏,但视觉上是常规 nav-item (实线边框、左右对齐)。 */
+        #bom-nav-btn {
+            border-style: solid;
+            justify-content: flex-start;
+            gap: 9px;
+            padding: 9px 12px;
+        }
+        #bom-nav-btn .nav-ic { font-size: 16px; width: 20px; text-align: center; }
+        #bom-nav-btn .nav-meta { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; flex: 1; }
+        #bom-nav-btn .nav-name { font-size: 13px; }
+        #bom-nav-btn .nav-note {
+            font-size: 10.5px; color: var(--text-faint); margin-top: 1px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            max-width: 100%;
+        }
+        #bom-nav-btn.active .nav-note { color: var(--accent); opacity: .65; }
+        body.sidebar-collapsed #bom-nav-btn .nav-meta { display: none; }
+        body.sidebar-collapsed #bom-nav-btn { justify-content: center; padding: 10px; }
 
         /* ---------------- Global toast ---------------- */
         #g-toast {
@@ -512,17 +645,24 @@
                 <span>‹</span>
             </button>
         </div>
-        <div class="nav-section-label">工作区</div>
-        <nav class="nav-menu">
-            <button type="button" class="nav-item active" data-target="management-panel" title="元件库">
-                <span class="nav-ic">📦</span><span>元件库</span>
-            </button>
-            <button type="button" class="nav-item" data-target="bom-panel" title="BOM 交互">
-                <span class="nav-ic">🧩</span><span>BOM 交互</span>
-            </button>
+        <div class="nav-section-label">仓库</div>
+        <nav class="nav-menu" id="repo-bar" aria-label="仓库切换">
+            <!-- 仓库 tab 由 JS 动态注入 -->
         </nav>
+        <div class="repo-actions">
+            <button type="button" class="repo-add-btn" id="repo-add-btn" title="新建仓库">
+                <span>＋</span><span>新建仓库</span>
+            </button>
+        </div>
         <div class="import-row">
             <div class="nav-section-label" style="padding-left:10px;">交互式 BOM</div>
+            <button type="button" class="nav-item import-btn" id="bom-nav-btn" title="BOM 交互" style="margin-bottom:6px;">
+                <span class="nav-ic">🧩</span>
+                <span class="nav-meta">
+                    <span class="nav-name">BOM 交互</span>
+                    <span class="nav-note">点亮立创EDA 离线 BOM</span>
+                </span>
+            </button>
             <button class="import-btn" onclick="document.getElementById('bom-upload-input').click()">
                 <span>📥</span><span>导入 立创EDA BOM</span>
             </button>
@@ -617,8 +757,26 @@
                         </div>
 
                         <div class="field">
+                            <label for="image_url">元件图片（立创搜索后自动保存）</label>
+                            <div class="image-field-row">
+                                <img id="component-image-preview" alt="元件图片预览" hidden>
+                                <input type="text" id="image_url" placeholder="尚未获取图片" readonly>
+                                <button type="button" class="icon-btn del" id="clear-image-btn" title="移除图片">✕</button>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="substitute-search">可替换料（可多选）</label>
+                            <div class="substitute-picker" id="substitute-picker">
+                                <div class="substitute-selected" id="substitute-selected"></div>
+                                <input type="text" id="substitute-search" autocomplete="off" placeholder="输入名称、型号或参数筛选">
+                                <div class="substitute-options" id="substitute-options"></div>
+                            </div>
+                        </div>
+
+                        <div class="field">
                             <label for="note">备注 note</label>
-                            <textarea id="note" placeholder="可选：用途、来源、替代料…"></textarea>
+                            <textarea id="note" placeholder="可选：用途、来源等"></textarea>
                         </div>
 
                         <div class="btn-row">
@@ -661,8 +819,12 @@
                                 <input type="text" id="search-footprint" placeholder="0603">
                             </div>
                             <div class="filter-field">
-                                <label for="search-boxid">料盒 / 位置</label>
-                                <input type="text" id="search-boxid" placeholder="如 4/38">
+                                <label for="search-box">料盒号</label>
+                                <input type="text" id="search-box" inputmode="numeric" placeholder="如 4">
+                            </div>
+                            <div class="filter-field">
+                                <label for="search-pos">位置号</label>
+                                <input type="text" id="search-pos" inputmode="numeric" placeholder="如 38">
                             </div>
                             <div class="filter-field">
                                 <label for="search-note">备注</label>
@@ -686,12 +848,20 @@
                     <div class="toolbar-footer">
                         <div class="result-summary" id="result-summary">正在加载元件…</div>
                         <div class="sort-group" id="sort-selector">
-                            <button type="button" class="sort-badge active" data-criteria="parameter">参数</button>
+                            <button type="button" class="sort-badge active" data-criteria="led">位置</button>
+                            <button type="button" class="sort-badge" data-criteria="parameter">参数</button>
                             <button type="button" class="sort-badge" data-criteria="box">料盒</button>
-                            <button type="button" class="sort-badge" data-criteria="led">位置</button>
                             <button type="button" class="sort-badge" data-criteria="key">名称</button>
                         </div>
                         <button type="button" class="dir-toggle" id="dir-toggle-btn"><span id="dir-icon">↑</span><span id="dir-text">正序</span></button>
+                    </div>
+                    <div class="batch-toolbar" aria-label="批量更新立创内容">
+                        <span class="batch-count" id="batch-count">已选 0 项</span>
+                        <button type="button" class="btn btn-ghost" id="batch-select-visible">全选筛选结果</button>
+                        <button type="button" class="btn btn-ghost" id="batch-clear-selection" disabled>清空选择</button>
+                        <button type="button" class="btn btn-green" id="batch-search-lcsc" disabled>搜索所选元件</button>
+                        <div class="batch-preview" id="batch-lcsc-preview"></div>
+                        <button type="button" class="btn btn-primary" id="batch-apply-lcsc" disabled>更新搜索成功项</button>
                     </div>
                 </div>
                 <div id="list-container">
@@ -708,6 +878,26 @@
 
     <div id="g-toast"></div>
 
+    <dialog id="repo-dialog">
+        <form method="dialog" class="repo-dialog-box" id="repo-dialog-form">
+            <h3 id="repo-dialog-title">新建仓库</h3>
+            <p id="repo-dialog-subtitle">仓库之间相互独立,搜索/添加/删除只在当前仓库生效。</p>
+            <div class="field">
+                <label for="repo-dialog-name">仓库名称</label>
+                <input type="text" id="repo-dialog-name" maxlength="40" required placeholder="如:螺丝 / 机械零件">
+            </div>
+            <div class="field">
+                <label for="repo-dialog-note">备注 (可选)</label>
+                <textarea id="repo-dialog-note" maxlength="200" placeholder="如:螺丝、螺母、轴承" style="min-height:54px;"></textarea>
+            </div>
+            <div class="repo-dialog-error" id="repo-dialog-error"></div>
+            <div class="btn-row">
+                <button type="button" class="btn btn-ghost" id="repo-dialog-cancel">取消</button>
+                <button type="submit" class="btn btn-primary" id="repo-dialog-submit">创建</button>
+            </div>
+        </form>
+    </dialog>
+
     <script>
         /* ==================== 全局状态 ==================== */
         const list = document.getElementById('component-list');
@@ -720,15 +910,28 @@
         const voltageInput = document.getElementById('voltage');
         const footprintInput = document.getElementById('footprint');
         const noteInput = document.getElementById('note');
+        const imageUrlInput = document.getElementById('image_url');
+        const componentImagePreview = document.getElementById('component-image-preview');
+        const substituteSearchInput = document.getElementById('substitute-search');
+        const substituteOptions = document.getElementById('substitute-options');
+        const substituteSelected = document.getElementById('substitute-selected');
+        const repoBar = document.getElementById('repo-bar');
+        const DEFAULT_REPO_ID = 'electronics';
         let allComponents = {};
+        let allRepos = [];
+        let currentRepoId = localStorage.getItem('itemlib-repo-id') || DEFAULT_REPO_ID;
+        let selectedSubstitutes = new Set();
+        let batchSelectedComponents = new Set();
+        let batchLcscResults = [];
+        let batchSearchRunning = false;
         let selectedParamUnit = '';
-        let currentSortCriteria = 'parameter';
+        let currentSortCriteria = 'led';
         let currentSortDirection = 'asc';
         let swapPendingKey = null;
-        const searchFilters = { query: '', parameter: '', voltage: '', footprint: '', boxid: '', note: '', min: '', max: '' };
+        const searchFilters = { query: '', parameter: '', voltage: '', footprint: '', box: '', pos: '', note: '', min: '', max: '' };
         const searchFilterLabels = {
             query: '关键词', parameter: '参数', voltage: '电压', footprint: '封装',
-            boxid: '料盒/位置', note: '备注', min: '最小值', max: '最大值'
+            box: '料盒号', pos: '位置号', note: '备注', min: '最小值', max: '最大值'
         };
         let filterTimer = null;
         let componentsRequestSeq = 0;
@@ -736,22 +939,20 @@
         let renderedComponentCount = 0;
         const COMPONENT_BATCH_SIZE = 72;
 
-        /* ==================== 视图切换 ==================== */
-        const navItems = document.querySelectorAll('.nav-item');
+        /* ==================== 仓库 + 视图切换 ==================== */
         const pagePanels = document.querySelectorAll('.page-panel');
         const bomFrame = document.getElementById('bom-frame');
-        navItems.forEach(item => item.addEventListener('click', () => {
-            const target = item.getAttribute('data-target');
-            navItems.forEach(ni => ni.classList.remove('active'));
-            item.classList.add('active');
-            pagePanels.forEach(p => p.classList.toggle('active', p.id === target));
-            if (target === 'bom-panel' && (bomFrame.src === 'about:blank' || bomFrame.src === '')) {
-                bomFrame.src = '/bom_view';
-            }
-        }));
         const sidebarToggle = document.getElementById('sidebar-toggle');
         const managementPanel = document.getElementById('management-panel');
         const formToggle = document.getElementById('form-toggle');
+
+        // 给当前 fetch 路径自动附加 ?repo=<id>,空 id 时让后端走默认仓库。
+        function api(path) {
+            if (!path.startsWith('/')) path = '/' + path;
+            if (!currentRepoId) return path;
+            return path + (path.includes('?') ? '&' : '?') + 'repo=' + encodeURIComponent(currentRepoId);
+        }
+
         function persistUiState(key, value) {
             // 避免同步 localStorage I/O 阻塞本次点击的布局更新。
             setTimeout(() => localStorage.setItem(key, value), 0);
@@ -770,6 +971,199 @@
         }
         sidebarToggle.addEventListener('click', () => setSidebarCollapsed(!document.body.classList.contains('sidebar-collapsed')));
         formToggle.addEventListener('click', () => setFormCollapsed(!managementPanel.classList.contains('form-collapsed')));
+        document.getElementById('bom-nav-btn').addEventListener('click', () => showPage('bom-panel'));
+
+        function showPage(targetId) {
+            pagePanels.forEach(p => p.classList.toggle('active', p.id === targetId));
+            // BOM 入口有自己的 active 样式;仓库 tab 没有 target,自身已经独立高亮。
+            const bomBtn = document.getElementById('bom-nav-btn');
+            if (bomBtn) bomBtn.classList.toggle('active', targetId === 'bom-panel');
+            if (targetId === 'bom-panel') {
+                // BOM 仅在仓库元数据加载后才有 src,iframe 未加载时补一次 src。
+                if (!bomFrame.src || bomFrame.src === 'about:blank' || bomFrame.src.endsWith('/about:blank')) {
+                    bomFrame.src = '/bom_view';
+                }
+            }
+        }
+
+        function renderRepoBar() {
+            repoBar.innerHTML = '';
+
+            // 每个仓库都是一个 tab;点击切到对应仓库,长按显示编辑按钮。
+            // BOM tab 单独放在仓库列表之后,仅在当前仓库是 electronics 时显示。
+            for (const repo of allRepos) {
+                const isActive = repo.id === currentRepoId;
+                const tab = document.createElement('button');
+                tab.type = 'button';
+                tab.className = 'nav-item' + (isActive ? ' active' : '');
+                tab.dataset.repoId = repo.id;
+                tab.title = repo.name || repo.id;
+                tab.innerHTML = `
+                    <span class="nav-ic">📦</span>
+                    <span class="nav-meta">
+                        <span class="nav-name">${escapeHtml(repo.name || repo.id)}</span>
+                        <span class="nav-note">${escapeHtml(repo.note || (repo.id === DEFAULT_REPO_ID ? '默认仓库' : '点击切换到此仓库'))}</span>
+                    </span>
+                    ${isActive ? '<button type="button" class="repo-edit-btn" data-repo-action="edit" title="编辑仓库 (重命名/备注)">✎</button>' : ''}
+                `;
+                tab.addEventListener('click', e => {
+                    if (e.target.closest('[data-repo-action="edit"]')) {
+                        e.stopPropagation();
+                        openRepoDialog('edit', repo);
+                        return;
+                    }
+                    if (isActive) {
+                        // 已在当前仓库,但用户可能在 BOM 页里 — 仍切回元件库视图。
+                        showPage('management-panel');
+                        return;
+                    }
+                    switchRepo(repo.id);
+                });
+                repoBar.appendChild(tab);
+            }
+        }
+
+        async function loadRepos({ silent = false } = {}) {
+            try {
+                const response = await fetch('/api/repos');
+                const text = await response.text();
+                const repos = text ? JSON.parse(text) : [];
+                if (!Array.isArray(repos)) throw new Error('仓库数据格式异常');
+                allRepos = repos;
+                // 持久化的仓库可能已被删除,此时回退到第一个 (默认仓库总是存在)。
+                if (!allRepos.find(r => r.id === currentRepoId)) {
+                    currentRepoId = allRepos[0]?.id || DEFAULT_REPO_ID;
+                    localStorage.setItem('itemlib-repo-id', currentRepoId);
+                }
+                return allRepos;
+            } catch (error) {
+                if (!silent) console.error('加载仓库列表失败:', error);
+                allRepos = [];
+                return [];
+            }
+        }
+
+        async function createRepo({ name, note }) {
+            const response = await fetch('/api/repos', {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, note }),
+            });
+            return readApiJson(response, '新建仓库');
+        }
+
+        async function updateRepo(repoId, payload) {
+            const response = await fetch('/api/repos/' + encodeURIComponent(repoId), {
+                method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            return readApiJson(response, '编辑仓库');
+        }
+
+        async function deleteRepo(repoId) {
+            const response = await fetch('/api/repos/' + encodeURIComponent(repoId), {
+                method: 'DELETE',
+            });
+            return readApiJson(response, '删除仓库');
+        }
+
+        // -------- 仓库对话框 --------
+        const repoDialog = document.getElementById('repo-dialog');
+        const repoDialogForm = document.getElementById('repo-dialog-form');
+        const repoDialogTitle = document.getElementById('repo-dialog-title');
+        const repoDialogSubtitle = document.getElementById('repo-dialog-subtitle');
+        const repoDialogName = document.getElementById('repo-dialog-name');
+        const repoDialogNote = document.getElementById('repo-dialog-note');
+        const repoDialogError = document.getElementById('repo-dialog-error');
+        const repoDialogSubmit = document.getElementById('repo-dialog-submit');
+        const repoDialogCancel = document.getElementById('repo-dialog-cancel');
+        let repoDialogMode = 'create';
+        let repoDialogTargetId = null;
+
+        function showRepoDialogError(msg) {
+            repoDialogError.textContent = msg;
+            repoDialogError.classList.add('show');
+        }
+        function clearRepoDialogError() {
+            repoDialogError.textContent = '';
+            repoDialogError.classList.remove('show');
+        }
+        function openRepoDialog(mode, repo) {
+            repoDialogMode = mode;
+            repoDialogTargetId = repo ? repo.id : null;
+            clearRepoDialogError();
+            if (mode === 'edit' && repo) {
+                repoDialogTitle.textContent = '编辑仓库';
+                repoDialogSubtitle.textContent = '重命名仓库或修改备注;仓库 id 不能修改。';
+                repoDialogName.value = repo.name || '';
+                repoDialogNote.value = repo.note || '';
+                repoDialogSubmit.textContent = '保存';
+            } else {
+                repoDialogTitle.textContent = '新建仓库';
+                repoDialogSubtitle.textContent = '仓库之间相互独立,搜索/添加/删除只在当前仓库生效。';
+                repoDialogName.value = '';
+                repoDialogNote.value = '';
+                repoDialogSubmit.textContent = '创建';
+            }
+            if (typeof repoDialog.showModal === 'function') repoDialog.showModal();
+            else repoDialog.setAttribute('open', '');
+            setTimeout(() => repoDialogName.focus(), 0);
+        }
+        function closeRepoDialog() {
+            if (typeof repoDialog.close === 'function') repoDialog.close();
+            else repoDialog.removeAttribute('open');
+        }
+        repoDialogCancel.addEventListener('click', closeRepoDialog);
+        repoDialog.addEventListener('click', e => {
+            // 点击 backdrop 关闭
+            if (e.target === repoDialog) closeRepoDialog();
+        });
+        repoDialogForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            clearRepoDialogError();
+            const name = repoDialogName.value.trim();
+            const note = repoDialogNote.value.trim();
+            if (!name) return showRepoDialogError('仓库名称不能为空');
+            repoDialogSubmit.disabled = true;
+            try {
+                let result;
+                if (repoDialogMode === 'edit' && repoDialogTargetId) {
+                    result = await updateRepo(repoDialogTargetId, { name, note });
+                } else {
+                    result = await createRepo({ name, note });
+                }
+                if (!result.success) throw new Error(result.error || '操作失败');
+                await loadRepos({ silent: true });
+                if (repoDialogMode === 'create') {
+                    currentRepoId = result.repo.id;
+                    localStorage.setItem('itemlib-repo-id', currentRepoId);
+                } else {
+                    // 名字改了之后如果其他位置引用了 name 也要同步,这里只是标签展示。
+                }
+                renderRepoBar();
+                await loadComponents();
+                closeRepoDialog();
+            } catch (error) {
+                showRepoDialogError(error.message || '操作失败');
+            } finally {
+                repoDialogSubmit.disabled = false;
+            }
+        });
+
+        document.getElementById('repo-add-btn').addEventListener('click', () => openRepoDialog('create'));
+
+        // 切到其他仓库前,如果用户编辑了一堆未保存的修改,这里可以选择性加确认;
+        // 当前的设计是无脑切换,符合「仓库即子页面」的轻量语义。
+        async function switchRepo(repoId) {
+            if (repoId === currentRepoId) return;
+            currentRepoId = repoId;
+            localStorage.setItem('itemlib-repo-id', currentRepoId);
+            renderRepoBar();
+            // 切仓库后重置搜索状态,避免旧仓库的筛选条件误导新仓库。
+            for (const field of Object.keys(searchFilters)) setFilterValue(field, '', false);
+            // 仓库 tab 点击永远回到元件库视图 — 避免「在 BOM 里点仓库 tab 后留在空 BOM」的死角。
+            showPage('management-panel');
+            await loadComponents({ preserveScroll: false });
+        }
 
         /* ==================== 拖动调节 ==================== */
         function initResizer(resizerId, targetId, isSidebar) {
@@ -812,6 +1206,94 @@
         function normalizeSearchText(value) {
             return (value ?? '').toString().normalize('NFKC').trim().toLowerCase();
         }
+        function safeImageUrl(value) {
+            const url = (value ?? '').toString().trim();
+            return /^https?:\/\//i.test(url) ? url : '';
+        }
+        function updateComponentImage(value) {
+            const url = safeImageUrl(value);
+            imageUrlInput.value = url;
+            componentImagePreview.src = url;
+            componentImagePreview.hidden = !url;
+        }
+
+        function syncBatchSelectionUi() {
+            const validNames = [...batchSelectedComponents].filter(name => name in allComponents);
+            batchSelectedComponents = new Set(validNames);
+            document.getElementById('batch-count').textContent = `已选 ${validNames.length} 项`;
+            document.getElementById('batch-clear-selection').disabled = validNames.length === 0;
+            document.getElementById('batch-search-lcsc').disabled = validNames.length === 0 || batchSearchRunning;
+            const successCount = batchLcscResults.filter(item => item.product && item.product.success).length;
+            document.getElementById('batch-apply-lcsc').disabled = successCount === 0 || batchSearchRunning;
+        }
+        function invalidateBatchLcscResults() {
+            batchLcscResults = [];
+            const preview = document.getElementById('batch-lcsc-preview');
+            preview.innerHTML = '';
+            preview.classList.remove('show');
+            syncBatchSelectionUi();
+        }
+
+        /* ==================== 手动选择替换料 ==================== */
+        function renderSubstitutePicker(filter = substituteSearchInput.value) {
+            const currentName = compNameInput.value.trim();
+            const query = normalizeSearchText(filter);
+            selectedSubstitutes = new Set([...selectedSubstitutes].filter(name => name in allComponents && name !== currentName));
+
+            substituteSelected.innerHTML = '';
+            for (const name of selectedSubstitutes) {
+                const chip = document.createElement('span');
+                chip.className = 'substitute-chip';
+                chip.append(document.createTextNode(`${allComponents[name]?.parameter || name} · ${name}`));
+                const remove = document.createElement('button');
+                remove.type = 'button'; remove.dataset.removeSubstitute = name; remove.title = '移除替换料'; remove.textContent = '×';
+                chip.appendChild(remove); substituteSelected.appendChild(chip);
+            }
+
+            substituteOptions.innerHTML = '';
+            const names = Object.keys(allComponents).filter(name => {
+                if (name === currentName) return false;
+                const item = allComponents[name];
+                return !query || [name, item.parameter, item.footprint, item.note]
+                    .some(value => normalizeSearchText(value).includes(query));
+            }).slice(0, 100);
+            if (!names.length) {
+                substituteOptions.innerHTML = '<div class="substitute-empty">没有匹配的元件</div>';
+                return;
+            }
+            for (const name of names) {
+                const label = document.createElement('label'); label.className = 'substitute-option';
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox'; checkbox.dataset.substitute = name; checkbox.checked = selectedSubstitutes.has(name);
+                const text = document.createElement('span');
+                const item = allComponents[name];
+                text.textContent = `${item.parameter || '—'} · ${item.footprint || '—'} · ${name}`;
+                label.append(checkbox, text); substituteOptions.appendChild(label);
+            }
+        }
+        substituteSearchInput.addEventListener('focus', () => {
+            renderSubstitutePicker(); substituteOptions.classList.add('open');
+        });
+        substituteSearchInput.addEventListener('input', () => {
+            renderSubstitutePicker(); substituteOptions.classList.add('open');
+        });
+        substituteOptions.addEventListener('change', event => {
+            const checkbox = event.target.closest('[data-substitute]');
+            if (!checkbox) return;
+            if (checkbox.checked) selectedSubstitutes.add(checkbox.dataset.substitute);
+            else selectedSubstitutes.delete(checkbox.dataset.substitute);
+            renderSubstitutePicker();
+        });
+        substituteSelected.addEventListener('click', event => {
+            const button = event.target.closest('[data-remove-substitute]');
+            if (!button) return;
+            selectedSubstitutes.delete(button.dataset.removeSubstitute); renderSubstitutePicker();
+        });
+        document.addEventListener('click', event => {
+            if (!event.target.closest('#substitute-picker')) substituteOptions.classList.remove('open');
+        });
+        compNameInput.addEventListener('input', () => renderSubstitutePicker());
+        document.getElementById('clear-image-btn').addEventListener('click', () => updateComponentImage(''));
         function normalizePartNumber(value) {
             return (value ?? '').toString().normalize('NFKC').toUpperCase().replace(/[^A-Z0-9]/g, '');
         }
@@ -884,14 +1366,9 @@
             // R、Ω、Ohm 都按电阻单位处理；K/M 数值本身也属于常见电阻标法。
             return /(?:\d\s*(?:[rR](?:\d|\b)|[kKmMgG](?:\d|\b)|Ω)|ohms?)/i.test(s);
         }
-        function matchesLocation(d, value) {
-            const query = normalizeSearchText(value);
-            if (!query) return true;
-            const [box, pos] = query.split(/[\/,:-]/, 2).map(x => x.trim());
-            const boxText = normalizeSearchText(d.box_id);
-            const posText = normalizeSearchText(d.led_id);
-            if (pos !== undefined) return (!box || boxText === box) && (!pos || posText === pos);
-            return boxText.includes(query) || posText.includes(query);
+        function matchesLocationId(value, queryValue) {
+            const query = normalizeSearchText(queryValue);
+            return !query || normalizeSearchText(value) === query;
         }
         function matchesGlobalQuery(key, d, query) {
             const tokens = normalizeSearchText(query).split(/\s+/).filter(Boolean);
@@ -899,6 +1376,7 @@
             const textFields = [
                 key, d.parameter, d.voltage, d.footprint, d.note, d.type,
                 d.category, d.brand, d.model, d.out_voltage, d.out_current,
+                ...(Array.isArray(d.substitutes) ? d.substitutes : []),
                 `box:${d.box_id}`, `pos:${d.led_id}`, `${d.box_id}/${d.led_id}`
             ].map(normalizeSearchText);
             const partNumberFields = [key, d.parameter, d.model];
@@ -921,16 +1399,55 @@
         }
 
         /* ==================== 加载 & 渲染列表 ==================== */
-        async function loadComponents() {
+        function captureListPosition() {
+            const containerRect = listContainer.getBoundingClientRect();
+            const cards = [...list.querySelectorAll('.comp-card')];
+            const anchor = cards.find(card => card.getBoundingClientRect().bottom > containerRect.top + 1);
+            return {
+                scrollTop: listContainer.scrollTop,
+                anchorKey: anchor ? anchor.dataset.key : null,
+                anchorOffset: anchor ? anchor.getBoundingClientRect().top - containerRect.top : 0
+            };
+        }
+        function restoreListPosition(position) {
+            if (!position) return;
+
+            // 虚拟列表可能尚未渲染到原锚点，按批次补齐后再恢复视口。
+            let anchor = position.anchorKey
+                ? list.querySelector(`.comp-card[data-key="${CSS.escape(position.anchorKey)}"]`) : null;
+            while (!anchor && renderedComponentCount < filteredComponents.length) {
+                renderNextComponentBatch();
+                anchor = position.anchorKey
+                    ? list.querySelector(`.comp-card[data-key="${CSS.escape(position.anchorKey)}"]`) : null;
+            }
+            if (anchor) {
+                const currentOffset = anchor.getBoundingClientRect().top - listContainer.getBoundingClientRect().top;
+                listContainer.scrollTop += currentOffset - position.anchorOffset;
+                return;
+            }
+
+            // 原锚点若刚好被删除，则退回原滚动像素位置。
+            while (listContainer.scrollHeight < position.scrollTop + listContainer.clientHeight
+                    && renderedComponentCount < filteredComponents.length) {
+                renderNextComponentBatch();
+            }
+            listContainer.scrollTop = position.scrollTop;
+        }
+        async function loadComponents({ preserveScroll = false } = {}) {
+            const listPosition = preserveScroll ? captureListPosition() : null;
             const requestSeq = ++componentsRequestSeq;
             try {
-                const res = await fetch('/api/components');
+                const res = await fetch(api('/api/components'));
                 if (!res.ok) throw new Error(`HTTP ${res.status}`);
                 const data = await res.json();
                 if (requestSeq !== componentsRequestSeq) return;
                 allComponents = data;
+                syncBatchSelectionUi();
+                // 数据刷新后同步剔除已删除的候选项，并重绘选择器。
+                renderSubstitutePicker();
                 document.getElementById('stat-count').textContent = Object.keys(allComponents).length;
                 applyFilters();
+                restoreListPosition(listPosition);
             } catch (error) {
                 if (requestSeq !== componentsRequestSeq) return;
                 list.innerHTML = '<div class="empty">元件数据加载失败，请刷新页面重试</div>';
@@ -959,7 +1476,8 @@
                     if (!isElectronicMatch(d.parameter, f.parameter)) return false;
                     if (!isElectronicMatch(d.voltage, f.voltage)) return false;
                     if (f.footprint.trim() && !normalizeSearchText(d.footprint).includes(normalizeSearchText(f.footprint))) return false;
-                    if (!matchesLocation(d, f.boxid)) return false;
+                    if (!matchesLocationId(d.box_id, f.box)) return false;
+                    if (!matchesLocationId(d.led_id, f.pos)) return false;
                     if (f.note.trim() && !normalizeSearchText(d.note).includes(normalizeSearchText(f.note))) return false;
                     if (minVal !== null || maxVal !== null) {
                         const v = parseElectronicValue(d.parameter);
@@ -1047,7 +1565,7 @@
 
         function renderCard(key, d) {
             const li = document.createElement('li');
-            li.className = 'comp-card';
+            li.className = `comp-card${batchSelectedComponents.has(key) ? ' batch-selected' : ''}`;
             li.dataset.key = key;
 
             let badges = '';
@@ -1059,14 +1577,26 @@
 
             const note = (d.note && d.note.trim())
                 ? `<div class="comp-note collapsed" data-note>${escapeHtml(d.note)}</div>` : '';
+            const image = safeImageUrl(d.image);
+            const substitutes = Array.isArray(d.substitutes)
+                ? d.substitutes.filter(name => name in allComponents) : [];
+            const substituteHtml = substitutes.length
+                ? `<div class="comp-substitutes"><span>替换料</span>${substitutes.map(name =>
+                    `<span class="comp-substitute">${escapeHtml(allComponents[name]?.parameter || name)} · ${escapeHtml(name)}</span>`
+                ).join('')}</div>` : '';
 
             li.innerHTML = `
                 <div class="comp-top">
-                    <div>
-                        <div class="comp-title">${escapeHtml(d.parameter || '—')} <span class="fp">· ${escapeHtml(d.footprint || '')}</span></div>
-                        <div class="comp-id">${key}</div>
+                    <div class="comp-main">
+                        ${image ? `<img class="comp-image" src="${escapeHtml(image)}" alt="${escapeHtml(d.parameter || key)}" loading="lazy" onerror="this.style.display='none'">` : ''}
+                        <div>
+                            <div class="comp-title">${escapeHtml(d.parameter || '—')} <span class="fp">· ${escapeHtml(d.footprint || '')}</span></div>
+                            <div class="comp-id">${escapeHtml(key)}</div>
+                        </div>
                     </div>
                     <div class="comp-actions">
+                        <input type="checkbox" class="batch-checkbox" data-batch-select
+                            aria-label="选择 ${escapeHtml(d.parameter || key)}" ${batchSelectedComponents.has(key) ? 'checked' : ''}>
                         <button class="icon-btn swap" data-swap title="与其他元件交换位置">⇄</button>
                         <button class="icon-btn del" data-del title="删除">✕</button>
                     </div>
@@ -1076,6 +1606,7 @@
                     <div class="loc-box"><span class="lbl">POS</span><input type="number" data-edit="led" value="${d.led_id}"></div>
                 </div>
                 ${badges ? `<div class="badges">${badges}</div>` : ''}
+                ${substituteHtml}
                 ${note}
             `;
             return li;
@@ -1086,18 +1617,27 @@
 
         /* ==================== 快速编辑 Box/Pos ==================== */
         list.addEventListener('change', async e => {
+            const batchCheckbox = e.target.closest('[data-batch-select]');
+            if (batchCheckbox) {
+                const card = batchCheckbox.closest('.comp-card');
+                if (batchCheckbox.checked) batchSelectedComponents.add(card.dataset.key);
+                else batchSelectedComponents.delete(card.dataset.key);
+                card.classList.toggle('batch-selected', batchCheckbox.checked);
+                invalidateBatchLcscResults();
+                return;
+            }
             const inp = e.target.closest('[data-edit]');
             if (!inp) return;
             const key = inp.closest('.comp-card').dataset.key;
             const val = parseInt(inp.value);
             if (isNaN(val)) return;
             const details = inp.dataset.edit === 'box' ? { box_id: val } : { led_id: val };
-            const r = await fetch('/api/update', {
+            const r = await fetch(api('/api/update'), {
                 method: 'POST', headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ component_name: key, details })
             }).then(r => r.json());
-            if (r.success) { allComponents[key] = { ...allComponents[key], ...details }; loadComponents(); }
-            else { alert('更新失败: ' + r.error); loadComponents(); }
+            if (r.success) { allComponents[key] = { ...allComponents[key], ...details }; loadComponents({ preserveScroll: true }); }
+            else { alert('更新失败: ' + r.error); loadComponents({ preserveScroll: true }); }
         });
 
         /* ==================== 卡片点击（填表 / 删除 / 交换 / 备注） ==================== */
@@ -1108,8 +1648,8 @@
 
             if (e.target.closest('[data-del]')) {
                 if (!confirm(`确定删除元件 "${key}" 吗？`)) return;
-                const r = await fetch('/api/delete', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: key }) }).then(r => r.json());
-                if (r.success) { await loadComponents(); findNextLedId(false); } else alert('删除失败: ' + r.error);
+                const r = await fetch(api('/api/delete'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: key }) }).then(r => r.json());
+                if (r.success) { await loadComponents({ preserveScroll: true }); findNextLedId(false); } else alert('删除失败: ' + r.error);
                 return;
             }
             if (e.target.closest('[data-swap]')) {
@@ -1119,14 +1659,15 @@
                 else {
                     const n1 = swapPendingKey, n2 = key;
                     if (confirm(`交换 "${n1}" 与 "${n2}" 的位置？`)) {
-                        const r = await fetch('/api/swap_components', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name1: n1, name2: n2 }) }).then(r => r.json());
+                        const r = await fetch(api('/api/swap_components'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ name1: n1, name2: n2 }) }).then(r => r.json());
                         if (!r.success) alert('交换失败: ' + r.error);
                     }
-                    swapPendingKey = null; await loadComponents();
+                    swapPendingKey = null; await loadComponents({ preserveScroll: true });
                 }
                 return;
             }
             if (e.target.closest('[data-edit]')) return;
+            if (e.target.closest('[data-batch-select]')) return;
             if (e.target.closest('[data-note]')) { e.target.closest('[data-note]').classList.toggle('collapsed'); e.target.closest('[data-note]').classList.toggle('expanded'); return; }
 
             // 填表
@@ -1140,6 +1681,11 @@
             voltageInput.value = d.voltage || '';
             footprintInput.value = d.footprint || '';
             noteInput.value = d.note || '';
+            updateComponentImage(d.image || '');
+            selectedSubstitutes = new Set(Array.isArray(d.substitutes) ? d.substitutes : []);
+            substituteSearchInput.value = '';
+            renderSubstitutePicker();
+            window._lastFetchedData = null;
             document.getElementById('lcsc-result').style.display = 'none';
             card.classList.add('flash'); setTimeout(() => card.classList.remove('flash'), 1200);
         });
@@ -1159,10 +1705,13 @@
         /* ==================== 添加 ==================== */
         function collectDetails(existing) {
             const fetched = window._lastFetchedData || {};
+            // 只要本次立创搜索成功，添加和更新都以原厂型号作为参数名。
+            // 这里在提交前再次取 product_name，避免用户误改输入框或界面未及时刷新。
+            const searchedProductName = String(fetched.product_name || '').trim();
             return {
                 box_id: parseInt(boxIdInput.value),
                 led_id: parseInt(ledIdInput.value),
-                parameter: paramInput.value + selectedParamUnit,
+                parameter: searchedProductName || (paramInput.value + selectedParamUnit).trim(),
                 voltage: voltageInput.value,
                 footprint: footprintInput.value,
                 note: noteInput.value.trim(),
@@ -1170,12 +1719,20 @@
                 work_voltage: fetched.工作电压 || (existing && existing.work_voltage) || 'N/A',
                 out_voltage: fetched.输出电压 || (existing && existing.out_voltage) || 'N/A',
                 out_current: fetched.输出电流 || (existing && existing.out_current) || 'N/A',
-                category: fetched.类目 || (existing && existing.category) || 'N/A'
+                category: fetched.类目 || (existing && existing.category) || 'N/A',
+                image: imageUrlInput.value.trim(),
+                lcsc_code: fetched.lcsc_code || (existing && existing.lcsc_code) || '',
+                product_url: fetched.product_url || (existing && existing.product_url) || '',
+                datasheet: fetched.datasheet || (existing && existing.datasheet) || '',
+                brand: fetched.brand || (existing && existing.brand) || '',
+                product_name: searchedProductName || (existing && existing.product_name) || '',
+                substitutes: [...selectedSubstitutes]
             };
         }
         form.addEventListener('submit', async e => {
             e.preventDefault();
-            const name = compNameInput.value;
+            // 原厂型号属于 parameter；元件唯一 ID 仍沿用表单值或随机生成。
+            const name = compNameInput.value.trim() || generateRandomID();
             const details = collectDetails();
             const dup = Object.entries(allComponents).filter(([, c]) =>
                 (c.parameter || '').toLowerCase() === details.parameter.toLowerCase() &&
@@ -1186,7 +1743,7 @@
                 dup.forEach(([k, c]) => { msg += `📦 ${c.parameter} | ${c.footprint}${c.voltage ? ' | ' + c.voltage : ''}\n   Box ${c.box_id}, Pos ${c.led_id} · ${k}\n\n`; });
                 if (!confirm(msg + '仍要继续添加？')) return;
             }
-            const r = await fetch('/api/add', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
+            const r = await fetch(api('/api/add'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
             if (r.success) {
                 const box = details.box_id, fp = details.footprint;
                 form.reset();
@@ -1194,8 +1751,9 @@
                 compNameInput.value = generateRandomID();
                 document.querySelectorAll('.chip-btn.selected').forEach(b => b.classList.remove('selected'));
                 selectedParamUnit = ''; window._lastFetchedData = null; lastAutoBoxId = box;
+                selectedSubstitutes.clear(); substituteSearchInput.value = ''; updateComponentImage(''); renderSubstitutePicker();
                 document.getElementById('lcsc-result').style.display = 'none';
-                await loadComponents(); findNextLedId(true);
+                await loadComponents({ preserveScroll: true }); findNextLedId(true);
             } else {
                 alert('添加失败: ' + r.error);
                 if (r.error.includes('已存在')) compNameInput.value = generateRandomID();
@@ -1209,8 +1767,8 @@
             if (!allComponents[name]) return alert(`元件库中不存在 "${name}"，请先添加或从右侧选择。`);
             if (!confirm(`用当前表单内容更新 "${name}" 吗？`)) return;
             const details = collectDetails(allComponents[name]);
-            const r = await fetch('/api/update', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
-            if (r.success) await loadComponents(); else alert('更新失败: ' + r.error);
+            const r = await fetch(api('/api/update'), { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ component_name: name, details }) }).then(r => r.json());
+            if (r.success) await loadComponents({ preserveScroll: true }); else alert('更新失败: ' + r.error);
         });
 
         /* ==================== 快捷按钮 ==================== */
@@ -1260,7 +1818,7 @@
         });
         bind('search-query', 'query');
         bind('search-parameter', 'parameter'); bind('search-voltage', 'voltage'); bind('search-footprint', 'footprint');
-        bind('search-boxid', 'boxid'); bind('search-note', 'note'); bind('search-min', 'min'); bind('search-max', 'max');
+        bind('search-box', 'box'); bind('search-pos', 'pos'); bind('search-note', 'note'); bind('search-min', 'min'); bind('search-max', 'max');
         document.getElementById('filter-toggle').addEventListener('click', () => {
             const panel = document.getElementById('advanced-search');
             const willOpen = panel.hidden;
@@ -1301,18 +1859,144 @@
         const advancedOpen = localStorage.getItem('ui-advanced-search-open') === '1';
         if (advancedOpen) document.getElementById('filter-toggle').click();
 
+        async function readApiJson(response, apiName) {
+            // 旧版 Flask 进程没有新接口时会返回 HTML 404，不能直接按 JSON 解析。
+            const text = await response.text();
+            let payload;
+            try {
+                payload = JSON.parse(text);
+            } catch (_) {
+                const looksLikeHtml = /^\s*<!doctype|^\s*<html/i.test(text);
+                if (looksLikeHtml && response.status === 404) {
+                    throw new Error(`当前后端尚未加载${apiName}，请关闭正在运行的 app.py 后重新启动`);
+                }
+                throw new Error(`${apiName}返回了无法解析的内容（HTTP ${response.status}）`);
+            }
+            if (!response.ok && !payload.error) {
+                throw new Error(`${apiName}请求失败（HTTP ${response.status}）`);
+            }
+            return payload;
+        }
+
+        /* ==================== 多选元件批量更新立创内容 ==================== */
+        const batchSearchButton = document.getElementById('batch-search-lcsc');
+        const batchApplyButton = document.getElementById('batch-apply-lcsc');
+        const batchPreview = document.getElementById('batch-lcsc-preview');
+
+        document.getElementById('batch-select-visible').addEventListener('click', () => {
+            // “全选”针对当前筛选结果，包括尚未滚动渲染出的卡片。
+            for (const { key } of filteredComponents) batchSelectedComponents.add(key);
+            list.querySelectorAll('.comp-card').forEach(card => {
+                card.classList.add('batch-selected');
+                const checkbox = card.querySelector('[data-batch-select]');
+                if (checkbox) checkbox.checked = true;
+            });
+            invalidateBatchLcscResults();
+        });
+        document.getElementById('batch-clear-selection').addEventListener('click', () => {
+            batchSelectedComponents.clear();
+            list.querySelectorAll('.comp-card').forEach(card => {
+                card.classList.remove('batch-selected');
+                const checkbox = card.querySelector('[data-batch-select]');
+                if (checkbox) checkbox.checked = false;
+            });
+            invalidateBatchLcscResults();
+        });
+        batchSearchButton.addEventListener('click', async () => {
+            const names = [...batchSelectedComponents];
+            if (!names.length) return alert('请先勾选要搜索的元件');
+            batchSearchRunning = true;
+            batchSearchButton.textContent = `正在搜索 0/${names.length}…`;
+            batchLcscResults = []; batchPreview.innerHTML = ''; batchPreview.classList.add('show'); syncBatchSelectionUi();
+            try {
+                // 逐项复用录入区相同的单项接口和 parameter 查询，避免并发反爬状态互相干扰。
+                const productCache = new Map();
+                for (let index = 0; index < names.length; index++) {
+                    const name = names[index];
+                    const component = allComponents[name] || {};
+                    const query = String(component.parameter || component.lcsc_code || '').trim();
+                    let product;
+                    if (!query) {
+                        product = { success: false, error: '元件没有可搜索的参数' };
+                    } else if (productCache.has(query)) {
+                        // 多个实体货位使用相同参数时复用首次结果，不重复访问立创。
+                        product = productCache.get(query);
+                    } else {
+                        try {
+                            product = await fetch(api('/api/crawl_lcsc') + '&keyword=' + encodeURIComponent(query))
+                                .then(response => readApiJson(response, '立创搜索接口'));
+                        } catch (error) {
+                            product = { success: false, error: error.message };
+                        }
+                        productCache.set(query, product);
+                    }
+                    const item = { component_name: name, query, product };
+                    batchLcscResults.push(item);
+                    const productResult = item.product || {};
+                    const image = safeImageUrl(productResult.image);
+                    let resultHtml;
+                    if (productResult.success) {
+                        resultHtml = `<div class="batch-result ok">
+                            ${image ? `<img src="${escapeHtml(image)}" alt="商品图片">` : ''}
+                            <span title="${escapeHtml(productResult.product_name || '')}">${escapeHtml(item.component_name)} · ${escapeHtml(item.query)} → ${escapeHtml(productResult.lcsc_code || '')} ${escapeHtml(productResult.product_name || '')}</span>
+                        </div>`;
+                    } else {
+                        resultHtml = `<div class="batch-result fail"><span>${escapeHtml(item.component_name)} · ${escapeHtml(item.query || '无参数')} → ${escapeHtml(productResult.error || '未找到')}</span></div>`;
+                    }
+                    batchPreview.insertAdjacentHTML('beforeend', resultHtml);
+                    batchSearchButton.textContent = `正在搜索 ${index + 1}/${names.length}…`;
+                }
+            } finally {
+                batchSearchRunning = false;
+                batchSearchButton.textContent = '搜索所选元件'; syncBatchSelectionUi();
+            }
+        });
+        batchApplyButton.addEventListener('click', async () => {
+            const updates = batchLcscResults.filter(item => item.product && item.product.success);
+            const failedCount = batchLcscResults.length - updates.length;
+            if (!updates.length) return;
+            if (!confirm(`更新 ${updates.length} 个搜索成功元件的立创内容？${failedCount ? `\n另有 ${failedCount} 个搜索失败项不会更新。` : ''}\n\n元件参数、货位和替换料不会改变。`)) return;
+            batchApplyButton.disabled = true; batchApplyButton.textContent = '更新中…';
+            try {
+                const result = await fetch(api('/api/batch_update_lcsc'), {
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ updates })
+                }).then(response => readApiJson(response, '批量更新接口'));
+                if (!result.success) throw new Error(result.error || '批量更新失败');
+                batchSelectedComponents.clear();
+                batchLcscResults = [];
+                await loadComponents({ preserveScroll: true });
+                alert(`已更新 ${result.updated_count} 个元件的立创内容`);
+            } catch (error) {
+                alert('批量更新失败: ' + error.message);
+            } finally {
+                batchApplyButton.textContent = '更新搜索成功项'; syncBatchSelectionUi();
+            }
+        });
+
         /* ==================== 立创搜索 ==================== */
         const lcscBtn = document.getElementById('search-lcsc-btn');
         lcscBtn.addEventListener('click', async () => {
             const kw = (paramInput.value.trim() + selectedParamUnit).trim();
             if (!kw) return alert('请先在参数框输入 立创编号(Cxxxx) / 型号 / 商品链接');
+            // 新搜索开始即清除旧结果，防止失败后保存到上一次搜索得到的型号。
+            window._lastFetchedData = null;
             lcscBtn.disabled = true; lcscBtn.textContent = '搜索中…';
             try {
-                const r = await fetch('/api/crawl_lcsc?keyword=' + encodeURIComponent(kw)).then(r => r.json());
+                const r = await fetch(api('/api/crawl_lcsc') + '&keyword=' + encodeURIComponent(kw)).then(r => r.json());
                 if (r.success) {
                     window._lastFetchedData = r;
+                    // 立创返回的商品图随当前元件一起入库，用户也可以手动移除。
+                    updateComponentImage(r.image || '');
                     if (r.footprint && !footprintInput.value.trim()) footprintInput.value = r.footprint;
                     if (r.工作电压 && r.工作电压 !== 'N/A') voltageInput.value = r.工作电压;
+                    // 把参数名替换为立创返回的型号 (e.g. 搜索 C357836 后填入 AON6382)
+                    if (r.product_name) {
+                        paramInput.value = r.product_name;
+                        // 取消可能残留的单位按钮选中,避免拼出 AON6382 + 单位
+                        document.querySelectorAll('.chip-btn[data-unit].selected').forEach(b => b.classList.remove('selected'));
+                        selectedParamUnit = '';
+                    }
                     renderLcsc(r);
                     noteInput.value = buildNote(r);
                 } else {
@@ -1517,6 +2201,9 @@
         document.addEventListener('DOMContentLoaded', async () => {
             installItemlibSerialButton();
             compNameInput.value = generateRandomID();
+            // 先加载仓库列表,再渲染侧栏 tab,最后才拉元件 — 否则 api() 没有正确的 repo id。
+            await loadRepos();
+            renderRepoBar();
             await loadComponents();
         });
     </script>
